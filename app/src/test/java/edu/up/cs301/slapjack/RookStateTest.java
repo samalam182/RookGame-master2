@@ -62,7 +62,7 @@ public class RookStateTest {
     public void testFinalizeBids() throws Exception {
         RookState rookState = new RookState();
         assertTrue(rookState.winningBid > 0);
-
+        int count;
         int count = 0;
         for(int i = 0 ; i<rookState.bidPass.length; i++){
             if(rookState.bidPass[i] == true){
