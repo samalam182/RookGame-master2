@@ -1,4 +1,4 @@
-package edu.up.cs301.game.actionMsg;
+package edu.up.cs301.game.rook;
 
 import java.io.Serializable;
 

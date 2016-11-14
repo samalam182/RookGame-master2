@@ -3,7 +3,7 @@ package edu.up.cs301.game;
 import java.util.LinkedList;
 import java.util.Queue;
 import android.util.Log;
-import edu.up.cs301.game.actionMsg.GameAction;
+import edu.up.cs301.game.rook.GameAction;
 import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.util.IPCoder;
 import edu.up.cs301.game.util.NetworkObjectPasser;
