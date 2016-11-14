@@ -1,5 +1,6 @@
 package edu.up.cs301.game.actionMsg;
 
+import edu.up.cs301.game.rook.GameAction;
 import edu.up.cs301.game.util.GameTimer;
 
 /**

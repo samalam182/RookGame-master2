@@ -1,6 +1,6 @@
 package edu.up.cs301.game;
 
-import edu.up.cs301.game.actionMsg.GameAction;
+import edu.up.cs301.game.rook.GameAction;
 
 /**
  * To support remote play, this game framework has two types of Games: local

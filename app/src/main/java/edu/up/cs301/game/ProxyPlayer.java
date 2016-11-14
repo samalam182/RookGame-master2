@@ -1,6 +1,6 @@
 package edu.up.cs301.game;
 
-import edu.up.cs301.game.actionMsg.GameAction;
+import edu.up.cs301.game.rook.GameAction;
 import edu.up.cs301.game.infoMsg.BindGameInfo;
 import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.util.NetworkObjectPasser;

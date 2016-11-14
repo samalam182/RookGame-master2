@@ -1,6 +1,7 @@
 package edu.up.cs301.game.actionMsg;
 
 import edu.up.cs301.game.GamePlayer;
+import edu.up.cs301.game.rook.GameAction;
 
 /**
  * An action by which the player acknowledges that the game is over.
