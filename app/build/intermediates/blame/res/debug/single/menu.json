@@ -14,5 +14,9 @@
     {
         "merged": "P:\\cs371\\RookGame-master\\app\\build\\intermediates\\res\\merged\\debug\\menu\\game_main.xml",
         "source": "P:\\cs371\\RookGame-master\\app\\src\\main\\res\\menu\\game_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\menu\\game_main.xml",
+        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\menu\\game_main.xml"
     }
 ]
