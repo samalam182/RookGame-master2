@@ -63,7 +63,7 @@ public class RookStateTest {
         RookState rookState = new RookState();
         assertTrue(rookState.winningBid > 0);
         int count;
-        int count = 0;
+        count = 0;
         for(int i = 0 ; i<rookState.bidPass.length; i++){
             if(rookState.bidPass[i] == true){
                 count++;
@@ -74,25 +74,25 @@ public class RookStateTest {
 
     }
 
-    @org.junit.Test
-    public void testCountTrick() throws Exception {
-        RookState rookState = new RookState();
-        Card c1;
-        Card c2;
-        Card c3;
-        Card c4;
-        rookState.currTrick.add(c1);
-        rookState.currTrick.add(c2);
-        rookState.currTrick.add(c3);
-        rookState.currTrick.add(c4);
-
-        for(int k = 0; k<4; k++){
-
-        }
-
-        assertEquals(rookState.currTrick.get(k) instanceof Card);
-
-    }
+//    @org.junit.Test
+//    public void testCountTrick() throws Exception {
+//        RookState rookState = new RookState();
+//        Card c1;
+//        Card c2;
+//        Card c3;
+//        Card c4;
+//        rookState.currTrick.add(c1);
+//        rookState.currTrick.add(c2);
+//        rookState.currTrick.add(c3);
+//        rookState.currTrick.add(c4);
+//
+//        for(int k = 0; k<4; k++){
+//
+//        }
+//
+//        assertEquals(rookState.currTrick.get(k) instanceof Card);
+//
+//    }
 
     @org.junit.Test
     public void testUseNest() throws Exception {
