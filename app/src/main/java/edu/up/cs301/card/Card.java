@@ -44,6 +44,31 @@ public class Card implements Serializable {
 		this.counterValue = newCounterValue;
     }
 
+	public Color getSuit() {
+		return this.suit;
+	}
+
+	public int getNumValue() {
+		return this.numValue;
+	}
+
+	public int getCounterValue() {
+		return this.counterValue;
+	}
+
+	public void setSuit(Color chosenSuit) {
+		this.suit = chosenSuit;
+	}
+
+	public void setNumValue(int chosenNumValue) {
+		this.numValue = chosenNumValue;
+	}
+
+	public void stCounterValue(int chosenCounterValue) {
+		this.counterValue = chosenCounterValue;
+	}
+
+
     /**
      * Creates a Card from a String.  (Can be used instead of the
      * constructor.)
@@ -131,91 +156,91 @@ public class Card implements Serializable {
         return "" + getRank().shortName() + getSuit().shortName();
     }
 
-    /**
-     * Tells the card's rank.
-     *
-     * @return
-	 *		a Rank object (actually of a subclass) that tells the card's
-     *		rank (e.g., Jack, three).
-     */
-    public Rank getRank() {
-    	return rank;
-    }
-
-    /**
-     * Tells the card's suit.
-     *
-     * @return
-	 *		a Suit object (actually of a subclass) that tells the card's
-     *		rank (e.g., heart, club).
-     */
-    public Suit getSuit() {
-    	return suit;
-    }
+//    /**
+//     * Tells the card's rank.
+//     *
+//     * @return
+//	 *		a Rank object (actually of a subclass) that tells the card's
+//     *		rank (e.g., Jack, three).
+//     */
+//    public Rank getRank() {
+//    	return rank;
+//    }
+//
+//    /**
+//     * Tells the card's suit.
+//     *
+//     * @return
+//	 *		a Suit object (actually of a subclass) that tells the card's
+//     *		rank (e.g., heart, club).
+//     */
+//    public Suit getSuit() {
+//    	return suit;
+//    }
  
-    // array that contains the android resource indices for the 52 card
-    // images
-    private static int[][] resIdx = {
-    	{
-    		R.drawable.card_ac, R.drawable.card_2c, R.drawable.card_3c,
-    		R.drawable.card_4c, R.drawable.card_5c, R.drawable.card_6c,
-    		R.drawable.card_7c, R.drawable.card_8c, R.drawable.card_9c,
-    		R.drawable.card_tc, R.drawable.card_jc, R.drawable.card_qc,
-    		R.drawable.card_kc, 
-    	},
-    	{
-    		R.drawable.card_ad, R.drawable.card_2d, R.drawable.card_3d,
-    		R.drawable.card_4d, R.drawable.card_5d, R.drawable.card_6d,
-    		R.drawable.card_7d, R.drawable.card_8d, R.drawable.card_9d,
-    		R.drawable.card_td, R.drawable.card_jd, R.drawable.card_qd,
-    		R.drawable.card_kd, 
-    	},
-    	{
-    		R.drawable.card_ah, R.drawable.card_2h, R.drawable.card_3h,
-    		R.drawable.card_4h, R.drawable.card_5h, R.drawable.card_6h,
-    		R.drawable.card_7h, R.drawable.card_8h, R.drawable.card_9h,
-    		R.drawable.card_th, R.drawable.card_jh, R.drawable.card_qh,
-    		R.drawable.card_kh, 
-    	},
-    	{
-    		R.drawable.card_as, R.drawable.card_2s, R.drawable.card_3s,
-    		R.drawable.card_4s, R.drawable.card_5s, R.drawable.card_6s,
-    		R.drawable.card_7s, R.drawable.card_8s, R.drawable.card_9s,
-    		R.drawable.card_ts, R.drawable.card_js, R.drawable.card_qs,
-    		R.drawable.card_ks, 
-    	},
-    };
-    
-    // the array of card images
-    private static Bitmap[][] cardImages = null;
-    
-    /**
-     * initializes the card images
-     * 
-     * @param activity
-     * 		the current activity
-     */
-    public static void initImages(Activity activity) {
-    	// if it's already initialized, then ignore
-    	if (cardImages != null) return;
-    	
-    	// create the outer array
-    	cardImages = new Bitmap[resIdx.length][];
-    	
-    	// loop through the resource-index array, creating a
-    	// "parallel" array with the images themselves
-    	for (int i = 0; i < resIdx.length; i++) {
-    		// create an inner array
-    		cardImages[i] = new Bitmap[resIdx[i].length];
-    		for (int j = 0; j < resIdx[i].length; j++) {
-    			// create the bitmap from the corresponding image
-    			// resource, and set the corresponding array element
-    			cardImages[i][j] =
-    					BitmapFactory.decodeResource(
-    							activity.getResources(),
-    							resIdx[i][j]);
-    		}
-    	}
-    }
+//    // array that contains the android resource indices for the 52 card
+//    // images
+//    private static int[][] resIdx = {
+//    	{
+//    		R.drawable.card_ac, R.drawable.card_2c, R.drawable.card_3c,
+//    		R.drawable.card_4c, R.drawable.card_5c, R.drawable.card_6c,
+//    		R.drawable.card_7c, R.drawable.card_8c, R.drawable.card_9c,
+//    		R.drawable.card_tc, R.drawable.card_jc, R.drawable.card_qc,
+//    		R.drawable.card_kc,
+//    	},
+//    	{
+//    		R.drawable.card_ad, R.drawable.card_2d, R.drawable.card_3d,
+//    		R.drawable.card_4d, R.drawable.card_5d, R.drawable.card_6d,
+//    		R.drawable.card_7d, R.drawable.card_8d, R.drawable.card_9d,
+//    		R.drawable.card_td, R.drawable.card_jd, R.drawable.card_qd,
+//    		R.drawable.card_kd,
+//    	},
+//    	{
+//    		R.drawable.card_ah, R.drawable.card_2h, R.drawable.card_3h,
+//    		R.drawable.card_4h, R.drawable.card_5h, R.drawable.card_6h,
+//    		R.drawable.card_7h, R.drawable.card_8h, R.drawable.card_9h,
+//    		R.drawable.card_th, R.drawable.card_jh, R.drawable.card_qh,
+//    		R.drawable.card_kh,
+//    	},
+//    	{
+//    		R.drawable.card_as, R.drawable.card_2s, R.drawable.card_3s,
+//    		R.drawable.card_4s, R.drawable.card_5s, R.drawable.card_6s,
+//    		R.drawable.card_7s, R.drawable.card_8s, R.drawable.card_9s,
+//    		R.drawable.card_ts, R.drawable.card_js, R.drawable.card_qs,
+//    		R.drawable.card_ks,
+//    	},
+//    };
+//
+//    // the array of card images
+//    private static Bitmap[][] cardImages = null;
+//
+//    /**
+//     * initializes the card images
+//     *
+//     * @param activity
+//     * 		the current activity
+//     */
+//    public static void initImages(Activity activity) {
+//    	// if it's already initialized, then ignore
+//    	if (cardImages != null) return;
+//
+//    	// create the outer array
+//    	cardImages = new Bitmap[resIdx.length][];
+//
+//    	// loop through the resource-index array, creating a
+//    	// "parallel" array with the images themselves
+//    	for (int i = 0; i < resIdx.length; i++) {
+//    		// create an inner array
+//    		cardImages[i] = new Bitmap[resIdx[i].length];
+//    		for (int j = 0; j < resIdx[i].length; j++) {
+//    			// create the bitmap from the corresponding image
+//    			// resource, and set the corresponding array element
+//    			cardImages[i][j] =
+//    					BitmapFactory.decodeResource(
+//    							activity.getResources(),
+//    							resIdx[i][j]);
+//    		}
+//    	}
+//    }
 
 }
