@@ -60,8 +60,8 @@ public class RookState extends GameState{
         subStage = sub;
     }
 
-    public int getScore() {
-        return 0;
+    public int getScore(int playerIdx) {
+        return playerScores[playerIdx];
     }
 
     public void setScore(int score, int index) {
@@ -105,12 +105,41 @@ public class RookState extends GameState{
         }
     }
     public void finalizeBids() {
+        int count = 0;
+        int maxVal = 0;
+        for(int i = 0; i<4; i++){
+            if(bidPass[i]){
+                count++;
+            }
+        }
 
+        if(count >= 3){
+            for(int j = 0; j<4; j++){
+                if(playerBids[j] > maxVal){
+                    maxVal = playerBids[j];
+                }
+            }
+            winningBid = maxVal;
+        }
     }
-    public void countTrick() {
 
+    public int countTrick() {
+        int trickVal = 0;
+        for(int i = 0; i<4; i++){
+            trickVal += currTrick.get(i).counterValue;
+        }
+        return trickVal;
     }
-    public void useNest() {
 
+    public void useNest(ArrayList<Card> fromNest, ArrayList<Card> fromHand, ArrayList<Card> playerHand) {
+        for(int i = 0; i < fromNest.size(); i++){
+            nest.remove(fromNest.get(i));
+            playerHand.remove(fromHand.get(i));
+        }
+
+        for(int j = 0; j < fromNest.size(); j++){
+            nest.add(fromHand.get(j));
+            playerHand.add(fromNest.get(j));
+        }
     }
 }
