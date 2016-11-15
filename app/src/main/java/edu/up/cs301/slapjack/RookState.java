@@ -41,7 +41,7 @@ public class RookState extends GameState{
         nest = new ArrayList<Card>(5);
         currTrick = new ArrayList<Card>(4);
 
-        deck = new ArrayList<Card>(41);
+        deck = initDeck();
 
         currTrickWinner = 0;
         trumpSuit = null;
@@ -73,10 +73,30 @@ public class RookState extends GameState{
     public void addCard(Card c, ArrayList<Card> cardPile) {
         cardPile.add(c);
     }
+
+
     public void removeCard(Card c, ArrayList<Card> cardPile) {
         cardPile.remove(c);
     }
+
+    public ArrayList<Card> initDeck(){
+        ArrayList<Card> initD = new ArrayList<Card>(41);
+
+
+        return initD;
+    }
+
     public void shuffle() {
+        ArrayList<Card> temp = new ArrayList<Card>();
+        while(!deck.isEmpty()) {
+            int loc=(int)(Math.random()*deck.size());
+            temp.add(deck.get(loc));
+            deck.remove(loc);
+        }
+        deck=temp;
+    }
+
+    public void deal(){
         for(int j = 0; j<4; j++) {
             for (int i = 0; i < 9; i++) {
                 Card temp = deck.get(0);
@@ -104,6 +124,8 @@ public class RookState extends GameState{
             }
         }
     }
+
+
     public void finalizeBids() {
         int count = 0;
         int maxVal = 0;

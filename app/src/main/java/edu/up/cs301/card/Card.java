@@ -38,11 +38,22 @@ public class Card implements Serializable {
     /**
      * Constructor for class card
      */
-    public Card(Color newSuit, int newNumValue, int newCounterValue) {
+    public Card(Color newSuit, int newNumValue) {
 		this.suit = newSuit;
 		this.numValue = newNumValue;
-		this.counterValue = newCounterValue;
-    }
+		if(numValue == 5) {
+			this.counterValue = 5;
+		}
+		else if(numValue == 10 || numValue == 14){
+			this.counterValue = 10;
+		}
+		else if(numValue == 15){
+			this.counterValue = 20;
+		}
+		else{
+			this.counterValue = 0;
+		}
+	}
 
 	public Color getSuit() {
 		return this.suit;
