@@ -16,11 +16,11 @@ import android.graphics.Color;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class SJMainActivity extends GameMainActivity {
+public class RookMainActivity extends GameMainActivity {
 	
 	public static final int PORT_NUMBER = 4752;
 
-	/** a slapjack game for two players. The default is human vs. computer */
+	/** a rook game for four players. The default is human vs. computer */
 	@Override
 	public GameConfig createDefaultConfig() {
 
@@ -34,40 +34,47 @@ public class SJMainActivity extends GameMainActivity {
 		playerTypes.add(new GamePlayerType("human player (yellow)") {
 			public GamePlayer createPlayer(String name) {
 				return new SJHumanPlayer(name, Color.YELLOW);
-			}
-		});
+			}});
+		playerTypes.add(new GamePlayerType("human player (blue)") {
+			public GamePlayer createPlayer(String name) {
+				return new SJHumanPlayer(name, Color.BLUE);
+			}});
+		playerTypes.add(new GamePlayerType("human player (red)") {
+			public GamePlayer createPlayer(String name) {
+				return new SJHumanPlayer(name, Color.RED);
+			}});
 		playerTypes.add(new GamePlayerType("computer player (normal)") {
 			public GamePlayer createPlayer(String name) {
 				return new SJComputerPlayer(name);
-			}
-		});
+			}});
 		playerTypes.add(new GamePlayerType("computer player (fast)") {
 			public GamePlayer createPlayer(String name) {
 				return new SJComputerPlayer(name, 0.3);
-			}
-		});
-		playerTypes.add(new GamePlayerType("computer player (slow)") {
-			public GamePlayer createPlayer(String name) {
-				return new SJComputerPlayer(name, 1.0);
-			}
-		});
-		playerTypes.add(new GamePlayerType("computer player (very fast)") {
-			public GamePlayer createPlayer(String name) {
-				return new SJComputerPlayer(name, 0.15);
-			}
-		});
-		playerTypes.add(new GamePlayerType("computer player (very slow)") {
-			public GamePlayer createPlayer(String name) {
-				return new SJComputerPlayer(name, 3.5);
-			}
-		});
+			}});
+//		playerTypes.add(new GamePlayerType("computer player (slow)") {
+//			public GamePlayer createPlayer(String name) {
+//				return new SJComputerPlayer(name, 1.0);
+//			}
+//		});
+//		playerTypes.add(new GamePlayerType("computer player (very fast)") {
+//			public GamePlayer createPlayer(String name) {
+//				return new SJComputerPlayer(name, 0.15);
+//			}
+//		});
+//		playerTypes.add(new GamePlayerType("computer player (very slow)") {
+//			public GamePlayer createPlayer(String name) {
+//				return new SJComputerPlayer(name, 3.5);
+//			}
+//		});
 
 		// Create a game configuration class for SlapJack
-		GameConfig defaultConfig = new GameConfig(playerTypes, 2, 2, "SlapJack", PORT_NUMBER);
+		GameConfig defaultConfig = new GameConfig(playerTypes, 4, 4, "Rook", PORT_NUMBER);
 
 		// Add the default players
 		defaultConfig.addPlayer("Human", 0);
-		defaultConfig.addPlayer("Computer", 2);
+		defaultConfig.addPlayer("Computer1", 2);
+		defaultConfig.addPlayer("Computer2", 3);
+		defaultConfig.addPlayer("Computer3", 4);
 		
 		// Set the initial information for the remote player
 		defaultConfig.setRemoteData("Guest", "", 1);
