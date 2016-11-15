@@ -13,11 +13,12 @@ import edu.up.cs301.animation.Animator;
 import edu.up.cs301.card.Card;
 import edu.up.cs301.game.GameHumanPlayer;
 import edu.up.cs301.game.GameMainActivity;
-import edu.up.cs301.game.R;
+//import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.GameState;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
+import edu.up.cs301.slapjack.RookState;
 
 /**
  * Created by hoser18 on 11/8/2016.
@@ -66,9 +67,17 @@ public class RookHumanPlayer extends GameHumanPlayer
 
     }
 
-    public void onTouch()
+    public void onTouch(MotionEvent event)
     {
+        // ignore everything except down touch events
+        if (event.getAction() != MotionEvent.ACTION_DOWN)
+        {
+            return;
+        }
 
+        // get the location of the touch on the surface
+        int x = (int)event.getX();
+        int y = (int)event.getY();
     }
 }
 
