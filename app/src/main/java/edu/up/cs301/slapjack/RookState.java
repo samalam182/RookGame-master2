@@ -81,7 +81,17 @@ public class RookState extends GameState{
 
     public ArrayList<Card> initDeck(){
         ArrayList<Card> initD = new ArrayList<Card>(41);
+        int colors[] = {Color.BLACK, Color.RED, Color.YELLOW, Color.GREEN};
+        int numbers[] = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 
+        for(int i = 0; i < colors.length; i++){
+            for(int j = 0; j < numbers.length; j++){
+                Card tempCard = new Card(colors[i], numbers[j]);
+                initD.add(tempCard);
+            }
+        }
+        Card Rook = new Card(Color.BLUE, 15);
+        initD.add(Rook);
 
         return initD;
     }

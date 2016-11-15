@@ -31,16 +31,17 @@ public class Card implements Serializable {
 	private static final long serialVersionUID = 893542931190030342L;
 	
 	// instance variables: the card's rank and the suit
-    public Color suit;
+    public int suit;
 	public int numValue;
 	public int counterValue;
 
     /**
      * Constructor for class card
      */
-    public Card(Color newSuit, int newNumValue) {
+    public Card(int newSuit, int newNumValue) {
 		this.suit = newSuit;
 		this.numValue = newNumValue;
+
 		if(numValue == 5) {
 			this.counterValue = 5;
 		}
