@@ -93,20 +93,26 @@ public class RookState extends GameState{
         Card Rook = new Card(Color.BLUE, 15);
         initD.add(Rook);
 
+        initD = shuffle(initD);
+
         return initD;
     }
 
-    public void shuffle() {
+    public ArrayList<Card> shuffle(ArrayList<Card> shuf) {
+
         ArrayList<Card> temp = new ArrayList<Card>();
-        while(!deck.isEmpty()) {
-            int loc=(int)(Math.random()*deck.size());
-            temp.add(deck.get(loc));
-            deck.remove(loc);
+        while(!shuf.isEmpty()) {
+            int loc=(int)(Math.random()*shuf.size());
+            temp.add(shuf.get(loc));
+            shuf.remove(loc);
         }
-        deck=temp;
+        shuf=temp;
+
+        return shuf;
     }
 
     public void deal(){
+
         for(int j = 0; j<4; j++) {
             for (int i = 0; i < 9; i++) {
                 Card temp = deck.get(0);
