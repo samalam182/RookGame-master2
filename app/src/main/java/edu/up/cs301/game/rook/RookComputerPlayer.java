@@ -1,9 +1,6 @@
 package edu.up.cs301.game.rook;
 
-import edu.up.cs301.card.Card;
 import edu.up.cs301.game.GameComputerPlayer;
-import edu.up.cs301.game.infoMsg.GameInfo;
-import edu.up.cs301.slapjack.RookState;
 
 /**
  * Created by hoser18 on 11/8/2016.

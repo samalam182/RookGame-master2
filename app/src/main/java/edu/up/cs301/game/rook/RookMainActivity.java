@@ -1,4 +1,4 @@
-package edu.up.cs301.slapjack;
+package edu.up.cs301.game.rook;
 
 import java.util.ArrayList;
 
@@ -8,6 +8,10 @@ import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.config.GameConfig;
 import edu.up.cs301.game.config.GamePlayerType;
+import edu.up.cs301.slapjack.SJComputerPlayer;
+import edu.up.cs301.slapjack.SJHumanPlayer;
+import edu.up.cs301.slapjack.SJLocalGame;
+
 import android.graphics.Color;
 
 /**

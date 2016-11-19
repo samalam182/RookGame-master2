@@ -1,4 +1,4 @@
-package edu.up.cs301.slapjack;
+package edu.up.cs301.game.rook;
 
 import android.graphics.Color;
 

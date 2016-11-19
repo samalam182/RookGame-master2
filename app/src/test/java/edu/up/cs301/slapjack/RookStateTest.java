@@ -3,6 +3,7 @@ package edu.up.cs301.slapjack;
 import java.util.ArrayList;
 
 import edu.up.cs301.card.Card;
+import edu.up.cs301.game.rook.RookState;
 
 import static org.junit.Assert.*;
 

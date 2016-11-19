@@ -2,7 +2,7 @@ package edu.up.cs301.card;
 
 import java.io.Serializable;
 
-import edu.up.cs301.game.R;
+//import edu.up.cs301.game.R;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

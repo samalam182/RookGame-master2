@@ -1,24 +1,13 @@
 package edu.up.cs301.game.rook;
 
 import android.app.Activity;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import edu.up.cs301.animation.AnimationSurface;
-import edu.up.cs301.animation.Animator;
-import edu.up.cs301.card.Card;
+
 import edu.up.cs301.game.GameHumanPlayer;
 import edu.up.cs301.game.GameMainActivity;
 //import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
-import edu.up.cs301.game.infoMsg.GameState;
-import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
-import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
-import edu.up.cs301.slapjack.RookState;
 
 /**
  * Created by hoser18 on 11/8/2016.
