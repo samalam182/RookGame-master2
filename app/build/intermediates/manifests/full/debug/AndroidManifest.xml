@@ -16,9 +16,9 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="edu.up.cs301.slapjack.SJMainActivity"
+            android:name="edu.up.cs301.slapjack.RookMainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:screenorientation="landscape" >
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

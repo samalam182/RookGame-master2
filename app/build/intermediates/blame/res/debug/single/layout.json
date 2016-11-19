@@ -36,12 +36,12 @@
         "source": "C:\\Users\\Samuel\\Desktop\\CS301\\RookGame-master2\\app\\src\\main\\res\\layout\\game_no_gui.xml"
     },
     {
-        "merged": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
-        "source": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
-    },
-    {
         "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
         "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
+    },
+    {
+        "merged": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
+        "source": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
     },
     {
         "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
