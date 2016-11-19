@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import edu.up.cs301.card.Card;
 import edu.up.cs301.game.infoMsg.GameState;
 
+import static android.telephony.PhoneNumberUtils.WAIT;
+
 /**
  * Created by dewhitt17 on 11/9/2016.
  */
@@ -20,6 +22,13 @@ public class RookState extends GameState{
     public ArrayList<Card> playerThreeHand;
     public ArrayList<Card> nest;
     public ArrayList<Card> currTrick;
+
+    private final int WAIT = 0;
+    private final int BID = 1;
+    private final int TRUMP = 2;
+    private final int NEST = 3;
+    private final int PLAY = 4;
+    private final int OVER = 5;
 
     public ArrayList<Card> deck;
 
@@ -53,7 +62,7 @@ public class RookState extends GameState{
     }
 
     public int getSubStage() {
-        return 0;
+        return subStage;
     }
 
     public void setSubStage(int sub) {
@@ -73,7 +82,6 @@ public class RookState extends GameState{
     public void addCard(Card c, ArrayList<Card> cardPile) {
         cardPile.add(c);
     }
-
 
     public void removeCard(Card c, ArrayList<Card> cardPile) {
         cardPile.remove(c);
@@ -140,7 +148,6 @@ public class RookState extends GameState{
             }
         }
     }
-
 
     public void finalizeBids() {
         int count = 0;
