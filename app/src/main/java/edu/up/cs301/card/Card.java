@@ -56,8 +56,8 @@ public class Card implements Serializable {
 		}
 	}
 
-	public Color getSuit() {
-		return this.suit;
+	public int getSuit() {
+		return suit;
 	}
 
 	public int getNumValue() {
@@ -66,10 +66,6 @@ public class Card implements Serializable {
 
 	public int getCounterValue() {
 		return this.counterValue;
-	}
-
-	public void setSuit(Color chosenSuit) {
-		this.suit = chosenSuit;
 	}
 
 	public void setNumValue(int chosenNumValue) {
@@ -96,77 +92,77 @@ public class Card implements Serializable {
      * 		A Card object that corresponds to the 'str' string. Returns
      *		null if 'str' has improper format.
      */
-    public static Card fromString(String str) {
-    	// check the string for being null
-        if (str == null) return null;
-        
-        // trim the string; return null if length is not 2
-        str = str.trim();
-        if (str.length() !=2) return null;
-        
-        // get the rank and suit corresponding to the two characters
-        // in the string
-        Rank r = Rank.fromChar(str.charAt(0));
-        Suit s = Suit.fromChar(str.charAt(1));
-        
-        // if both rank and suit are non-null, create the corresponding
-        // card; if either is null, return null
-        return r==null || s == null ? null : new Card(r, s);
-    }
-
-    /**
-     * Produces a textual description of a Card.
-     *
-     * @return
-	 *		A string such as "Jack of Spades", which describes the card.
-     */
-    public String toString() {
-        return rank.longName()+" of "+suit.longName()+"s";
-    }
-
-    /**
-     * Tells whether two Card objects represent the same card.
-     *
-     * @return
-	 *		true if the two card objects represent the same card, false
-     *		otherwise.
-     */
-    public boolean equals(Card other) {
-        return this.rank == other.rank && this.suit == other.suit;
-    }
-
-    /**
-     * Draws the card on a Graphics object.  The card is drawn as a
-     * white card with a black border.  If the card's rank is numerih, the
-     * appropriate number of spots is drawn.  Otherwise the appropriate
-     * picture (e.g., of a queen) is included in the card's drawing.
-     *
-     * @param g  the graphics object on which to draw
-     * @param where  a rectangle that tells where the card should be drawn
-     */
-    public void drawOn(Canvas g, RectF where) {
-    	// create the paint object
-    	Paint p = new Paint();
-    	p.setColor(Color.BLACK);
-    	
-    	// get the bitmap for the card
-    	Bitmap bitmap = cardImages[this.getSuit().ordinal()][this.getRank().ordinal()];
-    	
-    	// create the source rectangle
-    	Rect r = new Rect(0,0,bitmap.getWidth(),bitmap.getHeight());
-    	
-    	// draw the bitmap into the target rectangle
-    	g.drawBitmap(bitmap, r, where, p);
-    }
-
-    
-    /**
-     * Gives a two-character version of the card (e.g., "TS" for ten of
-     * spades).
-     */
-    public String shortName() {
-        return "" + getRank().shortName() + getSuit().shortName();
-    }
+//    public static Card fromString(String str) {
+//    	// check the string for being null
+//        if (str == null) return null;
+//
+//        // trim the string; return null if length is not 2
+//        str = str.trim();
+//        if (str.length() !=2) return null;
+//
+//        // get the rank and suit corresponding to the two characters
+//        // in the string
+//        Rank r = Rank.fromChar(str.charAt(0));
+//        Suit s = Suit.fromChar(str.charAt(1));
+//
+//        // if both rank and suit are non-null, create the corresponding
+//        // card; if either is null, return null
+//        return r==null || s == null ? null : new Card(r, s);
+//    }
+//
+//    /**
+//     * Produces a textual description of a Card.
+//     *
+//     * @return
+//	 *		A string such as "Jack of Spades", which describes the card.
+//     */
+//    public String toString() {
+//        return rank.longName()+" of "+suit.longName()+"s";
+//    }
+//
+//    /**
+//     * Tells whether two Card objects represent the same card.
+//     *
+//     * @return
+//	 *		true if the two card objects represent the same card, false
+//     *		otherwise.
+//     */
+//    public boolean equals(Card other) {
+//        return this.rank == other.rank && this.suit == other.suit;
+//    }
+//
+//    /**
+//     * Draws the card on a Graphics object.  The card is drawn as a
+//     * white card with a black border.  If the card's rank is numerih, the
+//     * appropriate number of spots is drawn.  Otherwise the appropriate
+//     * picture (e.g., of a queen) is included in the card's drawing.
+//     *
+//     * @param g  the graphics object on which to draw
+//     * @param where  a rectangle that tells where the card should be drawn
+//     */
+//    public void drawOn(Canvas g, RectF where) {
+//    	// create the paint object
+//    	Paint p = new Paint();
+//    	p.setColor(Color.BLACK);
+//
+//    	// get the bitmap for the card
+//    	Bitmap bitmap = cardImages[this.getSuit().ordinal()][this.getRank().ordinal()];
+//
+//    	// create the source rectangle
+//    	Rect r = new Rect(0,0,bitmap.getWidth(),bitmap.getHeight());
+//
+//    	// draw the bitmap into the target rectangle
+//    	g.drawBitmap(bitmap, r, where, p);
+//    }
+//
+//
+//    /**
+//     * Gives a two-character version of the card (e.g., "TS" for ten of
+//     * spades).
+//     */
+//    public String shortName() {
+//        return "" + getRank().shortName() + getSuit().shortName();
+//    }
 
 //    /**
 //     * Tells the card's rank.
