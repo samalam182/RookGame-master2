@@ -18,7 +18,7 @@
         <activity
             android:name="edu.up.cs301.slapjack.RookMainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:screenOrientation="landscape" >
+            android:screenorientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

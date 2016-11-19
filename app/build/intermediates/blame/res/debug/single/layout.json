@@ -4,6 +4,10 @@
         "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\sj_human_player.xml"
     },
     {
+        "merged": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\counter_human_player.xml",
+        "source": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\src\\main\\res\\layout\\counter_human_player.xml"
+    },
+    {
         "merged": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_main.xml",
         "source": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\src\\main\\res\\layout\\game_config_main.xml"
     },
@@ -36,12 +40,12 @@
         "source": "C:\\Users\\Samuel\\Desktop\\CS301\\RookGame-master2\\app\\src\\main\\res\\layout\\game_no_gui.xml"
     },
     {
-        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
-        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
-    },
-    {
         "merged": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
         "source": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
+        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
     },
     {
         "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
@@ -62,6 +66,10 @@
     {
         "merged": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\counter_human_player.xml",
         "source": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\src\\main\\res\\layout\\counter_human_player.xml"
+    },
+    {
+        "merged": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
+        "source": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
     },
     {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_no_gui.xml",
@@ -104,6 +112,10 @@
         "source": "P:\\cs371\\RookGame-master\\app\\src\\main\\res\\layout\\game_config_main.xml"
     },
     {
+        "merged": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_no_gui.xml",
+        "source": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\src\\main\\res\\layout\\game_no_gui.xml"
+    },
+    {
         "merged": "C:\\Users\\Samuel\\Desktop\\CS301\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sj_human_player.xml",
         "source": "C:\\Users\\Samuel\\Desktop\\CS301\\RookGame-master2\\app\\src\\main\\res\\layout\\sj_human_player.xml"
     },
@@ -124,6 +136,14 @@
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame2\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
     },
     {
+        "merged": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_main.xml",
+        "source": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_main.xml"
+    },
+    {
+        "merged": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
+        "source": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
+    },
+    {
         "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_no_gui.xml",
         "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_no_gui.xml"
     },
@@ -134,6 +154,10 @@
     {
         "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
         "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
+    },
+    {
+        "merged": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sj_human_player.xml",
+        "source": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\src\\main\\res\\layout\\sj_human_player.xml"
     },
     {
         "merged": "P:\\cs371\\RookGame-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
@@ -168,6 +192,10 @@
         "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_main.xml"
     },
     {
+        "merged": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_local_tab.xml",
+        "source": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\src\\main\\res\\layout\\game_local_tab.xml"
+    },
+    {
         "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_no_gui.xml",
         "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\game_no_gui.xml"
     },
@@ -182,6 +210,10 @@
     {
         "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_player_list_row.xml",
         "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_player_list_row.xml"
+    },
+    {
+        "merged": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_player_list_row.xml",
+        "source": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\src\\main\\res\\layout\\game_player_list_row.xml"
     },
     {
         "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_local_tab.xml",
