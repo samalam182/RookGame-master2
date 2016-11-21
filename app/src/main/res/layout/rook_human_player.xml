@@ -412,7 +412,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="Nest"
-                            android:id="@+id/textView20"
+                            android:id="@+id/textView_NestLabel"
                             android:singleLine="true" />
 
                         <Space
@@ -545,7 +545,7 @@
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceLarge"
                                     android:text="Trump Suit"
-                                    android:id="@+id/textView18"
+                                    android:id="@+id/textView_TrumpSuitLabel"
                                     android:layout_weight="1" />
 
                                 <Space
@@ -642,14 +642,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Confirm Nest Trade"
-                                android:id="@+id/button6"
+                                android:id="@+id/button_ConfrimNestTrade"
                                 style="?android:attr/buttonStyleSmall" />
 
                             <Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Confirm Trump Suit"
-                                android:id="@+id/button7"
+                                android:id="@+id/button_ConfirmTrumpSuit"
                                 style="?android:attr/buttonStyleSmall" />
 
                             <Space
@@ -1293,11 +1293,21 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Start Game"
+            android:id="@+id/buttonStartGame" />
+
+        <Space
+            android:layout_width="60px"
+            android:layout_height="20px" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Quit Game"
             android:id="@+id/buttonQuitGame" />
 
         <Space
-            android:layout_width="350px"
+            android:layout_width="250px"
             android:layout_height="match_parent" />
 
         <LinearLayout
