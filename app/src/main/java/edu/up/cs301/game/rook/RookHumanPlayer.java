@@ -39,6 +39,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     private int backgroundColor;
 
     // buttons
+    public Button start;
     public Button quit;
     public ImageButton card0;
     public ImageButton card1;
@@ -127,6 +128,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
         // makes buttons
 
+        start = (Button) activity.findViewById(R.id.buttonStartGame);
         quit = (Button) activity.findViewById(R.id.buttonQuitGame);
         quit.setOnClickListener(this);
 
@@ -173,10 +175,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     {
         if (playerIndx == 1)
         {
-            state.initDeck();
-            state.shuffle(state.deck);
-            state.deal();
+            int colors[] = {Color.BLACK, Color.RED, Color.YELLOW, Color.GREEN};
+            int numbers[] = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+
             Card cur = state.playerOneHand.get(0);
+
+            //if (cur == Card(colors[0], numbers[0]))
+
             card0.setImageResource(R.drawable.rookcard_rook);
         }
     }
@@ -185,9 +190,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     {
         if (v == quit)
         {
-            //correctHandImage(1);
             activity.finish();
             System.exit(0);
+        }
+        else if( v == start)
+        {
+            correctHandImage(1);
         }
         else if (v == card0){
             game.sendAction(new bZeroAction(this));

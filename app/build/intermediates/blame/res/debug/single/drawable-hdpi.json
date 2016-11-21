@@ -24,6 +24,10 @@
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\rookcard_11g.png"
     },
     {
+        "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\rooksuit_yellowsun.png",
+        "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\rooksuit_yellowsun.png"
+    },
+    {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_ac.png",
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\card_ac.png"
     },
@@ -98,6 +102,10 @@
     {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\rookcard_5g.png",
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\rookcard_5g.png"
+    },
+    {
+        "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\rooksuit_redheart.png",
+        "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\rooksuit_redheart.png"
     },
     {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_5d.png",
@@ -252,6 +260,10 @@
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\card_6s.png"
     },
     {
+        "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\rooksuit_blackmoon.png",
+        "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\rooksuit_blackmoon.png"
+    },
+    {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\rookcard_11b.png",
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\rookcard_11b.png"
     },
@@ -386,6 +398,10 @@
     {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\rookcard_7g.png",
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\rookcard_7g.png"
+    },
+    {
+        "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\rooksuit_greenleaf.png",
+        "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\rooksuit_greenleaf.png"
     },
     {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_5h.png",

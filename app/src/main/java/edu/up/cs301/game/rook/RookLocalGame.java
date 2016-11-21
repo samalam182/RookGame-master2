@@ -129,7 +129,7 @@ public class RookLocalGame extends LocalGame
         else if (action instanceof RookTrumpAction)
         {
             RookTrumpAction act = (RookTrumpAction) action;
-            state.se
+            //state.se
             // checks to see if that player won the bid
         }
 

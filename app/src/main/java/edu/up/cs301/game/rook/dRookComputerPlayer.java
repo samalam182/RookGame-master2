@@ -99,7 +99,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
 
 
 
-                game.sendAction(new RookNestAction(this, myCard));
+                //game.sendAction(new RookNestAction(this, myCard));
             }
 
         }
