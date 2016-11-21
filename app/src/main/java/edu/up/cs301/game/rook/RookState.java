@@ -82,6 +82,14 @@ public class RookState extends GameState{
         playerScores[index] = score;
     }
 
+    public void setBid(int bid, int player){
+        playerBids[player] = bid;
+    }
+
+    public int[] getBids(){
+        return playerBids;
+    }
+
     ///////////////////////
 
     public void addCard(Card c, ArrayList<Card> cardPile) {
