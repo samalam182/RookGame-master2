@@ -93,6 +93,8 @@ public class sRookComputerPlayer extends RookComputerPlayer
                     rookSuit = 1;
                 }
 
+                
+
             }
 
             // the smart computer player will determine, algorithmically, how good its hand is

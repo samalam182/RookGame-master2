@@ -30,6 +30,8 @@ public abstract class RookComputerPlayer extends GameComputerPlayer {
         minReactionTimeInMillis = 500 * avgReactionTime;
     }
 
+
+
     @Override
 //    protected abstract void timerTicked();
 
