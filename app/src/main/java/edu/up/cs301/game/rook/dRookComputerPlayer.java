@@ -1,5 +1,8 @@
 package edu.up.cs301.game.rook;
 
+import android.graphics.Color;
+
+import edu.up.cs301.card.Card;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
 /**
@@ -13,7 +16,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
     public dRookComputerPlayer(String name)
     {
         // creates a computer player whose average reaction time is one second
-        super(name, 1.0);
+        super(name, 2.0);
     }
 
     /**
@@ -47,9 +50,27 @@ public class dRookComputerPlayer extends RookComputerPlayer
             {
                 // when randSelection is more than 0.5, the dumb computer player will bid
 
-                // create a new RookBidAction variable, set the new bid value, and return it
-                //
-                game.sendAction(new RookBidAction(this));
+                double randBidVal = Math.random()*10;
+                int addBid;
+                {
+                    if (randBidVal <= 3)
+                    {
+                        addBid = 0;
+                    }
+                    else if (randBidVal > 3 && randBidVal <= 6)
+                    {
+                        addBid = 5;
+                    }
+                    else
+                    {
+                        addBid=10;
+                    }
+                }
+
+                int prevBid = savedState.winningBid;
+
+                int myBid = prevBid+addBid;
+                game.sendAction(new RookBidAction(this, myBid));
             }
         }
         else if (savedState.getSubStage() == savedState.NEST)
@@ -57,24 +78,86 @@ public class dRookComputerPlayer extends RookComputerPlayer
             // the dumb computer player will randomly select 5 cards from their hand to place
             // into the nest
 
-            // new Action, set the 5 cards, and return it
-            // add parameter to constructor
-            game.sendAction(new RookNestAction(this));
+            for (int j = 0; j < 5; j++)
+            {
+                Card myCard = new Card(j,j);
+
+                game.sendAction(new RookNestAction(this, myCard));
+            }
+
         }
 
         else if (savedState.getSubStage() == savedState.TRUMP)
         {
             // the dumb computer player will randomly choose a trump suit
-            game.sendAction(new RookTrumpAction(this));
+
+            double randSuitPick = Math.random()*4;
+            int trumpSuit = 0;
+
+            if (randSuitPick < 1)
+            {
+                trumpSuit = Color.RED;
+            }
+            else if (randSuitPick >=1 && randSuitPick < 2)
+            {
+                trumpSuit = Color.BLACK;
+            }
+            else if (randSuitPick >= 2 && randSuitPick < 3)
+            {
+                trumpSuit = Color.YELLOW;
+            }
+            else
+            {
+                trumpSuit = Color.GREEN;
+            }
+            game.sendAction(new RookTrumpAction(this, trumpSuit));
 
         }
         else if (savedState.getSubStage() == savedState.PLAY)
         {
             // the dumb computer player will randomly choose a card to play
 
-            // delay for up to two seconds; then play
-            sleep((int)(2000*Math.random()));
-            game.sendAction(new RookCardAction(this));
+            double randIndex = Math.random()*9;
+
+            int indexOfCard;
+
+            if (randIndex >=0 && randIndex < 1)
+            {
+                indexOfCard = 0;
+            }
+            else if (randIndex >= 1 && randIndex < 2)
+            {
+                indexOfCard = 1;
+            }
+            else if (randIndex >= 2 && randIndex < 3)
+            {
+                indexOfCard = 2;
+            }
+            else if (randIndex >= 3 && randIndex < 4)
+            {
+                indexOfCard = 3;
+            }
+            else if (randIndex >= 4 && randIndex < 5)
+            {
+                indexOfCard = 4;
+            }
+            else if (randIndex >= 5 && randIndex < 6)
+            {
+                indexOfCard = 5;
+            }
+            else if (randIndex >= 6 && randIndex < 7)
+            {
+                indexOfCard = 6;
+            }
+            else if (randIndex >= 7 && randIndex < 8)
+            {
+                indexOfCard = 7;
+            }
+            else
+            {
+                indexOfCard = 8;
+            }
+            game.sendAction(new RookCardAction(this, indexOfCard));
         }
     }
 

@@ -1,5 +1,6 @@
 package edu.up.cs301.game.rook;
 
+import edu.up.cs301.card.Card;
 import edu.up.cs301.game.GamePlayer;
 
 /**
@@ -11,7 +12,7 @@ public class RookNestAction extends GameAction{
      *
      * @param player the player who created the action
      */
-    public RookNestAction(GamePlayer player) {
+    public RookNestAction(GamePlayer player, Card cardToSend) {
         super(player);
     }
 }
