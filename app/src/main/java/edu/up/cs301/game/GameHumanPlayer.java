@@ -310,7 +310,8 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
 		// the game's result
 		MessageBox.popUpMessage(msg, myActivity);
 	}
-	
+
+
 	/**
 	 * Tells whether this class requires a GUI to run
 	 * 

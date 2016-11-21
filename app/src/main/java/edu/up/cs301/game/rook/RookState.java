@@ -30,7 +30,7 @@ public class RookState extends GameState{
     public ArrayList<Card> playerTwoHand;
     public ArrayList<Card> playerThreeHand;
     public ArrayList<Card> nest;
-    public ArrayList<Card> currTrick;
+    public Card[] currTrick;
     public ArrayList<Card> deck;
 
     private int currTrickWinner;
@@ -53,7 +53,7 @@ public class RookState extends GameState{
         playerHands[2] = playerTwoHand;
         playerHands[3] = playerThreeHand;
         nest = new ArrayList<Card>(5);
-        currTrick = new ArrayList<Card>(numPlayers);
+        currTrick = new Card[numPlayers];
 
         deck = initDeck();
         deal();
@@ -171,7 +171,7 @@ public class RookState extends GameState{
     public int countTrick() {
         int trickVal = 0;
         for(int i = 0; i<numPlayers; i++){
-            trickVal += currTrick.get(i).counterValue;
+            trickVal += currTrick[i].counterValue;
         }
         return trickVal;
     }
