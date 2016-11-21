@@ -66,6 +66,7 @@ public class RookState extends GameState{
         playerBids = new int[numPlayers];
         playerScores = new int[numPlayers];
         playerNames = new String[numPlayers];
+        winningPlayer = 0;
     }
 
     public int getSubStage() {
@@ -167,9 +168,11 @@ public class RookState extends GameState{
             for(int j = 0; j<numPlayers; j++){
                 if(playerBids[j] > maxVal){
                     maxVal = playerBids[j];
+                    winningPlayer = j;
                 }
             }
             winningBid = maxVal;
+            setPlayer(winningPlayer);
             return true;
         }
         else{
@@ -218,6 +221,19 @@ public class RookState extends GameState{
     public int getActivePlayer()
     {
         return currPlayer;
+    }
+
+    public void setPlayer(int playIdx){
+        currPlayer = playIdx;
+    }
+
+    public void setPlayer(){
+        if(currPlayer == 3){
+            currPlayer = 0;
+        }
+        else{
+            currPlayer++;
+        }
     }
 
 }

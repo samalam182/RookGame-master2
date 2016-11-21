@@ -100,7 +100,9 @@ public class RookLocalGame extends LocalGame
         int playerIdx = state.getActivePlayer();
         // checks if its a type of RookAction
         // if not it isnt an action we want
-        if (!(action instanceof RookBidAction || action instanceof RookCardAction || action instanceof RookHoldAction || action instanceof RookNestAction || action instanceof RookTrumpAction))
+        if (!(action instanceof RookBidAction || action instanceof RookCardAction ||
+                action instanceof RookHoldAction || action instanceof RookNestAction ||
+                action instanceof RookTrumpAction))
         {
             return false;
         }
@@ -108,34 +110,51 @@ public class RookLocalGame extends LocalGame
         // makes action not a specific rook action
         if (action instanceof RookBidAction)
         {
-            RookBidAction act = (RookBidAction) action;
-            int playBid = act.getBid();
-            state.setBid(playBid, playerIdx);
-            if(state.finalizeBids()){
-                state.setSubStage(NEST);
+            if(state.getSubStage() == BID) {
+                RookBidAction act = (RookBidAction) action;
+                int playBid = act.getBid();
+                state.setBid(playBid, playerIdx);
+                if (state.finalizeBids()) {
+                    state.setSubStage(NEST);
+                }
             }
 
             // can the player still bid
         }
         else if (action instanceof RookCardAction)
         {
+            int startingPlayer;
+            int trickWinner;
             if(state.getSubStage() == PLAY) {
+                if(state.currTrick.length == 0) {
+                    startingPlayer = playerIdx;
+                }
                 RookCardAction act = (RookCardAction) action;
                 int handIdx = act.retButtonNum();
                 state.currTrick[playerIdx] = state.playerHands[playerIdx].get(handIdx);
+
+                if(state.currTrick.length == 4){
+                    int points = state.countTrick();
+
+
+
+                }
             }
 
         }
         else if (action instanceof RookHoldAction)
         {
-            RookHoldAction act = (RookHoldAction) action;
-            state.setHold(playerIdx);
+            if(state.getSubStage() == BID) {
+                RookHoldAction act = (RookHoldAction) action;
+                state.setHold(playerIdx);
+            }
         }
         else if (action instanceof RookNestAction)
         {
             if(state.getSubStage() == NEST && playerIdx == state.winningPlayer) {
                 RookNestAction act = (RookNestAction) action;
                 state.useNest(act.getNest(), act.getHand(), state.playerHands[playerIdx]);
+                state.setSubStage(TRUMP);
             }
 
             // checks to see if that player won the bid
@@ -144,6 +163,7 @@ public class RookLocalGame extends LocalGame
             if (state.getSubStage() == TRUMP && playerIdx == state.winningPlayer) {
                 RookTrumpAction act = (RookTrumpAction) action;
                 state.setTrump(act.getTrumpColor());
+                state.setSubStage(PLAY);
             }
 
         }

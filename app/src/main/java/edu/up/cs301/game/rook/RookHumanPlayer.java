@@ -171,10 +171,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     }
 
-    public void correctHandImage(int playerIndx)
-    {
-        if (playerIndx == 1)
-        {
+    public void correctHandImage(int playerIndx) {
+        if (playerIndx == 1) {
             card0.setImageResource(R.drawable.rookcard_rook);
         }
     }
