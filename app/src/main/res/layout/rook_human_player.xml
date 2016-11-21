@@ -897,7 +897,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Quit Game"
-            android:id="@+id/button2" />
+            android:id="@+id/buttonQuitGame" />
 
         <Space
             android:layout_width="350px"
