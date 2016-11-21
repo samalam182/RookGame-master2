@@ -55,6 +55,7 @@ public class RookState extends GameState{
         currTrick = new ArrayList<Card>(4);
 
         deck = initDeck();
+        deal();
 
         currTrickWinner = 0;
         trumpSuit = null;
