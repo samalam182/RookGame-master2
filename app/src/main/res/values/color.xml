@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#000</color>
-    <color name="green">#0F0</color>
-    <color name="red">#ff0000</color>
-    <color name="blue">#0000ff</color>
-    
+    <color name="green">#4deb4d</color>
+    <color name="red">#fb2f2f</color>
+    <color name="blue">#5692e1</color>
+    <color name="choosetrumpblue">#5692e1</color>
+    <color name="nestblue">#1a5096</color>
+
 </resources>

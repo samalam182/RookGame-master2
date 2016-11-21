@@ -388,18 +388,19 @@
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content">
 
                     <Space
                         android:layout_width="20px"
-                        android:layout_height="325px"
+                        android:layout_height="20px"
                         android:layout_weight="1" />
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
 
                         <Space
                             android:layout_width="75px"
@@ -411,7 +412,8 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="Nest"
-                            android:id="@+id/textView20" />
+                            android:id="@+id/textView20"
+                            android:singleLine="true" />
 
                         <Space
                             android:layout_width="75px"
@@ -419,27 +421,444 @@
                             android:layout_weight="1" />
                     </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/imageView_Nest"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/rookcard_back"
-                        android:layout_weight="1" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="0dp"
+                                android:padding="5dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:layout_weight="1"
+                                android:id="@+id/imageButton_Nest_0"
+                                android:src="@drawable/rookcard_11g"
+                                android:background="@color/backgroundblue" />
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="0dp"
+                                android:padding="5dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:layout_weight="1"
+                                android:id="@+id/imageButton_Nest_1"
+                                android:src="@drawable/rookcard_9b"
+                                android:focusableInTouchMode="true"
+                                android:background="@color/backgroundblue" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="0dp"
+                                android:padding="5dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:layout_weight="1"
+                                android:id="@+id/imageButton_2"
+                                android:src="@drawable/rookcard_14r"
+                                android:background="@color/backgroundblue" />
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="0dp"
+                                android:padding="5dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:layout_weight="1"
+                                android:id="@+id/imageButton_3"
+                                android:src="@drawable/rookcard_13y"
+                                android:background="@color/backgroundblue" />
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="0dp"
+                                android:padding="5dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:layout_weight="1"
+                                android:id="@+id/imageButton_4"
+                                android:src="@drawable/rookcard_8g"
+                                android:focusableInTouchMode="true"
+                                android:background="@color/backgroundblue" />
+                        </LinearLayout>
+                    </LinearLayout>
 
                     <Space
                         android:layout_width="20px"
-                        android:layout_height="350px"
+                        android:layout_height="20px"
                         android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="150dp"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:text="Trump Suit"
+                                    android:id="@+id/textView18"
+                                    android:layout_weight="1" />
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+
+                                <ImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/imageButton_ChooseTrump_YellowSun"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/rooksuit_yellowsun" />
+
+                                <ImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/imageButton_ChooseTrump_BlackMoon"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/rooksuit_blackmoon" />
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+
+                                <ImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/imageButton_ChooseTrump_GreenLeaf"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/rooksuit_greenleaf" />
+
+                                <ImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/imageButton_ChooseTrump_RedHeart"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/rooksuit_redheart" />
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="50px" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Confirm Nest Trade"
+                                android:id="@+id/button6" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Confirm Trump Suit"
+                                android:id="@+id/button7" />
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="300px"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="100px" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="Bid or Pass?"
+                                android:id="@+id/textView22"
+                                android:layout_weight="1" />
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="25px" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Last Bidder:   "
+                            android:id="@+id/textView23" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="50px"
+                                android:layout_height="20px" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Computer Player 2"
+                                android:id="@+id/textView21" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Amount Bid:   "
+                            android:id="@+id/textView24" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+
+                            <Space
+                                android:layout_width="50px"
+                                android:layout_height="20px" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="75"
+                                android:id="@+id/textView26" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="40px" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+
+                            <Button
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="- 5"
+                                android:id="@+id/button2"
+                                android:layout_weight="1" />
+
+                            <Button
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+ 5"
+                                android:id="@+id/button3"
+                                android:layout_weight="1" />
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="60px"
+                                android:layout_height="20px" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Your Bid:   "
+                                android:id="@+id/textView25" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="80"
+                                android:id="@+id/textView27" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="40px" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+
+                            <Button
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="BID"
+                                android:id="@+id/button4"
+                                android:layout_weight="1"
+                                android:background="@color/green" />
+
+                            <Space
+                                android:layout_width="10px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+
+                            <Button
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PASS"
+                                android:id="@+id/button5"
+                                android:layout_weight="1"
+                                android:background="@color/red" />
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="20px"
+                        android:layout_height="40px" />
+
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="225px"
+                    android:layout_width="50px"
                     android:layout_height="20px" />
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="match_parent"
+                    android:layout_width="225px"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
@@ -524,7 +943,7 @@
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="150px"
+                    android:layout_width="20px"
                     android:layout_height="20px" />
 
             </LinearLayout>
@@ -535,7 +954,7 @@
                 android:layout_height="25dp">
 
                 <Space
-                    android:layout_width="400px"
+                    android:layout_width="250px"
                     android:layout_height="20px" />
 
                 <TextView
@@ -948,6 +1367,7 @@
         android:layout_width="match_parent"
         android:layout_height="590dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:background="@color/backgroundblue" />
 
 </LinearLayout>
