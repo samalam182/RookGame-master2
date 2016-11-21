@@ -34,7 +34,7 @@ public class RookState extends GameState{
     public ArrayList<Card> deck;
 
     private int currTrickWinner;
-    private Color trumpSuit;
+    private int trumpSuit;
     public int winningBid;
     public int winningPlayer;
     public boolean[] bidPass;
@@ -60,7 +60,7 @@ public class RookState extends GameState{
         deal();
 
         currTrickWinner = 0;
-        trumpSuit = null;
+        trumpSuit = 0;
         winningBid = 0;
         bidPass = new boolean[numPlayers];
         playerBids = new int[numPlayers];
@@ -74,6 +74,10 @@ public class RookState extends GameState{
 
     public void setSubStage(int sub) {
         subStage = sub;
+    }
+
+    public void setTrump(int trumpColor){
+        trumpSuit = trumpColor;
     }
 
     public int getScore(int playerIdx) {

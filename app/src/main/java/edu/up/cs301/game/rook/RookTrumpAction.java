@@ -11,8 +11,13 @@ public class RookTrumpAction extends GameAction{
      *
      * @param player the player who created the action
      */
+    private int trumpColor;
     public RookTrumpAction(GamePlayer player, int suitColor) {
         super(player);
+        trumpColor = suitColor;
+    }
+    public int getTrumpColor(){
+        return trumpColor;
     }
 }
 
