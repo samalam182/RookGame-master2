@@ -5,6 +5,7 @@ import android.graphics.Color;
 import java.util.ArrayList;
 
 import edu.up.cs301.card.Card;
+import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.infoMsg.GameState;
 
 import static android.telephony.PhoneNumberUtils.WAIT;
@@ -187,4 +188,16 @@ public class RookState extends GameState{
             playerHand.add(fromNest.get(j));
         }
     }
+
+    // makes all hidden ifnrmation for a player null
+    public void nullHiddenInformation(GamePlayer p)
+    {
+
+    }
+
+    public int getActivePlayer()
+    {
+        return currPlayer;
+    }
+
 }
