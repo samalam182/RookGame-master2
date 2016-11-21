@@ -150,7 +150,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
+                android:layout_width="25dp"
                 android:layout_height="match_parent">
 
                 <TextView
@@ -158,8 +158,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:rotation="90"
-                    android:text="C"
-                    android:id="@+id/textView14" />
+                    android:text="CPU1"
+                    android:id="@+id/textView_OpponentONEName" />
 
                 <Space
                     android:layout_width="20px"
@@ -171,7 +171,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:rotation="90"
                     android:text="TP:"
-                    android:id="@+id/textView15" />
+                    android:id="@+id/textView_OpponentONETotalPointsLabel" />
 
                 <Space
                     android:layout_width="20px"
@@ -183,7 +183,7 @@
                     android:rotation="90"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="0"
-                    android:id="@+id/textView16" />
+                    android:id="@+id/textView_OpponentONETotalPoints" />
             </LinearLayout>
         </LinearLayout>
 
@@ -351,7 +351,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="Computer Player 2"
-                        android:id="@+id/textView11" />
+                        android:id="@+id/textView_OpponentTWOName" />
 
                     <Space
                         android:layout_width="280px"
@@ -362,7 +362,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="Total Points:"
-                        android:id="@+id/textView12" />
+                        android:id="@+id/textView_OpponentTWOTotalPointsLabel" />
 
                     <Space
                         android:layout_width="15px"
@@ -373,7 +373,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="0"
-                        android:id="@+id/textView13" />
+                        android:id="@+id/textView_OpponentTWOTotalPoints" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -689,7 +689,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:text="Bid or Pass?"
-                                android:id="@+id/textView22"
+                                android:id="@+id/textView_BidOrPassLabel"
                                 android:layout_weight="1" />
 
                             <Space
@@ -708,7 +708,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Last Bidder:   "
-                            android:id="@+id/textView23" />
+                            android:id="@+id/textView_LastBidderLabel" />
 
                         <LinearLayout
                             android:orientation="horizontal"
@@ -724,7 +724,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:text="Computer Player 2"
-                                android:id="@+id/textView21" />
+                                android:id="@+id/textView_LastBidder" />
                         </LinearLayout>
 
                         <TextView
@@ -732,7 +732,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Amount Bid:   "
-                            android:id="@+id/textView24" />
+                            android:id="@+id/textView_AmountBidLabel" />
 
                         <LinearLayout
                             android:orientation="horizontal"
@@ -748,7 +748,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:text="75"
-                                android:id="@+id/textView26" />
+                                android:id="@+id/textView_AmountBid" />
                         </LinearLayout>
 
                         <Space
@@ -770,7 +770,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="- 5"
-                                android:id="@+id/button2"
+                                android:id="@+id/button_Decrement5ToBid"
                                 android:layout_weight="1" />
 
                             <Button
@@ -778,7 +778,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="+ 5"
-                                android:id="@+id/button3"
+                                android:id="@+id/button_Increment5ToBid"
                                 android:layout_weight="1" />
 
                             <Space
@@ -801,14 +801,14 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:text="Your Bid:   "
-                                android:id="@+id/textView25" />
+                                android:id="@+id/textView_YourBidLabel" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:text="80"
-                                android:id="@+id/textView27" />
+                                android:id="@+id/textView_YourBid" />
                         </LinearLayout>
 
                         <Space
@@ -830,7 +830,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="BID"
-                                android:id="@+id/button4"
+                                android:id="@+id/button_ConfirmBid"
                                 android:layout_weight="1"
                                 android:background="@color/green" />
 
@@ -844,7 +844,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="PASS"
-                                android:id="@+id/button5"
+                                android:id="@+id/button_ConfirmPass"
                                 android:layout_weight="1"
                                 android:background="@color/red" />
 
@@ -971,7 +971,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="You"
-                    android:id="@+id/textView8" />
+                    android:id="@+id/textView_HumanName" />
 
                 <Space
                     android:layout_width="350px"
@@ -982,7 +982,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Total Points:"
-                    android:id="@+id/textView9" />
+                    android:id="@+id/textView_HumanTotalPointsLabel" />
 
                 <Space
                     android:layout_width="15px"
@@ -993,7 +993,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="0"
-                    android:id="@+id/textView10" />
+                    android:id="@+id/textView_HumanTotalPoints" />
 
             </LinearLayout>
         </LinearLayout>
@@ -1009,13 +1009,36 @@
                 android:layout_height="match_parent" >
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-                    android:rotation="270"
-                    android:text="Computer Player 3         Total Points: 0"
-                    android:id="@+id/textView17" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:rotation="90"
+                    android:text="CPU3"
+                    android:id="@+id/textView_OpponentTHREEName" />
 
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="250px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:rotation="90"
+                    android:text="TP:"
+                    android:id="@+id/textView_OpponentTHREETotalPointsLabel" />
+
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="15px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="90"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="0"
+                    android:id="@+id/textView_OpponentTHREETotalPoints" />
             </LinearLayout>
 
             <LinearLayout
@@ -1320,14 +1343,14 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Trump Suit:"
-                android:id="@+id/textView" />
+                android:id="@+id/textView_ROUNDTrumpSuitLabel" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="N/A"
-                android:id="@+id/textView3" />
+                android:id="@+id/textView_ROUNDTrumpSuit" />
 
         </LinearLayout>
 
@@ -1345,14 +1368,14 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Winning Bidder:"
-                android:id="@+id/textView4" />
+                android:id="@+id/textView_ROUNDWinningBidderLabel" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="N/A"
-                android:id="@+id/textView5" />
+                android:id="@+id/textView_ROUNDWinningBidder" />
         </LinearLayout>
 
         <Space
@@ -1369,14 +1392,14 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Winning Bid:"
-                android:id="@+id/textView6" />
+                android:id="@+id/textView_ROUNDWinningBidLabel" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="N/A"
-                android:id="@+id/textView7" />
+                android:id="@+id/textView_ROUNDWinningBid" />
         </LinearLayout>
 
     </LinearLayout>
