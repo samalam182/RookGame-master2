@@ -101,6 +101,8 @@ public class RookLocalGame extends LocalGame
         if (action instanceof RookBidAction)
         {
             RookBidAction act = (RookBidAction) action;
+
+            // can the player still bid
         }
         else if (action instanceof RookCardAction)
         {
@@ -113,10 +115,14 @@ public class RookLocalGame extends LocalGame
         else if (action instanceof RookNestAction)
         {
             RookNestAction act = (RookNestAction) action;
+
+            // checks to see if that player won the bid
         }
         else if (action instanceof RookTrumpAction)
         {
             RookTrumpAction act = (RookTrumpAction) action;
+
+            // checks to see if that player won the bid
         }
 
         // if it makes it down here, an action was made
