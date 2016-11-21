@@ -153,10 +153,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <Space
-                    android:layout_width="20px"
-                    android:layout_height="350px" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -584,41 +580,14 @@
                 android:layout_width="25dp"
                 android:layout_height="match_parent" >
 
-                <Space
-                    android:layout_width="20px"
-                    android:layout_height="350px" />
-
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:rotation="90"
-                    android:text="C"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault"
+                    android:rotation="270"
+                    android:text="Computer Player 3         Total Points: 0"
                     android:id="@+id/textView17" />
 
-                <Space
-                    android:layout_width="20px"
-                    android:layout_height="250px" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:rotation="90"
-                    android:text="TP:"
-                    android:id="@+id/textView18" />
-
-                <Space
-                    android:layout_width="20px"
-                    android:layout_height="15px" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:rotation="90"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="0"
-                    android:id="@+id/textView19" />
             </LinearLayout>
 
             <LinearLayout

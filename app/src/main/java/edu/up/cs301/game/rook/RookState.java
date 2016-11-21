@@ -16,6 +16,7 @@ import static android.telephony.PhoneNumberUtils.WAIT;
 public class RookState extends GameState{
 
     private int subStage;
+    private final int numPlayers = 4;
     public final int WAIT = 0;
     public final int BID = 1;
     public final int TRUMP = 2;
@@ -41,7 +42,7 @@ public class RookState extends GameState{
     private String[] playerNames;
 
     public RookState() {
-        subStage = 0;
+        subStage = WAIT;
         currPlayer = 0;
         playerZeroHand = new ArrayList<Card>(9);
         playerOneHand = new ArrayList<Card>(9);
@@ -52,7 +53,7 @@ public class RookState extends GameState{
         playerHands[2] = playerTwoHand;
         playerHands[3] = playerThreeHand;
         nest = new ArrayList<Card>(5);
-        currTrick = new ArrayList<Card>(4);
+        currTrick = new ArrayList<Card>(numPlayers);
 
         deck = initDeck();
         deal();
@@ -60,10 +61,10 @@ public class RookState extends GameState{
         currTrickWinner = 0;
         trumpSuit = null;
         winningBid = 0;
-        bidPass = new boolean[4];
-        playerBids = new int[4];
-        playerScores = new int[4];
-        playerNames = new String[4];
+        bidPass = new boolean[numPlayers];
+        playerBids = new int[numPlayers];
+        playerScores = new int[numPlayers];
+        playerNames = new String[numPlayers];
     }
 
     public int getSubStage() {
@@ -89,8 +90,6 @@ public class RookState extends GameState{
     public int[] getBids(){
         return playerBids;
     }
-
-    ///////////////////////
 
     public void addCard(Card c, ArrayList<Card> cardPile) {
         cardPile.add(c);
@@ -134,28 +133,16 @@ public class RookState extends GameState{
 
     public void deal(){
 
-        for(int j = 0; j<4; j++) {
+        for(int j = 0; j<numPlayers; j++) {
             for (int i = 0; i < 9; i++) {
                 Card temp = deck.get(0);
-                if (j == 0) {
-                    playerZeroHand.add(temp);
-                }
-                if (j == 1) {
-                    playerOneHand.add(temp);
-                }
-                if (j == 2) {
-                    playerTwoHand.add(temp);
-                }
-                if (j == 3) {
-                    playerThreeHand.add(temp);
-                }
+                playerHands[j].add(temp);
                 deck.remove(0);
             }
         }
 
         for (int k = 0; k < 5; k++) {
             Card temp = deck.get(k);
-
             if (k == 0) {
                 nest.add(temp);
             }
@@ -165,14 +152,14 @@ public class RookState extends GameState{
     public void finalizeBids() {
         int count = 0;
         int maxVal = 0;
-        for(int i = 0; i<4; i++){
+        for(int i = 0; i<numPlayers; i++){
             if(bidPass[i]){
                 count++;
             }
         }
 
         if(count >= 3){
-            for(int j = 0; j<4; j++){
+            for(int j = 0; j<numPlayers; j++){
                 if(playerBids[j] > maxVal){
                     maxVal = playerBids[j];
                 }
@@ -183,7 +170,7 @@ public class RookState extends GameState{
 
     public int countTrick() {
         int trickVal = 0;
-        for(int i = 0; i<4; i++){
+        for(int i = 0; i<numPlayers; i++){
             trickVal += currTrick.get(i).counterValue;
         }
         return trickVal;
@@ -204,7 +191,7 @@ public class RookState extends GameState{
     // makes all hidden information for a player null
     public void nullHiddenInformation(int playerIdx)
     {
-        for(int i = 0; i<4; i++){
+        for(int i = 0; i<numPlayers; i++){
             if(i != playerIdx){
                 playerHands[i].clear();
                 for(int j = 0; j< 9; j++){
