@@ -151,8 +151,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         card8 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_8));
         card8.setOnClickListener(this);
 
+
         card0.setImageResource(R.drawable.rookcard_rook);
         //correctHandImage(1);
+
+
 
 
         //Card.initImages(newActivity);

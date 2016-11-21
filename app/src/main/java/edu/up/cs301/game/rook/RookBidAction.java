@@ -11,9 +11,14 @@ public class RookBidAction extends GameAction{
      *
      * @param player the player who created the action
      */
-    public RookBidAction(GamePlayer player, int bid)
+    public int bid = 0;
+    public RookBidAction(GamePlayer player, int playerBid)
     {
         super(player);
+        bid = playerBid;
+    }
+    public int getBid(){
+        return bid;
     }
 }
 

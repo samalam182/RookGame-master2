@@ -36,6 +36,7 @@ public class RookState extends GameState{
     private int currTrickWinner;
     private Color trumpSuit;
     public int winningBid;
+    public int winningPlayer;
     public boolean[] bidPass;
     private int[] playerBids;
     private int[] playerScores;
@@ -186,6 +187,10 @@ public class RookState extends GameState{
             nest.add(fromHand.get(j));
             playerHand.add(fromNest.get(j));
         }
+    }
+
+    public void setHold(int playerIndex){
+        bidPass[playerIndex] = true;
     }
 
     // makes all hidden information for a player null

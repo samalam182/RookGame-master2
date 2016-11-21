@@ -90,6 +90,7 @@ public class RookLocalGame extends LocalGame
 
     protected boolean makeMove(GameAction action)
     {
+        int playerIdx = state.getActivePlayer();
         // checks if its a type of RookAction
         // if not it isnt an action we want
         if (!(action instanceof RookBidAction || action instanceof RookCardAction || action instanceof RookHoldAction || action instanceof RookNestAction || action instanceof RookTrumpAction))
@@ -101,6 +102,8 @@ public class RookLocalGame extends LocalGame
         if (action instanceof RookBidAction)
         {
             RookBidAction act = (RookBidAction) action;
+            int playBid = act.getBid();
+            state.setBid(playBid, playerIdx);
 
             // can the player still bid
         }
@@ -108,18 +111,18 @@ public class RookLocalGame extends LocalGame
         {
             RookCardAction act = (RookCardAction) action;
             int handIdx = act.retButtonNum();
-            int playerIdx = state.getActivePlayer();
-
             state.currTrick[playerIdx] = state.playerHands[playerIdx].get(handIdx);
 
         }
         else if (action instanceof RookHoldAction)
         {
             RookHoldAction act = (RookHoldAction) action;
+            state.setHold(playerIdx);
         }
         else if (action instanceof RookNestAction)
         {
             RookNestAction act = (RookNestAction) action;
+            state.useNest(act.getNest(), act.getHand(), state.playerHands[playerIdx]);
 
             // checks to see if that player won the bid
         }
