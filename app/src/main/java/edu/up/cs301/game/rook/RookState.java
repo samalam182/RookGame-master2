@@ -154,7 +154,7 @@ public class RookState extends GameState{
         }
     }
 
-    public void finalizeBids() {
+    public boolean finalizeBids() {
         int count = 0;
         int maxVal = 0;
         for(int i = 0; i<numPlayers; i++){
@@ -170,6 +170,10 @@ public class RookState extends GameState{
                 }
             }
             winningBid = maxVal;
+            return true;
+        }
+        else{
+            return false;
         }
     }
 

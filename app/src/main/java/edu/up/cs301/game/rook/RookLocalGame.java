@@ -5,6 +5,7 @@ import android.util.Log;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 
+
 /**
  * Created by hoser18 on 11/8/2016.
  */
@@ -12,6 +13,12 @@ public class RookLocalGame extends LocalGame
 {
     // the game's state
     public RookState state;
+    public final int WAIT = 0;
+    public final int BID = 1;
+    public final int TRUMP = 2;
+    public final int NEST = 3;
+    public final int PLAY = 4;
+    public final int OVER = 5;
 
     public RookLocalGame()
     {
@@ -104,14 +111,19 @@ public class RookLocalGame extends LocalGame
             RookBidAction act = (RookBidAction) action;
             int playBid = act.getBid();
             state.setBid(playBid, playerIdx);
+            if(state.finalizeBids()){
+                state.setSubStage(NEST);
+            }
 
             // can the player still bid
         }
         else if (action instanceof RookCardAction)
         {
-            RookCardAction act = (RookCardAction) action;
-            int handIdx = act.retButtonNum();
-            state.currTrick[playerIdx] = state.playerHands[playerIdx].get(handIdx);
+            if(state.getSubStage() == PLAY) {
+                RookCardAction act = (RookCardAction) action;
+                int handIdx = act.retButtonNum();
+                state.currTrick[playerIdx] = state.playerHands[playerIdx].get(handIdx);
+            }
 
         }
         else if (action instanceof RookHoldAction)
@@ -121,16 +133,19 @@ public class RookLocalGame extends LocalGame
         }
         else if (action instanceof RookNestAction)
         {
-            RookNestAction act = (RookNestAction) action;
-            state.useNest(act.getNest(), act.getHand(), state.playerHands[playerIdx]);
+            if(state.getSubStage() == NEST && playerIdx == state.winningPlayer) {
+                RookNestAction act = (RookNestAction) action;
+                state.useNest(act.getNest(), act.getHand(), state.playerHands[playerIdx]);
+            }
 
             // checks to see if that player won the bid
         }
-        else if (action instanceof RookTrumpAction)
-        {
-            RookTrumpAction act = (RookTrumpAction) action;
-            //state.se
-            // checks to see if that player won the bid
+        else if (action instanceof RookTrumpAction) {
+            if (state.getSubStage() == TRUMP && playerIdx == state.winningPlayer) {
+                RookTrumpAction act = (RookTrumpAction) action;
+                state.setTrump(act.getTrumpColor());
+            }
+
         }
 
         // if it makes it down here, an action was made
