@@ -195,6 +195,7 @@ public class RookState extends GameState{
 
     }
 
+    // returns the active player
     public int getActivePlayer()
     {
         return currPlayer;
