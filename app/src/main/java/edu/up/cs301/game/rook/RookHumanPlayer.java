@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 import edu.up.cs301.animation.AnimationSurface;
 import edu.up.cs301.animation.Animator;
 import edu.up.cs301.card.Card;
@@ -47,7 +49,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public ImageButton card6;
     public ImageButton card7;
     public ImageButton card8;
-
 
 
     /** constructor
@@ -113,6 +114,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      */
     public void setAsGui(GameMainActivity newActivity)
     {
+        if (state != null)
+        {
+            receiveInfo(state);
+        }
+
         //  animate the UI
         activity = newActivity;
         newActivity.setContentView(R.layout.rook_human_player);
@@ -151,30 +157,27 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         card8 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_8));
         card8.setOnClickListener(this);
 
+        card0.setImageResource(R.drawable.rookcard_back);
+        card1.setImageResource(R.drawable.rookcard_back);
+        card2.setImageResource(R.drawable.rookcard_back);
+        card3.setImageResource(R.drawable.rookcard_back);
+        card4.setImageResource(R.drawable.rookcard_back);
+        card5.setImageResource(R.drawable.rookcard_back);
+        card6.setImageResource(R.drawable.rookcard_back);
+        card7.setImageResource(R.drawable.rookcard_back);
+        card8.setImageResource(R.drawable.rookcard_back);
 
-        card0.setImageResource(R.drawable.rookcard_rook);
-        //correctHandImage(1);
-
-
-
-
-        //Card.initImages(newActivity);
-
-        if (state != null)
-        {
-            receiveInfo(state);
-        }
     }
 
     public void correctHandImage(int playerIndx)
     {
         if (playerIndx == 1)
         {
-            for (int i = 0; i < 9; i++)
-            {
-                Card cur = state.playerOneHand.get(i);
-                card0.setImageResource(R.drawable.rookcard_rook);
-            }
+            state.initDeck();
+            state.shuffle(state.deck);
+            state.deal();
+            Card cur = state.playerOneHand.get(0);
+            card0.setImageResource(R.drawable.rookcard_rook);
         }
     }
 
@@ -182,6 +185,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     {
         if (v == quit)
         {
+            //correctHandImage(1);
             activity.finish();
             System.exit(0);
         }
