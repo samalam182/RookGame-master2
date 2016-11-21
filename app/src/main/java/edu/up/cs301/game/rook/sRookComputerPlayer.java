@@ -90,10 +90,10 @@ public class sRookComputerPlayer extends RookComputerPlayer
                 else
                 {
                     // the card is the Rook
-                    rookSuit = 1;
+                    rookSuit++;
                 }
 
-                
+
 
             }
 
