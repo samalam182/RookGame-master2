@@ -53,11 +53,43 @@ public class RookLocalGame extends LocalGame
         }
     }
 
-    protected String checkIfGameOver() {
-        return null;
+    // checks if anyone has 200 or more points
+    // if not then end of round
+    protected String checkIfGameOver()
+    {
+        // check if any player has won
+        if (state.getScore(0) >= 200)
+        {
+            return "Player 1 is the winner!";
+        }
+
+        if (state.getScore(1) >= 200)
+        {
+            return "Player 2 is the winner!";
+        }
+
+        if (state.getScore(2) >= 200)
+        {
+            return "Player 3 is the winner!";
+        }
+
+        if (state.getScore(3) >= 200)
+        {
+            return "Player 4 is the winner!";
+        }
+
+        // if all the scores are under 200
+        if (state.getScore(0) < 200 && state.getScore(1) < 200 && state.getScore(2) < 200 && state.getScore(3) < 200)
+        {
+            return "End of this round. Prepare for the next.";
+        }
+
+        return "";
     }
 
-    protected boolean makeMove(GameAction action) {
+
+    protected boolean makeMove(GameAction action)
+    {
         return false;
     }
 }
