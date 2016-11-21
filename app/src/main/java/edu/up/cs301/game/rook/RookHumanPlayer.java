@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import edu.up.cs301.animation.AnimationSurface;
@@ -19,7 +20,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 /**
  * Created by hoser18 on 11/8/2016.
  */
-public class RookHumanPlayer extends GameHumanPlayer implements Animator
+public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.OnClickListener
 {
     //game state object
     protected RookState state;
@@ -32,6 +33,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator
 
     // background color
     private int backgroundColor;
+
+    // buttons
+    public Button quit;
 
 
     /** constructor
@@ -97,13 +101,16 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator
      */
     public void setAsGui(GameMainActivity newActivity)
     {
+        //  animate the UI
         activity = newActivity;
-
         newActivity.setContentView(R.layout.rook_human_player);
-
         surface = (AnimationSurface) activity.findViewById(R.id.animation_surface);
-
         surface.setAnimator(this);
+
+        // makes buttons
+
+        quit = (Button) activity.findViewById(R.id.buttonQuitGame);
+        quit.setOnClickListener(this);
 
         //Card.initImages(newActivity);
 
@@ -113,25 +120,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator
         }
     }
 
-    /**
-     *
-     * @param event a MotionEvent describing the touch
-     */
-    public void onTouch(MotionEvent event)
+    public void onClick(View v)
     {
-        // ignore everything except down touch events
-        if (event.getAction() != MotionEvent.ACTION_DOWN)
+        if (v == quit)
         {
-            return;
+            activity.finish();
+            System.exit(0);
         }
-
-        // get the location of the touch on the surface
-        int x = (int)event.getX();
-        int y = (int)event.getY();
-
-
-        // illegal touch location: flash for 1/20 second
-        surface.flash(Color.RED, 50);
     }
 
     /**
@@ -172,6 +167,15 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator
         else
         {
             return;
+        }
+    }
+
+    public void onTouch(MotionEvent event)
+    {
+        if (event.equals(quit))
+        {
+            activity.finish();
+            System.exit(0);
         }
     }
 

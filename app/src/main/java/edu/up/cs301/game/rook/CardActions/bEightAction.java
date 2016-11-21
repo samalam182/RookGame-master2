@@ -13,7 +13,8 @@ public class bEightAction extends RookCardAction {
      *
      * @param player the player who created the action
      */
-    public bEightAction(GamePlayer player) {
+    public bEightAction(GamePlayer player)
+    {
         super(player);
         buttonNum = 8;
     }
