@@ -34,7 +34,7 @@ public class RookLocalGame extends LocalGame
         // creates a rook state that will contain only the player's
         // imformation that s/he should know
         RookState editedState = new RookState();
-        editedState.nullHiddenInformation(p);
+        editedState.nullHiddenInformation(state.getActivePlayer());
 
         p.sendInfo(editedState);
     }
@@ -90,6 +90,36 @@ public class RookLocalGame extends LocalGame
 
     protected boolean makeMove(GameAction action)
     {
-        return false;
+        // checks if its a type of RookAction
+        // if not it isnt an action we want
+        if (!(action instanceof RookBidAction || action instanceof RookCardAction || action instanceof RookHoldAction || action instanceof RookNestAction || action instanceof RookTrumpAction))
+        {
+            return false;
+        }
+
+        // makes action not a specific rook action
+        if (action instanceof RookBidAction)
+        {
+            RookBidAction act = (RookBidAction) action;
+        }
+        else if (action instanceof RookCardAction)
+        {
+            RookCardAction act = (RookCardAction) action;
+        }
+        else if (action instanceof RookHoldAction)
+        {
+            RookHoldAction act = (RookHoldAction) action;
+        }
+        else if (action instanceof RookNestAction)
+        {
+            RookNestAction act = (RookNestAction) action;
+        }
+        else if (action instanceof RookTrumpAction)
+        {
+            RookTrumpAction act = (RookTrumpAction) action;
+        }
+
+        // if it makes it down here, an action was made
+        return true;
     }
 }
