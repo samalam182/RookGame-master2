@@ -175,13 +175,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     {
         if (playerIndx == 1)
         {
-            int colors[] = {Color.BLACK, Color.RED, Color.YELLOW, Color.GREEN};
-            int numbers[] = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
-
-            Card cur = state.playerOneHand.get(0);
-
-            //if (cur == Card(colors[0], numbers[0]))
-
             card0.setImageResource(R.drawable.rookcard_rook);
         }
     }
