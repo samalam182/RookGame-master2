@@ -382,10 +382,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="350dp">
 
-                <Space
-                    android:layout_width="75px"
-                    android:layout_height="20px" />
-
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="250dp"
@@ -424,7 +420,7 @@
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="180dp"
                         android:layout_weight="1">
 
                         <LinearLayout
@@ -519,15 +515,10 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <Space
-                        android:layout_width="20px"
-                        android:layout_height="20px"
-                        android:layout_weight="1" />
-
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="150dp">
 
                         <LinearLayout
                             android:orientation="vertical"
@@ -575,14 +566,20 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/imageButton_ChooseTrump_YellowSun"
                                     android:layout_weight="1"
-                                    android:src="@drawable/rooksuit_yellowsun" />
+                                    android:src="@drawable/rooksuit_yellowsun"
+                                    android:background="@color/backgroundblue" />
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px" />
 
                                 <ImageButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/imageButton_ChooseTrump_BlackMoon"
                                     android:layout_weight="1"
-                                    android:src="@drawable/rooksuit_blackmoon" />
+                                    android:src="@drawable/rooksuit_blackmoon"
+                                    android:background="@color/backgroundblue" />
 
                                 <Space
                                     android:layout_width="20px"
@@ -606,14 +603,20 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/imageButton_ChooseTrump_GreenLeaf"
                                     android:layout_weight="1"
-                                    android:src="@drawable/rooksuit_greenleaf" />
+                                    android:src="@drawable/rooksuit_greenleaf"
+                                    android:background="@color/backgroundblue" />
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px" />
 
                                 <ImageButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/imageButton_ChooseTrump_RedHeart"
                                     android:layout_weight="1"
-                                    android:src="@drawable/rooksuit_redheart" />
+                                    android:src="@drawable/rooksuit_redheart"
+                                    android:background="@color/backgroundblue" />
 
                                 <Space
                                     android:layout_width="20px"
@@ -635,13 +638,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Confirm Nest Trade"
-                                android:id="@+id/button6" />
+                                android:id="@+id/button6"
+                                style="?android:attr/buttonStyleSmall" />
 
                             <Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Confirm Trump Suit"
-                                android:id="@+id/button7" />
+                                android:id="@+id/button7"
+                                style="?android:attr/buttonStyleSmall" />
 
                             <Space
                                 android:layout_width="20px"
