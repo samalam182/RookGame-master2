@@ -16,6 +16,7 @@ import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
+import edu.up.cs301.game.rook.CardActions.*;
 
 /**
  * Created by hoser18 on 11/8/2016.
@@ -36,6 +37,16 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     // buttons
     public Button quit;
+    public ImageButton card0;
+    public ImageButton card1;
+    public ImageButton card2;
+    public ImageButton card3;
+    public ImageButton card4;
+    public ImageButton card5;
+    public ImageButton card6;
+    public ImageButton card7;
+    public ImageButton card8;
+
 
 
     /** constructor
@@ -112,6 +123,34 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         quit = (Button) activity.findViewById(R.id.buttonQuitGame);
         quit.setOnClickListener(this);
 
+        card0 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_0));
+        card0.setOnClickListener(this);
+
+        card1 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_1));
+        card1.setOnClickListener(this);
+
+        card2 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_2));
+        card2.setOnClickListener(this);
+
+        card3 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_3));
+        card3.setOnClickListener(this);
+
+        card4 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_4));
+        card4.setOnClickListener(this);
+
+        card5 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_5));
+        card5.setOnClickListener(this);
+
+        card6 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_6));
+        card6.setOnClickListener(this);
+
+        card7 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_7));
+        card7.setOnClickListener(this);
+
+        card8 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_8));
+        card8.setOnClickListener(this);
+
+
         //Card.initImages(newActivity);
 
         if (state != null)
@@ -126,6 +165,33 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         {
             activity.finish();
             System.exit(0);
+        }
+        else if (v == card0){
+            game.sendAction(new bZeroAction(this));
+        }
+        else if (v == card1){
+            game.sendAction(new bOneAction(this));
+        }
+        else if (v == card2){
+            game.sendAction(new bTwoAction(this));
+        }
+        else if (v == card3){
+            game.sendAction(new bThreeAction(this));
+        }
+        else if (v == card4){
+            game.sendAction(new bFourAction(this));
+        }
+        else if (v == card5){
+            game.sendAction(new bFiveAction(this));
+        }
+        else if (v == card6){
+            game.sendAction(new bSixAction(this));
+        }
+        else if (v == card7){
+            game.sendAction(new bSevenAction(this));
+        }
+        else if (v == card8){
+            game.sendAction(new bEightAction(this));
         }
     }
 
