@@ -78,7 +78,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator
     public View getTopView()
     {
         return activity.findViewById(R.id.top_gui_layout);
-        return null;
+
     }
 
     /**

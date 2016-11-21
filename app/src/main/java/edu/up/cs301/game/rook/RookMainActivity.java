@@ -8,9 +8,9 @@ import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.config.GameConfig;
 import edu.up.cs301.game.config.GamePlayerType;
-import edu.up.cs301.slapjack.SJComputerPlayer;
-import edu.up.cs301.slapjack.SJHumanPlayer;
-import edu.up.cs301.slapjack.SJLocalGame;
+//import edu.up.cs301.slapjack.SJComputerPlayer;
+//import edu.up.cs301.slapjack.SJHumanPlayer;
+//import edu.up.cs301.slapjack.SJLocalGame;
 
 import android.graphics.Color;
 
@@ -33,25 +33,25 @@ public class RookMainActivity extends GameMainActivity {
 		
 		playerTypes.add(new GamePlayerType("human player (green)") {
 			public GamePlayer createPlayer(String name) {
-				return new SJHumanPlayer(name, Color.GREEN);
+				return new RookHumanPlayer(name, Color.GREEN);
 			}});
 		playerTypes.add(new GamePlayerType("human player (yellow)") {
 			public GamePlayer createPlayer(String name) {
-				return new SJHumanPlayer(name, Color.YELLOW);
+				return new RookHumanPlayer(name, Color.YELLOW);
 			}});
 		playerTypes.add(new GamePlayerType("human player (blue)") {
 			public GamePlayer createPlayer(String name) {
-				return new SJHumanPlayer(name, Color.BLUE);
+				return new RookHumanPlayer(name, Color.BLUE);
 			}});
 		playerTypes.add(new GamePlayerType("human player (red)") {
 			public GamePlayer createPlayer(String name) {
-				return new SJHumanPlayer(name, Color.RED);
+				return new RookHumanPlayer(name, Color.RED);
 			}});
 		playerTypes.add(new GamePlayerType("computer player (normal)") {
-			public GamePlayer createPlayer(String name) { return new SJComputerPlayer(name); }});
+			public GamePlayer createPlayer(String name) { return new RookHumanPlayer(name, Color.RED); }});
 		playerTypes.add(new GamePlayerType("computer player (fast)") {
 			public GamePlayer createPlayer(String name) {
-				return new SJComputerPlayer(name, 0.3);
+				return new RookHumanPlayer(name, Color.RED);
 			}});
 //		playerTypes.add(new GamePlayerType("computer player (slow)") {
 //			public GamePlayer createPlayer(String name) {
@@ -87,6 +87,6 @@ public class RookMainActivity extends GameMainActivity {
 
 	@Override
 	public LocalGame createLocalGame() {
-		return new SJLocalGame();
+		return new RookLocalGame();
 	}
 }
