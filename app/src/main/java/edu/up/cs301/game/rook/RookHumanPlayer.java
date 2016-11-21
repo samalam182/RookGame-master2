@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 
 import edu.up.cs301.animation.AnimationSurface;
 import edu.up.cs301.animation.Animator;
+import edu.up.cs301.card.Card;
 import edu.up.cs301.game.GameHumanPlayer;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
@@ -150,12 +151,27 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         card8 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_8));
         card8.setOnClickListener(this);
 
+        card0.setImageResource(R.drawable.rookcard_rook);
+        //correctHandImage(1);
+
 
         //Card.initImages(newActivity);
 
         if (state != null)
         {
             receiveInfo(state);
+        }
+    }
+
+    public void correctHandImage(int playerIndx)
+    {
+        if (playerIndx == 1)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                Card cur = state.playerOneHand.get(i);
+                card0.setImageResource(R.drawable.rookcard_rook);
+            }
         }
     }
 
