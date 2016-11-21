@@ -974,4 +974,11 @@
 
     </LinearLayout>
 
+    <edu.up.cs301.animation.AnimationSurface
+        android:id="@+id/animation_surface"
+        android:layout_width="match_parent"
+        android:layout_height="590dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
+
 </LinearLayout>
