@@ -8,6 +8,11 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 public class dRookComputerPlayer extends RookComputerPlayer
 {
 
+    public dRookComputerPlayer(String name)
+    {
+        super(name);
+    }
+
     protected void receiveInfo(GameInfo info)
     {
 
