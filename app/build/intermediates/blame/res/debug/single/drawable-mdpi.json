@@ -1,29 +1,5 @@
 [
     {
-        "merged": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_search.png",
-        "source": "C:\\Users\\E6420i5\\Documents\\GameOfRook\\SlapJack-master\\SlapJack-master\\app\\src\\main\\res\\drawable-mdpi\\ic_action_search.png"
-    },
-    {
-        "merged": "P:\\cs371\\RookGame-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_search.png",
-        "source": "P:\\cs371\\RookGame-master\\app\\src\\main\\res\\drawable-mdpi\\ic_action_search.png"
-    },
-    {
-        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_search.png",
-        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\drawable-mdpi\\ic_action_search.png"
-    },
-    {
-        "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_search.png",
-        "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame2\\app\\src\\main\\res\\drawable-mdpi\\ic_action_search.png"
-    },
-    {
-        "merged": "C:\\Users\\Samuel\\Desktop\\CS301\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_search.png",
-        "source": "C:\\Users\\Samuel\\Desktop\\CS301\\RookGame-master2\\app\\src\\main\\res\\drawable-mdpi\\ic_action_search.png"
-    },
-    {
-        "merged": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_search.png",
-        "source": "D:\\CS 301 and 371 github stuff\\RookGame-master2\\app\\src\\main\\res\\drawable-mdpi\\ic_action_search.png"
-    },
-    {
         "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_search.png",
         "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\drawable-mdpi\\ic_action_search.png"
     }

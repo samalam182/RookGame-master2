@@ -1,6 +1,7 @@
 package edu.up.cs301.game.rook;
 
 import edu.up.cs301.game.GameComputerPlayer;
+import edu.up.cs301.game.infoMsg.GameInfo;
 
 /**
  * Created by hoser18 on 11/8/2016.
@@ -10,17 +11,17 @@ public abstract class RookComputerPlayer extends GameComputerPlayer {
 
     public RookState savedState;
 
+    //public double reactionTime;
+
     /**
      * constructor for RookComputerPlayer class
      *
-     * @param name the player's name
+     * @param name
+     *     the player's name
+     *
+     * @param avgReactionTime
+     *     the average reaction time of the computer player
      */
-    public RookComputerPlayer(String name) {
-        // invoke  general constructor to create a player whose average
-        // reaction time is half a second
-        this(name, 0.5);
-    }
-
     public RookComputerPlayer(String name, double avgReactionTime) {
         super(name);
 
@@ -29,12 +30,13 @@ public abstract class RookComputerPlayer extends GameComputerPlayer {
         minReactionTimeInMillis = 500 * avgReactionTime;
     }
 
-    // invoked when the player's time has ticked
     @Override
-    protected abstract void timerTicked();
+//    protected abstract void timerTicked();
 
-    // callback method, called when we receive a message, typically from the game
-    protected abstract void receiveInfo();
-
+    /**
+     * callback method, called when we receive a message, typically from
+     * the game
+     */
+    protected abstract void receiveInfo(GameInfo info);
 
 }

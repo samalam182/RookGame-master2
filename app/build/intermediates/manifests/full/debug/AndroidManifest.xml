@@ -12,11 +12,11 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/rookbirdicon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="edu.up.cs301.slapjack.RookMainActivity"
+            android:name="edu.up.cs301.game.rook.RookMainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="landscape" >
             <intent-filter>

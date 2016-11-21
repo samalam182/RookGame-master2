@@ -23,12 +23,12 @@ public class RookState extends GameState{
     public ArrayList<Card> nest;
     public ArrayList<Card> currTrick;
 
-    private final int WAIT = 0;
-    private final int BID = 1;
-    private final int TRUMP = 2;
-    private final int NEST = 3;
-    private final int PLAY = 4;
-    private final int OVER = 5;
+    public final int WAIT = 0;
+    public final int BID = 1;
+    public final int TRUMP = 2;
+    public final int NEST = 3;
+    public final int PLAY = 4;
+    public final int OVER = 5;
 
     public ArrayList<Card> deck;
 

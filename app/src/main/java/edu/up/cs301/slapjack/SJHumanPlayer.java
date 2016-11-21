@@ -44,7 +44,7 @@ public class SJHumanPlayer extends GameHumanPlayer implements Animator {
 	// our activity
 	private Activity myActivity;
 
-	// the amination surface
+	// the animation surface
 	private AnimationSurface surface;
 	
 	// the background color
@@ -286,7 +286,7 @@ public class SJHumanPlayer extends GameHumanPlayer implements Animator {
 			int numCards) {
 		// loop through from back to front, drawing a card-back in each location
 		for (int i = numCards-1; i >= 0; i--) {
-			// determine theh position of this card's top/left corner
+			// determine the position of this card's top/left corner
 			float left = topRect.left + i*deltaX;
 			float top = topRect.top + i*deltaY;
 			// draw a card-back (hence null) into the appropriate rectangle

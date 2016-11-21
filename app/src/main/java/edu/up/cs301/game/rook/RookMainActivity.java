@@ -48,9 +48,7 @@ public class RookMainActivity extends GameMainActivity {
 				return new SJHumanPlayer(name, Color.RED);
 			}});
 		playerTypes.add(new GamePlayerType("computer player (normal)") {
-			public GamePlayer createPlayer(String name) {
-				return new SJComputerPlayer(name);
-			}});
+			public GamePlayer createPlayer(String name) { return new SJComputerPlayer(name); }});
 		playerTypes.add(new GamePlayerType("computer player (fast)") {
 			public GamePlayer createPlayer(String name) {
 				return new SJComputerPlayer(name, 0.3);
