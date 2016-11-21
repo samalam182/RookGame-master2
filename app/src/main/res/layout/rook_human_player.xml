@@ -382,6 +382,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="350dp">
 
+                <Space
+                    android:layout_width="75px"
+                    android:layout_height="20px" />
+
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="250dp"
