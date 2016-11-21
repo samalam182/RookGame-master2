@@ -145,7 +145,7 @@ public class sRookComputerPlayer extends RookComputerPlayer
         else if (savedState.getSubStage() == savedState.PLAY)
         {
             // smart computer player will play a card, and will try to win each trick
-            game.sendAction(new RookCardAction(this, 0));
+            game.sendAction(new RookCardAction(this));
         }
     }
 }
