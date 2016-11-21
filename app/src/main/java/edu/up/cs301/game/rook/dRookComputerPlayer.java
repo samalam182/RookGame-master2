@@ -5,6 +5,8 @@ import android.graphics.Color;
 import edu.up.cs301.card.Card;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
+import static java.lang.reflect.Array.getInt;
+
 /**
  * Created by hoser18 on 11/8/2016.
  */
@@ -67,7 +69,14 @@ public class dRookComputerPlayer extends RookComputerPlayer
                     }
                 }
 
-                int prevBid = savedState.winningBid;
+
+                int prevBid = 0;
+                int[] prevBidArray=null;
+                for (int p = 0; p < savedState.getBids().length; p++)
+                {
+                    prevBidArray = savedState.getBids();
+                    prevBid = getInt(prevBidArray, savedState.getBids().length-1);
+                }
 
                 int myBid = prevBid+addBid;
                 game.sendAction(new RookBidAction(this, myBid));
@@ -78,9 +87,17 @@ public class dRookComputerPlayer extends RookComputerPlayer
             // the dumb computer player will randomly select 5 cards from their hand to place
             // into the nest
 
+            Card myCard = null;
             for (int j = 0; j < 5; j++)
             {
-                Card myCard = new Card(j,j);
+                double cardIndex = Math.random()*5;
+
+
+
+
+
+
+
 
                 game.sendAction(new RookNestAction(this, myCard));
             }
@@ -92,7 +109,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
             // the dumb computer player will randomly choose a trump suit
 
             double randSuitPick = Math.random()*4;
-            int trumpSuit = 0;
+            int trumpSuit;
 
             if (randSuitPick < 1)
             {
@@ -157,7 +174,6 @@ public class dRookComputerPlayer extends RookComputerPlayer
             {
                 indexOfCard = 8;
             }
-
             game.sendAction(new RookCardAction(this));
 
         }
