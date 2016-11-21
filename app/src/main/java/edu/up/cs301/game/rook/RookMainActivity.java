@@ -35,51 +35,30 @@ public class RookMainActivity extends GameMainActivity {
 			public GamePlayer createPlayer(String name) {
 				return new RookHumanPlayer(name, Color.GREEN);
 			}});
-		playerTypes.add(new GamePlayerType("human player (yellow)") {
+		playerTypes.add(new GamePlayerType("computer player (dumb1)") {
 			public GamePlayer createPlayer(String name) {
-				return new RookHumanPlayer(name, Color.YELLOW);
+				return new dRookComputerPlayer(name);
 			}});
-		playerTypes.add(new GamePlayerType("human player (blue)") {
+		playerTypes.add(new GamePlayerType("computer player (dumb2)") {
 			public GamePlayer createPlayer(String name) {
-				return new RookHumanPlayer(name, Color.BLUE);
+				return new dRookComputerPlayer(name);
 			}});
-		playerTypes.add(new GamePlayerType("human player (red)") {
+		playerTypes.add(new GamePlayerType("computer player (dumb3)") {
 			public GamePlayer createPlayer(String name) {
-				return new RookHumanPlayer(name, Color.RED);
+				return new dRookComputerPlayer(name);
 			}});
-		playerTypes.add(new GamePlayerType("computer player (normal)") {
-			public GamePlayer createPlayer(String name) { return new RookHumanPlayer(name, Color.RED); }});
-		playerTypes.add(new GamePlayerType("computer player (fast)") {
-			public GamePlayer createPlayer(String name) {
-				return new RookHumanPlayer(name, Color.RED);
-			}});
-//		playerTypes.add(new GamePlayerType("computer player (slow)") {
-//			public GamePlayer createPlayer(String name) {
-//				return new SJComputerPlayer(name, 1.0);
-//			}
-//		});
-//		playerTypes.add(new GamePlayerType("computer player (very fast)") {
-//			public GamePlayer createPlayer(String name) {
-//				return new SJComputerPlayer(name, 0.15);
-//			}
-//		});
-//		playerTypes.add(new GamePlayerType("computer player (very slow)") {
-//			public GamePlayer createPlayer(String name) {
-//				return new SJComputerPlayer(name, 3.5);
-//			}
-//		});
 
 		// Create a game configuration class for SlapJack
 		GameConfig defaultConfig = new GameConfig(playerTypes, 4, 4, "Rook", PORT_NUMBER);
 
 		// Add the default players
 		defaultConfig.addPlayer("Human", 0);
-		defaultConfig.addPlayer("Computer1", 2);
-		defaultConfig.addPlayer("Computer2", 3);
-		defaultConfig.addPlayer("Computer3", 4);
+		defaultConfig.addPlayer("Computer1", 1);
+		defaultConfig.addPlayer("Computer2", 2);
+		defaultConfig.addPlayer("Computer3", 3);
 		
 		// Set the initial information for the remote player
-		defaultConfig.setRemoteData("Guest", "", 1);
+		//defaultConfig.setRemoteData("Guest", "", 1);
 		
 		//done!
 		return defaultConfig;

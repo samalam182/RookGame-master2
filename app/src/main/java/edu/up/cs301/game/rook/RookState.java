@@ -16,21 +16,20 @@ import static android.telephony.PhoneNumberUtils.WAIT;
 public class RookState extends GameState{
 
     private int subStage;
-    private int currPlayer;
-    public ArrayList<Card> playerZeroHand;
-    public ArrayList<Card> playerOneHand;
-    public ArrayList<Card> playerTwoHand;
-    public ArrayList<Card> playerThreeHand;
-    public ArrayList<Card> nest;
-    public ArrayList<Card> currTrick;
-
     public final int WAIT = 0;
     public final int BID = 1;
     public final int TRUMP = 2;
     public final int NEST = 3;
     public final int PLAY = 4;
     public final int OVER = 5;
-
+    private int currPlayer;
+    public ArrayList<Card>[] playerHands = (ArrayList<Card>[])new ArrayList[4];
+    public ArrayList<Card> playerZeroHand;
+    public ArrayList<Card> playerOneHand;
+    public ArrayList<Card> playerTwoHand;
+    public ArrayList<Card> playerThreeHand;
+    public ArrayList<Card> nest;
+    public ArrayList<Card> currTrick;
     public ArrayList<Card> deck;
 
     private int currTrickWinner;
@@ -48,6 +47,10 @@ public class RookState extends GameState{
         playerOneHand = new ArrayList<Card>(9);
         playerTwoHand = new ArrayList<Card>(9);
         playerThreeHand = new ArrayList<Card>(9);
+        playerHands[0] = playerZeroHand;
+        playerHands[1] = playerOneHand;
+        playerHands[2] = playerTwoHand;
+        playerHands[3] = playerThreeHand;
         nest = new ArrayList<Card>(5);
         currTrick = new ArrayList<Card>(4);
 
@@ -189,10 +192,17 @@ public class RookState extends GameState{
         }
     }
 
-    // makes all hidden ifnrmation for a player null
-    public void nullHiddenInformation(GamePlayer p)
+    // makes all hidden information for a player null
+    public void nullHiddenInformation(int playerIdx)
     {
-
+        for(int i = 0; i<4; i++){
+            if(i != playerIdx){
+                playerHands[i].clear();
+                for(int j = 0; j< 9; j++){
+                    playerHands[i].add(null);
+                }
+            }
+        }
     }
 
     // returns the active player

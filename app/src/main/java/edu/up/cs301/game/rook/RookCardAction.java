@@ -5,6 +5,7 @@ import edu.up.cs301.game.GamePlayer;
 /**
  * Created by hoser18 on 11/8/2016.
  */
+
 public class RookCardAction extends GameAction{
 
     /**
@@ -12,7 +13,10 @@ public class RookCardAction extends GameAction{
      *
      * @param player the player who created the action
      */
+    public int buttonNum;
     public RookCardAction(GamePlayer player) {
         super(player);
+        buttonNum = -1;
     }
+    public int retButtonNum(){return buttonNum;}
 }
