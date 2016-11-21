@@ -107,6 +107,11 @@ public class RookLocalGame extends LocalGame
         else if (action instanceof RookCardAction)
         {
             RookCardAction act = (RookCardAction) action;
+            int handIdx = act.retButtonNum();
+            int playerIdx = state.getActivePlayer();
+
+            state.currTrick[playerIdx] = state.playerHands[playerIdx].get(handIdx);
+
         }
         else if (action instanceof RookHoldAction)
         {
