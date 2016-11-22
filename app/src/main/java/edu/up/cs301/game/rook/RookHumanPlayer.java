@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
-import edu.up.cs301.game.rook.CardActions.*;
+
 
 /**
  * Created by hoser18 on 11/8/2016.
@@ -50,6 +51,23 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public ImageButton card6;
     public ImageButton card7;
     public ImageButton card8;
+    public ImageButton nest1;
+    public ImageButton nest2;
+    public ImageButton nest3;
+    public ImageButton nest4;
+    public ImageButton nest5;
+    public ImageButton trumpYellow;
+    public ImageButton trumpBlack;
+    public ImageButton trumpGreen;
+    public ImageButton trumpRed;
+    public Button minusFive;
+    public Button addFive;
+    public Button confirmNest;
+    public Button confirmTrump;
+    public Button bidButton;
+    public Button passButton;
+    public TextView bidAmount;
+    public TextView previousBid;
 
 
     /** constructor
@@ -159,6 +177,55 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         card8 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_8));
         card8.setOnClickListener(this);
 
+        nest1 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_0));
+        nest1.setOnClickListener(this);
+
+        nest2 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_1));
+        nest2.setOnClickListener(this);
+
+        nest3 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_2));
+        nest3.setOnClickListener(this);
+
+        nest4 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_3));
+        nest4.setOnClickListener(this);
+
+        nest5 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_4));
+        nest5.setOnClickListener(this);
+
+        trumpBlack = (ImageButton) activity.findViewById((R.id.imageButton_ChooseTrump_BlackMoon));
+        trumpBlack.setOnClickListener(this);
+
+        trumpYellow = (ImageButton) activity.findViewById((R.id.imageButton_ChooseTrump_YellowSun));
+        trumpYellow.setOnClickListener(this);
+
+        trumpGreen = (ImageButton) activity.findViewById((R.id.imageButton_ChooseTrump_GreenLeaf));
+        trumpGreen.setOnClickListener(this);
+
+        trumpRed = (ImageButton) activity.findViewById((R.id.imageButton_ChooseTrump_RedHeart));
+        trumpRed.setOnClickListener(this);
+
+        addFive = (Button) activity.findViewById(R.id.button_Increment5ToBid);
+        addFive.setOnClickListener(this);
+
+        minusFive = (Button) activity.findViewById(R.id.button_Decrement5ToBid);
+        minusFive.setOnClickListener(this);
+
+        confirmNest = (Button) activity.findViewById(R.id.button_ConfirmNestTrade);
+        confirmNest.setOnClickListener(this);
+
+        confirmTrump = (Button) activity.findViewById(R.id.button_ConfirmTrumpSuit);
+        confirmTrump.setOnClickListener(this);
+
+        bidButton = (Button) activity.findViewById(R.id.button_ConfirmBid);
+        bidButton.setOnClickListener(this);
+
+        passButton = (Button) activity.findViewById(R.id.button_ConfirmPass);
+        passButton.setOnClickListener(this);
+
+        bidAmount = (TextView) activity.findViewById(R.id.textView_YourBid);
+
+        previousBid = (TextView) activity.findViewById(R.id.textView_AmountBid);
+
         card0.setImageResource(R.drawable.rookcard_back);
         card1.setImageResource(R.drawable.rookcard_back);
         card2.setImageResource(R.drawable.rookcard_back);
@@ -179,6 +246,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     public void onClick(View v)
     {
+        int myNum = 0;
+        int myNum2 = 0;
         if (v == quit)
         {
             activity.finish();
@@ -189,31 +258,100 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             correctHandImage(1);
         }
         else if (v == card0){
-            game.sendAction(new bZeroAction(this));
+            game.sendAction(new RookCardAction(this, 0));
         }
         else if (v == card1){
-            game.sendAction(new bOneAction(this));
+            game.sendAction(new RookCardAction(this, 1));
         }
         else if (v == card2){
-            game.sendAction(new bTwoAction(this));
+            game.sendAction(new RookCardAction(this, 2));
         }
         else if (v == card3){
-            game.sendAction(new bThreeAction(this));
+            game.sendAction(new RookCardAction(this, 3));
         }
         else if (v == card4){
-            game.sendAction(new bFourAction(this));
+            game.sendAction(new RookCardAction(this, 4));
         }
         else if (v == card5){
-            game.sendAction(new bFiveAction(this));
+            game.sendAction(new RookCardAction(this, 5));
         }
         else if (v == card6){
-            game.sendAction(new bSixAction(this));
+            game.sendAction(new RookCardAction(this, 6));
         }
         else if (v == card7){
-            game.sendAction(new bSevenAction(this));
+            game.sendAction(new RookCardAction(this, 7));
         }
         else if (v == card8){
-            game.sendAction(new bEightAction(this));
+            game.sendAction(new RookCardAction(this, 8));
+        }
+        else if (v == nest1){
+            game.sendAction(new RookCardAction(this, 0));
+        }
+        else if (v == nest2){
+            game.sendAction(new RookCardAction(this, 1));
+        }
+        else if (v == nest3){
+            game.sendAction(new RookCardAction(this, 2));
+        }
+        else if (v == nest4){
+            game.sendAction(new RookCardAction(this, 3));
+        }
+        else if (v == trumpBlack){
+            game.sendAction(new RookCardAction(this, 4));
+        }
+        else if (v == trumpYellow){
+            game.sendAction(new RookCardAction(this, 5));
+        }
+        else if (v == trumpGreen){
+            game.sendAction(new RookCardAction(this, 6));
+        }
+        else if (v == trumpRed){
+            game.sendAction(new RookCardAction(this, 7));
+        }
+        else if (v == addFive){
+            try {
+                myNum = Integer.parseInt(bidAmount.getText().toString());
+            } catch(NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
+
+            if(myNum < 120){
+                myNum += 5;
+            }
+            bidAmount.setText("" + myNum);
+        }
+        else if (v == minusFive){
+
+            try {
+                myNum = Integer.parseInt(bidAmount.getText().toString());
+                myNum2 = Integer.parseInt(previousBid.getText().toString());
+            } catch(NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
+
+            if(myNum > (myNum2+5)){
+                myNum -= 5;
+            }
+
+            bidAmount.setText("" + myNum);
+        }
+        else if (v == confirmNest){
+            game.sendAction(new RookCardAction(this, 8));
+        }
+        else if (v == confirmTrump){
+            game.sendAction(new RookCardAction(this, 8));
+        }
+        else if (v == bidButton){
+            try {
+                myNum = Integer.parseInt(bidAmount.getText().toString());
+            } catch(NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
+            previousBid.setText("" + myNum);
+            game.sendAction(new RookBidAction(this, myNum));
+        }
+        else if (v == passButton){
+            game.sendAction(new RookHoldAction(this));
         }
     }
 

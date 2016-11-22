@@ -9,6 +9,7 @@ import static java.lang.reflect.Array.getInt;
 import edu.up.cs301.card.Card;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
+
 /**
  * Created by hoser18 on 11/8/2016.
  */
@@ -56,16 +57,16 @@ public class sRookComputerPlayer extends RookComputerPlayer {
 
                 myCard = arrayCard;
 
-                if (myCard.getSuit() == Color.RED) {
+                if (myCard.getSuit() == 3) {
                     // the card is a red suit
                     redSuitNum++;
-                } else if (myCard.getSuit() == Color.YELLOW) {
+                } else if (myCard.getSuit() == 1) {
                     // the card is a yellow suit
                     yellSuitNum++;
-                } else if (myCard.getSuit() == Color.GREEN) {
+                } else if (myCard.getSuit() == 2) {
                     // the Card is a green suit
                     greenSuitNum++;
-                } else if (myCard.getSuit() == Color.BLACK) {
+                } else if (myCard.getSuit() == 0) {
                     // the card is a Black suit
                     blackSuitNum++;
                 } else {
@@ -175,7 +176,8 @@ public class sRookComputerPlayer extends RookComputerPlayer {
             else if (savedState.getSubStage() == savedState.PLAY)
             {
                 // smart computer player will play a card, and will try to win each trick
-                game.sendAction(new RookCardAction(this));
+                //needs to not be hard coded in. Placed for convenience
+                game.sendAction(new RookCardAction(this, 0));
             }
         }
     }

@@ -482,7 +482,7 @@
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitCenter"
                                 android:layout_weight="1"
-                                android:id="@+id/imageButton_2"
+                                android:id="@+id/imageButton_Nest_2"
                                 android:src="@drawable/rookcard_14r"
                                 android:background="@color/backgroundblue" />
 
@@ -497,7 +497,7 @@
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitCenter"
                                 android:layout_weight="1"
-                                android:id="@+id/imageButton_3"
+                                android:id="@+id/imageButton_Nest_3"
                                 android:src="@drawable/rookcard_13y"
                                 android:background="@color/backgroundblue" />
 
@@ -512,7 +512,7 @@
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitCenter"
                                 android:layout_weight="1"
-                                android:id="@+id/imageButton_4"
+                                android:id="@+id/imageButton_Nest_4"
                                 android:src="@drawable/rookcard_8g"
                                 android:focusableInTouchMode="true"
                                 android:background="@color/backgroundblue" />
@@ -642,7 +642,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Confirm Nest Trade"
-                                android:id="@+id/button_ConfrimNestTrade"
+                                android:id="@+id/button_ConfirmNestTrade"
                                 style="?android:attr/buttonStyleSmall" />
 
                             <Button
