@@ -132,6 +132,16 @@ public class RookState extends GameState {
         return playerBids;
     }
 
+    public int getHighestBid(){
+        int highTemp= 50;
+        for(int i = 0; i<4; i++){
+            if(playerBids[i] > highTemp){
+                highTemp = playerBids[i];
+            }
+        }
+        return highTemp;
+    }
+
     public void addCard(Card c, ArrayList<Card> cardPile) {
         cardPile.add(c);
     }
