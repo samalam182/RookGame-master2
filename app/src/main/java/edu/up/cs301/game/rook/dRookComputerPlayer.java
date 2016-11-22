@@ -174,7 +174,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
             {
                 indexOfCard = 8;
             }
-            game.sendAction(new RookCardAction(this));
+            game.sendAction(new RookCardAction(this, indexOfCard));
 
         }
     }

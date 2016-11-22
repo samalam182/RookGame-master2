@@ -15,9 +15,9 @@ public class RookCardAction extends GameAction
      * @param player the player who created the action
      */
     public int buttonNum;
-    public RookCardAction(GamePlayer player) {
+    public RookCardAction(GamePlayer player, int initButton) {
         super(player);
-        buttonNum = -1;
+        buttonNum = initButton;
     }
     public int retButtonNum(){return buttonNum;}
 }

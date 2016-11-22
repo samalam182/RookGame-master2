@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import edu.up.cs301.card.Card;
 import edu.up.cs301.game.GamePlayer;
+import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.GameState;
 
 import static android.telephony.PhoneNumberUtils.WAIT;
@@ -13,7 +14,7 @@ import static android.telephony.PhoneNumberUtils.WAIT;
 /**
  * Created by dewhitt17 on 11/9/2016.
  */
-public class RookState extends GameState{
+public class RookState extends GameState {
 
     private int subStage;
     private final int numPlayers = 4;
@@ -24,17 +25,22 @@ public class RookState extends GameState{
     public final int PLAY = 4;
     public final int OVER = 5;
     private int currPlayer;
-    public ArrayList<Card>[] playerHands = (ArrayList<Card>[])new ArrayList[4];
+    public ArrayList<Card>[] playerHands = (ArrayList<Card>[]) new ArrayList[4];
     public ArrayList<Card> playerZeroHand;
     public ArrayList<Card> playerOneHand;
     public ArrayList<Card> playerTwoHand;
     public ArrayList<Card> playerThreeHand;
     public ArrayList<Card> nest;
-    public Card[] currTrick;
+    public ArrayList<Card> currTrick;
     public ArrayList<Card> deck;
 
     private int currTrickWinner;
     private int trumpSuit;
+    private final int BLACK = 0;
+    private final int YELLOW = 1;
+    private final int GREEN = 2;
+    private final int RED = 3;
+    private final int ROOK = 4;
     public int winningBid;
     public int winningPlayer;
     public boolean[] bidPass;
@@ -54,7 +60,7 @@ public class RookState extends GameState{
         playerHands[2] = playerTwoHand;
         playerHands[3] = playerThreeHand;
         nest = new ArrayList<Card>(5);
-        currTrick = new Card[numPlayers];
+        currTrick = new ArrayList<Card>(4);
 
         deck = initDeck();
         deal();
@@ -69,6 +75,35 @@ public class RookState extends GameState{
         winningPlayer = 0;
     }
 
+    public RookState(GameInfo info) {
+        RookState temp = (RookState) info;
+
+        subStage = temp.subStage;
+        currPlayer = temp.currPlayer;
+        playerZeroHand = temp.playerZeroHand;
+        playerOneHand = temp.playerOneHand;
+        playerTwoHand = temp.playerTwoHand;
+        playerThreeHand = temp.playerThreeHand;
+        playerHands[0] = playerZeroHand;
+        playerHands[1] = playerOneHand;
+        playerHands[2] = playerTwoHand;
+        playerHands[3] = playerThreeHand;
+        nest = temp.nest;
+        currTrick = temp.currTrick;
+
+        deck = temp.deck;
+
+        currTrickWinner = temp.currTrickWinner;
+        trumpSuit = temp.trumpSuit;
+        winningBid = temp.winningBid;
+        bidPass = temp.bidPass;
+        playerBids = temp.playerBids;
+        playerScores = temp.playerScores;
+        playerNames = temp.playerNames;
+        winningPlayer = temp.winningPlayer;
+
+    }
+
     public int getSubStage() {
         return subStage;
     }
@@ -77,7 +112,7 @@ public class RookState extends GameState{
         subStage = sub;
     }
 
-    public void setTrump(int trumpColor){
+    public void setTrump(int trumpColor) {
         trumpSuit = trumpColor;
     }
 
@@ -89,11 +124,11 @@ public class RookState extends GameState{
         playerScores[index] = score;
     }
 
-    public void setBid(int bid, int player){
+    public void setBid(int bid, int player) {
         playerBids[player] = bid;
     }
 
-    public int[] getBids(){
+    public int[] getBids() {
         return playerBids;
     }
 
@@ -105,18 +140,18 @@ public class RookState extends GameState{
         cardPile.remove(c);
     }
 
-    public ArrayList<Card> initDeck(){
+    public ArrayList<Card> initDeck() {
         ArrayList<Card> initD = new ArrayList<Card>(41);
-        int colors[] = {Color.BLACK, Color.RED, Color.YELLOW, Color.GREEN};
+        int colors[] = {BLACK, RED, YELLOW, GREEN};
         int numbers[] = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 
-        for(int i = 0; i < colors.length; i++){
-            for(int j = 0; j < numbers.length; j++){
+        for (int i = 0; i < colors.length; i++) {
+            for (int j = 0; j < numbers.length; j++) {
                 Card tempCard = new Card(colors[i], numbers[j]);
                 initD.add(tempCard);
             }
         }
-        Card Rook = new Card(Color.BLUE, 15);
+        Card Rook = new Card(ROOK, 15);
         initD.add(Rook);
 
         initD = shuffle(initD);
@@ -127,19 +162,19 @@ public class RookState extends GameState{
     public ArrayList<Card> shuffle(ArrayList<Card> shuf) {
 
         ArrayList<Card> temp = new ArrayList<Card>();
-        while(!shuf.isEmpty()) {
-            int loc=(int)(Math.random()*shuf.size());
+        while (!shuf.isEmpty()) {
+            int loc = (int) (Math.random() * shuf.size());
             temp.add(shuf.get(loc));
             shuf.remove(loc);
         }
-        shuf=temp;
+        shuf = temp;
 
         return shuf;
     }
 
-    public void deal(){
+    public void deal() {
 
-        for(int j = 0; j<numPlayers; j++) {
+        for (int j = 0; j < numPlayers; j++) {
             for (int i = 0; i < 9; i++) {
                 Card temp = deck.get(0);
                 playerHands[j].add(temp);
@@ -158,15 +193,15 @@ public class RookState extends GameState{
     public boolean finalizeBids() {
         int count = 0;
         int maxVal = 0;
-        for(int i = 0; i<numPlayers; i++){
-            if(bidPass[i]){
+        for (int i = 0; i < numPlayers; i++) {
+            if (bidPass[i]) {
                 count++;
             }
         }
 
-        if(count >= 3){
-            for(int j = 0; j<numPlayers; j++){
-                if(playerBids[j] > maxVal){
+        if (count >= 3) {
+            for (int j = 0; j < numPlayers; j++) {
+                if (playerBids[j] > maxVal) {
                     maxVal = playerBids[j];
                     winningPlayer = j;
                 }
@@ -174,43 +209,41 @@ public class RookState extends GameState{
             winningBid = maxVal;
             setPlayer(winningPlayer);
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
     public int countTrick() {
         int trickVal = 0;
-        for(int i = 0; i<numPlayers; i++){
-            trickVal += currTrick[i].counterValue;
+        for (int i = 0; i < numPlayers; i++) {
+            trickVal += currTrick.get(i).counterValue;
         }
         return trickVal;
     }
 
     public void useNest(ArrayList<Card> fromNest, ArrayList<Card> fromHand, ArrayList<Card> playerHand) {
-        for(int i = 0; i < fromNest.size(); i++){
+        for (int i = 0; i < fromNest.size(); i++) {
             nest.remove(fromNest.get(i));
             playerHand.remove(fromHand.get(i));
         }
 
-        for(int j = 0; j < fromNest.size(); j++){
+        for (int j = 0; j < fromNest.size(); j++) {
             nest.add(fromHand.get(j));
             playerHand.add(fromNest.get(j));
         }
     }
 
-    public void setHold(int playerIndex){
+    public void setHold(int playerIndex) {
         bidPass[playerIndex] = true;
     }
 
     // makes all hidden information for a player null
-    public void nullHiddenInformation(int playerIdx)
-    {
-        for(int i = 0; i<numPlayers; i++){
-            if(i != playerIdx){
+    public void nullHiddenInformation(int playerIdx) {
+        for (int i = 0; i < numPlayers; i++) {
+            if (i != playerIdx) {
                 playerHands[i].clear();
-                for(int j = 0; j< 9; j++){
+                for (int j = 0; j < 9; j++) {
                     playerHands[i].add(null);
                 }
             }
@@ -218,20 +251,18 @@ public class RookState extends GameState{
     }
 
     // returns the active player
-    public int getActivePlayer()
-    {
+    public int getActivePlayer() {
         return currPlayer;
     }
 
-    public void setPlayer(int playIdx){
+    public void setPlayer(int playIdx) {
         currPlayer = playIdx;
     }
 
-    public void setPlayer(){
-        if(currPlayer == 3){
+    public void setPlayer() {
+        if (currPlayer == 3) {
             currPlayer = 0;
-        }
-        else{
+        } else {
             currPlayer++;
         }
     }
