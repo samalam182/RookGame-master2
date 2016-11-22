@@ -1,0 +1,1415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d3f4ff">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="450dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="100dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="75dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentONEHand_0"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentONEHand_1"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentONEHand_2"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentONEHand_3"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentONEHand_4"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentONEHand_5"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentONEHand_6"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentONEHand_7"
+                    android:src="@drawable/rookcard_back"
+                    android:focusableInTouchMode="true" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentONEHand_8"
+                    android:src="@drawable/rookcard_back" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="25dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:rotation="90"
+                    android:text="CPU1"
+                    android:id="@+id/textView_OpponentONEName" />
+
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="250px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:rotation="90"
+                    android:text="TP:"
+                    android:id="@+id/textView_OpponentONETotalPointsLabel" />
+
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="15px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="90"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="0"
+                    android:id="@+id/textView_OpponentONETotalPoints" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="825dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="75dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <Space
+                        android:layout_width="200px"
+                        android:layout_height="20px" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="0dp"
+                        android:padding="5dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:id="@+id/imageView_OpponentTWOHand_0"
+                        android:src="@drawable/rookcard_back" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="0dp"
+                        android:padding="5dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:id="@+id/imageView_OpponentTWOHand_1"
+                        android:src="@drawable/rookcard_back" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="0dp"
+                        android:padding="5dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:id="@+id/imageView_OpponentTWOHand_2"
+                        android:src="@drawable/rookcard_back" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="0dp"
+                        android:padding="5dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:id="@+id/imageView_OpponentTWOHand_3"
+                        android:src="@drawable/rookcard_back" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="0dp"
+                        android:padding="5dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:id="@+id/imageView_OpponentTWOHand_4"
+                        android:src="@drawable/rookcard_back" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="0dp"
+                        android:padding="5dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:id="@+id/imageView_OpponentTWOHand_5"
+                        android:src="@drawable/rookcard_back" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="0dp"
+                        android:padding="5dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:id="@+id/imageView_OpponentTWOHand_6"
+                        android:src="@drawable/rookcard_back" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="0dp"
+                        android:padding="5dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:id="@+id/imageView_OpponentTWOHand_7"
+                        android:src="@drawable/rookcard_back" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="0dp"
+                        android:padding="5dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:id="@+id/imageView_OpponentTWOHand_8"
+                        android:src="@drawable/rookcard_back" />
+
+                    <Space
+                        android:layout_width="200px"
+                        android:layout_height="20px" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp" >
+
+                    <Space
+                        android:layout_width="325px"
+                        android:layout_height="20px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Computer Player 2"
+                        android:id="@+id/textView_OpponentTWOName" />
+
+                    <Space
+                        android:layout_width="280px"
+                        android:layout_height="20px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Total Points:"
+                        android:id="@+id/textView_OpponentTWOTotalPointsLabel" />
+
+                    <Space
+                        android:layout_width="15px"
+                        android:layout_height="20px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="0"
+                        android:id="@+id/textView_OpponentTWOTotalPoints" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="350dp">
+
+                <Space
+                    android:layout_width="75px"
+                    android:layout_height="20px" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content">
+
+                    <Space
+                        android:layout_width="20px"
+                        android:layout_height="20px"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <Space
+                            android:layout_width="75px"
+                            android:layout_height="20px"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Nest"
+                            android:id="@+id/textView_NestLabel"
+                            android:singleLine="true" />
+
+                        <Space
+                            android:layout_width="75px"
+                            android:layout_height="20px"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="0dp"
+                                android:padding="5dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:layout_weight="1"
+                                android:id="@+id/imageButton_Nest_0"
+                                android:src="@drawable/rookcard_11g"
+                                android:background="@color/backgroundblue" />
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="0dp"
+                                android:padding="5dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:layout_weight="1"
+                                android:id="@+id/imageButton_Nest_1"
+                                android:src="@drawable/rookcard_9b"
+                                android:focusableInTouchMode="true"
+                                android:background="@color/backgroundblue" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="0dp"
+                                android:padding="5dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:layout_weight="1"
+                                android:id="@+id/imageButton_2"
+                                android:src="@drawable/rookcard_14r"
+                                android:background="@color/backgroundblue" />
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="0dp"
+                                android:padding="5dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:layout_weight="1"
+                                android:id="@+id/imageButton_3"
+                                android:src="@drawable/rookcard_13y"
+                                android:background="@color/backgroundblue" />
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="0dp"
+                                android:padding="5dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:layout_weight="1"
+                                android:id="@+id/imageButton_4"
+                                android:src="@drawable/rookcard_8g"
+                                android:focusableInTouchMode="true"
+                                android:background="@color/backgroundblue" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="150dp"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:text="Trump Suit"
+                                    android:id="@+id/textView_TrumpSuitLabel"
+                                    android:layout_weight="1" />
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+
+                                <ImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/imageButton_ChooseTrump_YellowSun"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/rooksuit_yellowsun"
+                                    android:background="@color/backgroundblue" />
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px" />
+
+                                <ImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/imageButton_ChooseTrump_BlackMoon"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/rooksuit_blackmoon"
+                                    android:background="@color/backgroundblue" />
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+
+                                <ImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/imageButton_ChooseTrump_GreenLeaf"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/rooksuit_greenleaf"
+                                    android:background="@color/backgroundblue" />
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px" />
+
+                                <ImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/imageButton_ChooseTrump_RedHeart"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/rooksuit_redheart"
+                                    android:background="@color/backgroundblue" />
+
+                                <Space
+                                    android:layout_width="20px"
+                                    android:layout_height="20px"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="50px" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Confirm Nest Trade"
+                                android:id="@+id/button_ConfrimNestTrade"
+                                style="?android:attr/buttonStyleSmall" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Confirm Trump Suit"
+                                android:id="@+id/button_ConfirmTrumpSuit"
+                                style="?android:attr/buttonStyleSmall" />
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="300px"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="100px" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="Bid or Pass?"
+                                android:id="@+id/textView_BidOrPassLabel"
+                                android:layout_weight="1" />
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="25px" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Last Bidder:   "
+                            android:id="@+id/textView_LastBidderLabel" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="50px"
+                                android:layout_height="20px" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Computer Player 2"
+                                android:id="@+id/textView_LastBidder" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Amount Bid:   "
+                            android:id="@+id/textView_AmountBidLabel" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+
+                            <Space
+                                android:layout_width="50px"
+                                android:layout_height="20px" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="75"
+                                android:id="@+id/textView_AmountBid" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="40px" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+
+                            <Button
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="- 5"
+                                android:id="@+id/button_Decrement5ToBid"
+                                android:layout_weight="1" />
+
+                            <Button
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+ 5"
+                                android:id="@+id/button_Increment5ToBid"
+                                android:layout_weight="1" />
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="60px"
+                                android:layout_height="20px" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Your Bid:   "
+                                android:id="@+id/textView_YourBidLabel" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="80"
+                                android:id="@+id/textView_YourBid" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="40px" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+
+                            <Button
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="BID"
+                                android:id="@+id/button_ConfirmBid"
+                                android:layout_weight="1"
+                                android:background="@color/green" />
+
+                            <Space
+                                android:layout_width="10px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+
+                            <Button
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PASS"
+                                android:id="@+id/button_ConfirmPass"
+                                android:layout_weight="1"
+                                android:background="@color/red" />
+
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="20px"
+                        android:layout_height="40px" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="50px"
+                    android:layout_height="20px" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="225px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Space
+                        android:layout_width="20px"
+                        android:layout_height="65px" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="95dp">
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="20px"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/imageView_Trick_2"
+                            android:layout_weight="1"
+                            android:src="@drawable/rookcard_rook" />
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="20px"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="95dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/imageView_Trick_1"
+                            android:src="@drawable/rookcard_8r"
+                            android:layout_weight="1" />
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="20px"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/imageView_Trick_3"
+                            android:src="@drawable/rookcard_11y"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="95dp">
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="20px"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/imageView_Trick_0"
+                            android:layout_weight="1"
+                            android:src="@drawable/rookcard_14b" />
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="20px"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="20px"
+                        android:layout_height="65px" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="20px" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+
+                <Space
+                    android:layout_width="250px"
+                    android:layout_height="20px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="You"
+                    android:id="@+id/textView_HumanName" />
+
+                <Space
+                    android:layout_width="350px"
+                    android:layout_height="20px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Total Points:"
+                    android:id="@+id/textView_HumanTotalPointsLabel" />
+
+                <Space
+                    android:layout_width="15px"
+                    android:layout_height="20px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="0"
+                    android:id="@+id/textView_HumanTotalPoints" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="100dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="25dp"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:rotation="90"
+                    android:text="CPU3"
+                    android:id="@+id/textView_OpponentTHREEName" />
+
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="250px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:rotation="90"
+                    android:text="TP:"
+                    android:id="@+id/textView_OpponentTHREETotalPointsLabel" />
+
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="15px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="90"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="0"
+                    android:id="@+id/textView_OpponentTHREETotalPoints" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="75dp"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentTHREEHand_0"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentTHREEHand_1"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentTHREEHand_2"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentTHREEHand_3"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentTHREEHand_4"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentTHREEHand_5"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentTHREEHand_6"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentTHREEHand_7"
+                    android:src="@drawable/rookcard_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:padding="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:id="@+id/imageView_OpponentTHREEHand_8"
+                    android:src="@drawable/rookcard_back" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="138dp">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:id="@+id/imageButton_HumanHand_0"
+            android:src="@drawable/rookcard_5b"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:id="@+id/imageButton_HumanHand_1"
+            android:src="@drawable/rookcard_5g"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:id="@+id/imageButton_HumanHand_2"
+            android:src="@drawable/rookcard_5y"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:id="@+id/imageButton_HumanHand_3"
+            android:src="@drawable/rookcard_5r"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:id="@+id/imageButton_HumanHand_4"
+            android:src="@drawable/rookcard_6b"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:id="@+id/imageButton_HumanHand_5"
+            android:src="@drawable/rookcard_6y"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:id="@+id/imageButton_HumanHand_6"
+            android:src="@drawable/rookcard_6g"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:id="@+id/imageButton_HumanHand_7"
+            android:src="@drawable/rookcard_6r"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:id="@+id/imageButton_HumanHand_8"
+            android:src="@drawable/rookcard_7b"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Game"
+            android:id="@+id/buttonStartGame" />
+
+        <Space
+            android:layout_width="60px"
+            android:layout_height="20px" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quit Game"
+            android:id="@+id/buttonQuitGame" />
+
+        <Space
+            android:layout_width="250px"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Trump Suit:"
+                android:id="@+id/textView_ROUNDTrumpSuitLabel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="N/A"
+                android:id="@+id/textView_ROUNDTrumpSuit" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="175px"
+            android:layout_height="20px" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Winning Bidder:"
+                android:id="@+id/textView_ROUNDWinningBidderLabel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="N/A"
+                android:id="@+id/textView_ROUNDWinningBidder" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="175px"
+            android:layout_height="20px" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Winning Bid:"
+                android:id="@+id/textView_ROUNDWinningBidLabel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="N/A"
+                android:id="@+id/textView_ROUNDWinningBid" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <edu.up.cs301.animation.AnimationSurface
+        android:id="@+id/animation_surface"
+        android:layout_width="match_parent"
+        android:layout_height="590dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/backgroundblue" />
+
+</LinearLayout>

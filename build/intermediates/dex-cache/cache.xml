@@ -3,12 +3,12 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\E6420i5\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jar="C:\Users\Alexander\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
         jumboMode="false"
         optimize="true"
         revision="22.0.1"
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="C:\Users\E6420i5\Desktop\Android Projects\RookGame-master2\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0_949364ed6b1c4755107246748992077d7e44985b.jar" />
+        <dex dex="C:\Users\Alexander\Desktop\RookGame-master2\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0_8a66eabf85a77b95e22ebcf3561a0dec66d4bd96.jar" />
     </item>
 
 </items>

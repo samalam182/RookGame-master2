@@ -149,7 +149,7 @@ public class RookState extends GameState{
 
         for (int k = 0; k < 5; k++) {
             Card temp = deck.get(k);
-            if (k == 0) {
+            if (k < 5) {
                 nest.add(temp);
             }
         }
