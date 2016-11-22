@@ -153,6 +153,16 @@
                 android:layout_width="25dp"
                 android:layout_height="match_parent">
 
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="20px" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView_OpponentONEOrangeStart"
+                    android:src="@drawable/rook_orangestaricon" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -163,7 +173,7 @@
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="250px" />
+                    android:layout_height="160px" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -343,8 +353,14 @@
                     android:layout_height="25dp" >
 
                     <Space
-                        android:layout_width="325px"
+                        android:layout_width="300px"
                         android:layout_height="20px" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView_OpponentTWOOrangeStar"
+                        android:src="@drawable/rook_orangestaricon" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -445,7 +461,7 @@
                                 android:scaleType="fitCenter"
                                 android:layout_weight="1"
                                 android:id="@+id/imageButton_Nest_0"
-                                android:src="@drawable/rookcard_11g"
+                                android:src="@drawable/rookcard_back"
                                 android:background="@color/backgroundblue" />
 
                             <ImageButton
@@ -460,7 +476,7 @@
                                 android:scaleType="fitCenter"
                                 android:layout_weight="1"
                                 android:id="@+id/imageButton_Nest_1"
-                                android:src="@drawable/rookcard_9b"
+                                android:src="@drawable/rookcard_back"
                                 android:focusableInTouchMode="true"
                                 android:background="@color/backgroundblue" />
                         </LinearLayout>
@@ -483,7 +499,7 @@
                                 android:scaleType="fitCenter"
                                 android:layout_weight="1"
                                 android:id="@+id/imageButton_Nest_2"
-                                android:src="@drawable/rookcard_14r"
+                                android:src="@drawable/rookcard_back"
                                 android:background="@color/backgroundblue" />
 
                             <ImageButton
@@ -498,7 +514,7 @@
                                 android:scaleType="fitCenter"
                                 android:layout_weight="1"
                                 android:id="@+id/imageButton_Nest_3"
-                                android:src="@drawable/rookcard_13y"
+                                android:src="@drawable/rookcard_back"
                                 android:background="@color/backgroundblue" />
 
                             <ImageButton
@@ -513,7 +529,7 @@
                                 android:scaleType="fitCenter"
                                 android:layout_weight="1"
                                 android:id="@+id/imageButton_Nest_4"
-                                android:src="@drawable/rookcard_8g"
+                                android:src="@drawable/rookcard_back"
                                 android:focusableInTouchMode="true"
                                 android:background="@color/backgroundblue" />
                         </LinearLayout>
@@ -963,8 +979,14 @@
                 android:layout_height="25dp">
 
                 <Space
-                    android:layout_width="250px"
-                    android:layout_height="20px" />
+                    android:layout_width="230px"
+                    android:layout_height="21px" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView_HumanPlayerOrangeStar"
+                    android:src="@drawable/rook_orangestaricon" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1008,8 +1030,18 @@
                 android:layout_width="25dp"
                 android:layout_height="match_parent" >
 
-                <TextView
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="20px" />
+
+                <ImageView
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView_OpponentTHREEOrangeStar"
+                    android:src="@drawable/rook_orangestaricon" />
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:rotation="90"
@@ -1018,7 +1050,7 @@
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="250px" />
+                    android:layout_height="160px" />
 
                 <TextView
                     android:layout_width="wrap_content"

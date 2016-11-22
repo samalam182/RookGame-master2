@@ -167,7 +167,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:rotation="90"
                     android:text="CPU1"
                     android:id="@+id/textView_OpponentONEName" />
 
@@ -179,7 +178,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:rotation="90"
                     android:text="TP:"
                     android:id="@+id/textView_OpponentONETotalPointsLabel" />
 
@@ -190,7 +188,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:rotation="90"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="0"
                     android:id="@+id/textView_OpponentONETotalPoints" />
@@ -1044,7 +1041,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:rotation="90"
                     android:text="CPU3"
                     android:id="@+id/textView_OpponentTHREEName" />
 
@@ -1056,7 +1052,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:rotation="90"
                     android:text="TP:"
                     android:id="@+id/textView_OpponentTHREETotalPointsLabel" />
 
@@ -1067,7 +1062,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:rotation="90"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="0"
                     android:id="@+id/textView_OpponentTHREETotalPoints" />
