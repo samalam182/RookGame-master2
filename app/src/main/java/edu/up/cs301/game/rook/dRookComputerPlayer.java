@@ -1,6 +1,9 @@
 package edu.up.cs301.game.rook;
 
 import android.graphics.Color;
+import android.util.Log;
+
+import java.util.ArrayList;
 
 import edu.up.cs301.card.Card;
 import edu.up.cs301.game.infoMsg.GameInfo;
@@ -37,22 +40,30 @@ public class dRookComputerPlayer extends RookComputerPlayer
 
         // the dumb computer player makes a move based on what subStage the game is in
 
-        if (savedState.getSubStage() == savedState.BID)
+
+        savedState.setSubStage(4);
+        if (savedState.getSubStage() == savedState.WAIT)
         {
+            return;
+        }
+        else if (savedState.getSubStage() == savedState.BID)
+        {
+            Log.i("Reached bidding stage", ""+this.playerNum);
             // the dumb computer player will randomly decide to bid or pass
-            double randSelection = Math.random();
+            double randSelection = 4;
 
             if (randSelection < 0.5)
             {
                 // when randSelection is less than 0.5, the dumb computer player will pass
                 game.sendAction(new RookHoldAction(this));
-                // this is okay
+                Log.i("Sent hold action", ""+this.playerNum);
             }
             else
             {
                 // when randSelection is more than 0.5, the dumb computer player will bid
 
-                double randBidVal = Math.random()*10;
+                //int randBidVal = (int)Math.random()*10;
+                int randBidVal = 4;
                 int addBid;
                 {
                     if (randBidVal <= 3)
@@ -70,38 +81,120 @@ public class dRookComputerPlayer extends RookComputerPlayer
                 }
 
 
-                int prevBid = 0;
-                int[] prevBidArray=null;
-                for (int p = 0; p < savedState.getBids().length; p++)
-                {
-                    prevBidArray = savedState.getBids();
-                    prevBid = getInt(prevBidArray, savedState.getBids().length-1);
-                }
+
+
+                int prevBid = savedState.getHighestBid();
+                Log.i("Previous bid", "" + prevBid);
 
                 int myBid = prevBid+addBid;
                 game.sendAction(new RookBidAction(this, myBid));
+                Log.i("Sent Bid Action", ""+this.playerNum+","+myBid);
             }
         }
-        else if (savedState.getSubStage() == savedState.NEST)
-        {
+        else if (savedState.getSubStage() == savedState.NEST) {
             // the dumb computer player will randomly select 5 cards from their hand to place
             // into the nest
 
-            Card myCard = null;
-            for (int j = 0; j < 5; j++)
+            ArrayList<Card> handCards = savedState.playerHands[this.playerNum];
+            Log.i("Hand cards", ""+this.playerNum);
+            ArrayList<Card> nestCards = savedState.nest;
+            Log.i("Nest cards", ""+nestCards);
+
+
+
+
+
+            //Log.i("RandHandCardIndex", "");
+
+            ArrayList<Card> cardsFromNest = new ArrayList<Card>();
+            ArrayList<Card> cardsFromHand = new ArrayList<Card>();
+            for (int y=0; y < 5; y++)
             {
-                double cardIndex = Math.random()*5;
+                double randPilePicker = Math.random();
 
+                if (randPilePicker <0.5)
+                {
 
+                    // picks from the nest
 
+                    double randNestCardIndex = Math.random() * 5;
+                    int randNestCardIndexInt = (int)randNestCardIndex;
+                    cardsFromNest.add(nestCards.get(randNestCardIndexInt));
 
+                }
+                else
+                {
+                    // picks from the hand
+                    double randHandCardIndex = Math.random()*9;
+                    int randHandCardIndexInt = (int) randHandCardIndex;
+                    cardsFromHand.add(handCards.get(randHandCardIndexInt));
 
-
-
-
-                //game.sendAction(new RookNestAction(this, myCard));
+                }
             }
 
+//            if (randNestCardIndex < 1)
+//            {
+//                nestCards.get(0);
+//            }
+//            else if (randNestCardIndex < 2)
+//            {
+//                nestCards.get(1);
+//            }
+//            else if (randNestCardIndex < 3)
+//            {
+//                nestCards.get(2);
+//            }
+//            else if (randNestCardIndex < 4)
+//            {
+//                nestCards.get(3);
+//            }
+//            else
+//            {
+//                nestCards.get(4);
+//            }
+
+//            if (randHandCardIndex < 1)
+//            {
+//                handCards.get(0);
+//            }
+//            else if (randHandCardIndex < 2)
+//            {
+//                handCards.get(1);
+//            }
+//            else if (randHandCardIndex < 3)
+//            {
+//                handCards.get(2);
+//            }
+//            else if (randHandCardIndex < 4)
+//            {
+//                handCards.get(3);
+//            }
+//            else if (randHandCardIndex < 5)
+//            {
+//                handCards.get(4);
+//            }
+//            else if (randHandCardIndex < 6)
+//            {
+//                handCards.get(5);
+//            }
+//            else if (randHandCardIndex < 7)
+//            {
+//                handCards.get(6);
+//            }
+//            else if (randHandCardIndex < 8)
+//            {
+//                handCards.get(7);
+//            }
+//            else
+//            {
+//                handCards.get(8);
+//            }
+            Log.i("Nest Card index", ""+nestCards);
+            Log.i("Hand Card Index", ""+handCards);
+
+
+            game.sendAction(new RookNestAction(this, cardsFromNest, cardsFromHand));
+            Log.i("Send Nest Action", ""+this.playerNum+","+cardsFromNest+","+cardsFromHand);
         }
 
         else if (savedState.getSubStage() == savedState.TRUMP)
@@ -174,7 +267,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
             {
                 indexOfCard = 8;
             }
-            game.sendAction(new RookCardAction(this, indexOfCard));
+            game.sendAction(new RookCardAction(this,indexOfCard));
 
         }
     }

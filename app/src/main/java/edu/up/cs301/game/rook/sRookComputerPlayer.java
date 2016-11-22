@@ -36,13 +36,13 @@ public class sRookComputerPlayer extends RookComputerPlayer {
 
             int myBid = 50;
 
-            ArrayList<Card> myList = null;
+            ArrayList<Card> myList = new ArrayList<Card>(savedState.playerHands[this.playerNum]);
 
             ArrayList<Card> thisList = savedState.playerHands[this.playerNum];
 
             myList = thisList;
 
-            Card myCard = null;
+            Card myCard = new Card(0, 0);
 
             int redSuitNum = 0;
             int yellSuitNum = 0;
