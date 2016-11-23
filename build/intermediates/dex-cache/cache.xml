@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="24466f1b171fc3b4ba352cc0de6e07a59bb550d2">
+        sha1="1c6d2191d7b1a415c03bdf86e37ba5d5c3851f05">
         <dex dex="C:\Users\hoser18\AndroidStudioProjects\RookGame-master2\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_be53956ed7dfd3c89ca66fe823845fae3ec15a7a\classes.dex" />
     </item>
     <item
@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="8a4ffc465cb936f906319dbb8ebfdcebbe582b53">
+        sha1="cd1ccc8a723df3ff69e2765da5fc1a54f616922b">
         <dex dex="C:\Users\hoser18\AndroidStudioProjects\RookGame-master2\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_4d71098b02a2f07e7718c4943a8d1c9260aab2c5\classes.dex" />
     </item>
 
