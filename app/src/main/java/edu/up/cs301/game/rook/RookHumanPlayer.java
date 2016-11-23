@@ -48,6 +48,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public final int NEST = 3;
     public final int PLAY = 4;
     public final int OVER = 5;
+    private final int BLACK = 0;
+    private final int YELLOW = 1;
+    private final int GREEN = 2;
+    private final int RED = 3;
 
     // buttons
 
@@ -94,8 +98,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public TextView bidShow;
     public TextView bidMainTitle;
     public TextView yourBid;
+    public ArrayList<Card> fromH= new ArrayList<Card>(5);
+    public ArrayList<Card> fromN= new ArrayList<Card>(5);
+
+
 
     public int delay = 0;
+    public int trumpColor = -1;
 
 
 
@@ -341,17 +350,18 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             trumpRed.setVisibility(View.INVISIBLE);
             trumpYellow.setVisibility(View.INVISIBLE);
             confirmTrump.setVisibility(View.INVISIBLE);
+            previousBid.setText("" + state.getHighestBid());
+            int possBid = state.getHighestBid() + 5;
+            bidAmount.setText("" + possBid);
+            trumpAccounce.setVisibility(View.VISIBLE);
+
             addFive.setVisibility(View.VISIBLE);
             minusFive.setVisibility(View.VISIBLE);
             bidButton.setVisibility(View.VISIBLE);
             passButton.setVisibility(View.VISIBLE);
-            previousBid.setText("" + state.getHighestBid());
             previousBid.setVisibility(View.VISIBLE);
-            int possBid = state.getHighestBid() + 5;
-            bidAmount.setText("" + possBid);
             bidAmount.setVisibility(View.VISIBLE);
             lastBidder.setVisibility(View.VISIBLE);
-            trumpAccounce.setVisibility(View.VISIBLE);
             bidTitle.setVisibility(View.VISIBLE);
             amountTitle.setVisibility(View.VISIBLE);
             bidShow.setVisibility(View.VISIBLE);
@@ -422,6 +432,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             passButton.setVisibility(View.INVISIBLE);
         }
     }
+
     public void correctHandImage(int playerIndx)
     {
         if (playerIndx == 1)
@@ -872,20 +883,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             //state.setSubStage(BID);
             //updateGUI(state);
             correctHandImage(1);
-//            bidButton.setVisibility(View.VISIBLE);
-//            passButton.setVisibility(View.VISIBLE);
-//            minusFive.setVisibility(View.VISIBLE);
-//            addFive.setVisibility(View.VISIBLE);
-//            bidTitle.setVisibility(View.VISIBLE);
-//            lastBidder.setVisibility(View.VISIBLE);
-//            amountTitle.setVisibility(View.VISIBLE);
-//            bidAmount.setVisibility(View.VISIBLE);
-//            bidShow.setVisibility(View.VISIBLE);
-//            bidMainTitle.setVisibility(View.VISIBLE);
-//            yourBid.setVisibility(View.VISIBLE);
             start.setVisibility(View.INVISIBLE);
         }
         else if (v == card0){
+//            if(state.getSubStage() == NEST && !(fromH.contains (state.playerHands[state.getActivePlayer()].get(0)))){
+//
+//            }
             game.sendAction(new RookCardAction(this, 0));
         }
         else if (v == card1){
@@ -925,19 +928,19 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             game.sendAction(new RookCardAction(this, 3));
         }
         else if (v == trumpBlack){
-            game.sendAction(new RookCardAction(this, 4));
+            trumpColor = BLACK;
             trumpAccounce.setText("Black");
         }
         else if (v == trumpYellow){
-            game.sendAction(new RookCardAction(this, 5));
+            trumpColor = YELLOW;
             trumpAccounce.setText("Yellow");
         }
         else if (v == trumpGreen){
-            game.sendAction(new RookCardAction(this, 6));
+            trumpColor = GREEN;
             trumpAccounce.setText("Green");
         }
         else if (v == trumpRed){
-            game.sendAction(new RookCardAction(this, 7));
+            trumpColor = RED;
             trumpAccounce.setText("Red");
         }
         else if (v == addFive){
@@ -968,10 +971,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidAmount.setText("" + myNum);
         }
         else if (v == confirmNest){
-            game.sendAction(new RookCardAction(this, 8));
+            game.sendAction(new RookNestAction(this, fromN, fromH));
         }
-        else if (v == confirmTrump){
-            game.sendAction(new RookCardAction(this, 8));
+        else if (v == confirmTrump && trumpColor > -1){
+            game.sendAction(new RookTrumpAction(this, trumpColor));
 
 //            trumpBlack.setVisibility(View.INVISIBLE);
 //            trumpGreen.setVisibility(View.INVISIBLE);
