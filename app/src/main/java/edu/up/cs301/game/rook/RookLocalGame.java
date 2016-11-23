@@ -135,9 +135,6 @@ public class RookLocalGame extends LocalGame
 
                 if(state.currTrick.size() == 4){
                     int points = state.countTrick();
-
-
-
                 }
             }
 

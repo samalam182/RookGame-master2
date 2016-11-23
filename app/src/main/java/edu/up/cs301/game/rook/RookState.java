@@ -252,9 +252,9 @@ public class RookState extends GameState {
     public void nullHiddenInformation(int playerIdx) {
         for (int i = 0; i < numPlayers; i++) {
             if (i != playerIdx) {
-                playerHands[i].clear();
+                //playerHands[i].clear();
                 for (int j = 0; j < 9; j++) {
-                    playerHands[i].add(null);
+                    //playerHands[i].add(null);
                 }
             }
         }
