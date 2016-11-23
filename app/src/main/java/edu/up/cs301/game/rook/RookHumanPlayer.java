@@ -115,6 +115,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public int delay = 0;
     public int trumpColor = -1;
 
+    public ImageView[] work = new ImageView[9];
+
 
 
     /** constructor
@@ -291,6 +293,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         trick2 = (ImageView) activity.findViewById(R.id.imageView_Trick_1);
         trick3 = (ImageView) activity.findViewById(R.id.imageView_Trick_2);
         trick4 = (ImageView) activity.findViewById(R.id.imageView_Trick_3);
+        trick1.setImageResource(R.drawable.rookcard_back);
+        trick2.setImageResource(R.drawable.rookcard_back);
+        trick3.setImageResource(R.drawable.rookcard_back);
+        trick4.setImageResource(R.drawable.rookcard_back);
 
         lastBidder = (TextView) activity.findViewById(R.id.textView_LastBidder);
 
@@ -913,6 +919,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 card0.setAlpha(100);
             }
             else {
+                Object x = card0.getTag();
+                trick1.setImageResource(R.drawable.rookcard_10b);
                 game.sendAction(new RookCardAction(this, 0));
             }
         }
@@ -974,6 +982,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             else {
                 game.sendAction(new RookCardAction(this, 6));
+
             }
         }
         else if (v == card7){

@@ -131,14 +131,17 @@ public class RookLocalGame extends LocalGame
             int startingPlayer;
             int trickWinner = 0;
             int points = 0;
-            if(state.getSubStage() == PLAY) {
-                if(state.currTrick.size() == 0) {
+            if(state.getSubStage() == PLAY)
+            {
+                if(state.currTrick.size() == 0)
+                {
                     startingPlayer = playerIdxx;
                 }
-
                 RookCardAction act = (RookCardAction) action;
                 int handIdx = act.retButtonNum();
+
                 state.currTrick.add(state.playerHands[playerIdxx].get(handIdx));
+
                 state.playerHands[state.getActivePlayer()].set(handIdx, nullCard);
                 if(state.currTrick.size() == 4)
                 {
@@ -362,6 +365,8 @@ public class RookLocalGame extends LocalGame
 
             }
             state.setScore(points, trickWinner);
+            state.currTrick.clear();
+            state.setPlayer(trickWinner);
 
         }
         else if (action instanceof RookHoldAction)
