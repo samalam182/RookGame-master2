@@ -760,7 +760,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="75"
+                                android:text="0"
                                 android:id="@+id/textView_AmountBid" />
                         </LinearLayout>
 
@@ -820,7 +820,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="80"
+                                android:text="0"
                                 android:id="@+id/textView_YourBid" />
                         </LinearLayout>
 

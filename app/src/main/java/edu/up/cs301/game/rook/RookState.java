@@ -44,7 +44,7 @@ public class RookState extends GameState {
     public int winningBid;
     public int winningPlayer;
     public boolean[] bidPass;
-    private int[] playerBids;
+    private int[] playerBids = new int[numPlayers];
     private int[] playerScores;
     private String[] playerNames;
 
@@ -69,7 +69,10 @@ public class RookState extends GameState {
         trumpSuit = 0;
         winningBid = 0;
         bidPass = new boolean[numPlayers];
-        playerBids = new int[numPlayers];
+        playerBids[0] = 50;
+        playerBids[1] = 0;
+        playerBids[2] = 0;
+        playerBids[3] = 0;
         playerScores = new int[numPlayers];
         playerNames = new String[numPlayers];
         winningPlayer = 0;

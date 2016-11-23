@@ -132,6 +132,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         {
             // there is a game state object, so update the state
             this.state = (RookState)info;
+            updateGUI(state);
         }
     }
 
@@ -344,6 +345,18 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             minusFive.setVisibility(View.VISIBLE);
             bidButton.setVisibility(View.VISIBLE);
             passButton.setVisibility(View.VISIBLE);
+            previousBid.setText("" + state.getHighestBid());
+            previousBid.setVisibility(View.VISIBLE);
+            int possBid = state.getHighestBid() + 5;
+            bidAmount.setText("" + possBid);
+            bidAmount.setVisibility(View.VISIBLE);
+            lastBidder.setVisibility(View.VISIBLE);
+            trumpAccounce.setVisibility(View.VISIBLE);
+            bidTitle.setVisibility(View.VISIBLE);
+            amountTitle.setVisibility(View.VISIBLE);
+            bidShow.setVisibility(View.VISIBLE);
+            bidMainTitle.setVisibility(View.VISIBLE);
+            yourBid.setVisibility(View.VISIBLE);
         }
         else if(s.getSubStage() == NEST){
             nest1.setVisibility(View.VISIBLE);
@@ -631,17 +644,17 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             //state.setSubStage(BID);
             //updateGUI(state);
             correctHandImage(1);
-            bidButton.setVisibility(View.VISIBLE);
-            passButton.setVisibility(View.VISIBLE);
-            minusFive.setVisibility(View.VISIBLE);
-            addFive.setVisibility(View.VISIBLE);
-            bidTitle.setVisibility(View.VISIBLE);
-            lastBidder.setVisibility(View.VISIBLE);
-            amountTitle.setVisibility(View.VISIBLE);
-            bidAmount.setVisibility(View.VISIBLE);
-            bidShow.setVisibility(View.VISIBLE);
-            bidMainTitle.setVisibility(View.VISIBLE);
-            yourBid.setVisibility(View.VISIBLE);
+//            bidButton.setVisibility(View.VISIBLE);
+//            passButton.setVisibility(View.VISIBLE);
+//            minusFive.setVisibility(View.VISIBLE);
+//            addFive.setVisibility(View.VISIBLE);
+//            bidTitle.setVisibility(View.VISIBLE);
+//            lastBidder.setVisibility(View.VISIBLE);
+//            amountTitle.setVisibility(View.VISIBLE);
+//            bidAmount.setVisibility(View.VISIBLE);
+//            bidShow.setVisibility(View.VISIBLE);
+//            bidMainTitle.setVisibility(View.VISIBLE);
+//            yourBid.setVisibility(View.VISIBLE);
             start.setVisibility(View.INVISIBLE);
         }
         else if (v == card0){
@@ -732,12 +745,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         else if (v == confirmTrump){
             game.sendAction(new RookCardAction(this, 8));
 
-            trumpBlack.setVisibility(View.INVISIBLE);
-            trumpGreen.setVisibility(View.INVISIBLE);
-            trumpYellow.setVisibility(View.INVISIBLE);
-            trumpRed.setVisibility(View.INVISIBLE);
-            trumpTitle.setVisibility(View.INVISIBLE);
-            confirmTrump.setVisibility(View.INVISIBLE);
+//            trumpBlack.setVisibility(View.INVISIBLE);
+//            trumpGreen.setVisibility(View.INVISIBLE);
+//            trumpYellow.setVisibility(View.INVISIBLE);
+//            trumpRed.setVisibility(View.INVISIBLE);
+//            trumpTitle.setVisibility(View.INVISIBLE);
+//            confirmTrump.setVisibility(View.INVISIBLE);
 
         }
         else if (v == bidButton){
@@ -746,8 +759,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } catch(NumberFormatException nfe) {
                 System.out.println("Could not parse " + nfe);
             }
-            previousBid.setText("" + myNum);
             game.sendAction(new RookBidAction(this, myNum));
+            previousBid.setText("" + myNum);
 
             lastBidder.setText("Human Player 1");
 
