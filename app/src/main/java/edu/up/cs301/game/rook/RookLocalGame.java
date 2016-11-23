@@ -374,6 +374,14 @@ public class RookLocalGame extends LocalGame
             if(state.getSubStage() == BID) {
                 RookHoldAction act = (RookHoldAction) action;
                 state.setHold(playerIdxx);
+                if (state.finalizeBids())
+                {
+                    state.setSubStage(NEST);
+                    state.setPlayer(state.winningPlayer);
+                    return true;
+
+                }
+                state.setPlayer();
             }
         }
         else if (action instanceof RookNestAction)

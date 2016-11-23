@@ -13,13 +13,11 @@ import static java.lang.reflect.Array.getInt;
 /**
  * Created by hoser18 on 11/8/2016.
  */
-public class dRookComputerPlayer extends RookComputerPlayer
-{
+public class dRookComputerPlayer extends RookComputerPlayer {
     /**
      * constructor for the dRookComputerPlayer class
      */
-    public dRookComputerPlayer(String name)
-    {
+    public dRookComputerPlayer(String name) {
         // creates a computer player whose average reaction time is one second
         super(name, 2.0);
     }
@@ -27,16 +25,14 @@ public class dRookComputerPlayer extends RookComputerPlayer
     /**
      * called when we receive a message, typically from the game
      */
-    protected void receiveInfo(GameInfo info)
-    {
+    protected void receiveInfo(GameInfo info) {
         // if there is no game state, ignore it
-        if (!(info instanceof RookState))
-        {
+        if (!(info instanceof RookState)) {
             return;
         }
 
         // update the game state
-        savedState = (RookState)info;
+        savedState = (RookState) info;
 
         // the dumb computer player makes a move based on what subStage the game is in
 
@@ -48,26 +44,24 @@ public class dRookComputerPlayer extends RookComputerPlayer
             } else if (savedState.getSubStage() == savedState.BID) {
                 Log.i("Reached bidding stage", "" + this.playerNum);
                 // the dumb computer player will randomly decide to bid or pass
-                double randSelection = Math.random();
+                int randSelection = (int)Math.random()*10;
 
-                if (randSelection < 0.5) {
+                if (randSelection < 5) {
                     // when randSelection is less than 0.5, the dumb computer player will pass
                     game.sendAction(new RookHoldAction(this));
                     Log.i("Sent hold action", "" + this.playerNum);
                 } else {
                     // when randSelection is more than 0.5, the dumb computer player will bid
 
-                    int randBidVal = (int)Math.random()*10;
+                    int randBidVal = (int) Math.random() * 10;
 
-                    int addBid;
-                    {
-                        if (randBidVal <= 3) {
-                            addBid = 0;
-                        } else if (randBidVal > 3 && randBidVal <= 6) {
-                            addBid = 5;
-                        } else {
-                            addBid = 10;
-                        }
+                    int addBid = 0;
+
+                    if (randBidVal <= 5) {
+                        addBid = 5;
+                    } else if (randBidVal >= 6) {
+                        addBid = 10;
+
                     }
 
 
@@ -79,6 +73,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
                     game.sendAction(new RookBidAction(this, myBid));
                     Log.i("Sent Bid Action", "" + this.playerNum + "," + myBid);
                 }
+
             } else if (savedState.getSubStage() == savedState.NEST) {
                 // the dumb computer player will randomly select 5 cards from their hand to place
                 // into the nest
