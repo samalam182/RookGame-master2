@@ -117,6 +117,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     public ImageView[] work = new ImageView[9];
 
+    public TextView humanPoints;
 
 
     /** constructor
@@ -354,6 +355,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         bidMainTitle.setVisibility(View.INVISIBLE);
         yourBid.setVisibility(View.INVISIBLE);
         //updateGUI(state);
+
+        humanPoints = (TextView) activity.findViewById(R.id.textView_HumanTotalPoints);
     }
 
     public void updateGUI(RookState s){
@@ -458,7 +461,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             trick3.setVisibility(View.VISIBLE);
             trick4.setVisibility(View.VISIBLE);
 
-            correctHandImage(3);
         }
     }
 
@@ -902,7 +904,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
             Card getting;
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < state.currTrick.size(); i++)
             {
                 // gets the card we're looking for. [0] = only player one.
                 // for future human players, needs to be another look per player
@@ -1135,7 +1137,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             else {
                 //state.currTrick.set(0, )
+                putCardInTrick(0);
                 game.sendAction(new RookCardAction(this, 0));
+                card0.setVisibility(View.INVISIBLE);
             }
         }
         else if (v == card1){
@@ -1145,7 +1149,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 card1.setAlpha(100);
             }
             else {
+                putCardInTrick(1);
                 game.sendAction(new RookCardAction(this, 1));
+                card1.setVisibility(View.INVISIBLE);
             }
         }
         else if (v == card2){
@@ -1155,7 +1161,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 card2.setAlpha(100);
             }
             else {
+                putCardInTrick(2);
                 game.sendAction(new RookCardAction(this, 2));
+                card2.setVisibility(View.INVISIBLE);
             }
         }
         else if (v == card3){
@@ -1165,7 +1173,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 card3.setAlpha(100);
             }
             else {
+                putCardInTrick(3);
                 game.sendAction(new RookCardAction(this, 3));
+                card3.setVisibility(View.INVISIBLE);
             }
         }
         else if (v == card4){
@@ -1175,7 +1185,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 card4.setAlpha(100);
             }
             else {
+                putCardInTrick(4);
                 game.sendAction(new RookCardAction(this, 4));
+                card4.setVisibility(View.INVISIBLE);
             }
         }
         else if (v == card5){
@@ -1185,7 +1197,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 card5.setAlpha(100);
             }
             else {
+                putCardInTrick(5);
                 game.sendAction(new RookCardAction(this, 5));
+                card5.setVisibility(View.INVISIBLE);
             }
         }
         else if (v == card6){
@@ -1195,8 +1209,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 card6.setAlpha(100);
             }
             else {
+                putCardInTrick(6);
                 game.sendAction(new RookCardAction(this, 6));
-
+                card6.setVisibility(View.INVISIBLE);
             }
         }
         else if (v == card7){
@@ -1206,7 +1221,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 card7.setAlpha(100);
             }
             else {
+                putCardInTrick(7);
                 game.sendAction(new RookCardAction(this, 7));
+                card7.setVisibility(View.INVISIBLE);
             }
         }
         else if (v == card8){
@@ -1216,7 +1233,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 card8.setAlpha(100);
             }
             else {
+                putCardInTrick(8);
                 game.sendAction(new RookCardAction(this, 8));
+                card8.setVisibility(View.INVISIBLE);
             }
         }
         else if (v == nest1){
@@ -1392,5 +1411,686 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     {
         // 1/20 of a second
         return 50;
+    }
+
+        public void putCardInTrick(int position)
+        {
+            trick1.setVisibility(View.VISIBLE);
+            trick2.setVisibility(View.VISIBLE);
+            trick3.setVisibility(View.VISIBLE);
+            trick4.setVisibility(View.VISIBLE);
+
+            ImageButton[] card = {card0, card1, card2, card3, card4, card5, card6, card7, card8};
+            card[position].setImageResource(R.drawable.rookcard_back);
+
+            for (int i = 0; i < 4; i++)
+            {
+                Card getting = state.playerHands[i].get(position);
+
+                if (i == 0)
+                {
+                    setCard(getting, 0);
+                }
+                else if (i == 1)
+                {
+                    setCard(getting, 1);
+                }
+                else if (i == 2)
+                {
+                    setCard(getting, 2);
+                }
+                else if (i == 3)
+                {
+                    setCard(getting, 3);
+                }
+            }
+        }
+
+        public void setCard(Card getting, int trickNum)
+        {
+            ImageView[] trick = {trick1, trick2, trick3, trick4};
+
+            if (trickNum == 0) {
+                if (getting.getNumValue() == 5) {
+                    if (getting.getSuit() == 0) {
+                        trick[0].setImageResource(R.drawable.rookcard_5b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[0].setImageResource(R.drawable.rookcard_5r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[0].setImageResource(R.drawable.rookcard_5y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[0].setImageResource(R.drawable.rookcard_5g);
+                    }
+                } else if (getting.getNumValue() == 6) {
+                    if (getting.getSuit() == 0) {
+                        trick[0].setImageResource(R.drawable.rookcard_6b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[0].setImageResource(R.drawable.rookcard_6r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[0].setImageResource(R.drawable.rookcard_6y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[0].setImageResource(R.drawable.rookcard_6g);
+                    }
+                } else if (getting.getNumValue() == 7) {
+                    if (getting.getSuit() == 0) {
+                        trick[0].setImageResource(R.drawable.rookcard_7b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[0].setImageResource(R.drawable.rookcard_7r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[0].setImageResource(R.drawable.rookcard_7y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[0].setImageResource(R.drawable.rookcard_7g);
+                    }
+                } else if (getting.getNumValue() == 8) {
+                    if (getting.getSuit() == 0) {
+                        trick[0].setImageResource(R.drawable.rookcard_8b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[0].setImageResource(R.drawable.rookcard_8r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[0].setImageResource(R.drawable.rookcard_8y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[0].setImageResource(R.drawable.rookcard_8g);
+                    }
+                } else if (getting.getNumValue() == 9) {
+                    if (getting.getSuit() == 0) {
+                        trick[0].setImageResource(R.drawable.rookcard_9b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[0].setImageResource(R.drawable.rookcard_9r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[0].setImageResource(R.drawable.rookcard_9y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[0].setImageResource(R.drawable.rookcard_9g);
+                    }
+                } else if (getting.getNumValue() == 10) {
+                    if (getting.getSuit() == 0) {
+                        trick[0].setImageResource(R.drawable.rookcard_10b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[0].setImageResource(R.drawable.rookcard_10r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[0].setImageResource(R.drawable.rookcard_10y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[0].setImageResource(R.drawable.rookcard_10g);
+                    }
+                } else if (getting.getNumValue() == 11) {
+                    if (getting.getSuit() == 0) {
+                        trick[0].setImageResource(R.drawable.rookcard_11b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[0].setImageResource(R.drawable.rookcard_11r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[0].setImageResource(R.drawable.rookcard_11y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[0].setImageResource(R.drawable.rookcard_11g);
+                    }
+                } else if (getting.getNumValue() == 12) {
+                    if (getting.getSuit() == 0) {
+                        trick[0].setImageResource(R.drawable.rookcard_12b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[0].setImageResource(R.drawable.rookcard_12r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[0].setImageResource(R.drawable.rookcard_12y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[0].setImageResource(R.drawable.rookcard_12g);
+                    }
+                } else if (getting.getNumValue() == 13) {
+                    if (getting.getSuit() == 0) {
+                        trick[0].setImageResource(R.drawable.rookcard_13b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[0].setImageResource(R.drawable.rookcard_13r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[0].setImageResource(R.drawable.rookcard_13y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[0].setImageResource(R.drawable.rookcard_13g);
+                    }
+                } else if (getting.getNumValue() == 14) {
+                    if (getting.getSuit() == 0) {
+                        trick[0].setImageResource(R.drawable.rookcard_14b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[0].setImageResource(R.drawable.rookcard_14r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[0].setImageResource(R.drawable.rookcard_14y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[0].setImageResource(R.drawable.rookcard_14g);
+                    }
+                } else if (getting.getNumValue() == 15) {
+                    trick[0].setImageResource(R.drawable.rookcard_rook);
+                }
+            }
+            if (trickNum == 1) {
+                if (getting.getNumValue() == 5) {
+                    if (getting.getSuit() == 0) {
+                        trick[1].setImageResource(R.drawable.rookcard_5b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[1].setImageResource(R.drawable.rookcard_5r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[1].setImageResource(R.drawable.rookcard_5y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[1].setImageResource(R.drawable.rookcard_5g);
+                    }
+                } else if (getting.getNumValue() == 6) {
+                    if (getting.getSuit() == 0) {
+                        trick[1].setImageResource(R.drawable.rookcard_6b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[1].setImageResource(R.drawable.rookcard_6r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[1].setImageResource(R.drawable.rookcard_6y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[1].setImageResource(R.drawable.rookcard_6g);
+                    }
+                } else if (getting.getNumValue() == 7) {
+                    if (getting.getSuit() == 0) {
+                        trick[1].setImageResource(R.drawable.rookcard_7b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[1].setImageResource(R.drawable.rookcard_7r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[1].setImageResource(R.drawable.rookcard_7y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[1].setImageResource(R.drawable.rookcard_7g);
+                    }
+                } else if (getting.getNumValue() == 8) {
+                    if (getting.getSuit() == 0) {
+                        trick[1].setImageResource(R.drawable.rookcard_8b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[1].setImageResource(R.drawable.rookcard_8r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[1].setImageResource(R.drawable.rookcard_8y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[1].setImageResource(R.drawable.rookcard_8g);
+                    }
+                } else if (getting.getNumValue() == 9) {
+                    if (getting.getSuit() == 0) {
+                        trick[1].setImageResource(R.drawable.rookcard_9b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[1].setImageResource(R.drawable.rookcard_9r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[1].setImageResource(R.drawable.rookcard_9y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[1].setImageResource(R.drawable.rookcard_9g);
+                    }
+                } else if (getting.getNumValue() == 10) {
+                    if (getting.getSuit() == 0) {
+                        trick[1].setImageResource(R.drawable.rookcard_10b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[1].setImageResource(R.drawable.rookcard_10r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[1].setImageResource(R.drawable.rookcard_10y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[1].setImageResource(R.drawable.rookcard_10g);
+                    }
+                } else if (getting.getNumValue() == 11) {
+                    if (getting.getSuit() == 0) {
+                        trick[1].setImageResource(R.drawable.rookcard_11b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[1].setImageResource(R.drawable.rookcard_11r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[1].setImageResource(R.drawable.rookcard_11y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[1].setImageResource(R.drawable.rookcard_11g);
+                    }
+                } else if (getting.getNumValue() == 12) {
+                    if (getting.getSuit() == 0) {
+                        trick[1].setImageResource(R.drawable.rookcard_12b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[1].setImageResource(R.drawable.rookcard_12r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[1].setImageResource(R.drawable.rookcard_12y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[1].setImageResource(R.drawable.rookcard_12g);
+                    }
+                } else if (getting.getNumValue() == 13) {
+                    if (getting.getSuit() == 0) {
+                        trick[1].setImageResource(R.drawable.rookcard_13b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[1].setImageResource(R.drawable.rookcard_13r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[1].setImageResource(R.drawable.rookcard_13y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[1].setImageResource(R.drawable.rookcard_13g);
+                    }
+                } else if (getting.getNumValue() == 14) {
+                    if (getting.getSuit() == 0) {
+                        trick[1].setImageResource(R.drawable.rookcard_14b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[1].setImageResource(R.drawable.rookcard_14r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[1].setImageResource(R.drawable.rookcard_14y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[1].setImageResource(R.drawable.rookcard_14g);
+                    }
+                } else if (getting.getNumValue() == 15) {
+                    trick[1].setImageResource(R.drawable.rookcard_rook);
+                }
+            }
+            if (trickNum == 2) {
+                if (getting.getNumValue() == 5) {
+                    if (getting.getSuit() == 0) {
+                        trick[2].setImageResource(R.drawable.rookcard_5b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[2].setImageResource(R.drawable.rookcard_5r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[2].setImageResource(R.drawable.rookcard_5y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[2].setImageResource(R.drawable.rookcard_5g);
+                    }
+                } else if (getting.getNumValue() == 6) {
+                    if (getting.getSuit() == 0) {
+                        trick[2].setImageResource(R.drawable.rookcard_6b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[2].setImageResource(R.drawable.rookcard_6r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[2].setImageResource(R.drawable.rookcard_6y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[2].setImageResource(R.drawable.rookcard_6g);
+                    }
+                } else if (getting.getNumValue() == 7) {
+                    if (getting.getSuit() == 0) {
+                        trick[2].setImageResource(R.drawable.rookcard_7b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[2].setImageResource(R.drawable.rookcard_7r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[2].setImageResource(R.drawable.rookcard_7y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[2].setImageResource(R.drawable.rookcard_7g);
+                    }
+                } else if (getting.getNumValue() == 8) {
+                    if (getting.getSuit() == 0) {
+                        trick[2].setImageResource(R.drawable.rookcard_8b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[2].setImageResource(R.drawable.rookcard_8r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[2].setImageResource(R.drawable.rookcard_8y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[2].setImageResource(R.drawable.rookcard_8g);
+                    }
+                } else if (getting.getNumValue() == 9) {
+                    if (getting.getSuit() == 0) {
+                        trick[2].setImageResource(R.drawable.rookcard_9b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[2].setImageResource(R.drawable.rookcard_9r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[2].setImageResource(R.drawable.rookcard_9y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[2].setImageResource(R.drawable.rookcard_9g);
+                    }
+                } else if (getting.getNumValue() == 10) {
+                    if (getting.getSuit() == 0) {
+                        trick[2].setImageResource(R.drawable.rookcard_10b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[2].setImageResource(R.drawable.rookcard_10r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[2].setImageResource(R.drawable.rookcard_10y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[2].setImageResource(R.drawable.rookcard_10g);
+                    }
+                } else if (getting.getNumValue() == 11) {
+                    if (getting.getSuit() == 0) {
+                        trick[2].setImageResource(R.drawable.rookcard_11b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[2].setImageResource(R.drawable.rookcard_11r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[2].setImageResource(R.drawable.rookcard_11y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[2].setImageResource(R.drawable.rookcard_11g);
+                    }
+                } else if (getting.getNumValue() == 12) {
+                    if (getting.getSuit() == 0) {
+                        trick[2].setImageResource(R.drawable.rookcard_12b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[2].setImageResource(R.drawable.rookcard_12r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[2].setImageResource(R.drawable.rookcard_12y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[2].setImageResource(R.drawable.rookcard_12g);
+                    }
+                } else if (getting.getNumValue() == 13) {
+                    if (getting.getSuit() == 0) {
+                        trick[2].setImageResource(R.drawable.rookcard_13b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[2].setImageResource(R.drawable.rookcard_13r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[2].setImageResource(R.drawable.rookcard_13y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[2].setImageResource(R.drawable.rookcard_13g);
+                    }
+                } else if (getting.getNumValue() == 14) {
+                    if (getting.getSuit() == 0) {
+                        trick[2].setImageResource(R.drawable.rookcard_14b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[2].setImageResource(R.drawable.rookcard_14r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[2].setImageResource(R.drawable.rookcard_14y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[2].setImageResource(R.drawable.rookcard_14g);
+                    }
+                } else if (getting.getNumValue() == 15) {
+                    trick[2].setImageResource(R.drawable.rookcard_rook);
+                }
+            }
+            if (trickNum == 3) {
+                if (getting.getNumValue() == 5) {
+                    if (getting.getSuit() == 0) {
+                        trick[3].setImageResource(R.drawable.rookcard_5b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[3].setImageResource(R.drawable.rookcard_5r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[3].setImageResource(R.drawable.rookcard_5y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[3].setImageResource(R.drawable.rookcard_5g);
+                    }
+                } else if (getting.getNumValue() == 6) {
+                    if (getting.getSuit() == 0) {
+                        trick[3].setImageResource(R.drawable.rookcard_6b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[3].setImageResource(R.drawable.rookcard_6r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[3].setImageResource(R.drawable.rookcard_6y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[3].setImageResource(R.drawable.rookcard_6g);
+                    }
+                } else if (getting.getNumValue() == 7) {
+                    if (getting.getSuit() == 0) {
+                        trick[3].setImageResource(R.drawable.rookcard_7b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[3].setImageResource(R.drawable.rookcard_7r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[3].setImageResource(R.drawable.rookcard_7y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[3].setImageResource(R.drawable.rookcard_7g);
+                    }
+                } else if (getting.getNumValue() == 8) {
+                    if (getting.getSuit() == 0) {
+                        trick[3].setImageResource(R.drawable.rookcard_8b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[3].setImageResource(R.drawable.rookcard_8r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[3].setImageResource(R.drawable.rookcard_8y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[3].setImageResource(R.drawable.rookcard_8g);
+                    }
+                } else if (getting.getNumValue() == 9) {
+                    if (getting.getSuit() == 0) {
+                        trick[3].setImageResource(R.drawable.rookcard_9b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[3].setImageResource(R.drawable.rookcard_9r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[3].setImageResource(R.drawable.rookcard_9y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[3].setImageResource(R.drawable.rookcard_9g);
+                    }
+                } else if (getting.getNumValue() == 10) {
+                    if (getting.getSuit() == 0) {
+                        trick[3].setImageResource(R.drawable.rookcard_10b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[3].setImageResource(R.drawable.rookcard_10r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[3].setImageResource(R.drawable.rookcard_10y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[3].setImageResource(R.drawable.rookcard_10g);
+                    }
+                } else if (getting.getNumValue() == 11) {
+                    if (getting.getSuit() == 0) {
+                        trick[3].setImageResource(R.drawable.rookcard_11b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[3].setImageResource(R.drawable.rookcard_11r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[3].setImageResource(R.drawable.rookcard_11y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[3].setImageResource(R.drawable.rookcard_11g);
+                    }
+                } else if (getting.getNumValue() == 12) {
+                    if (getting.getSuit() == 0) {
+                        trick[3].setImageResource(R.drawable.rookcard_12b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[3].setImageResource(R.drawable.rookcard_12r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[3].setImageResource(R.drawable.rookcard_12y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[3].setImageResource(R.drawable.rookcard_12g);
+                    }
+                } else if (getting.getNumValue() == 13) {
+                    if (getting.getSuit() == 0) {
+                        trick[3].setImageResource(R.drawable.rookcard_13b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[3].setImageResource(R.drawable.rookcard_13r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[3].setImageResource(R.drawable.rookcard_13y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[3].setImageResource(R.drawable.rookcard_13g);
+                    }
+                } else if (getting.getNumValue() == 14) {
+                    if (getting.getSuit() == 0) {
+                        trick[3].setImageResource(R.drawable.rookcard_14b);
+                    } else if (getting.getSuit() == 1) {
+                        trick[3].setImageResource(R.drawable.rookcard_14r);
+                    } else if (getting.getSuit() == 2) {
+                        trick[3].setImageResource(R.drawable.rookcard_14y);
+                    } else if (getting.getSuit() == 3) {
+                        trick[3].setImageResource(R.drawable.rookcard_14g);
+                    }
+                } else if (getting.getNumValue() == 15) {
+                    trick[3].setImageResource(R.drawable.rookcard_rook);
+                }
+            }
+        }
+
+    public void score()
+    {
+        int points = state.countTrick();
+        Card first = state.currTrick.get(0);
+        int firstCardVal = first.getNumValue();
+        int firstCardSuit = first.getSuit();
+        int currTrump = state.getTrump();
+        Card domCard;
+
+        int trickWinner = 0;
+        int ranking = 1000;
+        int counter = 0;
+        for (Card cards : state.currTrick )
+        {
+            if (cards.getNumValue() == 15)
+            {
+                trickWinner = counter;
+                ranking = 1;
+            }
+            else if (cards.getSuit() == currTrump && cards.getNumValue() == 14)
+            {
+                if (ranking > 1)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 2;
+                }
+            }
+            else if (cards.getSuit() == currTrump && cards.getNumValue() == 13)
+            {
+                if (ranking > 2)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 3;
+                }
+            }
+            else if (cards.getSuit() == currTrump && cards.getNumValue() == 12)
+            {
+                if (ranking > 3)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 4;
+                }
+            }
+            else if (cards.getSuit() == currTrump && cards.getNumValue() == 11)
+            {
+                if (ranking > 4)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 5;
+                }
+            }
+            else if (cards.getSuit() == currTrump && cards.getNumValue() == 10)
+            {
+                if (ranking > 5)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 6;
+                }
+            }
+            else if (cards.getSuit() == currTrump && cards.getNumValue() == 9)
+            {
+                if (ranking > 6)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 7;
+                }
+            }
+            else if (cards.getSuit() == currTrump && cards.getNumValue() == 8)
+            {
+                if (ranking > 7)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 8;
+                }
+            }
+            else if (cards.getSuit() == currTrump && cards.getNumValue() == 7)
+            {
+                if (ranking > 8)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 9;
+                }
+            }
+            else if (cards.getSuit() == currTrump && cards.getNumValue() == 6)
+            {
+                if (ranking > 9)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 10;
+                }
+            }
+            else if (cards.getSuit() == currTrump && cards.getNumValue() == 5)
+            {
+                if (ranking > 10)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 11;
+                }
+            }
+            else if (cards.getSuit() == currTrump && cards.getNumValue() == 4)
+            {
+                if (ranking > 11)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 12;
+                }
+            }
+            else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 14)
+            {
+                if (ranking > 12)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 13;
+                }
+            }
+            else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 13)
+            {
+                if (ranking > 13)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 14;
+                }
+            }
+            else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 12)
+            {
+                if (ranking > 14)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 15;
+                }
+            }
+            else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 11)
+            {
+                if (ranking > 15)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 16;
+                }
+            }
+            else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 10)
+            {
+                if (ranking > 16)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 17;
+                }
+            }
+            else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 9)
+            {
+                if (ranking > 17)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 18;
+                }
+            }
+            else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 8)
+            {
+                if (ranking > 18)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 19;
+                }
+            }
+            else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 7)
+            {
+                if (ranking > 19)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 20;
+                }
+            }
+            else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 6)
+            {
+                if (ranking > 20)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 21;
+                }
+            }
+            else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 5)
+            {
+                if (ranking > 21)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 22;
+                }
+            }
+            else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 4)
+            {
+                if (ranking > 22)
+                {
+                    trickWinner = counter;
+                    counter++;
+                    ranking = 23;
+                }
+            }
+        }
+
+        humanPoints.setText(points);
     }
 }
