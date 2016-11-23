@@ -42,7 +42,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
 
         //savedState.setSubStage(1);
 
-        if (this.playerNum == 1) {
+        if (this.playerNum == savedState.getActivePlayer()) {
             if (savedState.getSubStage() == savedState.WAIT) {
                 return;
             } else if (savedState.getSubStage() == savedState.BID) {
@@ -75,7 +75,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
                     Log.i("Previous bid", "" + prevBid);
 
                     //int myBid = prevBid + addBid;
-                    int myBid = 100;
+                    int myBid = savedState.getHighestBid() + addBid;
                     game.sendAction(new RookBidAction(this, myBid));
                     Log.i("Sent Bid Action", "" + this.playerNum + "," + myBid);
                 }
