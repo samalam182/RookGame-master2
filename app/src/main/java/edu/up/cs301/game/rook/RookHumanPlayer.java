@@ -374,6 +374,17 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             minusFive.setVisibility(View.INVISIBLE);
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
+            bidButton.setVisibility(View.INVISIBLE);
+            passButton.setVisibility(View.INVISIBLE);
+            minusFive.setVisibility(View.INVISIBLE);
+            addFive.setVisibility(View.INVISIBLE);
+            bidTitle.setVisibility(View.INVISIBLE);
+            lastBidder.setVisibility(View.INVISIBLE);
+            amountTitle.setVisibility(View.INVISIBLE);
+            bidAmount.setVisibility(View.INVISIBLE);
+            bidShow.setVisibility(View.INVISIBLE);
+            bidMainTitle.setVisibility(View.INVISIBLE);
+            yourBid.setVisibility(View.INVISIBLE);
             correctHandImage(2);
         }
         else if(s.getSubStage() == TRUMP){
