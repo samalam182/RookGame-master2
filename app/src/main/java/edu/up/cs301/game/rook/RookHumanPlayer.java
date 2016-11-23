@@ -317,6 +317,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 //        bidShow.setVisibility(View.INVISIBLE);
 //        bidMainTitle.setVisibility(View.INVISIBLE);
 //        yourBid.setVisibility(View.INVISIBLE);
+        //updateGUI(state);
 
 
     }
@@ -631,18 +632,20 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
         else if( v == start)
         {
+            state.setSubStage(BID);
             correctHandImage(1);
-            bidButton.setVisibility(View.VISIBLE);
-            passButton.setVisibility(View.VISIBLE);
-            minusFive.setVisibility(View.VISIBLE);
-            addFive.setVisibility(View.VISIBLE);
-            bidTitle.setVisibility(View.VISIBLE);
-            lastBidder.setVisibility(View.VISIBLE);
-            amountTitle.setVisibility(View.VISIBLE);
-            bidAmount.setVisibility(View.VISIBLE);
-            bidShow.setVisibility(View.VISIBLE);
-            bidMainTitle.setVisibility(View.VISIBLE);
-            yourBid.setVisibility(View.VISIBLE);
+            updateGUI(state);
+//            bidButton.setVisibility(View.VISIBLE);
+//            passButton.setVisibility(View.VISIBLE);
+//            minusFive.setVisibility(View.VISIBLE);
+//            addFive.setVisibility(View.VISIBLE);
+//            bidTitle.setVisibility(View.VISIBLE);
+//            lastBidder.setVisibility(View.VISIBLE);
+//            amountTitle.setVisibility(View.VISIBLE);
+//            bidAmount.setVisibility(View.VISIBLE);
+//            bidShow.setVisibility(View.VISIBLE);
+//            bidMainTitle.setVisibility(View.VISIBLE);
+//            yourBid.setVisibility(View.VISIBLE);
         }
         else if (v == card0){
             game.sendAction(new RookCardAction(this, 0));
@@ -727,9 +730,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidAmount.setText("" + myNum);
         }
         else if (v == confirmNest){
+            updateGUI(state);
             game.sendAction(new RookCardAction(this, 8));
         }
         else if (v == confirmTrump){
+            updateGUI(state);
             game.sendAction(new RookCardAction(this, 8));
 
             trumpBlack.setVisibility(View.INVISIBLE);
@@ -750,9 +755,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             game.sendAction(new RookBidAction(this, myNum));
 
             lastBidder.setText("Human Player 1");
+            updateGUI(state);
 
         }
         else if (v == passButton){
+            updateGUI(state);
             game.sendAction(new RookHoldAction(this));
         }
     }
