@@ -24,12 +24,12 @@
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\src\\main\\res\\drawable-hdpi\\purple_delete_button.png"
     },
     {
-        "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_td.png",
-        "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\src\\main\\res\\drawable-hdpi\\card_td.png"
-    },
-    {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_4h.png",
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\src\\main\\res\\drawable-hdpi\\card_4h.png"
+    },
+    {
+        "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_td.png",
+        "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\src\\main\\res\\drawable-hdpi\\card_td.png"
     },
     {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_3d.png",
@@ -260,12 +260,12 @@
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\src\\main\\res\\drawable-hdpi\\rookcard_11b.png"
     },
     {
-        "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_8s.png",
-        "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\src\\main\\res\\drawable-hdpi\\card_8s.png"
-    },
-    {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_jd.png",
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\src\\main\\res\\drawable-hdpi\\card_jd.png"
+    },
+    {
+        "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_8s.png",
+        "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\src\\main\\res\\drawable-hdpi\\card_8s.png"
     },
     {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\rookcard_12g.png",

@@ -49,7 +49,7 @@ public class RookState extends GameState {
     private String[] playerNames;
 
     public RookState() {
-        subStage = WAIT;
+        subStage = BID;
         currPlayer = 0;
         playerZeroHand = new ArrayList<Card>(9);
         playerOneHand = new ArrayList<Card>(9);
@@ -270,9 +270,12 @@ public class RookState extends GameState {
     }
 
     public void setPlayer() {
-        if (currPlayer == 3) {
+        if (currPlayer == 3)
+        {
             currPlayer = 0;
-        } else {
+        }
+        else
+        {
             currPlayer++;
         }
     }

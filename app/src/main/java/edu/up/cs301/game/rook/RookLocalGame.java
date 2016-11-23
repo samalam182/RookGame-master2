@@ -108,8 +108,13 @@ public class RookLocalGame extends LocalGame
                 RookBidAction act = (RookBidAction) action;
                 int playBid = act.getBid();
                 state.setBid(playBid, playerIdx);
-                if (state.finalizeBids()) {
+                if (state.finalizeBids())
+                {
                     state.setSubStage(NEST);
+                }
+                else
+                {
+                    state.setPlayer();
                 }
             }
 
