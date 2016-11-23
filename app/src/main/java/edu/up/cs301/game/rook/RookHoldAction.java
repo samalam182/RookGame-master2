@@ -11,7 +11,9 @@ public class RookHoldAction extends GameAction{
      *
      * @param player the player who created the action
      */
-    public RookHoldAction(GamePlayer player) {
+    public RookHoldAction(GamePlayer player)
+
+    {
         super(player);
     }
 }

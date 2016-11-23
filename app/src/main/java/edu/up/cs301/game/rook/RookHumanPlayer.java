@@ -7,7 +7,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -68,6 +71,15 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public Button passButton;
     public TextView bidAmount;
     public TextView previousBid;
+
+    public TextView trumpTitle;
+    public TextView nestTitle;
+    public ImageView trick1;
+    public ImageView trick2;
+    public ImageView trick3;
+    public ImageView trick4;
+    public TextView lastBidder;
+
 
 
     /** constructor
@@ -141,6 +153,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         //  animate the UI
         activity = newActivity;
         newActivity.setContentView(R.layout.rook_human_player);
+
         surface = (AnimationSurface) activity.findViewById(R.id.animation_surface);
         surface.setAnimator(this);
 
@@ -178,6 +191,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         card8 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_8));
         card8.setOnClickListener(this);
 
+        nestTitle = (TextView) activity.findViewById(R.id.textView_NestLabel);
+        nestTitle.setOnClickListener(this);
+
         nest1 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_0));
         nest1.setOnClickListener(this);
 
@@ -192,6 +208,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
         nest5 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_4));
         nest5.setOnClickListener(this);
+
+        trumpTitle = (TextView) activity.findViewById(R.id.textView_TrumpSuitLabel);
+        trumpTitle.setOnClickListener(this);
 
         trumpBlack = (ImageButton) activity.findViewById((R.id.imageButton_ChooseTrump_BlackMoon));
         trumpBlack.setOnClickListener(this);
@@ -226,6 +245,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         bidAmount = (TextView) activity.findViewById(R.id.textView_YourBid);
 
         previousBid = (TextView) activity.findViewById(R.id.textView_AmountBid);
+
+        trick1 = (ImageView) activity.findViewById(R.id.imageView_Trick_0);
+        trick2 = (ImageView) activity.findViewById(R.id.imageView_Trick_1);
+        trick3 = (ImageView) activity.findViewById(R.id.imageView_Trick_2);
+        trick4 = (ImageView) activity.findViewById(R.id.imageView_Trick_3);
+
+        lastBidder = (TextView) activity.findViewById(R.id.textView_LastBidder);
 
         card0.setImageResource(R.drawable.rookcard_back);
         card1.setImageResource(R.drawable.rookcard_back);
@@ -471,6 +497,23 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         else if( v == start)
         {
             correctHandImage(1);
+            trumpBlack.setVisibility(View.INVISIBLE);
+            trumpGreen.setVisibility(View.INVISIBLE);
+            trumpYellow.setVisibility(View.INVISIBLE);
+            trumpRed.setVisibility(View.INVISIBLE);
+            confirmNest.setVisibility(View.INVISIBLE);
+            confirmTrump.setVisibility(View.INVISIBLE);
+            nest1.setVisibility(View.INVISIBLE);
+            nest2.setVisibility(View.INVISIBLE);
+            nest3.setVisibility(View.INVISIBLE);
+            nest4.setVisibility(View.INVISIBLE);
+            nest5.setVisibility(View.INVISIBLE);
+            trumpTitle.setVisibility(View.INVISIBLE);
+            nestTitle.setVisibility(View.INVISIBLE);
+            trick1.setVisibility(View.INVISIBLE);
+            trick2.setVisibility(View.INVISIBLE);
+            trick3.setVisibility(View.INVISIBLE);
+            trick4.setVisibility(View.INVISIBLE);
         }
         else if (v == card0){
             game.sendAction(new RookCardAction(this, 0));
@@ -564,6 +607,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             previousBid.setText("" + myNum);
             game.sendAction(new RookBidAction(this, myNum));
+
+            lastBidder.setText("Human Player 1");
+
         }
         else if (v == passButton){
             game.sendAction(new RookHoldAction(this));

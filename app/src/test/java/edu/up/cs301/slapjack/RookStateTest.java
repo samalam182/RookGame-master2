@@ -34,7 +34,7 @@ public class RookStateTest {
     @org.junit.Test
     public void testShuffle() throws Exception {
         RookState rookState = new RookState();
-        rookState.shuffle();
+        //rookState.shuffle();
 
         for(int j = 0; j<4; j++) {
             for (int i = 0; i < 9; i++) {
