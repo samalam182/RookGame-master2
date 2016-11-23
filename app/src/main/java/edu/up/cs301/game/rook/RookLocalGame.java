@@ -85,13 +85,7 @@ public class RookLocalGame extends LocalGame
             return "Player 4 is the winner!";
         }
 
-        // if all the scores are under 200
-        if (state.getScore(0) < 200 && state.getScore(1) < 200 && state.getScore(2) < 200 && state.getScore(3) < 200)
-        {
-            return "End of this round. Prepare for the next.";
-        }
-
-        return "";
+        return null;
     }
 
 

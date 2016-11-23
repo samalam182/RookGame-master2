@@ -560,6 +560,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidShow.setVisibility(View.VISIBLE);
             bidMainTitle.setVisibility(View.VISIBLE);
             yourBid.setVisibility(View.VISIBLE);
+            start.setVisibility(View.INVISIBLE);
         }
         else if (v == card0){
             game.sendAction(new RookCardAction(this, 0));

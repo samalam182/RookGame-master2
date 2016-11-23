@@ -1,14 +1,6 @@
 [
     {
-        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\counter_human_player.xml",
-        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout-land\\counter_human_player.xml"
-    },
-    {
         "merged": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\counter_human_player.xml",
         "source": "C:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master234\\app\\src\\main\\res\\layout-land\\counter_human_player.xml"
-    },
-    {
-        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\counter_human_player.xml",
-        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout-land\\counter_human_player.xml"
     }
 ]
