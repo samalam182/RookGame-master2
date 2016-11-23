@@ -44,7 +44,7 @@ public class RookLocalGame extends LocalGame
 
         // creates a rook state that will contain only the player's
         // imformation that s/he should know
-        RookState editedState = new RookState();
+        RookState editedState = new RookState(state);
         //editedState.nullHiddenInformation(state.getActivePlayer());
         p.sendInfo(editedState);
     }
