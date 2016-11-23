@@ -75,7 +75,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
                     Log.i("Previous bid", "" + prevBid);
 
                     int myBid = prevBid + addBid;
-                    game.sendAction(new RookBidAction(this, myBid));
+                    game.sendAction(new RookBidAction(this, 100));
                     Log.i("Sent Bid Action", "" + this.playerNum + "," + myBid);
                 }
             } else if (savedState.getSubStage() == savedState.NEST) {
