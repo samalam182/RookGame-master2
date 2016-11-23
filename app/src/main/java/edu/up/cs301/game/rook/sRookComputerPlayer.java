@@ -31,18 +31,25 @@ public class sRookComputerPlayer extends RookComputerPlayer {
             return;
         }
 
+        // update the game state
+        savedState = (RookState) info;
+
         // smart computer player makes a move based on what subStage the game is in
-        if (savedState.getSubStage() == savedState.BID) {
+
 
             int myBid = 50;
 
-            ArrayList<Card> myList = new ArrayList<Card>(savedState.playerHands[this.playerNum]);
+            ArrayList<Card> myList;
 
-            ArrayList<Card> thisList = savedState.playerHands[this.playerNum];
+        myList = savedState.playerHands[this.playerNum];
 
-            myList = thisList;
+        savedState.setSubStage(1);
 
-            Card myCard = new Card(0, 0);
+//            ArrayList<Card> thisList = savedState.playerHands[this.playerNum];
+//
+//            myList = thisList;
+
+            Card myCard;
 
             int redSuitNum = 0;
             int yellSuitNum = 0;
@@ -53,9 +60,9 @@ public class sRookComputerPlayer extends RookComputerPlayer {
             for (int j = 0; j < 9; j++) {
                 Card thisCard = myList.get(j);
 
-                Card arrayCard = new Card(thisCard.getSuit(), thisCard.getNumValue());
+                myCard = new Card(thisCard.getSuit(), thisCard.getNumValue());
 
-                myCard = arrayCard;
+                //myCard = arrayCard;
 
                 if (myCard.getSuit() == 3) {
                     // the card is a red suit
@@ -73,112 +80,91 @@ public class sRookComputerPlayer extends RookComputerPlayer {
                     // the card is the Rook
                     rookSuit++;
                 }
-            }
 
-            // the smart computer player will determine, algorithmically, how good its hand is
-            // and will base the bid on this information
+                // the smart computer player will determine, algorithmically, how good its hand is
+                // and will base the bid on this information
 
-            // how many cards in each suit
+                // how many cards in each suit
 
-            if (redSuitNum >= 4)
-            {
-                myBid++;
-            }
-            else if (greenSuitNum >= 4)
-            {
-                myBid++;
-            }
-            else if (yellSuitNum >= 4)
-            {
-                myBid++;
-            }
-            else if (blackSuitNum >= 4)
-            {
-                myBid++;
-            }
-
-            if (rookSuit == 1)
-            {
-                myBid++;
-            }
-
-            // how many high cards (10-14)
-
-            if (myCard.getNumValue() >= 10)
-            {
-                myBid++;
-            }
-
-
-            // how many point cards
-
-            if (myCard.getNumValue() == 5 || myCard.getNumValue() == 10 || myCard.getNumValue() == 14)
-            {
-                myBid++;
-            }
-            else if (myCard.getNumValue() == 15)
-            {
-                myBid++;
-            }
-
-            int[] prevBidArray = savedState.getBids();
-            int prevBid = getInt(prevBidArray, savedState.getBids().length-1);
-
-            if (savedState.getSubStage() == savedState.BID)
-            {
-                if (myBid > prevBid && myBid%5==0)
-                {
-                    // create a new action
-                    game.sendAction(new RookBidAction(this, myBid));
+                if (redSuitNum >= 4) {
+                    myBid++;
+                } else if (greenSuitNum >= 4) {
+                    myBid++;
+                } else if (yellSuitNum >= 4) {
+                    myBid++;
+                } else if (blackSuitNum >= 4) {
+                    myBid++;
                 }
-                else if (myBid > prevBid && myBid%5 !=0)
-                {
-                    int myNewBid = myBid - (myBid%5);
-                    game.sendAction(new RookBidAction(this, myNewBid));
+
+                if (rookSuit == 1) {
+                    myBid++;
                 }
-                else
-                {
-                    game.sendAction(new RookHoldAction(this));
+
+                // how many high cards (10-14)
+
+                if (myCard.getNumValue() >= 10) {
+                    myBid++;
+                }
+
+                // how many point cards
+
+                if (myCard.getNumValue() == 5 || myCard.getNumValue() == 10 || myCard.getNumValue() == 14) {
+                    myBid++;
+                } else if (myCard.getNumValue() == 15) {
+                    myBid++;
                 }
             }
-            else if (savedState.getSubStage() == savedState.NEST)
-            {
-                // the smart computer player will select the cards that it wants to place into the nest
-                // it will try to gain as many of one suit color as possible
+        if (savedState.getSubStage() == savedState.BID) {
+            //int prevBid = savedState.getHighestBid();
+            int prevBid = 70;
 
-                game.sendAction(new RookNestAction(this, null, null));
+            if (myBid > prevBid && myBid % 5 == 0) {
+                // create a new action
+                game.sendAction(new RookBidAction(this, myBid));
+            } else if (myBid > prevBid && myBid % 5 != 0) {
+                int myNewBid = myBid - (myBid % 5);
+                game.sendAction(new RookBidAction(this, myNewBid));
+            } else {
+                game.sendAction(new RookHoldAction(this));
             }
-            else if (savedState.getSubStage() == savedState.TRUMP)
-            {
-                // the smart computer player will select the trump suit, based on the number of cards
-                // it has for each suit; the one it has the most of will be the trump suit
+        }
+        else if (savedState.getSubStage() == savedState.NEST)
+        {
+            // the smart computer player will select the cards that it wants to place into the nest
+            // it will try to gain as many of one suit color as possible
 
-                int trumpSuit=0;
+            game.sendAction(new RookNestAction(this, null, null));
+        }
+        else if (savedState.getSubStage() == savedState.TRUMP)
+        {
+            // the smart computer player will select the trump suit, based on the number of cards
+            // it has for each suit; the one it has the most of will be the trump suit
 
-                if (redSuitNum > 3 && greenSuitNum <= 3 && blackSuitNum <= 3 && yellSuitNum <= 3)
-                {
-                    trumpSuit = Color.RED;
-                }
-                else if (greenSuitNum > 3 && redSuitNum <= 3 && blackSuitNum <= 3 && yellSuitNum <= 3)
-                {
-                    trumpSuit = Color.GREEN;
-                }
-                else if (yellSuitNum > 3 && redSuitNum <= 3 && greenSuitNum <= 3 && blackSuitNum <= 3)
-                {
-                    trumpSuit = Color.YELLOW;
-                }
-                else if (blackSuitNum > 3 && redSuitNum <= 3 && greenSuitNum <= 3 && yellSuitNum <= 3)
-                {
-                    trumpSuit = Color.BLACK;
-                }
-                game.sendAction(new RookTrumpAction(this, trumpSuit));
-            }
-            else if (savedState.getSubStage() == savedState.PLAY)
+            int trumpSuit=0;
+
+            if (redSuitNum >= 3 && greenSuitNum <= 3 && blackSuitNum <= 3 && yellSuitNum <= 3)
             {
-                // smart computer player will play a card, and will try to win each trick
-                //needs to not be hard coded in. Placed for convenience
-                game.sendAction(new RookCardAction(this, 0));
+                trumpSuit = Color.RED;
             }
+            else if (greenSuitNum >= 3 && redSuitNum <= 3 && blackSuitNum <= 3 && yellSuitNum <= 3)
+            {
+                trumpSuit = Color.GREEN;
+            }
+            else if (yellSuitNum >= 3 && redSuitNum <= 3 && greenSuitNum <= 3 && blackSuitNum <= 3)
+            {
+                trumpSuit = Color.YELLOW;
+            }
+            else if (blackSuitNum >= 3 && redSuitNum <= 3 && greenSuitNum <= 3 && yellSuitNum <= 3)
+            {
+                trumpSuit = Color.BLACK;
+            }
+            game.sendAction(new RookTrumpAction(this, trumpSuit));
+        }
+        else if (savedState.getSubStage() == savedState.PLAY)
+        {
+            // smart computer player will play a card, and will try to win each trick
+            //needs to not be hard coded in. Placed for convenience
+            game.sendAction(new RookCardAction(this, 0));
         }
     }
 }
