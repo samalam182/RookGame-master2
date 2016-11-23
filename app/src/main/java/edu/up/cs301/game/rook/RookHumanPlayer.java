@@ -652,7 +652,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             {
                 // gets the card we're looking for. [0] = only player one.
                 // for future human players, needs to be another look per player
-                getting = state.playerHands[0].get(i);
+                getting = state.nest.get(i);
 
                 // get numvalue = the number of the card
                 // get suit = the value 0 = black , 1 = red, 2 = yellow, 3 = green

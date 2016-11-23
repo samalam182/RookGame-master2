@@ -3,30 +3,30 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\hoser18\AndroidStudioProjects\RookGame-master234\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="b096493e163f113481e7aa10fddc5674a3ffad43">
-        <dex dex="C:\Users\hoser18\AndroidStudioProjects\RookGame-master234\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_7b47752d097819f8df2a7c1d3b6cbcddf136db80\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Public\Documents\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="C:\Users\hoser18\AndroidStudioProjects\RookGame-master234\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-18.0.0_9dbd5083a214f729a19b739197611203326f5cd3\classes.dex" />
+        <dex dex="C:\Users\hoser18\AndroidStudioProjects\RookGame-master2\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-18.0.0_9dbd5083a214f729a19b739197611203326f5cd3\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\hoser18\AndroidStudioProjects\RookGame-master234\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\hoser18\AndroidStudioProjects\RookGame-master2\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="84bca6c3db759e96047e7658179589b448aba808">
-        <dex dex="C:\Users\hoser18\AndroidStudioProjects\RookGame-master234\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_fc41e5a1ccc6136e45dd96968db0cb80a98c8c12\classes.dex" />
+        sha1="24466f1b171fc3b4ba352cc0de6e07a59bb550d2">
+        <dex dex="C:\Users\hoser18\AndroidStudioProjects\RookGame-master2\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_be53956ed7dfd3c89ca66fe823845fae3ec15a7a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\hoser18\AndroidStudioProjects\RookGame-master2\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="8a4ffc465cb936f906319dbb8ebfdcebbe582b53">
+        <dex dex="C:\Users\hoser18\AndroidStudioProjects\RookGame-master2\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_4d71098b02a2f07e7718c4943a8d1c9260aab2c5\classes.dex" />
     </item>
 
 </items>
