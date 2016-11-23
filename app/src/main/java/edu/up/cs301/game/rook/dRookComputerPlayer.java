@@ -40,7 +40,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
 
         // the dumb computer player makes a move based on what subStage the game is in
 
-        savedState.setSubStage(1);
+        //savedState.setSubStage(1);
 
         if (this.playerNum == savedState.getActivePlayer()) {
             if (savedState.getSubStage() == savedState.WAIT) {
@@ -75,7 +75,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
                     Log.i("Previous bid", "" + prevBid);
 
                     int myBid = prevBid + addBid;
-                    game.sendAction(new RookBidAction(this, myBid));
+                    game.sendAction(new RookHoldAction(this));
                     Log.i("Sent Bid Action", "" + this.playerNum + "," + myBid);
                 }
             } else if (savedState.getSubStage() == savedState.NEST) {

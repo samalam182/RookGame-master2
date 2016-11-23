@@ -42,7 +42,16 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     // background color
     private int backgroundColor;
 
+    public final int WAIT = 0;
+    public final int BID = 1;
+    public final int TRUMP = 2;
+    public final int NEST = 3;
+    public final int PLAY = 4;
+    public final int OVER = 5;
+
     // buttons
+    Card nullCard = new Card(16, 1);
+    Card currCard;
     public Button start;
     public Button quit;
     public ImageButton card0;
@@ -315,8 +324,79 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         bidShow.setVisibility(View.INVISIBLE);
         bidMainTitle.setVisibility(View.INVISIBLE);
         yourBid.setVisibility(View.INVISIBLE);
+        //updateGUI(state);
     }
 
+    public void updateGUI(RookState s){
+        if(s.getSubStage() == BID){
+            nest1.setVisibility(View.INVISIBLE);
+            nest2.setVisibility(View.INVISIBLE);
+            nest3.setVisibility(View.INVISIBLE);
+            nest4.setVisibility(View.INVISIBLE);
+            nest5.setVisibility(View.INVISIBLE);
+            confirmNest.setVisibility(View.INVISIBLE);
+            trumpBlack.setVisibility(View.INVISIBLE);
+            trumpGreen.setVisibility(View.INVISIBLE);
+            trumpRed.setVisibility(View.INVISIBLE);
+            trumpYellow.setVisibility(View.INVISIBLE);
+            confirmTrump.setVisibility(View.INVISIBLE);
+            addFive.setVisibility(View.VISIBLE);
+            minusFive.setVisibility(View.VISIBLE);
+            bidButton.setVisibility(View.VISIBLE);
+            passButton.setVisibility(View.VISIBLE);
+        }
+        else if(s.getSubStage() == NEST){
+            nest1.setVisibility(View.VISIBLE);
+            nest2.setVisibility(View.VISIBLE);
+            nest3.setVisibility(View.VISIBLE);
+            nest4.setVisibility(View.VISIBLE);
+            nest5.setVisibility(View.VISIBLE);
+            confirmNest.setVisibility(View.VISIBLE);
+            trumpBlack.setVisibility(View.INVISIBLE);
+            trumpGreen.setVisibility(View.INVISIBLE);
+            trumpRed.setVisibility(View.INVISIBLE);
+            trumpYellow.setVisibility(View.INVISIBLE);
+            confirmTrump.setVisibility(View.INVISIBLE);
+            addFive.setVisibility(View.INVISIBLE);
+            minusFive.setVisibility(View.INVISIBLE);
+            bidButton.setVisibility(View.INVISIBLE);
+            passButton.setVisibility(View.INVISIBLE);
+        }
+        else if(s.getSubStage() == TRUMP){
+            nest1.setVisibility(View.INVISIBLE);
+            nest2.setVisibility(View.INVISIBLE);
+            nest3.setVisibility(View.INVISIBLE);
+            nest4.setVisibility(View.INVISIBLE);
+            nest5.setVisibility(View.INVISIBLE);
+            confirmNest.setVisibility(View.INVISIBLE);
+            trumpBlack.setVisibility(View.VISIBLE);
+            trumpGreen.setVisibility(View.VISIBLE);
+            trumpRed.setVisibility(View.VISIBLE);
+            trumpYellow.setVisibility(View.VISIBLE);
+            confirmTrump.setVisibility(View.VISIBLE);
+            addFive.setVisibility(View.INVISIBLE);
+            minusFive.setVisibility(View.INVISIBLE);
+            bidButton.setVisibility(View.INVISIBLE);
+            passButton.setVisibility(View.INVISIBLE);
+        }
+        else{
+            nest1.setVisibility(View.INVISIBLE);
+            nest2.setVisibility(View.INVISIBLE);
+            nest3.setVisibility(View.INVISIBLE);
+            nest4.setVisibility(View.INVISIBLE);
+            nest5.setVisibility(View.INVISIBLE);
+            confirmNest.setVisibility(View.INVISIBLE);
+            trumpBlack.setVisibility(View.INVISIBLE);
+            trumpGreen.setVisibility(View.INVISIBLE);
+            trumpRed.setVisibility(View.INVISIBLE);
+            trumpYellow.setVisibility(View.INVISIBLE);
+            confirmTrump.setVisibility(View.INVISIBLE);
+            addFive.setVisibility(View.INVISIBLE);
+            minusFive.setVisibility(View.INVISIBLE);
+            bidButton.setVisibility(View.INVISIBLE);
+            passButton.setVisibility(View.INVISIBLE);
+        }
+    }
     public void correctHandImage(int playerIndx)
     {
         if (playerIndx == 1)
@@ -548,6 +628,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
         else if( v == start)
         {
+            //state.setSubStage(BID);
+            //updateGUI(state);
             correctHandImage(1);
             bidButton.setVisibility(View.VISIBLE);
             passButton.setVisibility(View.VISIBLE);
@@ -564,6 +646,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
         else if (v == card0){
             game.sendAction(new RookCardAction(this, 0));
+            state.playerHands[state.getActivePlayer()].set(0, nullCard);
         }
         else if (v == card1){
             game.sendAction(new RookCardAction(this, 1));
