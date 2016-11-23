@@ -2,6 +2,7 @@ package edu.up.cs301.game.rook;
 
 import android.util.Log;
 
+import edu.up.cs301.card.Card;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.rook.*;
@@ -20,6 +21,7 @@ public class RookLocalGame extends LocalGame
     public final int NEST = 3;
     public final int PLAY = 4;
     public final int OVER = 5;
+    Card nullCard = new Card(16, 1);
 
     public RookLocalGame()
     {
@@ -135,7 +137,7 @@ public class RookLocalGame extends LocalGame
                 RookCardAction act = (RookCardAction) action;
                 int handIdx = act.retButtonNum();
                 state.currTrick.add(state.playerHands[playerIdxx].get(handIdx));
-
+                state.playerHands[state.getActivePlayer()].set(handIdx, nullCard);
                 if(state.currTrick.size() == 4){
                     int points = state.countTrick();
                 }

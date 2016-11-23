@@ -50,8 +50,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public final int OVER = 5;
 
     // buttons
-    Card nullCard = new Card(16, 1);
-    Card currCard;
+
+
     public Button start;
     public Button quit;
     public ImageButton card0;
@@ -646,7 +646,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
         else if (v == card0){
             game.sendAction(new RookCardAction(this, 0));
-            state.playerHands[state.getActivePlayer()].set(0, nullCard);
         }
         else if (v == card1){
             game.sendAction(new RookCardAction(this, 1));
