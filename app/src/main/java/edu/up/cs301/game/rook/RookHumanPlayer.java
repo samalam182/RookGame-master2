@@ -53,6 +53,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     private final int GREEN = 2;
     private final int RED = 3;
 
+    private final int BLANK = 5;
+    Card blankCard = new Card(20, BLANK);
+
     // buttons
 
 
@@ -84,6 +87,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public Button passButton;
     public TextView bidAmount;
     public TextView previousBid;
+    public TextView winningBidder;
+    public TextView winningBid;
 
     public TextView trumpTitle;
     public TextView nestTitle;
@@ -274,6 +279,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         passButton = (Button) activity.findViewById(R.id.button_ConfirmPass);
         passButton.setOnClickListener(this);
 
+        winningBid = (TextView) activity.findViewById(R.id.textView_ROUNDWinningBid);
+
+        winningBidder = (TextView) activity.findViewById(R.id.textView_ROUNDWinningBidder);
+
         bidAmount = (TextView) activity.findViewById(R.id.textView_YourBid);
 
         previousBid = (TextView) activity.findViewById(R.id.textView_AmountBid);
@@ -434,6 +443,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             minusFive.setVisibility(View.INVISIBLE);
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
+
+            winningBidder.setText("Player: " + state.winningPlayer);
+            winningBid.setText("" + state.winningBid);
         }
     }
 

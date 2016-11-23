@@ -126,7 +126,7 @@ public class RookState extends GameState {
     }
 
     public void setScore(int score, int index) {
-        playerScores[index] = score;
+        playerScores[index] += score;
     }
 
     public void setBid(int bid, int player) {
