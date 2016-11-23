@@ -374,6 +374,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             minusFive.setVisibility(View.INVISIBLE);
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
+            correctHandImage(2);
         }
         else if(s.getSubStage() == TRUMP){
             nest1.setVisibility(View.INVISIBLE);
@@ -421,6 +422,222 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             Card getting;
 
             for (int i = 0; i < 9; i++)
+            {
+                // gets the card we're looking for. [0] = only player one.
+                // for future human players, needs to be another look per player
+                getting = state.playerHands[0].get(i);
+
+                // get numvalue = the number of the card
+                // get suit = the value 0 = black , 1 = red, 2 = yellow, 3 = green
+                if (getting.getNumValue() == 5)
+                {
+                    if (getting.getSuit() == 0)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_5b);
+                    }
+                    else if (getting.getSuit() == 1)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_5r);
+                    }
+                    else if (getting.getSuit() == 2)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_5y);
+                    }
+                    else if (getting.getSuit() == 3)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_5g);
+                    }
+                }
+                else if (getting.getNumValue() == 6)
+                {
+                    if (getting.getSuit() == 0)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_6b);
+                    }
+                    else if (getting.getSuit() == 1)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_6r);
+                    }
+                    else if (getting.getSuit() == 2)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_6y);
+                    }
+                    else if (getting.getSuit() == 3)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_6g);
+                    }
+                }
+                else if (getting.getNumValue() == 7)
+                {
+                    if (getting.getSuit() == 0)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_7b);
+                    }
+                    else if (getting.getSuit() == 1)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_7r);
+                    }
+                    else if (getting.getSuit() == 2)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_7y);
+                    }
+                    else if (getting.getSuit() == 3)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_7g);
+                    }
+                }
+                else if (getting.getNumValue() == 8)
+                {
+                    if (getting.getSuit() == 0)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_8b);
+                    }
+                    else if (getting.getSuit() == 1)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_8r);
+                    }
+                    else if (getting.getSuit() == 2)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_8y);
+                    }
+                    else if (getting.getSuit() == 3)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_8g);
+                    }
+                }
+                else if (getting.getNumValue() == 9)
+                {
+                    if (getting.getSuit() == 0)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_9b);
+                    }
+                    else if (getting.getSuit() == 1)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_9r);
+                    }
+                    else if (getting.getSuit() == 2)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_9y);
+                    }
+                    else if (getting.getSuit() == 3)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_9g);
+                    }
+                }
+                else if (getting.getNumValue() == 10)
+                {
+                    if (getting.getSuit() == 0)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_10b);
+                    }
+                    else if (getting.getSuit() == 1)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_10r);
+                    }
+                    else if (getting.getSuit() == 2)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_10y);
+                    }
+                    else if (getting.getSuit() == 3)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_10g);
+                    }
+                }
+                else if (getting.getNumValue() == 11)
+                {
+                    if (getting.getSuit() == 0)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_11b);
+                    }
+                    else if (getting.getSuit() == 1)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_11r);
+                    }
+                    else if (getting.getSuit() == 2)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_11y);
+                    }
+                    else if (getting.getSuit() == 3)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_11g);
+                    }
+                }
+                else if (getting.getNumValue() == 12)
+                {
+                    if (getting.getSuit() == 0)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_12b);
+                    }
+                    else if (getting.getSuit() == 1)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_12r);
+                    }
+                    else if (getting.getSuit() == 2)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_12y);
+                    }
+                    else if (getting.getSuit() == 3)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_12g);
+                    }
+                }
+                else if (getting.getNumValue() == 13)
+                {
+                    if (getting.getSuit() == 0)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_13b);
+                    }
+                    else if (getting.getSuit() == 1)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_13r);
+                    }
+                    else if (getting.getSuit() == 2)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_13y);
+                    }
+                    else if (getting.getSuit() == 3)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_13g);
+                    }
+                }
+                else if (getting.getNumValue() == 14)
+                {
+                    if (getting.getSuit() == 0)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_14b);
+                    }
+                    else if (getting.getSuit() == 1)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_14r);
+                    }
+                    else if (getting.getSuit() == 2)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_14y);
+                    }
+                    else if (getting.getSuit() == 3)
+                    {
+                        card[i].setImageResource(R.drawable.rookcard_14g);
+                    }
+                }
+                else if(getting.getNumValue() == 15)
+                {
+                    card[i].setImageResource(R.drawable.rookcard_rook);
+                }
+                else
+                {
+                    card[i].setImageResource(R.drawable.rookcard_back);
+                }
+            }
+        }
+        if (playerIndx == 2)
+        {
+            // gets an array of all card objects
+            ImageButton[] card = {nest1, nest2, nest3, nest4, nest5};
+
+            // the card that we're looking for is being stored
+            Card getting;
+
+            for (int i = 0; i < 5; i++)
             {
                 // gets the card we're looking for. [0] = only player one.
                 // for future human players, needs to be another look per player
