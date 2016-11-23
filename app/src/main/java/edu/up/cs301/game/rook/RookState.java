@@ -211,7 +211,11 @@ public class RookState extends GameState {
                 count++;
             }
         }
-
+        for (int i = 0; i < numPlayers; i++) {
+            if (playerBids[i] == 120) {
+                count = 3;
+            }
+        }
         if (count >= 3) {
             for (int j = 0; j < numPlayers; j++) {
                 if (playerBids[j] > maxVal) {
