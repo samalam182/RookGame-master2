@@ -48,7 +48,7 @@ public class dRookComputerPlayer extends RookComputerPlayer
             } else if (savedState.getSubStage() == savedState.BID) {
                 Log.i("Reached bidding stage", "" + this.playerNum);
                 // the dumb computer player will randomly decide to bid or pass
-                double randSelection = 4;
+                double randSelection = Math.random();
 
                 if (randSelection < 0.5) {
                     // when randSelection is less than 0.5, the dumb computer player will pass
@@ -57,8 +57,8 @@ public class dRookComputerPlayer extends RookComputerPlayer
                 } else {
                     // when randSelection is more than 0.5, the dumb computer player will bid
 
-                    //int randBidVal = (int)Math.random()*10;
-                    int randBidVal = 4;
+                    int randBidVal = (int)Math.random()*10;
+
                     int addBid;
                     {
                         if (randBidVal <= 3) {

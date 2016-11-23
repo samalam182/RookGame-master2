@@ -115,6 +115,8 @@ public class RookState extends GameState {
         subStage = sub;
     }
 
+    public int getTrump(){ return trumpSuit; }
+
     public void setTrump(int trumpColor) {
         trumpSuit = trumpColor;
     }

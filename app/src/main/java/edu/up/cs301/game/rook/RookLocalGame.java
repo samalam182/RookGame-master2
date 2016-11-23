@@ -140,6 +140,22 @@ public class RookLocalGame extends LocalGame
                 state.playerHands[state.getActivePlayer()].set(handIdx, nullCard);
                 if(state.currTrick.size() == 4){
                     int points = state.countTrick();
+                    Card first = state.currTrick.get(0);
+                    int firstCardVal = first.getNumValue();
+                    int firstCardSuit = first.getSuit();
+                    int currTrump = state.getTrump();
+                    Card domCard;
+
+                    if(firstCardSuit != currTrump && firstCardSuit != 4){
+                        for(int i = 1; i<state.currTrick.size(); i++){
+                            if(state.currTrick.get(i).getSuit() == currTrump){
+                                domCard = state.currTrick.get(i);
+                            }
+                        }
+                    }
+
+
+
                 }
             }
 
