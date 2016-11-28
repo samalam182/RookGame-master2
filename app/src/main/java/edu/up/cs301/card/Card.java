@@ -218,7 +218,7 @@ public class Card implements Serializable {
     };
 
     // the array of card images
-    private static Bitmap[][] cardImages = null;
+    public static Bitmap[][] cardImages = null;
 
     /**
      * initializes the card images
