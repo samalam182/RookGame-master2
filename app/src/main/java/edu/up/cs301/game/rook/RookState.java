@@ -51,7 +51,7 @@ public class RookState extends GameState {
     private String[] playerNames;
 
     public RookState() {
-        subStage = BID;
+        subStage = WAIT;
         currPlayer = 0;
         playerZeroHand = new ArrayList<Card>(9);
         playerOneHand = new ArrayList<Card>(9);

@@ -1,7 +1,7 @@
-#Wed Nov 23 03:05:48 PST 2016
-base.0=C\:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4d71098b02a2f07e7718c4943a8d1c9260aab2c5
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=C\:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_be53956ed7dfd3c89ca66fe823845fae3ec15a7a\\classes.dex
-base.1=C\:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_be53956ed7dfd3c89ca66fe823845fae3ec15a7a
-file.0=C\:\\Users\\hoser18\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4d71098b02a2f07e7718c4943a8d1c9260aab2c5\\classes.dex
+#Mon Nov 28 14:46:21 PST 2016
+base.0=C\:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master233\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_916c52a38d3bbc0818c96f93e7dae6422530e3a7
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master233\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_c621ddb6f802d6b52b6d8e42e6ec21317b058b0f\\classes.dex
+base.1=C\:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master233\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_c621ddb6f802d6b52b6d8e42e6ec21317b058b0f
+file.0=C\:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master233\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_916c52a38d3bbc0818c96f93e7dae6422530e3a7\\classes.dex

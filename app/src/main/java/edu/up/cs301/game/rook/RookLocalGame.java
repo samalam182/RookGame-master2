@@ -28,7 +28,7 @@ public class RookLocalGame extends LocalGame
         Log.i("RookLocalGame", "Local Game being created");
 
         state = new RookState();
-        state.setSubStage(BID);
+        state.setSubStage(WAIT);
     }
 
     // sends the updated state to the given player.
@@ -94,6 +94,11 @@ public class RookLocalGame extends LocalGame
 
     protected boolean makeMove(GameAction action)
     {
+        if(state.getSubStage() == WAIT)
+        {
+            state.setSubStage(BID);
+        }
+
         int playerIdxx = state.getActivePlayer();
         // checks if its a type of RookAction
         // if not it isnt an action we want
@@ -107,7 +112,9 @@ public class RookLocalGame extends LocalGame
         // makes action not a specific rook action
         if (action instanceof RookBidAction)
         {
-            if(state.getSubStage() == BID) {
+            if(state.getSubStage() == BID)
+            {
+
                 RookBidAction act = (RookBidAction) action;
                 int playBid = act.getBid();
                 state.setBid(playBid, playerIdxx);

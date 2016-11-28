@@ -390,6 +390,20 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidMainTitle.setVisibility(View.VISIBLE);
             yourBid.setVisibility(View.VISIBLE);
         }
+        else if (s.getSubStage() == WAIT)
+        {
+            bidButton.setVisibility(View.INVISIBLE);
+            passButton.setVisibility(View.INVISIBLE);
+            minusFive.setVisibility(View.INVISIBLE);
+            addFive.setVisibility(View.INVISIBLE);
+            bidTitle.setVisibility(View.INVISIBLE);
+            lastBidder.setVisibility(View.INVISIBLE);
+            amountTitle.setVisibility(View.INVISIBLE);
+            bidAmount.setVisibility(View.INVISIBLE);
+            bidShow.setVisibility(View.INVISIBLE);
+            bidMainTitle.setVisibility(View.INVISIBLE);
+            yourBid.setVisibility(View.INVISIBLE);
+        }
         else if(s.getSubStage() == NEST){
             nest1.setVisibility(View.VISIBLE);
             nest2.setVisibility(View.VISIBLE);
@@ -1124,10 +1138,39 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
         else if( v == start)
         {
-            //state.setSubStage(BID);
+            state.setSubStage(BID);
             //updateGUI(state);
             correctHandImage(1);
             start.setVisibility(View.INVISIBLE);
+
+            nest1.setVisibility(View.INVISIBLE);
+            nest2.setVisibility(View.INVISIBLE);
+            nest3.setVisibility(View.INVISIBLE);
+            nest4.setVisibility(View.INVISIBLE);
+            nest5.setVisibility(View.INVISIBLE);
+            confirmNest.setVisibility(View.INVISIBLE);
+            trumpBlack.setVisibility(View.INVISIBLE);
+            trumpGreen.setVisibility(View.INVISIBLE);
+            trumpRed.setVisibility(View.INVISIBLE);
+            trumpYellow.setVisibility(View.INVISIBLE);
+            confirmTrump.setVisibility(View.INVISIBLE);
+            previousBid.setText("" + state.getHighestBid());
+            int possBid = state.getHighestBid() + 5;
+            bidAmount.setText("" + possBid);
+            trumpAccounce.setVisibility(View.VISIBLE);
+
+            addFive.setVisibility(View.VISIBLE);
+            minusFive.setVisibility(View.VISIBLE);
+            bidButton.setVisibility(View.VISIBLE);
+            passButton.setVisibility(View.VISIBLE);
+            previousBid.setVisibility(View.VISIBLE);
+            bidAmount.setVisibility(View.VISIBLE);
+            lastBidder.setVisibility(View.VISIBLE);
+            bidTitle.setVisibility(View.VISIBLE);
+            amountTitle.setVisibility(View.VISIBLE);
+            bidShow.setVisibility(View.VISIBLE);
+            bidMainTitle.setVisibility(View.VISIBLE);
+            yourBid.setVisibility(View.VISIBLE);
         }
         else if (v == card0){
             if(state.getSubStage() == NEST && !(fromH.contains (state.playerHands[state.getActivePlayer()].get(0))) && fromH.size() < 5)
@@ -1135,7 +1178,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(0));
                 card0.setAlpha(100);
             }
-            else {
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {}
+            else
+            {
                 //state.currTrick.set(0, )
                 putCardInTrick(0);
                 game.sendAction(new RookCardAction(this, 0));
@@ -1148,6 +1193,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(1));
                 card1.setAlpha(100);
             }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {}
             else {
                 putCardInTrick(1);
                 game.sendAction(new RookCardAction(this, 1));
@@ -1160,6 +1206,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(2));
                 card2.setAlpha(100);
             }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {}
             else {
                 putCardInTrick(2);
                 game.sendAction(new RookCardAction(this, 2));
@@ -1172,6 +1219,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(3));
                 card3.setAlpha(100);
             }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {}
             else {
                 putCardInTrick(3);
                 game.sendAction(new RookCardAction(this, 3));
@@ -1184,6 +1232,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(4));
                 card4.setAlpha(100);
             }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {}
             else {
                 putCardInTrick(4);
                 game.sendAction(new RookCardAction(this, 4));
@@ -1196,6 +1245,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(5));
                 card5.setAlpha(100);
             }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {}
             else {
                 putCardInTrick(5);
                 game.sendAction(new RookCardAction(this, 5));
@@ -1208,6 +1258,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(6));
                 card6.setAlpha(100);
             }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {}
             else {
                 putCardInTrick(6);
                 game.sendAction(new RookCardAction(this, 6));
@@ -1220,6 +1271,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(7));
                 card7.setAlpha(100);
             }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {}
             else {
                 putCardInTrick(7);
                 game.sendAction(new RookCardAction(this, 7));
@@ -1232,6 +1284,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(8));
                 card8.setAlpha(100);
             }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {}
             else {
                 putCardInTrick(8);
                 game.sendAction(new RookCardAction(this, 8));
