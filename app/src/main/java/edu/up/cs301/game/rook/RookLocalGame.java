@@ -141,10 +141,11 @@ public class RookLocalGame extends LocalGame
                 RookCardAction act = (RookCardAction) action;
                 int handIdx = act.retButtonNum();
 
-                state.currTrick.add(state.playerHands[playerIdxx].get(handIdx));
+                if(state.currTrick.size()<4) {
+                    state.currTrick.add(state.playerHands[playerIdxx].get(handIdx));
+                    state.playerHands[state.getActivePlayer()].set(handIdx, nullCard);
+                }
 
-
-                state.playerHands[state.getActivePlayer()].set(handIdx, nullCard);
                 if(state.currTrick.size() == 4)
                 {
                     points = state.countTrick();
