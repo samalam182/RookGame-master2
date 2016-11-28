@@ -45,6 +45,7 @@ public class RookState extends GameState {
     private final int ROOK = 4;
     public int winningBid;
     public int winningPlayer;
+    public int lastBidder = 0;
     public boolean[] bidPass;
     private int[] playerBids = new int[numPlayers];
     private int[] playerScores;
@@ -131,7 +132,8 @@ public class RookState extends GameState {
         playerScores[index] += score;
     }
 
-    public void setBid(int bid, int player) {
+    public void setBid(int bid, int player)
+    {
         playerBids[player] = bid;
     }
 

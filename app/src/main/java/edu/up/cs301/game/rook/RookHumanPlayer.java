@@ -389,6 +389,23 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidShow.setVisibility(View.VISIBLE);
             bidMainTitle.setVisibility(View.VISIBLE);
             yourBid.setVisibility(View.VISIBLE);
+
+            if (state.lastBidder == 0)
+            {
+                lastBidder.setText("Player 1");
+            }
+            else if (state.lastBidder == 1)
+            {
+                lastBidder.setText("Player 2");
+            }
+            else if (state.lastBidder == 2)
+            {
+                lastBidder.setText("Player 3");
+            }
+            else if (state.lastBidder == 3)
+            {
+                lastBidder.setText("Player 4");
+            }
         }
         else if (s.getSubStage() == WAIT)
         {

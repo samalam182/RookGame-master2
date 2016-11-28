@@ -685,7 +685,7 @@
 
                         <Space
                             android:layout_width="20px"
-                            android:layout_height="100px" />
+                            android:layout_height="30px" />
 
                         <LinearLayout
                             android:orientation="horizontal"
@@ -720,7 +720,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Last Bidder:   "
+                            android:text="Current Winning Bidder:   "
                             android:id="@+id/textView_LastBidderLabel" />
 
                         <LinearLayout
@@ -766,7 +766,7 @@
 
                         <Space
                             android:layout_width="20px"
-                            android:layout_height="40px" />
+                            android:layout_height="20px" />
 
                         <LinearLayout
                             android:orientation="horizontal"
@@ -826,7 +826,7 @@
 
                         <Space
                             android:layout_width="20px"
-                            android:layout_height="40px" />
+                            android:layout_height="20px" />
 
                         <LinearLayout
                             android:orientation="horizontal"
@@ -871,6 +871,64 @@
                     <Space
                         android:layout_width="20px"
                         android:layout_height="40px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Players Who&apos;ve Passed:"
+                        android:id="@+id/textView_PassedPlayersLabel" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Space
+                            android:layout_width="50px"
+                            android:layout_height="20px" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="player 1"
+                            android:id="@+id/textView_PassedPlayersFIRST" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Space
+                            android:layout_width="50px"
+                            android:layout_height="20px" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="player 2"
+                            android:id="@+id/textView_PassedPlayersSECOND" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Space
+                            android:layout_width="50px"
+                            android:layout_height="20px" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="player 3"
+                            android:id="@+id/textView_PassedPlayersTHIRD" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
