@@ -12,6 +12,8 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 
+import edu.up.cs301.game.R;
+
 /**
  * A playing card in the standard 52-card deck. The images, which have been
  * placed in the res/drawable-hdpi folder in the project, are from
@@ -182,73 +184,69 @@ public class Card implements Serializable {
 //	 *		a Suit object (actually of a subclass) that tells the card's
 //     *		rank (e.g., heart, club).
 //     */
-//    public Suit getSuit() {
+//    public Suit getSuit()
 //    	return suit;
 //    }
  
 //    // array that contains the android resource indices for the 52 card
 //    // images
-//    private static int[][] resIdx = {
-//    	{
-//    		R.drawable.card_ac, R.drawable.card_2c, R.drawable.card_3c,
-//    		R.drawable.card_4c, R.drawable.card_5c, R.drawable.card_6c,
-//    		R.drawable.card_7c, R.drawable.card_8c, R.drawable.card_9c,
-//    		R.drawable.card_tc, R.drawable.card_jc, R.drawable.card_qc,
-//    		R.drawable.card_kc,
-//    	},
-//    	{
-//    		R.drawable.card_ad, R.drawable.card_2d, R.drawable.card_3d,
-//    		R.drawable.card_4d, R.drawable.card_5d, R.drawable.card_6d,
-//    		R.drawable.card_7d, R.drawable.card_8d, R.drawable.card_9d,
-//    		R.drawable.card_td, R.drawable.card_jd, R.drawable.card_qd,
-//    		R.drawable.card_kd,
-//    	},
-//    	{
-//    		R.drawable.card_ah, R.drawable.card_2h, R.drawable.card_3h,
-//    		R.drawable.card_4h, R.drawable.card_5h, R.drawable.card_6h,
-//    		R.drawable.card_7h, R.drawable.card_8h, R.drawable.card_9h,
-//    		R.drawable.card_th, R.drawable.card_jh, R.drawable.card_qh,
-//    		R.drawable.card_kh,
-//    	},
-//    	{
-//    		R.drawable.card_as, R.drawable.card_2s, R.drawable.card_3s,
-//    		R.drawable.card_4s, R.drawable.card_5s, R.drawable.card_6s,
-//    		R.drawable.card_7s, R.drawable.card_8s, R.drawable.card_9s,
-//    		R.drawable.card_ts, R.drawable.card_js, R.drawable.card_qs,
-//    		R.drawable.card_ks,
-//    	},
-//    };
-//
-//    // the array of card images
-//    private static Bitmap[][] cardImages = null;
-//
-//    /**
-//     * initializes the card images
-//     *
-//     * @param activity
-//     * 		the current activity
-//     */
-//    public static void initImages(Activity activity) {
-//    	// if it's already initialized, then ignore
-//    	if (cardImages != null) return;
-//
-//    	// create the outer array
-//    	cardImages = new Bitmap[resIdx.length][];
-//
-//    	// loop through the resource-index array, creating a
-//    	// "parallel" array with the images themselves
-//    	for (int i = 0; i < resIdx.length; i++) {
-//    		// create an inner array
-//    		cardImages[i] = new Bitmap[resIdx[i].length];
-//    		for (int j = 0; j < resIdx[i].length; j++) {
-//    			// create the bitmap from the corresponding image
-//    			// resource, and set the corresponding array element
-//    			cardImages[i][j] =
-//    					BitmapFactory.decodeResource(
-//    							activity.getResources(),
-//    							resIdx[i][j]);
-//    		}
-//    	}
-//    }
+    private static int[][] resIdx = {
+    	{
+    		R.drawable.rookcard_5b, R.drawable.rookcard_6b, R.drawable.rookcard_7b,
+			 R.drawable.rookcard_8b, R.drawable.rookcard_9b, R.drawable.rookcard_10b,
+			 R.drawable.rookcard_11b, R.drawable.rookcard_12b, R.drawable.rookcard_13b,
+			 R.drawable.rookcard_14b
+    	},
+    	{
+			R.drawable.rookcard_5y, R.drawable.rookcard_6y, R.drawable.rookcard_7y,
+			R.drawable.rookcard_8y, R.drawable.rookcard_9y, R.drawable.rookcard_10y,
+			R.drawable.rookcard_11y, R.drawable.rookcard_12y, R.drawable.rookcard_13y,
+			R.drawable.rookcard_14y
+    	},
+    	{
+			R.drawable.rookcard_5g, R.drawable.rookcard_6g, R.drawable.rookcard_7g,
+			R.drawable.rookcard_8g, R.drawable.rookcard_9g, R.drawable.rookcard_10g,
+			R.drawable.rookcard_11g, R.drawable.rookcard_12g, R.drawable.rookcard_13g,
+			R.drawable.rookcard_14g
+    	},
+    	{
+			R.drawable.rookcard_5r, R.drawable.rookcard_6r, R.drawable.rookcard_7r,
+			R.drawable.rookcard_8r, R.drawable.rookcard_9r, R.drawable.rookcard_10r,
+			R.drawable.rookcard_11r, R.drawable.rookcard_12r, R.drawable.rookcard_13r,
+			R.drawable.rookcard_14r
+    	},
+    };
+
+    // the array of card images
+    private static Bitmap[][] cardImages = null;
+
+    /**
+     * initializes the card images
+     *
+     * @param activity
+     * 		the current activity
+     */
+    public static void initImages(Activity activity) {
+    	// if it's already initialized, then ignore
+    	if (cardImages != null) return;
+
+    	// create the outer array
+    	cardImages = new Bitmap[resIdx.length][];
+
+    	// loop through the resource-index array, creating a
+    	// "parallel" array with the images themselves
+    	for (int i = 0; i < resIdx.length; i++) {
+    		// create an inner array
+    		cardImages[i] = new Bitmap[resIdx[i].length];
+    		for (int j = 0; j < resIdx[i].length; j++) {
+    			// create the bitmap from the corresponding image
+    			// resource, and set the corresponding array element
+    			cardImages[i][j] =
+    					BitmapFactory.decodeResource(
+    							activity.getResources(),
+    							resIdx[i][j]);
+    		}
+    	}
+    }
 
 }
