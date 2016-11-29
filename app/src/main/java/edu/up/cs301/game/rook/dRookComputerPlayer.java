@@ -53,7 +53,7 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                 } else {
                     // when randSelection is more than 0.5, the dumb computer player will bid
 
-                    int randBidVal = (int) Math.random() * 10;
+                    int randBidVal = (int) (Math.random() * 10);
 
                     int addBid = 0;
 
@@ -94,12 +94,10 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                     if (randPilePicker < 0.5) {
 
                         // picks from the nest
-
                         double randNestCardIndex = Math.random() * 5;
                         int randNestCardIndexInt = (int) randNestCardIndex;
                         cardsFromNest.add(nestCards.get(randNestCardIndexInt));
 
-                    } else {
                         // picks from the hand
                         double randHandCardIndex = Math.random() * 9;
                         int randHandCardIndexInt = (int) randHandCardIndex;

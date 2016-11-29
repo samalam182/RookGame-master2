@@ -152,8 +152,9 @@ public class RookLocalGame extends LocalGame
                 int handIdx = act.retButtonNum();
 
                 if(state.currTrick.size()<4) {
-                    state.currTrick.add(state.playerHands[playerIdxx].get(handIdx));
+                    state.currTrick.add(state.playerHands[state.getActivePlayer()].get(handIdx));
                     state.playerHands[state.getActivePlayer()].set(handIdx, nullCard);
+
                 }
 
                 if(state.currTrick.size() == 4)
