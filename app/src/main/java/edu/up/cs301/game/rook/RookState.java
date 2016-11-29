@@ -64,6 +64,10 @@ public class RookState extends GameState {
         playerHands[3] = playerThreeHand;
         nest = new ArrayList<Card>(5);
         currTrick = new ArrayList<Card>(4);
+        currTrick.add(new Card(4, 6));
+        currTrick.add(new Card(4, 6));
+        currTrick.add(new Card(4, 6));
+        currTrick.add(new Card(4, 6));
 
         deck = initDeck();
         deal();

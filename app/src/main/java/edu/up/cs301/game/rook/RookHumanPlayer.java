@@ -491,7 +491,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                     Bitmap tempBitmap;
 
                     if (currVal == 15) {
-                        tempBitmap = cardImages[4][1];
+                        tempBitmap = cardImages[4][0];
                     } else {
                         tempBitmap = cardImages[currSuit][currVal - 5];
                     }
@@ -509,8 +509,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         // the card that we're looking for is being stored
         Card getting;
         int currSuit = 5;
-        int currVal = 5;
-        if(trick.length != 0){
+        int currVal = 10;
+        if(state.currTrick.size() != 0){
         for (int i = 0; i < trick.length; i++) {
             // gets the card we're looking for. [0] = only player one.
             // for future human players, needs to be another look per player
@@ -521,7 +521,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 Bitmap tempBitmap;
 
                 if (currVal == 15) {
-                    tempBitmap = cardImages[4][1];
+                    tempBitmap = cardImages[4][0];
                 } else {
                     tempBitmap = cardImages[currSuit][currVal - 5];
                 }
@@ -550,7 +550,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                     Bitmap tempBitmap;
 
                     if (currVal == 15) {
-                        tempBitmap = cardImages[4][1];
+                        tempBitmap = cardImages[4][0];
                     } else {
                         tempBitmap = cardImages[currSuit][currVal - 5];
                     }
