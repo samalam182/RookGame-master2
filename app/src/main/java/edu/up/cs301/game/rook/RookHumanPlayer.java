@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -378,6 +380,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidMainTitle.setVisibility(View.VISIBLE);
             yourBid.setVisibility(View.VISIBLE);
 
+            Log.i("UpdateGUI", "Trying to update lastBidder");
             if (state.lastBidder == 0) {
                 lastBidder.setText("Player 1");
             } else if (state.lastBidder == 1) {
@@ -444,6 +447,22 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
         } else {
+            if (state.getTrump() == 0)
+            {
+                trumpAccounce.setText("Black");
+            }
+            else if (state.getTrump() == 1)
+            {
+                trumpAccounce.setText("Yellow");
+            }
+            else if (state.getTrump() == 2)
+            {
+                trumpAccounce.setText("Green");
+            }
+            else if (state.getTrump() == 3)
+            {
+                trumpAccounce.setText("Red");
+            }
             nest1.setVisibility(View.INVISIBLE);
             nest2.setVisibility(View.INVISIBLE);
             nest3.setVisibility(View.INVISIBLE);
@@ -532,7 +551,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     }
     }
 
-    public void correctNestImage() {
+    public void correctNestImage()
+    {
+        if (state.currTrickWinner != 0)
+        {
+            return;
+        }
+        else {
         // gets an array of all card objects
         ImageButton[] nesty = {nest1, nest2, nest3, nest4, nest5};
 
@@ -559,7 +584,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
         }
 
-    }
+    }}
 
     public void onClick(View v) {
         int myNum = 0;
@@ -568,6 +593,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             activity.finish();
             System.exit(0);
         } else if (v == start) {
+            SystemClock.sleep(2000);
             //updateGUI(state);
             correctHandImage();
             start.setVisibility(View.INVISIBLE);

@@ -36,7 +36,7 @@ public class RookState extends GameState {
     public ArrayList<Card> currTrick;
     public ArrayList<Card> deck;
 
-    private int currTrickWinner;
+    public int currTrickWinner;
     private int trumpSuit;
     private final int BLACK = 0;
     private final int YELLOW = 1;
