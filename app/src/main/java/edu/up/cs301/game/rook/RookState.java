@@ -108,6 +108,8 @@ public class RookState extends GameState {
         playerNames = temp.playerNames;
         winningPlayer = temp.winningPlayer;
 
+        lastBidder = temp.lastBidder;
+
     }
 
     public int getSubStage() {

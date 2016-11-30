@@ -816,8 +816,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             game.sendAction(new RookBidAction(this, myNum));
             previousBid.setText("" + myNum);
 
-            lastBidder.setText("Human Player 1");
-
         } else if (v == passButton) {
             game.sendAction(new RookHoldAction(this));
         }

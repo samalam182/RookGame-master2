@@ -736,7 +736,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="Computer Player 2"
+                                android:text="Dealer"
                                 android:id="@+id/textView_LastBidder" />
                         </LinearLayout>
 
