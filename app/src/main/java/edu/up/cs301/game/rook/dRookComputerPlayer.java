@@ -44,7 +44,8 @@ public class dRookComputerPlayer extends RookComputerPlayer {
             } else if (savedState.getSubStage() == savedState.BID) {
                 Log.i("Reached bidding stage", "" + this.playerNum);
                 // the dumb computer player will randomly decide to bid or pass
-                int randSelection = (int)(Math.random()*10);
+                //int randSelection = (int)(Math.random()*10);
+                int randSelection = 2;
 
                 if (randSelection < 7) {
                     // when randSelection is less than 0.5, the dumb computer player will pass
@@ -53,7 +54,8 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                 } else {
                     // when randSelection is more than 0.5, the dumb computer player will bid
 
-                    int randBidVal = (int) Math.random() * 10;
+                    //int randBidVal = (int) (Math.random() * 10);
+                    int randBidVal = 10;
 
                     int addBid = 0;
 
@@ -68,10 +70,13 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                     int prevBid = savedState.getHighestBid();
                     Log.i("Previous bid", "" + prevBid);
 
-                    //int myBid = prevBid + addBid;
-                    int myBid = savedState.getHighestBid() + addBid;
-                    game.sendAction(new RookBidAction(this, myBid));
-                    Log.i("Sent Bid Action", "" + this.playerNum + "," + myBid);
+                    if(prevBid < 120) {
+                        //int myBid = prevBid + addBid;
+                        //int myBid = savedState.getHighestBid() + addBid;
+                        int myBid = prevBid + addBid;
+                        game.sendAction(new RookBidAction(this, myBid));
+                        Log.i("Sent Bid Action", "" + this.playerNum + "," + myBid);
+                    }
                 }
 
             } else if (savedState.getSubStage() == savedState.NEST) {
@@ -88,6 +93,7 @@ public class dRookComputerPlayer extends RookComputerPlayer {
 
                 ArrayList<Card> cardsFromNest = new ArrayList<Card>();
                 ArrayList<Card> cardsFromHand = new ArrayList<Card>();
+                int cardIndex = 0;
                 for (int y = 0; y < 5; y++) {
                     double randPilePicker = Math.random();
 
@@ -95,17 +101,32 @@ public class dRookComputerPlayer extends RookComputerPlayer {
 
                         // picks from the nest
 
-                        double randNestCardIndex = Math.random() * 5;
-                        int randNestCardIndexInt = (int) randNestCardIndex;
-                        cardsFromNest.add(nestCards.get(randNestCardIndexInt));
-
-                    } else {
-                        // picks from the hand
-                        double randHandCardIndex = Math.random() * 9;
-                        int randHandCardIndexInt = (int) randHandCardIndex;
-                        cardsFromHand.add(handCards.get(randHandCardIndexInt));
-
+                        int randNestCardIndex = (int) (Math.random() * 5);
+                        if (!cardsFromNest.contains(nestCards.get(randNestCardIndex)))
+                        {
+                            cardsFromNest.add(nestCards.get(randNestCardIndex));
+                        }
                     }
+                }
+
+                int handIndex = 0;
+                for (int z = 0; z < cardsFromNest.size(); z++)
+                {
+                    // picks from the hand
+                    int randHandCardIndex = (int)(Math.random()* 9);
+                    if (!cardsFromHand.contains(handCards.get(randHandCardIndex)))
+                    {
+                        cardsFromHand.add(handCards.get(randHandCardIndex));
+                    }
+                    else
+                    {
+                       int nextTryRandHandCard = (int) (Math.random()*9);
+                        if (!cardsFromHand.contains(handCards.get(nextTryRandHandCard)));
+                        {
+                            cardsFromHand.add(handCards.get(nextTryRandHandCard));
+                        }
+                    }
+
                 }
 
 //            if (randNestCardIndex < 1)

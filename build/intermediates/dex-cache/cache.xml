@@ -2,31 +2,13 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="C:\Users\Eric ASUS G750\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\Alexander\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jumboMode="false"
         optimize="true"
         revision="22.0.1"
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="C:\Users\Eric ASUS G750\AndroidStudioProjects\New3\RookGame-master233\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-18.0.0_feb8c8aa34b8d778c43345cf9a5fa7e73c76df12\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Eric ASUS G750\AndroidStudioProjects\New3\RookGame-master233\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="364e43b0b2d2a412f659c4b0b2ec2772c95b472b">
-        <dex dex="C:\Users\Eric ASUS G750\AndroidStudioProjects\New3\RookGame-master233\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_916c52a38d3bbc0818c96f93e7dae6422530e3a7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Eric ASUS G750\AndroidStudioProjects\New3\RookGame-master233\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="91606e3cfe39d2df00a611fe482ae187cd43f4f6">
-        <dex dex="C:\Users\Eric ASUS G750\AndroidStudioProjects\New3\RookGame-master233\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_c621ddb6f802d6b52b6d8e42e6ec21317b058b0f\classes.dex" />
+        <dex dex="C:\Users\Alexander\Desktop\RookGame-master2\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0_8a66eabf85a77b95e22ebcf3561a0dec66d4bd96.jar" />
     </item>
 
 </items>

@@ -43,9 +43,9 @@ public class RookMainActivity extends GameMainActivity {
 			public GamePlayer createPlayer(String name) {
 				return new dRookComputerPlayer(name);
 			}});
-		playerTypes.add(new GamePlayerType("computer player (dumb3)") {
+		playerTypes.add(new GamePlayerType("computer player (smart)") {
 			public GamePlayer createPlayer(String name) {
-				return new dRookComputerPlayer(name);
+				return new sRookComputerPlayer(name);
 			}});
 
 		// Create a game configuration class for SlapJack
