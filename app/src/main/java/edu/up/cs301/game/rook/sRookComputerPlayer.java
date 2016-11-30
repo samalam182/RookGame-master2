@@ -174,7 +174,6 @@ public class sRookComputerPlayer extends RookComputerPlayer {
             for (int h = 0; h < cardsFromNest.size(); h++) {
                 for (int k = 0; k < savedState.playerHands[this.playerNum].size(); k++)
                 {
-                    Card 
                 }
                 if (redSuitNum > greenSuitNum && redSuitNum > yellSuitNum && redSuitNum > blackSuitNum) {
                     if (myCard.getSuit() != 3) {
