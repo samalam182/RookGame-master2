@@ -215,10 +215,16 @@ public class Card implements Serializable {
 			R.drawable.rookcard_11r, R.drawable.rookcard_12r, R.drawable.rookcard_13r,
 			R.drawable.rookcard_14r
     	},
+		{
+			R.drawable.rookcard_rook, R.drawable.rookcard_back, R.drawable.rookcard_back,
+                R.drawable.rookcard_back, R.drawable.rookcard_back, R.drawable.rookcard_back,
+                R.drawable.rookcard_back, R.drawable.rookcard_back, R.drawable.rookcard_back,
+                R.drawable.rookcard_back,
+		},
     };
 
     // the array of card images
-    private static Bitmap[][] cardImages = null;
+    public static Bitmap[][] cardImages = null;
 
     /**
      * initializes the card images
