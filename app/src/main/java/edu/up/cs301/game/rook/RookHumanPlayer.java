@@ -111,6 +111,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public ArrayList<Card> fromH = new ArrayList<Card>(5);
     public ArrayList<Card> fromN = new ArrayList<Card>(5);
 
+    public TextView passOne;
+    public TextView passTwo;
+    public TextView passThree;
+    public TextView passFour;
+    public TextView passTitle;
+
+
     public int[] handSwitch = new int[5];
     public int trackH = 0;
     public int[] nestSwitch = new int[5];
@@ -289,6 +296,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         trick3.setImageResource(R.drawable.rookcard_back);
         trick4.setImageResource(R.drawable.rookcard_back);
 
+        passOne = (TextView) activity.findViewById(R.id.textView_PassedPlayersZERO);
+        passTwo = (TextView) activity.findViewById(R.id.textView_PassedPlayersONE);
+        passThree = (TextView) activity.findViewById(R.id.textView_PassedPlayersTWO);
+        passFour = (TextView) activity.findViewById(R.id.textView_PassedPlayersTHREE);
+        passTitle = (TextView) activity.findViewById(R.id.textView_PassedPlayersLabel);
+
         lastBidder = (TextView) activity.findViewById(R.id.textView_LastBidder);
 
         trumpAccounce = (TextView) activity.findViewById(R.id.textView_ROUNDTrumpSuit);
@@ -344,7 +357,14 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         bidShow.setVisibility(View.INVISIBLE);
         bidMainTitle.setVisibility(View.INVISIBLE);
         yourBid.setVisibility(View.INVISIBLE);
+        passOne.setVisibility(View.INVISIBLE);
+        passTwo.setVisibility(View.INVISIBLE);
+        passThree.setVisibility(View.INVISIBLE);
+        passFour.setVisibility(View.INVISIBLE);
+        passTitle.setVisibility(View.INVISIBLE);
         //updateGUI(state);
+
+
 
         humanPoints = (TextView) activity.findViewById(R.id.textView_HumanTotalPoints);
     }
@@ -379,6 +399,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidShow.setVisibility(View.VISIBLE);
             bidMainTitle.setVisibility(View.VISIBLE);
             yourBid.setVisibility(View.VISIBLE);
+            passTitle.setVisibility(View.VISIBLE);
+
+            passOne.setVisibility(View.VISIBLE);
+            passTwo.setVisibility(View.INVISIBLE);
+            passThree.setVisibility(View.INVISIBLE);
+            passFour.setVisibility(View.INVISIBLE);
 
             Log.i("UpdateGUI", "Trying to update lastBidder");
             if (state.lastBidder == 0) {
@@ -390,6 +416,27 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if (state.lastBidder == 3) {
                 lastBidder.setText("Player 4");
             }
+
+            if(state.pass[0])
+            {
+                passOne.setVisibility(View.VISIBLE);
+            }
+
+            if(state.pass[1])
+            {
+                passOne.setVisibility(View.VISIBLE);
+            }
+
+            if(state.pass[2])
+            {
+                passOne.setVisibility(View.VISIBLE);
+            }
+
+            if(state.pass[3])
+            {
+                passOne.setVisibility(View.VISIBLE);
+            }
+
         } else if (s.getSubStage() == WAIT) {
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
@@ -402,6 +449,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidShow.setVisibility(View.INVISIBLE);
             bidMainTitle.setVisibility(View.INVISIBLE);
             yourBid.setVisibility(View.INVISIBLE);
+            passOne.setVisibility(View.INVISIBLE);
+            passTwo.setVisibility(View.INVISIBLE);
+            passThree.setVisibility(View.INVISIBLE);
+            passFour.setVisibility(View.INVISIBLE);
         } else if (s.getSubStage() == NEST) {
             nest1.setVisibility(View.VISIBLE);
             nest2.setVisibility(View.VISIBLE);
@@ -626,6 +677,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidShow.setVisibility(View.VISIBLE);
             bidMainTitle.setVisibility(View.VISIBLE);
             yourBid.setVisibility(View.VISIBLE);
+            passTitle.setVisibility(View.VISIBLE);
+
         } else if (v == card0) {
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(0))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(0));

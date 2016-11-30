@@ -45,21 +45,23 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                 Log.i("Reached bidding stage", "" + this.playerNum);
                 // the dumb computer player will randomly decide to bid or pass
                 //int randSelection = (int)(Math.random()*10);
-                int randSelection = 2;
+                int randSelection = (int) Math.random() * 10;
 
-                if (randSelection < 7) {
+                if (randSelection < 7)
+                {
                     // when randSelection is less than 0.5, the dumb computer player will pass
                     game.sendAction(new RookHoldAction(this));
                     Log.i("Sent hold action", "" + this.playerNum);
-                } else {
+                }
+                else {
                     // when randSelection is more than 0.5, the dumb computer player will bid
 
-                    //int randBidVal = (int) (Math.random() * 10);
-                    int randBidVal = 10;
+                    int randBidVal = (int) (Math.random() * 10);
 
                     int addBid = 0;
 
-                    if (randBidVal <= 7) {
+                    if (randBidVal <= 7)
+                    {
                         addBid = 5;
                     } else if (randBidVal >= 8) {
                         addBid = 10;
@@ -70,7 +72,8 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                     int prevBid = savedState.getHighestBid();
                     Log.i("Previous bid", "" + prevBid);
 
-                    if(prevBid < 120) {
+                    if(prevBid < 120)
+                    {
                         //int myBid = prevBid + addBid;
                         //int myBid = savedState.getHighestBid() + addBid;
                         int myBid = prevBid + addBid;

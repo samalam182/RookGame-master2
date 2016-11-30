@@ -50,6 +50,7 @@ public class RookState extends GameState {
     private int[] playerBids = new int[numPlayers];
     private int[] playerScores;
     private String[] playerNames;
+    public boolean[] pass;
 
     public RookState() {
         subStage = WAIT;
@@ -64,6 +65,11 @@ public class RookState extends GameState {
         playerHands[3] = playerThreeHand;
         nest = new ArrayList<Card>(5);
         currTrick = new ArrayList<Card>(4);
+        pass = new boolean[4];
+        pass[0] = false;
+        pass[1] = false;
+        pass[2] = false;
+        pass[3] = false;
 
         deck = initDeck();
         deal();
@@ -96,6 +102,7 @@ public class RookState extends GameState {
         playerHands[3] = playerThreeHand;
         nest = temp.nest;
         currTrick = temp.currTrick;
+        pass = temp.pass;
 
         deck = temp.deck;
 
