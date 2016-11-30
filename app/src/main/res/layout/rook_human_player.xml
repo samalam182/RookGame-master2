@@ -685,7 +685,7 @@
 
                         <Space
                             android:layout_width="20px"
-                            android:layout_height="30px" />
+                            android:layout_height="20px" />
 
                         <LinearLayout
                             android:orientation="horizontal"
@@ -714,7 +714,7 @@
 
                         <Space
                             android:layout_width="20px"
-                            android:layout_height="25px" />
+                            android:layout_height="0px" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -766,7 +766,7 @@
 
                         <Space
                             android:layout_width="20px"
-                            android:layout_height="20px" />
+                            android:layout_height="0px" />
 
                         <LinearLayout
                             android:orientation="horizontal"
@@ -826,7 +826,7 @@
 
                         <Space
                             android:layout_width="20px"
-                            android:layout_height="20px" />
+                            android:layout_height="15px" />
 
                         <LinearLayout
                             android:orientation="horizontal"
@@ -870,7 +870,7 @@
 
                     <Space
                         android:layout_width="20px"
-                        android:layout_height="40px" />
+                        android:layout_height="20px" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -892,14 +892,32 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="player 1"
-                            android:id="@+id/textView_PassedPlayersFIRST" />
+                            android:text="player 0"
+                            android:id="@+id/textView_PassedPlayersZERO" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
+                        <Space
+                            android:layout_width="50px"
+                            android:layout_height="20px" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="player 1"
+                            android:id="@+id/textView_PassedPlayersONE" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
 
                         <Space
                             android:layout_width="50px"
@@ -910,13 +928,13 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="player 2"
-                            android:id="@+id/textView_PassedPlayersSECOND" />
+                            android:id="@+id/textView_PassedPlayersTWO" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content" >
 
                         <Space
                             android:layout_width="50px"
@@ -927,7 +945,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="player 3"
-                            android:id="@+id/textView_PassedPlayersTHIRD" />
+                            android:id="@+id/textView_PassedPlayersTHREE" />
                     </LinearLayout>
 
                 </LinearLayout>
