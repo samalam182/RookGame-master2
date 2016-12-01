@@ -136,6 +136,37 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public ImageView opponentTwoOrangeStar;
     public ImageView opponentThreeOrangeStar;
 
+    public ImageView opponentONECard0;
+    public ImageView opponentONECard1;
+    public ImageView opponentONECard2;
+    public ImageView opponentONECard3;
+    public ImageView opponentONECard4;
+    public ImageView opponentONECard5;
+    public ImageView opponentONECard6;
+    public ImageView opponentONECard7;
+    public ImageView opponentONECard8;
+
+    public ImageView opponentTWOCard0;
+    public ImageView opponentTWOCard1;
+    public ImageView opponentTWOCard2;
+    public ImageView opponentTWOCard3;
+    public ImageView opponentTWOCard4;
+    public ImageView opponentTWOCard5;
+    public ImageView opponentTWOCard6;
+    public ImageView opponentTWOCard7;
+    public ImageView opponentTWOCard8;
+
+    public ImageView opponentTHREECard0;
+    public ImageView opponentTHREECard1;
+    public ImageView opponentTHREECard2;
+    public ImageView opponentTHREECard3;
+    public ImageView opponentTHREECard4;
+    public ImageView opponentTHREECard5;
+    public ImageView opponentTHREECard6;
+    public ImageView opponentTHREECard7;
+    public ImageView opponentTHREECard8;
+
+
 
     /**
      * constructor
@@ -380,6 +411,64 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
         opponentThreeOrangeStar = (ImageView) activity.findViewById(R.id.imageView_OpponentTHREEOrangeStar);
         opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
+
+        //cards of opponents' hands views
+        opponentONECard0 = (ImageView) activity.findViewById(R.id.imageView_OpponentONEHand_0);
+        opponentONECard0.setImageResource(R.drawable.rookcard_back);
+        opponentONECard1 = (ImageView) activity.findViewById(R.id.imageView_OpponentONEHand_1);
+        opponentONECard1.setImageResource(R.drawable.rookcard_back);
+        opponentONECard2 = (ImageView) activity.findViewById(R.id.imageView_OpponentONEHand_2);
+        opponentONECard2.setImageResource(R.drawable.rookcard_back);
+        opponentONECard3 = (ImageView) activity.findViewById(R.id.imageView_OpponentONEHand_3);
+        opponentONECard3.setImageResource(R.drawable.rookcard_back);
+        opponentONECard4 = (ImageView) activity.findViewById(R.id.imageView_OpponentONEHand_4);
+        opponentONECard4.setImageResource(R.drawable.rookcard_back);
+        opponentONECard5 = (ImageView) activity.findViewById(R.id.imageView_OpponentONEHand_5);
+        opponentONECard5.setImageResource(R.drawable.rookcard_back);
+        opponentONECard6 = (ImageView) activity.findViewById(R.id.imageView_OpponentONEHand_6);
+        opponentONECard6.setImageResource(R.drawable.rookcard_back);
+        opponentONECard7 = (ImageView) activity.findViewById(R.id.imageView_OpponentONEHand_7);
+        opponentONECard7.setImageResource(R.drawable.rookcard_back);
+        opponentONECard8 = (ImageView) activity.findViewById(R.id.imageView_OpponentONEHand_8);
+        opponentONECard8.setImageResource(R.drawable.rookcard_back);
+
+        opponentTWOCard0 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_0);
+        opponentTWOCard0.setImageResource(R.drawable.rookcard_back);
+        opponentTWOCard1 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_1);
+        opponentTWOCard1.setImageResource(R.drawable.rookcard_back);
+        opponentTWOCard2 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_2);
+        opponentTWOCard2.setImageResource(R.drawable.rookcard_back);
+        opponentTWOCard3 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_3);
+        opponentTWOCard3.setImageResource(R.drawable.rookcard_back);
+        opponentTWOCard4 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_4);
+        opponentTWOCard4.setImageResource(R.drawable.rookcard_back);
+        opponentTWOCard5 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_5);
+        opponentTWOCard5.setImageResource(R.drawable.rookcard_back);
+        opponentTWOCard6 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_6);
+        opponentTWOCard6.setImageResource(R.drawable.rookcard_back);
+        opponentTWOCard7 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_7);
+        opponentTWOCard7.setImageResource(R.drawable.rookcard_back);
+        opponentTWOCard8 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_8);
+        opponentTWOCard8.setImageResource(R.drawable.rookcard_back);
+
+        opponentTHREECard0 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_0);
+        opponentTHREECard0.setImageResource(R.drawable.rookcard_back);
+        opponentTHREECard1 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_1);
+        opponentTHREECard1.setImageResource(R.drawable.rookcard_back);
+        opponentTHREECard2 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_2);
+        opponentTHREECard2.setImageResource(R.drawable.rookcard_back);
+        opponentTHREECard3 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_3);
+        opponentTHREECard3.setImageResource(R.drawable.rookcard_back);
+        opponentTHREECard4 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_4);
+        opponentTHREECard4.setImageResource(R.drawable.rookcard_back);
+        opponentTHREECard5 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_5);
+        opponentTHREECard5.setImageResource(R.drawable.rookcard_back);
+        opponentTHREECard6 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_6);
+        opponentTHREECard6.setImageResource(R.drawable.rookcard_back);
+        opponentTHREECard7 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_7);
+        opponentTHREECard7.setImageResource(R.drawable.rookcard_back);
+        opponentTHREECard8 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_8);
+        opponentTHREECard8.setImageResource(R.drawable.rookcard_back);
     }
 
     public void updateGUI(RookState s) {
@@ -501,6 +590,19 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidMainTitle.setVisibility(View.INVISIBLE);
             yourBid.setVisibility(View.INVISIBLE);
 
+            //makes sure tahat cards in HumanPlayer's hand doesn't disappear during
+            //Nest-phase of game
+            card0.setVisibility(View.VISIBLE);
+            card1.setVisibility(View.VISIBLE);
+            card2.setVisibility(View.VISIBLE);
+            card2.setVisibility(View.VISIBLE);
+            card3.setVisibility(View.VISIBLE);
+            card4.setVisibility(View.VISIBLE);
+            card5.setVisibility(View.VISIBLE);
+            card6.setVisibility(View.VISIBLE);
+            card7.setVisibility(View.VISIBLE);
+            card8.setVisibility(View.VISIBLE);
+
             correctNestImage();
             setOrangeStarIndicator();
 
@@ -604,6 +706,15 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             opponentOneOrangeStar.setVisibility(View.INVISIBLE);
             opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
             opponentThreeOrangeStar.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void checkCurrentSizeOfOpponentHand(int opponentIdx) {
+        if(opponentIdx == 1) {
+            if(state.playerOneHand.size() < 9) {
+                // PUT STUFF IN HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                // FOR CHECKING SIZE OF ARRAY - let display of opponent hands reflect size of array
+            }
         }
     }
 
