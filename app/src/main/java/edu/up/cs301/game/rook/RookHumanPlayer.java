@@ -908,21 +908,36 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             yourBid.setVisibility(View.VISIBLE);
             passTitle.setVisibility(View.VISIBLE);
 
-        } else if (v == card0) {
-            if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(0))) && fromH.size() < 5) {
+        } else if (v == card0)
+        {
+            if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(0))) && fromH.size() < 5)
+            {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(0));
                 card0.setAlpha(100);
-            } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
+            }
+            else if (state.getSubStage() == NEST && (fromH.contains(state.playerHands[state.getActivePlayer()].get(0))) && fromH.size() < 6)
+            {
+                fromH.remove(state.playerHands[state.getActivePlayer()].get(0));
+                card0.setAlpha(255);
+            }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             } else if(state.getSubStage() == PLAY){
                 game.sendAction(new RookCardAction(this, 0));
                 card0.setVisibility(View.INVISIBLE);
 
             }
-        } else if (v == card1) {
+        } else if (v == card1)
+        {
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(1))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(1));
                 card1.setAlpha(100);
-            } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
+            }
+            else if (state.getSubStage() == NEST && (fromH.contains(state.playerHands[state.getActivePlayer()].get(1))) && fromH.size() < 6)
+            {
+                fromH.remove(state.playerHands[state.getActivePlayer()].get(1));
+                card1.setAlpha(255);
+            }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 1));
@@ -933,7 +948,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(2))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(2));
                 card2.setAlpha(100);
-            } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
+            }
+            else if (state.getSubStage() == NEST && (fromH.contains(state.playerHands[state.getActivePlayer()].get(2))) && fromH.size() < 6)
+            {
+                fromH.remove(state.playerHands[state.getActivePlayer()].get(2));
+                card2.setAlpha(255);
+            }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 2));
@@ -944,7 +965,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(3))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(3));
                 card3.setAlpha(100);
-            } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
+            }
+            else if (state.getSubStage() == NEST && (fromH.contains(state.playerHands[state.getActivePlayer()].get(3))) && fromH.size() < 6)
+            {
+                fromH.remove(state.playerHands[state.getActivePlayer()].get(3));
+                card3.setAlpha(255);
+            }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 3));
@@ -955,7 +982,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(4))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(4));
                 card4.setAlpha(100);
-            } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
+            }
+            else if (state.getSubStage() == NEST && (fromH.contains(state.playerHands[state.getActivePlayer()].get(4))) && fromH.size() < 6)
+            {
+                fromH.remove(state.playerHands[state.getActivePlayer()].get(4));
+                card4.setAlpha(255);
+            }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 4));
@@ -966,7 +999,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(5))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(5));
                 card5.setAlpha(100);
-            } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
+            }
+            else if (state.getSubStage() == NEST && (fromH.contains(state.playerHands[state.getActivePlayer()].get(5))) && fromH.size() < 6)
+            {
+                fromH.remove(state.playerHands[state.getActivePlayer()].get(5));
+                card5.setAlpha(255);
+            }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 5));
@@ -977,7 +1016,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(6))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(6));
                 card6.setAlpha(100);
-            } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
+            }
+            else if (state.getSubStage() == NEST && (fromH.contains(state.playerHands[state.getActivePlayer()].get(6))) && fromH.size() < 6)
+            {
+                fromH.remove(state.playerHands[state.getActivePlayer()].get(6));
+                card6.setAlpha(255);
+            }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 6));
@@ -988,45 +1033,102 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(7))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(7));
                 card7.setAlpha(100);
-            } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
+            }
+            else if (state.getSubStage() == NEST && (fromH.contains(state.playerHands[state.getActivePlayer()].get(7))) && fromH.size() < 6)
+            {
+                fromH.remove(state.playerHands[state.getActivePlayer()].get(7));
+                card7.setAlpha(255);
+            }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 7));
                 card7.setVisibility(View.INVISIBLE);
 
             }
-        } else if (v == card8) {
+        }
+        else if (v == card8)
+        {
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(8))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(8));
                 card8.setAlpha(100);
-            } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else if(state.getSubStage() == PLAY){
+            }
+            else if (state.getSubStage() == NEST && (fromH.contains(state.playerHands[state.getActivePlayer()].get(8))) && fromH.size() < 6)
+            {
+                fromH.remove(state.playerHands[state.getActivePlayer()].get(8));
+                card8.setAlpha(255);
+            }
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
+            }
+            else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 8));
                 card8.setVisibility(View.INVISIBLE);
 
             }
-        } else if (v == nest1) {
-            nest1.setAlpha(100);
-            fromN.add(state.nest.get(0));
-            game.sendAction(new RookCardAction(this, 0));
-        } else if (v == nest2) {
+        }
+        else if (v == nest1)
+        {
+            if (fromN.contains(state.nest.get(0)))
+            {
+                nest1.setAlpha(255);
+                fromN.remove(state.nest.get(0));
+            }
+            else {
+                nest1.setAlpha(100);
+                fromN.add(state.nest.get(0));
+            }
+            //game.sendAction(new RookCardAction(this, 0));
+        }
+        else if (v == nest2)
+        {
+            if (fromN.contains(state.nest.get(1)))
+            {
+                nest2.setAlpha(255);
+                fromN.remove(state.nest.get(1));
+            }
+            else {
             nest2.setAlpha(100);
-            fromN.add(state.nest.get(1));
-            game.sendAction(new RookCardAction(this, 1));
-        } else if (v == nest3) {
+            fromN.add(state.nest.get(1));}
+            //game.sendAction(new RookCardAction(this, 1));
+        }
+        else if (v == nest3)
+        {
+            if (fromN.contains(state.nest.get(2)))
+            {
+                nest3.setAlpha(255);
+                fromN.remove(state.nest.get(2));
+            }
+            else{
             nest3.setAlpha(100);
-            fromN.add(state.nest.get(2));
-            game.sendAction(new RookCardAction(this, 2));
-        } else if (v == nest4) {
+            fromN.add(state.nest.get(2));}
+            //game.sendAction(new RookCardAction(this, 2));
+        }
+        else if (v == nest4)
+        {
+            if (fromN.contains(state.nest.get(3)))
+            {
+                nest4.setAlpha(255);
+                fromN.remove(state.nest.get(3));
+            }
+            else {
             nest4.setAlpha(100);
-            fromN.add(state.nest.get(3));
-            game.sendAction(new RookCardAction(this, 3));
-        } else if (v == nest5) {
+            fromN.add(state.nest.get(3));}
+            //game.sendAction(new RookCardAction(this, 3));
+        }
+        else if (v == nest5)
+        {
+            if (fromN.contains(state.nest.get(4)))
+            {
+                nest5.setAlpha(255);
+                fromN.remove(state.nest.get(4));
+            }
+            else {
             nest5.setAlpha(100);
-            fromN.add(state.nest.get(4));
-            game.sendAction(new RookCardAction(this, 3));
-        } else if (v == trumpBlack) {
+            fromN.add(state.nest.get(4));}
+            //game.sendAction(new RookCardAction(this, 3));
+        }
+        else if (v == trumpBlack) {
             trumpColor = BLACK;
             trumpAccounce.setText("Black");
         } else if (v == trumpYellow) {
