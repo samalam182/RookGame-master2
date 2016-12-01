@@ -472,12 +472,14 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             setOrangeStarIndicator();
 
         } else if (s.getSubStage() == NEST) {
-            nest1.setVisibility(View.VISIBLE);
-            nest2.setVisibility(View.VISIBLE);
-            nest3.setVisibility(View.VISIBLE);
-            nest4.setVisibility(View.VISIBLE);
-            nest5.setVisibility(View.VISIBLE);
-            confirmNest.setVisibility(View.VISIBLE);
+            if(state.getActivePlayer() == this.playerNum) {
+                nest1.setVisibility(View.VISIBLE);
+                nest2.setVisibility(View.VISIBLE);
+                nest3.setVisibility(View.VISIBLE);
+                nest4.setVisibility(View.VISIBLE);
+                nest5.setVisibility(View.VISIBLE);
+                confirmNest.setVisibility(View.VISIBLE);
+            }
             trumpBlack.setVisibility(View.INVISIBLE);
             trumpGreen.setVisibility(View.INVISIBLE);
             trumpRed.setVisibility(View.INVISIBLE);
@@ -509,11 +511,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             nest4.setVisibility(View.INVISIBLE);
             nest5.setVisibility(View.INVISIBLE);
             confirmNest.setVisibility(View.INVISIBLE);
-            trumpBlack.setVisibility(View.VISIBLE);
-            trumpGreen.setVisibility(View.VISIBLE);
-            trumpRed.setVisibility(View.VISIBLE);
-            trumpYellow.setVisibility(View.VISIBLE);
-            confirmTrump.setVisibility(View.VISIBLE);
+            if(state.getActivePlayer() == this.playerNum) {
+                trumpBlack.setVisibility(View.VISIBLE);
+                trumpGreen.setVisibility(View.VISIBLE);
+                trumpRed.setVisibility(View.VISIBLE);
+                trumpYellow.setVisibility(View.VISIBLE);
+                confirmTrump.setVisibility(View.VISIBLE);
+            }
             addFive.setVisibility(View.INVISIBLE);
             minusFive.setVisibility(View.INVISIBLE);
             bidButton.setVisibility(View.INVISIBLE);
