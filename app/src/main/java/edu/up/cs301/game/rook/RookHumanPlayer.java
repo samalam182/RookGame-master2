@@ -131,6 +131,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     public TextView humanPoints;
 
+    public ImageView humanOrangeStar;
+    public ImageView opponentOneOrangeStar;
+    public ImageView opponentTwoOrangeStar;
+    public ImageView opponentThreeOrangeStar;
+
 
     /**
      * constructor
@@ -364,9 +369,17 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         passTitle.setVisibility(View.INVISIBLE);
         //updateGUI(state);
 
-
-
         humanPoints = (TextView) activity.findViewById(R.id.textView_HumanTotalPoints);
+
+        //orange-star views
+        humanOrangeStar = (ImageView) activity.findViewById(R.id.imageView_HumanOrangeStar);
+        humanOrangeStar.setVisibility(View.INVISIBLE);
+        opponentOneOrangeStar = (ImageView) activity.findViewById(R.id.imageView_OpponentONEOrangeStar);
+        opponentOneOrangeStar.setVisibility(View.INVISIBLE);
+        opponentTwoOrangeStar = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOOrangeStar);
+        opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
+        opponentThreeOrangeStar = (ImageView) activity.findViewById(R.id.imageView_OpponentTHREEOrangeStar);
+        opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
     }
 
     public void updateGUI(RookState s) {
@@ -437,6 +450,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 passFour.setVisibility(View.VISIBLE);
             }
 
+            setOrangeStarIndicator();
+
         } else if (s.getSubStage() == WAIT) {
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
@@ -453,6 +468,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             passTwo.setVisibility(View.INVISIBLE);
             passThree.setVisibility(View.INVISIBLE);
             passFour.setVisibility(View.INVISIBLE);
+
+            setOrangeStarIndicator();
+
         } else if (s.getSubStage() == NEST) {
             nest1.setVisibility(View.VISIBLE);
             nest2.setVisibility(View.VISIBLE);
@@ -480,7 +498,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidShow.setVisibility(View.INVISIBLE);
             bidMainTitle.setVisibility(View.INVISIBLE);
             yourBid.setVisibility(View.INVISIBLE);
+
             correctNestImage();
+            setOrangeStarIndicator();
+
         } else if (s.getSubStage() == TRUMP) {
             nest1.setVisibility(View.INVISIBLE);
             nest2.setVisibility(View.INVISIBLE);
@@ -497,6 +518,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             minusFive.setVisibility(View.INVISIBLE);
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
+
+            setOrangeStarIndicator();
         } else {
             if (state.getTrump() == 0)
             {
@@ -540,6 +563,43 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             trick3.setVisibility(View.VISIBLE);
             trick4.setVisibility(View.VISIBLE);
 
+            setOrangeStarIndicator();
+
+        }
+    }
+
+    /**
+     * check to see which player's turn it is during bid-phase, nest-phase,
+     * trump-phase, or trick-phase to place an orange star next to the current
+     * active player's name to indicate to the human player whose turn it is
+     */
+    public void setOrangeStarIndicator() {
+//        int playerNumInConfig;
+//        if (state.)
+
+        if (state.getActivePlayer() == 0) {
+            humanOrangeStar.setVisibility(View.VISIBLE);
+            opponentOneOrangeStar.setVisibility(View.INVISIBLE);
+            opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
+            opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
+        }
+        else if (state.getActivePlayer() == 1) {
+            humanOrangeStar.setVisibility(View.INVISIBLE);
+            opponentOneOrangeStar.setVisibility(View.VISIBLE);
+            opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
+            opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
+        }
+        else if (state.getActivePlayer() == 2) {
+            humanOrangeStar.setVisibility(View.INVISIBLE);
+            opponentOneOrangeStar.setVisibility(View.INVISIBLE);
+            opponentTwoOrangeStar.setVisibility(View.VISIBLE);
+            opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
+        }
+        else if (state.getActivePlayer() == 3) {
+            humanOrangeStar.setVisibility(View.INVISIBLE);
+            opponentOneOrangeStar.setVisibility(View.INVISIBLE);
+            opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
+            opponentThreeOrangeStar.setVisibility(View.VISIBLE);
         }
     }
 

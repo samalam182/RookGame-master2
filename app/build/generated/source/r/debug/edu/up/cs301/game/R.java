@@ -172,7 +172,7 @@ public final class R {
         public static final int imageButton_Nest_2=0x7f090039;
         public static final int imageButton_Nest_3=0x7f09003a;
         public static final int imageButton_Nest_4=0x7f09003b;
-        public static final int imageView_HumanPlayerOrangeStar=0x7f090057;
+        public static final int imageView_HumanOrangeStar=0x7f090057;
         public static final int imageView_OpponentONEHand_0=0x7f09001c;
         public static final int imageView_OpponentONEHand_1=0x7f09001d;
         public static final int imageView_OpponentONEHand_2=0x7f09001e;
@@ -182,7 +182,7 @@ public final class R {
         public static final int imageView_OpponentONEHand_6=0x7f090022;
         public static final int imageView_OpponentONEHand_7=0x7f090023;
         public static final int imageView_OpponentONEHand_8=0x7f090024;
-        public static final int imageView_OpponentONEOrangeStart=0x7f090025;
+        public static final int imageView_OpponentONEOrangeStar=0x7f090025;
         public static final int imageView_OpponentTHREEHand_0=0x7f09005f;
         public static final int imageView_OpponentTHREEHand_1=0x7f090060;
         public static final int imageView_OpponentTHREEHand_2=0x7f090061;

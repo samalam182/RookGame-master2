@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import edu.up.cs301.card.Card;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.R;
+import edu.up.cs301.game.config.GamePlayerType;
 import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.GameState;
 
@@ -52,6 +53,8 @@ public class RookState extends GameState {
     private String[] playerNames;
     public boolean[] pass;
 
+    public ArrayList<GamePlayerType> playerTypes;
+
     public RookState() {
         subStage = WAIT;
         currPlayer = 0;
@@ -85,6 +88,8 @@ public class RookState extends GameState {
         playerScores = new int[numPlayers];
         playerNames = new String[numPlayers];
         winningPlayer = 0;
+
+        playerTypes = new ArrayList<GamePlayerType>(4);
     }
 
     public RookState(GameInfo info) {

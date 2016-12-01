@@ -160,7 +160,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView_OpponentONEOrangeStart"
+                    android:id="@+id/imageView_OpponentONEOrangeStar"
                     android:src="@drawable/rook_orangestaricon" />
 
                 <TextView
@@ -1058,8 +1058,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView_HumanPlayerOrangeStar"
-                    android:src="@drawable/rook_orangestaricon" />
+                    android:id="@+id/imageView_HumanOrangeStar"
+                    android:src="@drawable/rook_orangestaricon"
+                    android:focusableInTouchMode="true" />
 
                 <TextView
                     android:layout_width="wrap_content"
