@@ -381,13 +381,11 @@ public class RookLocalGame extends LocalGame
                             }
                         }
                     }
+                    //state.setScore(points, trickWinner);
+                    //state.currTrick.clear();
+                    //state.setPlayer(trickWinner);
                 }
-
             }
-            //state.setScore(points, trickWinner);
-            //state.currTrick.clear();
-            //state.setPlayer(trickWinner);
-
         }
         else if (action instanceof RookHoldAction)
         {

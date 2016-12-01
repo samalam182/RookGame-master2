@@ -92,8 +92,8 @@ public class RookState extends GameState {
         playerTypes = new ArrayList<GamePlayerType>(4);
     }
 
-    public RookState(GameInfo info) {
-        RookState temp = (RookState) info;
+    public RookState(RookState info) {
+        RookState temp = info;
 
         subStage = temp.subStage;
         currPlayer = temp.currPlayer;
@@ -105,8 +105,16 @@ public class RookState extends GameState {
         playerHands[1] = playerOneHand;
         playerHands[2] = playerTwoHand;
         playerHands[3] = playerThreeHand;
-        nest = temp.nest;
-        currTrick = temp.currTrick;
+        nest = new ArrayList<Card>(5);
+        for(Card c : temp.nest)
+        {
+            nest.add(new Card(c.getSuit(), c.getNumValue()));
+        }
+        currTrick = new ArrayList<Card>(4);
+        for(Card c : temp.currTrick)
+        {
+            currTrick.add(new Card(c.getSuit(), c.getNumValue()));
+        }
         pass = temp.pass;
 
         deck = temp.deck;

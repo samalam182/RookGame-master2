@@ -610,7 +610,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         // the card that we're looking for is being stored
         Card getting;
         if(card.length != 0) {
-            for (int i = 0; i < card.length; i++) {
+            for (int i = 0; i < state.playerHands[state.getActivePlayer()].size(); i++) {
                 // gets the card we're looking for. [0] = only player one.
                 // for future human players, needs to be another look per player
                 if (state.playerHands[0].get(i) != null) {
@@ -641,7 +641,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         int currSuit = 5;
         int currVal = 10;
         if(state.currTrick.size() != 0){
-        for (int i = 0; i < trick.length; i++) {
+        for (int i = 0; i < state.currTrick.size(); i++) {
             // gets the card we're looking for. [0] = only player one.
             // for future human players, needs to be another look per player
             if (state.currTrick.get(i) != null) {
@@ -656,6 +656,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                     tempBitmap = cardImages[currSuit][currVal - 5];
                 }
                 trick[i].setImageBitmap(tempBitmap);
+                trick[i].invalidate();
             }
 
         }
@@ -744,7 +745,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(0));
                 card0.setAlpha(100);
             } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else {
+            } else if(state.getSubStage() == PLAY){
                 game.sendAction(new RookCardAction(this, 0));
                 card0.setVisibility(View.INVISIBLE);
 
@@ -754,7 +755,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(1));
                 card1.setAlpha(100);
             } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else {
+            } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 1));
                 card1.setVisibility(View.INVISIBLE);
@@ -765,7 +766,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(2));
                 card2.setAlpha(100);
             } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else {
+            } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 2));
                 card2.setVisibility(View.INVISIBLE);
@@ -776,7 +777,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(3));
                 card3.setAlpha(100);
             } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else {
+            } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 3));
                 card3.setVisibility(View.INVISIBLE);
@@ -787,7 +788,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(4));
                 card4.setAlpha(100);
             } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else {
+            } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 4));
                 card4.setVisibility(View.INVISIBLE);
@@ -798,7 +799,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(5));
                 card5.setAlpha(100);
             } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else {
+            } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 5));
                 card5.setVisibility(View.INVISIBLE);
@@ -809,7 +810,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(6));
                 card6.setAlpha(100);
             } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else {
+            } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 6));
                 card6.setVisibility(View.INVISIBLE);
@@ -820,7 +821,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(7));
                 card7.setAlpha(100);
             } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else {
+            } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 7));
                 card7.setVisibility(View.INVISIBLE);
@@ -831,7 +832,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.add(state.playerHands[state.getActivePlayer()].get(8));
                 card8.setAlpha(100);
             } else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else {
+            } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 8));
                 card8.setVisibility(View.INVISIBLE);

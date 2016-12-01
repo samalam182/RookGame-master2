@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sj_human_player.xml",
+        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\sj_human_player.xml"
+    },
+    {
         "merged": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_no_gui.xml",
         "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\layout\\game_no_gui.xml"
     },
@@ -12,24 +16,24 @@
         "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
     },
     {
-        "merged": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_main.xml",
-        "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_main.xml"
-    },
-    {
         "merged": "C:\\Users\\nguyenmi19\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_main.xml",
         "source": "C:\\Users\\nguyenmi19\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_main.xml",
+        "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_main.xml"
     },
     {
         "merged": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sj_human_player.xml",
         "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\layout\\sj_human_player.xml"
     },
     {
-        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\counter_human_player.xml",
-        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\counter_human_player.xml"
-    },
-    {
         "merged": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_player_list_row.xml",
         "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\layout\\game_player_list_row.xml"
+    },
+    {
+        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_player_list_row.xml",
+        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\game_player_list_row.xml"
     },
     {
         "merged": "C:\\Users\\nguyenmi19\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_player_list_row.xml",
@@ -40,24 +44,16 @@
         "source": "C:\\Users\\nguyenmi19\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\layout\\game_local_tab.xml"
     },
     {
-        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\rook_human_player.xml",
-        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\rook_human_player.xml"
-    },
-    {
-        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_no_gui.xml",
-        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_no_gui.xml"
-    },
-    {
-        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
-        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
+        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_main.xml",
+        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_main.xml"
     },
     {
         "merged": "C:\\Users\\nguyenmi19\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\rook_human_player.xml",
         "source": "C:\\Users\\nguyenmi19\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\layout\\rook_human_player.xml"
     },
     {
-        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sj_human_player.xml",
-        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\sj_human_player.xml"
+        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
+        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
     },
     {
         "merged": "C:\\Users\\nguyenmi19\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
@@ -72,6 +68,14 @@
         "source": "C:\\Users\\nguyenmi19\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\layout\\counter_human_player.xml"
     },
     {
+        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
+        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
+    },
+    {
+        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\counter_human_player.xml",
+        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\counter_human_player.xml"
+    },
+    {
         "merged": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\counter_human_player.xml",
         "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\layout\\counter_human_player.xml"
     },
@@ -84,8 +88,12 @@
         "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\layout\\rook_human_player.xml"
     },
     {
-        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_main.xml",
-        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_main.xml"
+        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\rook_human_player.xml",
+        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\rook_human_player.xml"
+    },
+    {
+        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_no_gui.xml",
+        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\game_no_gui.xml"
     },
     {
         "merged": "C:\\Users\\nguyenmi19\\AndroidStudioProjects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_remote_tab.xml",
@@ -96,15 +104,7 @@
         "source": "C:\\Users\\nguyenmi19\\AndroidStudioProjects\\RookGame-master2\\app\\src\\main\\res\\layout\\sj_human_player.xml"
     },
     {
-        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_config_tabhost.xml",
-        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
-    },
-    {
-        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_player_list_row.xml",
-        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_player_list_row.xml"
-    },
-    {
-        "merged": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_local_tab.xml",
-        "source": "C:\\Users\\Alexander\\Desktop\\RookGame-master2\\app\\src\\main\\res\\layout\\game_local_tab.xml"
+        "merged": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_local_tab.xml",
+        "source": "C:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\src\\main\\res\\layout\\game_local_tab.xml"
     }
 ]
