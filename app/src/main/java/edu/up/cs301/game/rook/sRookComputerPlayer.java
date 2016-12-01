@@ -39,7 +39,7 @@ public class sRookComputerPlayer extends RookComputerPlayer {
         // smart computer player makes a move based on what subStage the game is in
 
 
-        int myBid = 120;
+        int myBid = 50;
 
         ArrayList<Card> myList;
         ArrayList<Card>nestList;
@@ -165,40 +165,62 @@ public class sRookComputerPlayer extends RookComputerPlayer {
                         cardsFromNest.add(myNestCard);
                     }
                 } else if (blackSuitNum > redSuitNum && blackSuitNum > greenSuitNum && blackSuitNum > yellSuitNum) {
+                    // search the nest for any black cards, add them to the cardsFromNest
                     if (myNestCard.getSuit() == 0) {
                         cardsFromNest.add(myNestCard);
                     }
                 }
+
+                if (myNestCard.getSuit() == 4)
+                {
+                    cardsFromNest.add(myNestCard);
+                }
             }
 
-            for (int h = 0; h < cardsFromNest.size(); h++) {
-                for (int k = 0; k < savedState.playerHands[this.playerNum].size(); k++)
-                {
-                }
-                if (redSuitNum > greenSuitNum && redSuitNum > yellSuitNum && redSuitNum > blackSuitNum) {
-                    if (myCard.getSuit() != 3) {
-                        // card is not a red suit
-                        if (!cardsFromHand.contains(myCard)) {
-                            cardsFromHand.add(myCard);
+            Card myHandCard;
+
+            for (int j = 0; j < savedState.playerHands[this.playerNum].size(); j++)
+            {
+                Card thisCard = myList.get(j);
+
+                myHandCard = new Card(thisCard.getSuit(), thisCard.getNumValue());
+
+                for (int h = 0; h < cardsFromNest.size(); h++) {
+
+
+
+                    if (redSuitNum > greenSuitNum && redSuitNum > yellSuitNum && redSuitNum > blackSuitNum) {
+                        if (myCard.getSuit() != 3) {
+                            // card is not a red suit
+                            if (!cardsFromHand.contains(myHandCard)) {
+                                cardsFromHand.add(myHandCard);
+                            }
                         }
-                    }
-                } else if (greenSuitNum > redSuitNum && greenSuitNum > yellSuitNum && greenSuitNum > blackSuitNum) {
-                    if (myCard.getSuit() != 2) {
-                        // card is not a green suit
-                        cardsFromHand.add(myCard);
-                    }
-                } else if (yellSuitNum > redSuitNum && yellSuitNum > greenSuitNum && yellSuitNum > blackSuitNum) {
-                    if (myCard.getSuit() != 1) {
-                        // card is not a yellow suit
-                        cardsFromHand.add(myCard);
-                    }
-                } else if (blackSuitNum > redSuitNum && blackSuitNum > greenSuitNum && blackSuitNum > yellSuitNum) {
-                    if (myCard.getSuit() != 0) {
-                        // card is not a black suit
-                        cardsFromHand.add(myCard);
+                    } else if (greenSuitNum > redSuitNum && greenSuitNum > yellSuitNum && greenSuitNum > blackSuitNum) {
+                        if (myHandCard.getSuit() != 2) {
+                            // card is not a green suit
+                            if (!cardsFromHand.contains(myHandCard)) {
+                                cardsFromHand.add(myHandCard);
+                            }
+                        }
+                    } else if (yellSuitNum > redSuitNum && yellSuitNum > greenSuitNum && yellSuitNum > blackSuitNum) {
+                        if (myHandCard.getSuit() != 1) {
+                            // card is not a yellow suit
+                            if (!cardsFromHand.contains(myHandCard)) {
+                                cardsFromHand.add(myHandCard);
+                            }
+                        }
+                    } else if (blackSuitNum > redSuitNum && blackSuitNum > greenSuitNum && blackSuitNum > yellSuitNum) {
+                        if (myHandCard.getSuit() != 0) {
+                            // card is not a black suit
+                            if (!cardsFromHand.contains(myHandCard)) {
+                                cardsFromHand.add(myHandCard);
+                            }
+                        }
                     }
                 }
             }
+
             game.sendAction(new RookNestAction(this, cardsFromNest, cardsFromHand));
         }
         else if (savedState.getSubStage() == savedState.TRUMP)
@@ -210,18 +232,22 @@ public class sRookComputerPlayer extends RookComputerPlayer {
 
             if (redSuitNum >= 3 && greenSuitNum <= 3 && blackSuitNum <= 3 && yellSuitNum <= 3)
             {
+                // has the most of red cards, so trump suit is red
                 trumpSuit = Color.RED;
             }
             else if (greenSuitNum >= 3 && redSuitNum <= 3 && blackSuitNum <= 3 && yellSuitNum <= 3)
             {
+                // has the most of green cards, so trump suit is green
                 trumpSuit = Color.GREEN;
             }
             else if (yellSuitNum >= 3 && redSuitNum <= 3 && greenSuitNum <= 3 && blackSuitNum <= 3)
             {
+                // has the most of yellow cards, so trump suit is yellow
                 trumpSuit = Color.YELLOW;
             }
             else if (blackSuitNum >= 3 && redSuitNum <= 3 && greenSuitNum <= 3 && yellSuitNum <= 3)
             {
+                // has the most of black cards, so trump suit is black
                 trumpSuit = Color.BLACK;
             }
             game.sendAction(new RookTrumpAction(this, trumpSuit));

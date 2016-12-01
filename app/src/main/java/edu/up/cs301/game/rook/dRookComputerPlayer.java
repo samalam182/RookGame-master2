@@ -45,7 +45,7 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                 Log.i("Reached bidding stage", "" + this.playerNum);
                 // the dumb computer player will randomly decide to bid or pass
                 //int randSelection = (int)(Math.random()*10);
-                int randSelection = (int) Math.random() * 10 -10;
+                int randSelection = (int) (Math.random() * 10);
 
                 if (randSelection < 7)
                 {
