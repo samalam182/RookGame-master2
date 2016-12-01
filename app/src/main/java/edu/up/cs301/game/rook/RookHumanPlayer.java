@@ -171,6 +171,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public TextView threeScore;
     public TextView fourScore;
 
+    public TextView playerWonTitle;
+    public TextView playerWon;
+    public Button nextRound;
 
 
     /**
@@ -486,6 +489,14 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         twoScore = (TextView) activity.findViewById(R.id.textView_OpponentONETotalPoints);
         threeScore = (TextView) activity.findViewById(R.id.textView_OpponentTWOTotalPoints);
         fourScore = (TextView) activity.findViewById(R.id.textView_OpponentTHREETotalPoints);
+
+        playerWonTitle = (TextView) activity.findViewById(R.id.textView_PlayerWonLabel);
+        playerWonTitle.setVisibility(View.INVISIBLE);
+        playerWon = (TextView) activity.findViewById(R.id.textView_PlayerWon);
+        playerWon.setVisibility(View.INVISIBLE);
+
+        nextRound = (Button) activity.findViewById(R.id.button_NextRound);
+        nextRound.setVisibility(View.INVISIBLE);
     }
 
     public void updateGUI(RookState s) {
