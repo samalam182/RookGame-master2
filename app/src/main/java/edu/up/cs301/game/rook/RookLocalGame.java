@@ -391,10 +391,19 @@ public class RookLocalGame extends LocalGame
         }
         else if (action instanceof RookHoldAction)
         {
-            if(state.getSubStage() == BID) {
+            if(state.getSubStage() == BID)
+            {
+                try {
+                    Thread.sleep(700);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 RookHoldAction act = (RookHoldAction) action;
                 state.setHold(playerIdxx);
+
                 state.pass[playerIdxx] = true;
+
                 if (state.finalizeBids())
                 {
                     state.setSubStage(NEST);

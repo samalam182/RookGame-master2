@@ -892,7 +892,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="player 0"
+                            android:text="Player 1"
                             android:id="@+id/textView_PassedPlayersZERO" />
                     </LinearLayout>
 
@@ -909,7 +909,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="player 1"
+                            android:text="Player 2"
                             android:id="@+id/textView_PassedPlayersONE" />
 
                     </LinearLayout>
@@ -927,7 +927,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="player 2"
+                            android:text="Player 3"
                             android:id="@+id/textView_PassedPlayersTWO" />
                     </LinearLayout>
 
@@ -944,7 +944,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="player 3"
+                            android:text="Player 4"
                             android:id="@+id/textView_PassedPlayersTHREE" />
                     </LinearLayout>
 

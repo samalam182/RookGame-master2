@@ -401,7 +401,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             yourBid.setVisibility(View.VISIBLE);
             passTitle.setVisibility(View.VISIBLE);
 
-            passOne.setVisibility(View.VISIBLE);
+            passOne.setVisibility(View.INVISIBLE);
             passTwo.setVisibility(View.INVISIBLE);
             passThree.setVisibility(View.INVISIBLE);
             passFour.setVisibility(View.INVISIBLE);
@@ -424,17 +424,17 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
             if(state.pass[1])
             {
-                passOne.setVisibility(View.VISIBLE);
+                passTwo.setVisibility(View.VISIBLE);
             }
 
             if(state.pass[2])
             {
-                passOne.setVisibility(View.VISIBLE);
+                passThree.setVisibility(View.VISIBLE);
             }
 
             if(state.pass[3])
             {
-                passOne.setVisibility(View.VISIBLE);
+                passFour.setVisibility(View.VISIBLE);
             }
 
         } else if (s.getSubStage() == WAIT) {
