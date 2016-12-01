@@ -112,11 +112,6 @@ public class RookLocalGame extends LocalGame
         // makes action not a specific rook action
         if (action instanceof RookBidAction)
         {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
 
             if(state.getSubStage() == BID)
             {
@@ -144,6 +139,12 @@ public class RookLocalGame extends LocalGame
         }
         else if (action instanceof RookCardAction)
         {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             int startingPlayer;
             int trickWinner = 0;
             int points = 0;
@@ -153,6 +154,7 @@ public class RookLocalGame extends LocalGame
                 {
                     startingPlayer = playerIdxx;
                 }
+
                 if(state.currTrick.size() == 4)
                 {
                     state.currTrick.clear();
@@ -385,10 +387,13 @@ public class RookLocalGame extends LocalGame
                             }
                         }
                     }
+
                     state.setScore(points, trickWinner);
                     state.setPlayer(trickWinner);
+
                 }
-                else{
+                else
+                {
                     state.setPlayer();
                 }
             }

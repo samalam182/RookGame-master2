@@ -166,6 +166,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public ImageView opponentTHREECard7;
     public ImageView opponentTHREECard8;
 
+    public TextView oneScore;
+    public TextView twoScore;
+    public TextView threeScore;
+    public TextView fourScore;
+
 
 
     /**
@@ -189,10 +194,17 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         } else if (!(info instanceof RookState)) {
             // there is no game state, so ignore it
             return;
-        } else {
+        }
+        else
+        {
             // there is a game state object, so update the state
             this.state = (RookState) info;
             updateGUI(state);
+
+            if (state.pass[0] && state.getSubStage() == BID)
+            {
+                game.sendAction(new RookHoldAction(this));
+            }
         }
     }
 
@@ -469,6 +481,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         opponentTHREECard7.setImageResource(R.drawable.rookcard_back);
         opponentTHREECard8 = (ImageView) activity.findViewById(R.id.imageView_OpponentTWOHand_8);
         opponentTHREECard8.setImageResource(R.drawable.rookcard_back);
+
+        oneScore = (TextView) activity.findViewById(R.id.textView_HumanTotalPoints);
+        twoScore = (TextView) activity.findViewById(R.id.textView_OpponentONETotalPoints);
+        threeScore = (TextView) activity.findViewById(R.id.textView_OpponentTWOTotalPoints);
+        fourScore = (TextView) activity.findViewById(R.id.textView_OpponentTHREETotalPoints);
     }
 
     public void updateGUI(RookState s) {
@@ -590,6 +607,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidMainTitle.setVisibility(View.INVISIBLE);
             yourBid.setVisibility(View.INVISIBLE);
 
+            passTitle.setVisibility(View.INVISIBLE);
+            passOne.setVisibility(View.INVISIBLE);
+            passTwo.setVisibility(View.INVISIBLE);
+            passThree.setVisibility(View.INVISIBLE);
+            passFour.setVisibility(View.INVISIBLE);
+
             //makes sure tahat cards in HumanPlayer's hand doesn't disappear during
             //Nest-phase of game
             card0.setVisibility(View.VISIBLE);
@@ -626,7 +649,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             passButton.setVisibility(View.INVISIBLE);
 
             setOrangeStarIndicator();
-        } else {
+        } else
+        {
+
             if (state.getTrump() == 0)
             {
                 trumpAccounce.setText("Black");
@@ -643,6 +668,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             {
                 trumpAccounce.setText("Red");
             }
+
             nest1.setVisibility(View.INVISIBLE);
             nest2.setVisibility(View.INVISIBLE);
             nest3.setVisibility(View.INVISIBLE);
@@ -661,13 +687,29 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
             winningBidder.setText("Player: " + state.winningPlayer);
             winningBid.setText("" + state.winningBid);
-            if(state.currTrick.size() > 0) {
+            if(state.currTrick.size() > 0)
+            {
                 correctTrickImage();
             }
             trick1.setVisibility(View.VISIBLE);
             trick2.setVisibility(View.VISIBLE);
             trick3.setVisibility(View.VISIBLE);
             trick4.setVisibility(View.VISIBLE);
+
+            oneScore.setText("" + state.getScore(0));
+            twoScore.setText("" + state.getScore(1));
+            threeScore.setText("" + state.getScore(2));
+            fourScore.setText("" + state.getScore(3));
+
+            if (state.currTrick.size() == 4)
+            {
+                correctTrickImage();
+
+//                trick1.setImageResource(R.drawable.rookcard_back);
+//                trick2.setImageResource(R.drawable.rookcard_back);
+//                trick3.setImageResource(R.drawable.rookcard_back);
+//                trick4.setImageResource(R.drawable.rookcard_back);
+            }
 
             setOrangeStarIndicator();
 
@@ -683,25 +725,25 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 //        int playerNumInConfig;
 //        if (state.)
 
-        if (state.getActivePlayer() == 0) {
+        if (state.getActivePlayer() == 0 && !state.pass[0]) {
             humanOrangeStar.setVisibility(View.VISIBLE);
             opponentOneOrangeStar.setVisibility(View.INVISIBLE);
             opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
             opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
         }
-        else if (state.getActivePlayer() == 1) {
+        else if (state.getActivePlayer() == 1 && !state.pass[1]) {
             humanOrangeStar.setVisibility(View.INVISIBLE);
             opponentOneOrangeStar.setVisibility(View.VISIBLE);
             opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
             opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
         }
-        else if (state.getActivePlayer() == 2) {
+        else if (state.getActivePlayer() == 2 && !state.pass[2]) {
             humanOrangeStar.setVisibility(View.INVISIBLE);
             opponentOneOrangeStar.setVisibility(View.INVISIBLE);
             opponentTwoOrangeStar.setVisibility(View.VISIBLE);
             opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
         }
-        else if (state.getActivePlayer() == 3) {
+        else if (state.getActivePlayer() == 3 && !state.pass[3]) {
             humanOrangeStar.setVisibility(View.INVISIBLE);
             opponentOneOrangeStar.setVisibility(View.INVISIBLE);
             opponentTwoOrangeStar.setVisibility(View.INVISIBLE);

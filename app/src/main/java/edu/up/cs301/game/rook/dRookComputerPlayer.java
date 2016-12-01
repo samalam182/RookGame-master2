@@ -47,7 +47,7 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                 //int randSelection = (int)(Math.random()*10);
                 int randSelection = (int) (Math.random() * 10);
 
-                if (randSelection < 7)
+                if (randSelection < 2)
                 {
                     // when randSelection is less than 0.5, the dumb computer player will pass
                     game.sendAction(new RookHoldAction(this));
@@ -202,13 +202,13 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                 int trumpSuit;
 
                 if (randSuitPick < 1) {
-                    trumpSuit = Color.RED;
+                    trumpSuit = 0;
                 } else if (randSuitPick >= 1 && randSuitPick < 2) {
-                    trumpSuit = Color.BLACK;
+                    trumpSuit = 1;
                 } else if (randSuitPick >= 2 && randSuitPick < 3) {
-                    trumpSuit = Color.YELLOW;
+                    trumpSuit = 2;
                 } else {
-                    trumpSuit = Color.GREEN;
+                    trumpSuit = 3;
                 }
                 game.sendAction(new RookTrumpAction(this, trumpSuit));
 
