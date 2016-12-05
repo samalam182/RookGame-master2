@@ -794,6 +794,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                         tempBitmap = cardImages[currSuit][currVal - 5];
                     }
                     card[i].setImageBitmap(tempBitmap);
+
+                    if(getting.getPlayed()){
+                        card[i].setVisibility(View.INVISIBLE);
+                    }
+
+
                 }
             }
         }
@@ -941,7 +947,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 1));
-                card1.setVisibility(View.INVISIBLE);
+                //card1.setVisibility(View.INVISIBLE);
 
             }
         } else if (v == card2) {
@@ -958,7 +964,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 2));
-                card2.setVisibility(View.INVISIBLE);
+                //card2.setVisibility(View.INVISIBLE);
 
             }
         } else if (v == card3) {
@@ -975,7 +981,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 3));
-                card3.setVisibility(View.INVISIBLE);
+                //card3.setVisibility(View.INVISIBLE);
 
             }
         } else if (v == card4) {
@@ -992,7 +998,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 4));
-                card4.setVisibility(View.INVISIBLE);
+                //card4.setVisibility(View.INVISIBLE);
 
             }
         } else if (v == card5) {
@@ -1009,7 +1015,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 5));
-                card5.setVisibility(View.INVISIBLE);
+                //card5.setVisibility(View.INVISIBLE);
 
             }
         } else if (v == card6) {
@@ -1026,7 +1032,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 6));
-                card6.setVisibility(View.INVISIBLE);
+                //card6.setVisibility(View.INVISIBLE);
 
             }
         } else if (v == card7) {
@@ -1043,7 +1049,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 7));
-                card7.setVisibility(View.INVISIBLE);
+                //card7.setVisibility(View.INVISIBLE);
 
             }
         }
@@ -1063,7 +1069,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 8));
-                card8.setVisibility(View.INVISIBLE);
+                //card8.setVisibility(View.INVISIBLE);
 
             }
         }
