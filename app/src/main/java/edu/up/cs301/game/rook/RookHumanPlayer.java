@@ -736,25 +736,25 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 //        int playerNumInConfig;
 //        if (state.)
 
-        if (state.getActivePlayer() == 0 && !state.pass[0]) {
+        if (state.getActivePlayer() == this.playerNum && !state.pass[this.playerNum]) {
             humanOrangeStar.setVisibility(View.VISIBLE);
             opponentOneOrangeStar.setVisibility(View.INVISIBLE);
             opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
             opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
         }
-        else if (state.getActivePlayer() ==  1 && !state.pass[1]) {
+        else if (state.getActivePlayer() ==  this.playerNum + 1 && !state.pass[this.playerNum + 1]) {
             humanOrangeStar.setVisibility(View.INVISIBLE);
             opponentOneOrangeStar.setVisibility(View.VISIBLE);
             opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
             opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
         }
-        else if (state.getActivePlayer() ==  2 && !state.pass[2]) {
+        else if (state.getActivePlayer() ==  this.playerNum + 2 && !state.pass[this.playerNum + 2]) {
             humanOrangeStar.setVisibility(View.INVISIBLE);
             opponentOneOrangeStar.setVisibility(View.INVISIBLE);
             opponentTwoOrangeStar.setVisibility(View.VISIBLE);
             opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
         }
-        else if (state.getActivePlayer() == 3 && !state.pass[3]) {
+        else if (state.getActivePlayer() == this.playerNum + 3 && !state.pass[this.playerNum + 3]) {
             humanOrangeStar.setVisibility(View.INVISIBLE);
             opponentOneOrangeStar.setVisibility(View.INVISIBLE);
             opponentTwoOrangeStar.setVisibility(View.INVISIBLE);

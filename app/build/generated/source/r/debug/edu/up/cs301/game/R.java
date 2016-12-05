@@ -128,15 +128,16 @@ public final class R {
         public static final int rookcard_9r=0x7f020061;
         public static final int rookcard_9y=0x7f020062;
         public static final int rookcard_back=0x7f020063;
-        public static final int rookcard_rook=0x7f020064;
-        public static final int rooksuit_blackmoon=0x7f020065;
-        public static final int rooksuit_greenleaf=0x7f020066;
-        public static final int rooksuit_redheart=0x7f020067;
-        public static final int rooksuit_yellowsun=0x7f020068;
-        public static final int suit_c=0x7f020069;
-        public static final int suit_d=0x7f02006a;
-        public static final int suit_h=0x7f02006b;
-        public static final int suit_s=0x7f02006c;
+        public static final int rookcard_blank=0x7f020064;
+        public static final int rookcard_rook=0x7f020065;
+        public static final int rooksuit_blackmoon=0x7f020066;
+        public static final int rooksuit_greenleaf=0x7f020067;
+        public static final int rooksuit_redheart=0x7f020068;
+        public static final int rooksuit_yellowsun=0x7f020069;
+        public static final int suit_c=0x7f02006a;
+        public static final int suit_d=0x7f02006b;
+        public static final int suit_h=0x7f02006c;
+        public static final int suit_s=0x7f02006d;
     }
     public static final class id {
         public static final int addPlayerButton=0x7f090012;
