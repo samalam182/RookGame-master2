@@ -71,8 +71,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable {
 	 */
 
 	/**
-	 * constructor
-	 * 
+	 * constructorr
 	 * @param name
 	 * 			the player's name (e.g., "John")
 	 */

@@ -96,7 +96,7 @@ public class dRookComputerPlayer extends RookComputerPlayer {
 
                 ArrayList<Card> cardsFromNest = new ArrayList<Card>();
                 ArrayList<Card> cardsFromHand = new ArrayList<Card>();
-                int cardIndex = 0;
+                //int cardIndex = 0;
                 for (int y = 0; y < 5; y++) {
                     double randPilePicker = Math.random();
 
@@ -215,30 +215,45 @@ public class dRookComputerPlayer extends RookComputerPlayer {
             } else if (savedState.getSubStage() == savedState.PLAY) {
                 // the dumb computer player will randomly choose a card to play
 
-                double randIndex = Math.random() * 9;
+                int randIndex = (int) (Math.random() * 9);
 
                 int indexOfCard;
+                ArrayList<Integer> numberToAdd = new ArrayList<Integer>(9);
+                ArrayList<Integer> numbersPicked = new ArrayList<Integer>(9);
 
-                if (randIndex >= 0 && randIndex < 1) {
+                if (randIndex == 0) {
                     indexOfCard = 0;
-                } else if (randIndex >= 1 && randIndex < 2) {
+                } else if (randIndex == 1) {
                     indexOfCard = 1;
-                } else if (randIndex >= 2 && randIndex < 3) {
+                } else if (randIndex == 2) {
                     indexOfCard = 2;
-                } else if (randIndex >= 3 && randIndex < 4) {
+                } else if (randIndex == 3) {
                     indexOfCard = 3;
-                } else if (randIndex >= 4 && randIndex < 5) {
+                } else if (randIndex == 4) {
                     indexOfCard = 4;
-                } else if (randIndex >= 5 && randIndex < 6) {
+                } else if (randIndex == 5) {
                     indexOfCard = 5;
-                } else if (randIndex >= 6 && randIndex < 7) {
+                } else if (randIndex == 6) {
                     indexOfCard = 6;
-                } else if (randIndex >= 7 && randIndex < 8) {
+                } else if (randIndex == 7) {
                     indexOfCard = 7;
                 } else {
                     indexOfCard = 8;
                 }
-                game.sendAction(new RookCardAction(this, indexOfCard));
+
+                numberToAdd.add(indexOfCard);
+
+                if (!numbersPicked.contains(indexOfCard))
+                {
+                    numbersPicked.add(indexOfCard);
+                    game.sendAction(new RookCardAction(this, indexOfCard));
+                }
+                else
+                {
+                    int nextIndexOfCard = (int) (Math.random()*9);
+                    numbersPicked.add(nextIndexOfCard);
+                    game.sendAction(new RookCardAction(this, nextIndexOfCard));
+                }
 
             }
         }
