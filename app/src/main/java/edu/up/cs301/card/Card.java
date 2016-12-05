@@ -36,6 +36,7 @@ public class Card implements Serializable {
     public int suit;
 	public int numValue;
 	public int counterValue;
+	public boolean beenPlayed;
 
     /**
      * Constructor for class card
@@ -43,6 +44,7 @@ public class Card implements Serializable {
     public Card(int newSuit, int newNumValue) {
 		this.suit = newSuit;
 		this.numValue = newNumValue;
+		beenPlayed = false;
 
 		if(numValue == 5) {
 			this.counterValue = 5;
@@ -70,6 +72,8 @@ public class Card implements Serializable {
 		return this.counterValue;
 	}
 
+	public boolean getPlayed(){ return beenPlayed; }
+
 	public void setNumValue(int chosenNumValue) {
 		this.numValue = chosenNumValue;
 	}
@@ -77,6 +81,8 @@ public class Card implements Serializable {
 	public void stCounterValue(int chosenCounterValue) {
 		this.counterValue = chosenCounterValue;
 	}
+
+	public void setPlayed(){ beenPlayed = true; }
 
 
     /**
