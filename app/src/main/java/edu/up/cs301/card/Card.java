@@ -222,7 +222,7 @@ public class Card implements Serializable {
 			R.drawable.rookcard_14r
     	},
 		{
-			R.drawable.rookcard_rook, R.drawable.rookcard_back, R.drawable.rookcard_back,
+			R.drawable.rookcard_rook, R.drawable.rookcard_back, R.drawable.rookcard_blank,
                 R.drawable.rookcard_back, R.drawable.rookcard_back, R.drawable.rookcard_back,
                 R.drawable.rookcard_back, R.drawable.rookcard_back, R.drawable.rookcard_back,
                 R.drawable.rookcard_back,

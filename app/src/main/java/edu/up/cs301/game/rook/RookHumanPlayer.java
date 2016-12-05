@@ -774,6 +774,18 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public void correctHandImage() {
         // gets an array of all card objects
         ImageButton[] card = {card0, card1, card2, card3, card4, card5, card6, card7, card8};
+        ImageView[][] opponents = {
+                {opponentONECard0, opponentONECard1, opponentONECard2,
+                        opponentONECard3, opponentONECard4, opponentONECard5, opponentONECard6,
+                        opponentONECard7, opponentONECard8},
+                {opponentTWOCard0, opponentTWOCard1, opponentTWOCard2,
+                        opponentTWOCard3, opponentTWOCard4, opponentTWOCard5, opponentTWOCard6,
+                        opponentTWOCard7, opponentTWOCard8},
+                {opponentTHREECard0, opponentTHREECard1, opponentTHREECard2,
+                        opponentTHREECard3, opponentTHREECard4, opponentTHREECard5, opponentTHREECard6,
+                        opponentTHREECard7, opponentTHREECard8}
+        };
+
 
         // the card that we're looking for is being stored
         Card getting;
@@ -799,11 +811,52 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                         card[i].setVisibility(View.INVISIBLE);
                     }
 
-
                 }
             }
         }
+        int[] ops = oppIdx(this.playerNum);
+        for (int k = 0; k < 3; k++){
+            int numInvis = numPlayed(state.playerHands[ops[k]]);
+            for(int l = 0; l < numInvis; l++){
+                opponents[k][l].setImageBitmap(cardImages[4][2]);
+            }
+        }
 
+    }
+
+    public int numPlayed(ArrayList<Card> opHand){
+        int totalPlayed = 0;
+        for(int i = 0; i < 8; i++)
+        {
+            if(opHand.get(i).getPlayed()){
+                totalPlayed++;
+            }
+        }
+        return totalPlayed;
+    }
+    public int[] oppIdx(int playerIdx){
+        int[] opp = new int[3];
+        if(playerIdx == 0){
+            opp[0] = 1;
+            opp[1] = 2;
+            opp[2] = 3;
+        }
+        else if(playerIdx == 1){
+            opp[0] = 2;
+            opp[1] = 3;
+            opp[2] = 0;
+        }
+        else if(playerIdx == 2){
+            opp[0] = 3;
+            opp[1] = 0;
+            opp[2] = 1;
+        }
+        else if(playerIdx == 3){
+            opp[0] = 0;
+            opp[1] = 1;
+            opp[2] = 2;
+        }
+        return opp;
     }
 
     public void correctTrickImage() {
@@ -880,7 +933,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             System.exit(0);
         } else if (v == start) {
             SystemClock.sleep(2000);
-            //updateGUI(state);
             correctHandImage();
             start.setVisibility(View.INVISIBLE);
 
