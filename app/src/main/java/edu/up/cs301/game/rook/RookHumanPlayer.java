@@ -721,7 +721,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 //                trick3.setImageResource(R.drawable.rookcard_back);
 //                trick4.setImageResource(R.drawable.rookcard_back);
             }
-
+            correctHandImage();
             setOrangeStarIndicator();
 
         }
@@ -781,8 +781,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             for (int i = 0; i < state.playerHands[state.getActivePlayer()].size(); i++) {
                 // gets the card we're looking for. [0] = only player one.
                 // for future human players, needs to be another look per player
-                if (state.playerHands[0].get(i) != null) {
-                    getting = state.playerHands[0].get(i);
+                if (state.playerHands[this.playerNum].get(i) != null) {
+                    getting = state.playerHands[this.playerNum].get(i);
                     int currSuit = getting.getSuit();
                     int currVal = getting.getNumValue();
 
