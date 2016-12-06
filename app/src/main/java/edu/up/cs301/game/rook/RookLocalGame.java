@@ -22,6 +22,7 @@ public class RookLocalGame extends LocalGame
     public final int PLAY = 4;
     public final int OVER = 5;
     Card nullCard = new Card(16, 1);
+    public int gameCounter = 0;
 
     public RookLocalGame()
     {
@@ -144,7 +145,7 @@ public class RookLocalGame extends LocalGame
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
+            gameCounter++;
             int startingPlayer;
             int trickWinner = 0;
             int points = 0;
@@ -396,6 +397,9 @@ public class RookLocalGame extends LocalGame
                 else
                 {
                     state.setPlayer();
+                }
+                if(gameCounter >=36){
+                    state = new RookState(true, state);
                 }
             }
         }
