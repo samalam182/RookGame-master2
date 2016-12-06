@@ -73,6 +73,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     private final int GREEN = 2;
     private final int RED = 3;
 
+    private boolean startingNew = true;
+    private int currTrickWinner;
+
     // represents when a certain card is not being used, has already
     // been used, or is not usable during a certain stage of the game
     private final int BLANK = 5;
@@ -555,7 +558,18 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     public void updateGUI(RookState s) {
         if (s.getSubStage() == BID) {
+
             correctHandImage();
+            card0.setVisibility(View.VISIBLE);
+            card1.setVisibility(View.VISIBLE);
+            card2.setVisibility(View.VISIBLE);
+            card2.setVisibility(View.VISIBLE);
+            card3.setVisibility(View.VISIBLE);
+            card4.setVisibility(View.VISIBLE);
+            card5.setVisibility(View.VISIBLE);
+            card6.setVisibility(View.VISIBLE);
+            card7.setVisibility(View.VISIBLE);
+            card8.setVisibility(View.VISIBLE);
             nest1.setVisibility(View.INVISIBLE);
             nest2.setVisibility(View.INVISIBLE);
             nest3.setVisibility(View.INVISIBLE);
@@ -790,13 +804,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
             if (state.currTrick.size() == 4)
             {
-                correctTrickImage();
+                state.currTrick.clear();
                 nullNest = true;
-
-//                trick1.setImageResource(R.drawable.rookcard_back);
-//                trick2.setImageResource(R.drawable.rookcard_back);
-//                trick3.setImageResource(R.drawable.rookcard_back);
-//                trick4.setImageResource(R.drawable.rookcard_back);
             }
             correctHandImage();
             setOrangeStarIndicator();
@@ -930,7 +939,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         return opp;
     }
 
-    public void correctTrickImage() {
+    public void correctTrickImage()
+    {
         // gets an array of all card objects
         ImageView[] trick = {trick1, trick2, trick3, trick4};
 
@@ -938,27 +948,73 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         Card getting;
         int currSuit = 5;
         int currVal = 10;
-        if(state.currTrick.size() != 0){
-        for (int i = 0; i < state.currTrick.size(); i++) {
-            // gets the card we're looking for. [0] = only player one.
-            // for future human players, needs to be another look per player
-            if (state.currTrick.get(i) != null) {
-                getting = state.currTrick.get(i);
-                currSuit = getting.getSuit();
-                currVal = getting.getNumValue();
-                Bitmap tempBitmap;
+        int[] testing = {0,1,2,3};
 
-                if (currVal == 15) {
-                    tempBitmap = cardImages[4][0];
-                } else {
-                    tempBitmap = cardImages[currSuit][currVal - 5];
-                }
-                trick[i].setImageBitmap(tempBitmap);
-                trick[i].invalidate();
-            }
-
+        if (startingNew)
+        {
+            currTrickWinner = state.currTrickWinner;
+            startingNew = false;
         }
-    }
+
+        if (currTrickWinner == 0)
+        {
+            testing[0] = 0;
+            testing[1] = 1;
+            testing[2] = 2;
+            testing[3] = 3;
+        }
+        else if (currTrickWinner == 1)
+        {
+            testing[0] = 1;
+            testing[1] = 2;
+            testing[2] = 3;
+            testing[3] = 0;
+        }
+        else if (currTrickWinner == 2)
+        {
+            testing[0] = 2;
+            testing[1] = 3;
+            testing[2] = 0;
+            testing[3] = 1;
+        }
+        else if (currTrickWinner == 3)
+        {
+            testing[0] = 3;
+            testing[1] = 0;
+            testing[2] = 1;
+            testing[3] = 2;
+        }
+
+        if(state.currTrick.size() != 0)
+        {
+            for (int i = 0; i < state.currTrick.size(); i++) {
+                // gets the card we're looking for. [0] = only player one.
+                // for future human players, needs to be another look per player
+                if (state.currTrick.get(i) != null) {
+                    getting = state.currTrick.get(i);
+                    currSuit = getting.getSuit();
+                    currVal = getting.getNumValue();
+                    Bitmap tempBitmap;
+
+                    if (currVal == 15)
+                    {
+                        tempBitmap = cardImages[4][0];
+                    }
+                    else {
+                        tempBitmap = cardImages[currSuit][currVal - 5];
+                    }
+
+                    trick[testing[i]].setImageBitmap(tempBitmap);
+                    trick[testing[i]].invalidate();
+
+                    if (state.currTrick.size() == 4)
+                    {
+                        startingNew = true;
+                    }
+                }
+
+            }
+        }
     }
 
     public void correctNestImage()

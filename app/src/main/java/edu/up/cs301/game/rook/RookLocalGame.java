@@ -392,6 +392,7 @@ public class RookLocalGame extends LocalGame
 
                     state.setScore(points, trickWinner);
                     state.setPlayer(trickWinner);
+                    state.currTrickWinner = trickWinner;
 
                 }
                 else
@@ -443,6 +444,8 @@ public class RookLocalGame extends LocalGame
                 RookTrumpAction act = (RookTrumpAction) action;
                 state.setTrump(act.getTrumpColor());
                 state.setSubStage(PLAY);
+
+                state.currTrickWinner = playerIdxx;
             }
 
         }
