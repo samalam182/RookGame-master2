@@ -3,9 +3,14 @@ package edu.up.cs301.game.rook;
 import edu.up.cs301.game.GamePlayer;
 
 /**
- * Created by hoser18 on 11/8/2016.
+ * A game-move-action object that will take place during the time when all 4 players are placing
+ * down cards from their owns into the trick-pile of the Rook game,
+ * which will be sent to the local-game once a player presses the specific ImageButton
+ * that correlates with the specific card that they would like to select and interact with
+ *
+ * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
+ * @version December 2016
  */
-
 public class RookCardAction extends GameAction
 {
 

@@ -15,7 +15,16 @@ import edu.up.cs301.game.infoMsg.GameState;
 import static android.telephony.PhoneNumberUtils.WAIT;
 
 /**
- * Created by dewhitt17 on 11/9/2016.
+ * A GameState class for the game of Rook, which keeps track of all 4 player's
+ * choices to place a card, interact with the nest, choose the trump suit, current bid,
+ * and total points throughout the course of the game.
+ *
+ * Also incorporates a special ArrayList called "deck", which is used at the start
+ * of the first round of the game to initialize a randomized combination of all 41 cards
+ * that will be dealt out accordingly to each player's hand and the nest
+ *
+ * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
+ * @version December 2016
  */
 public class RookState extends GameState {
 

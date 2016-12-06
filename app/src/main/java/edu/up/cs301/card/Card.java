@@ -15,16 +15,17 @@ import android.graphics.RectF;
 import edu.up.cs301.game.R;
 
 /**
- * A playing card in the standard 52-card deck. The images, which have been
- * placed in the res/drawable-hdpi folder in the project, are originally made by the Rook team.
+ * A playing card in the standard 41-card deck for the game of Rook. The images, which have been
+ * placed in the res/drawable folder in the project, are originally made by the Rook team.
  * 
- * In order to display the card-images on the android you need to call the
+ * In order to display the card-images on the Android you need to call the
  *   Card.initImages(currentActivity)
  * method during initialization; the particular image files need to be placed in the
- * res/drawable-hdpi project area.
+ * res/drawable-hdpi project area through a Bitmap array.
  * 
  * @author Steven R. Vegdahl
- * @version July 2013
+ * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
+ * @version December 2016
  */
 public class Card implements Serializable {
 

@@ -3,7 +3,11 @@ package edu.up.cs301.game.rook;
 import edu.up.cs301.game.GamePlayer;
 
 /**
- * Created by hoser18 on 11/8/2016.
+ * A game-move-action object that will take place during the bidding phase of the Rook game,
+ * which will be sent to the local-game once a player places a certain bid amount
+ *
+ * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
+ * @version December 2016
  */
 public class RookBidAction extends GameAction{
     /**

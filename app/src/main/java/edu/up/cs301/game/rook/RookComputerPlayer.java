@@ -4,7 +4,12 @@ import edu.up.cs301.game.GameComputerPlayer;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
 /**
- * Created by hoser18 on 11/8/2016.
+ * An abstract class that represents the generic Computer Player specifically for the game of Rook.
+ * Both the "dumb" and "smart" computer player classes will extend this class to inherit
+ * the functionality of being able to receive data from the RookState and LocalGame
+ *
+ * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
+ * @version December 2016
  */
 public abstract class RookComputerPlayer extends GameComputerPlayer {
     public double minReactionTimeInMillis;
