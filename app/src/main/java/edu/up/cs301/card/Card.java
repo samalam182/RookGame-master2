@@ -16,12 +16,11 @@ import edu.up.cs301.game.R;
 
 /**
  * A playing card in the standard 52-card deck. The images, which have been
- * placed in the res/drawable-hdpi folder in the project, are from
- * http://www.pdclipart.org.
+ * placed in the res/drawable-hdpi folder in the project, are originally made by the Rook team.
  * 
  * In order to display the card-images on the android you need to call the
  *   Card.initImages(currentActivity)
- * method during initialization; the 52 image files need to be placed in the
+ * method during initialization; the particular image files need to be placed in the
  * res/drawable-hdpi project area.
  * 
  * @author Steven R. Vegdahl
@@ -46,16 +45,22 @@ public class Card implements Serializable {
 		this.numValue = newNumValue;
 		beenPlayed = false;
 
+		// for all cards that have a number value of 5,
+		// set their Counter-point value to 5
 		if(numValue == 5) {
 			this.counterValue = 5;
 		}
+		// for all cards that either have a number value
+		// of 10 or 14, set their Counter-point value to 10
 		else if(numValue == 10 || numValue == 14){
 			this.counterValue = 10;
 		}
+		// for the Rook Card (which has a number value of 15),
+		// set its Counter-point value to 20
 		else if(numValue == 15){
 			this.counterValue = 20;
 		}
-		else{
+		else {
 			this.counterValue = 0;
 		}
 	}
@@ -193,10 +198,11 @@ public class Card implements Serializable {
 //    public Suit getSuit()
 //    	return suit;
 //    }
- 
-//    // array that contains the android resource indices for the 52 card
-//    // images
-    private static int[][] resIdx = {
+	/**
+	 * array that contains the Android resource indices for the 52 card
+	 * images that are stored in the drawable-file
+	 */
+	private static int[][] resIdx = {
     	{
     		R.drawable.rookcard_5b, R.drawable.rookcard_6b, R.drawable.rookcard_7b,
 			 R.drawable.rookcard_8b, R.drawable.rookcard_9b, R.drawable.rookcard_10b,

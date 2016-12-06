@@ -19,15 +19,31 @@ import static android.telephony.PhoneNumberUtils.WAIT;
  */
 public class RookState extends GameState {
 
+    // tracks the current stage throughout the game
     private int subStage;
+
+    // defines the specific number of players of the game
     private final int numPlayers = 4;
+
+    // defines which stage of the game that a particular
+    // player is currently in
     public final int WAIT = 0;
     public final int BID = 1;
     public final int TRUMP = 2;
     public final int NEST = 3;
     public final int PLAY = 4;
     public final int OVER = 5;
+
+    // defines the index of the current player who during
+    // any stage of the game
     private int currPlayer;
+
+    // defines the index of the current player who won
+    // the bid of the current round
+    public int currTrickWinner;
+
+    // ArrayLists will hold all cards that are part of
+    // each player's hands, the nest, and the current trick
     public ArrayList<Card>[] playerHands = (ArrayList<Card>[]) new ArrayList[4];
     public ArrayList<Card> playerZeroHand;
     public ArrayList<Card> playerOneHand;
@@ -35,29 +51,59 @@ public class RookState extends GameState {
     public ArrayList<Card> playerThreeHand;
     public ArrayList<Card> nest;
     public ArrayList<Card> currTrick;
+
+    // will hold all the cards, which will be randomly dealt out
+    // to all player hands and nest in constructor-method
     public ArrayList<Card> deck;
 
-    public int currTrickWinner;
+    // defines the chosen trump-suit by the current winner of the bid
     private int trumpSuit;
+
+    // defines the different suits of each card
     private final int BLACK = 0;
     private final int YELLOW = 1;
     private final int GREEN = 2;
     private final int RED = 3;
     private final int ROOK = 4;
+
+    // defines the winning bid amount and the player who won the bid
     public int winningBid;
     public int winningPlayer;
+
+    // defines the player who previously bid
     public int lastBidder = 0;
-    public boolean[] bidPass;
-    private int[] playerBids = new int[numPlayers];
-    private int[] playerScores;
-    private String[] playerNames;
+
+    // defines which players either still have the opportunity to bid
+    // or have already passed during each round
+//    public boolean[] bidPass;
     public boolean[] pass;
 
-    public ArrayList<GamePlayerType> playerTypes;
+    // defines all the players' bid amounts
+    private int[] playerBids = new int[numPlayers];
 
+    // keeps track of all the total scores of each player throughout game
+    private int[] playerScores;
+
+    // defines the inputted names for each player according
+    // to the configuration screen
+    private String[] playerNames;
+
+    /**
+     *
+     * Main constructor-method for RookState
+     *
+     */
     public RookState() {
+        // at the beginning of the game, all player's are waiting
+        // until the game has been initialized
         subStage = WAIT;
+
+        // set the first player to bid as the player who was first
+        // at the top of the list on the configuration screen
         currPlayer = 0;
+
+        // set the maximum value of cards that can be placed into
+        // all player hands, nest, and trick
         playerZeroHand = new ArrayList<Card>(9);
         playerOneHand = new ArrayList<Card>(9);
         playerTwoHand = new ArrayList<Card>(9);
@@ -68,33 +114,52 @@ public class RookState extends GameState {
         playerHands[3] = playerThreeHand;
         nest = new ArrayList<Card>(5);
         currTrick = new ArrayList<Card>(4);
-        pass = new boolean[4];
+
+        // all players at the beginning of the game have not passed the bidding phase
+        pass = new boolean[numPlayers];
         pass[0] = false;
         pass[1] = false;
         pass[2] = false;
         pass[3] = false;
 
+        // set the deck to a randomly ordered, shuffled combination of all the playable cards,
+        // and then deal out all the 41 cards to the 4 players' hands and the nest
         deck = initDeck();
         deal();
 
+        // set trick winner, trump suit, and winning bid to default values
+        // at the beginning of the game when nothing has been played out yet
         currTrickWinner = 0;
         trumpSuit = 0;
         winningBid = 0;
-        bidPass = new boolean[numPlayers];
+
+        // set the first player's bid of the first round as the minimum value of the bid
         playerBids[0] = 50;
         playerBids[1] = 0;
         playerBids[2] = 0;
         playerBids[3] = 0;
+
+        // initialize all the players' current total scores and names from the configuration screen
         playerScores = new int[numPlayers];
         playerNames = new String[numPlayers];
-        winningPlayer = 0;
 
-        playerTypes = new ArrayList<GamePlayerType>(4);
+        // set the first player as the default winner at the beginning of the game
+        winningPlayer = 0;
     }
 
+    /**
+     *
+     * Complementary constructor-method for any HumanPlayer playing the game
+     * @param info
+     *
+     */
     public RookState(RookState info) {
+        // set the current RookState as the given, updated info as
+        // manipulated by the RookHumanPlayer and LocalGame classes
         RookState temp = info;
 
+        // set all the current data of RookState to the given, updated
+        // info from the "temp"-RookState
         subStage = temp.subStage;
         currPlayer = temp.currPlayer;
         playerZeroHand = temp.playerZeroHand;
@@ -105,67 +170,91 @@ public class RookState extends GameState {
         playerHands[1] = playerOneHand;
         playerHands[2] = playerTwoHand;
         playerHands[3] = playerThreeHand;
+
         nest = new ArrayList<Card>(5);
         for(Card c : temp.nest)
         {
             nest.add(new Card(c.getSuit(), c.getNumValue()));
         }
+
         currTrick = new ArrayList<Card>(4);
         for(Card c : temp.currTrick)
         {
             currTrick.add(new Card(c.getSuit(), c.getNumValue()));
         }
-        pass = temp.pass;
 
+        pass = temp.pass;
         deck = temp.deck;
 
-        currTrickWinner = temp.currTrickWinner;
         trumpSuit = temp.trumpSuit;
         winningBid = temp.winningBid;
-        bidPass = temp.bidPass;
         playerBids = temp.playerBids;
+        winningPlayer = temp.winningPlayer;
+        lastBidder = temp.lastBidder;
+        currTrickWinner = temp.currTrickWinner;
+
         playerScores = temp.playerScores;
         playerNames = temp.playerNames;
-        winningPlayer = temp.winningPlayer;
-
-        lastBidder = temp.lastBidder;
-
     }
 
+    /**
+     * Get current substage of the game
+     */
     public int getSubStage() {
         return subStage;
     }
 
+    /**
+     * Set a new substage for the game
+     */
     public void setSubStage(int sub) {
         subStage = sub;
     }
 
+    /**
+     * Get current trump suit that was chosen by the winning bidder of the current round
+     */
     public int getTrump(){ return trumpSuit; }
 
+    /**
+     * Set the trump suit that as the suit chosen by the winning bidder of the current round
+     */
     public void setTrump(int trumpColor) {
         trumpSuit = trumpColor;
     }
 
+    /**
+     * Get the total score for each player throughout the game
+     */
     public int getScore(int playerIdx) {
         return playerScores[playerIdx];
     }
 
+    /**
+     * Set the total score for each player throughout the game
+     */
     public void setScore(int score, int index) {
         playerScores[index] += score;
     }
 
+    /**
+     * Set the current bid according to the value that was inputted by a certain player
+     */
     public void setBid(int bid, int player)
     {
         playerBids[player] = bid;
     }
 
-    public int[] getBids() {
-        return playerBids;
-    }
+//    public int[] getBids() {     // this method isn't used at all anywhere else...
+//        return playerBids;
+//    }
 
+    /**
+     * Get the current highest bid made by the latest player who made a bid
+     */
     public int getHighestBid(){
-        int highTemp= 50;
-        for(int i = 0; i<4; i++){
+        int highTemp = 50;  //the minimum value for the first bid is 50
+        for(int i = 0; i < 4; i++){
             if(playerBids[i] > highTemp){
                 highTemp = playerBids[i];
             }
@@ -173,36 +262,58 @@ public class RookState extends GameState {
         return highTemp;
     }
 
+    /**
+     * Add a card to a certain, given card-pile (either a player's hand, nest, or trick)
+     */
     public void addCard(Card c, ArrayList<Card> cardPile) {
         cardPile.add(c);
     }
 
+    /**
+     * Remove a card from a certain, given card-pile (either a player's hand, nest, or trick)
+     */
     public void removeCard(Card c, ArrayList<Card> cardPile) {
         cardPile.remove(c);
     }
 
+    /**
+     * Initialize a randomized combination of all 41 cards into the deck, which will
+     * be dealt out accordingly to each players' hand and nest at the beginning of each round
+     */
     public ArrayList<Card> initDeck() {
         ArrayList<Card> initD = new ArrayList<Card>(41);
+
+        // gather all information about a card's possible suit and number value
         int colors[] = {BLACK, RED, YELLOW, GREEN};
         int numbers[] = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 
+        // initialize all the 41 cards into the deck
         for (int i = 0; i < colors.length; i++) {
             for (int j = 0; j < numbers.length; j++) {
                 Card tempCard = new Card(colors[i], numbers[j]);
                 initD.add(tempCard);
             }
         }
+
+        // the Rook card is a special case, so add this last into the deck
         Card Rook = new Card(ROOK, 15);
         initD.add(Rook);
 
+        //  call the shuffle-method to randomize the order of all the cards in the deck
         initD = shuffle(initD);
 
         return initD;
     }
 
+    /**
+     * Randomize the order of all the cards of the initial deck of each round
+     */
     public ArrayList<Card> shuffle(ArrayList<Card> shuf) {
 
         ArrayList<Card> temp = new ArrayList<Card>();
+
+        // run through the shuffling process of the deck 41 times for each card
+        // that will randomly placed elsewhere in a newly "shuffled" deck
         while (!shuf.isEmpty()) {
             int loc = (int) (Math.random() * shuf.size());
             temp.add(shuf.get(loc));
@@ -213,8 +324,12 @@ public class RookState extends GameState {
         return shuf;
     }
 
+    /**
+     * Deal out all the cards of the randomized deck of 41 cards
+     * to each player's hands and the nest
+     */
     public void deal() {
-
+        // deal out 9 cards to the 4 player's hands
         for (int j = 0; j < numPlayers; j++) {
             for (int i = 0; i < 9; i++) {
                 Card temp = deck.get(0);
@@ -223,6 +338,7 @@ public class RookState extends GameState {
             }
         }
 
+        // deal out the remaining 5 cards to the nest
         for (int k = 0; k < 5; k++) {
             Card temp = deck.get(k);
             if (k < 5) {
@@ -231,20 +347,36 @@ public class RookState extends GameState {
         }
     }
 
+    /**
+     * Return true if the bidding phase is completed by:
+     * determining the winner of the bidding phase, who will be able to interact
+     * with the nest as well as choose the trump suit of the current round
+     */
     public boolean finalizeBids() {
-        int count = 0;
+        // keeps track of how many players have passed throughout the bidding phase
+        int countNumPlayersPassed = 0;
+
+        // keeps track of the latest maximum value of a bid that a latest bidding player has made
         int maxVal = 0;
+
+        // skip over the turns of players who have already passed
         for (int i = 0; i < numPlayers; i++) {
-            if (bidPass[i]) {
-                count++;
+            if (pass[i]) {
+                countNumPlayersPassed++;
             }
         }
+
+        // if a player has made the highest bid of 120 points, then automatically set that player
+        // as the winning bidder by commanding that all other players have "passed"
         for (int i = 0; i < numPlayers; i++) {
             if (playerBids[i] == 120) {
-                count = 3;
+                countNumPlayersPassed = 3;
             }
         }
-        if (count >= 3) {
+
+        // if at least 3 player have made a pass during the bidding phase, then set the
+        // maximum value of the bid to the winning bidder's bid amount
+        if (countNumPlayersPassed >= 3) {
             for (int j = 0; j < numPlayers; j++) {
                 if (playerBids[j] > maxVal) {
                     maxVal = playerBids[j];
@@ -253,57 +385,88 @@ public class RookState extends GameState {
             }
             winningBid = maxVal;
             setPlayer(winningPlayer);
+
+            // the bids have been finalized for the current round
             return true;
         } else {
+            // the bidding phase has not been completed yet
             return false;
         }
     }
 
+    /**
+     * Add up all the values of Counter-cards that have been placed into the current trick,
+     * which will be eventually be used to increase the total points of the player who
+     * won that current trick
+     */
     public int countTrick() {
+
         int trickVal = 0;
         for (int i = 0; i < numPlayers; i++) {
+            // add the counter-values of all 4 cards of the trick together
             trickVal += currTrick.get(i).counterValue;
         }
         return trickVal;
     }
 
+    /**
+     * Allow the user to interact with nest if they are the winner of the bidding phase
+     * for the current round
+     */
     public void useNest(ArrayList<Card> fromNest, ArrayList<Card> fromHand, ArrayList<Card> playerHand) {
+        // remove a chosen amount of cards from the nest according to the player's choice,
+        // and add those removed cards into the player's hand
         for (int i = 0; i < fromNest.size(); i++) {
             nest.remove(fromNest.get(i));
             playerHand.remove(fromHand.get(i));
         }
 
+        // remove a chosen amount of cards from the player's hand according to the player's choice,
+        // and add those removed cards into the nest
         for (int j = 0; j < fromNest.size(); j++) {
             nest.add(fromHand.get(j));
             playerHand.add(fromNest.get(j));
         }
     }
 
+    /**
+     * Automatically set a particular player's status during the bidding phase as a "pass"
+     */
     public void setHold(int playerIndex) {
-        bidPass[playerIndex] = true;
+        pass[playerIndex] = true;
     }
 
-    // makes all hidden information for a player null
-    public void nullHiddenInformation(int playerIdx) {
-        for (int i = 0; i < numPlayers; i++) {
-            if (i != playerIdx) {
-                //playerHands[i].clear();
-                for (int j = 0; j < 9; j++) {
-                    //playerHands[i].add(null);
-                }
-            }
-        }
-    }
+//    // makes all hidden information for a player null
+//    public void nullHiddenInformation(int playerIdx) {     //this method is never used...
+//        for (int i = 0; i < numPlayers; i++) {
+//            if (i != playerIdx) {
+//                //playerHands[i].clear();
+//                for (int j = 0; j < 9; j++) {
+//                    //playerHands[i].add(null);
+//                }
+//            }
+//        }
+//    }
 
-    // returns the active player
+    /**
+     * Get the currently active player during any phase of the game
+     */
     public int getActivePlayer() {
         return currPlayer;
     }
 
+    /**
+     * Set the currently active player during any phase of the game
+     */
     public void setPlayer(int playIdx) {
         currPlayer = playIdx;
     }
 
+    /**
+     * Automatically set the currently active player during any phase of the game
+     * NOTE: this method is used especially to alternate whose "turn" it is in
+     *       a clockwise direction
+     */
     public void setPlayer() {
         if (currPlayer == 3)
         {

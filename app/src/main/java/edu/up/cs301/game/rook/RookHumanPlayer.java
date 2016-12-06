@@ -762,6 +762,18 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
     }
 
+
+
+//    public void changeroo(int otherPlayerIdx) {
+//        if (this.playerNum == 0) {
+//            //do nothing
+//        }
+//        else if ()
+//
+//    }
+
+
+
     public void checkCurrentSizeOfOpponentHand(int opponentIdx) {
         if(opponentIdx == 1) {
             if(state.playerOneHand.size() < 9) {
