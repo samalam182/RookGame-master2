@@ -70,7 +70,7 @@ public class sRookComputerPlayer extends RookComputerPlayer {
                 int blackSuitNum = 0;
                 int rookSuit = 0;
 
-                for (int j = 0; j < 9; j++) {
+                for (int j = 0; j < savedState.playerHands[this.playerNum].size(); j++) {
                     Card thisCard = myList.get(j);
 
                     myCard = new Card(thisCard.getSuit(), thisCard.getNumValue());
@@ -315,7 +315,7 @@ public class sRookComputerPlayer extends RookComputerPlayer {
                 }
                 Card playedCard = savedState.playerHands[this.playerNum].get(playIndex);
                 System.out.println(""+playedCard.getSuit()+","+""+playedCard.getNumValue());
-                game.sendAction(new RookCardAction(this, playIndex));
+                    game.sendAction(new RookCardAction(this, playIndex));
             }
             else
             {
@@ -337,7 +337,7 @@ public class sRookComputerPlayer extends RookComputerPlayer {
                 }
                 Card playedCard = savedState.playerHands[this.playerNum].get(playIndex);
                 System.out.println(""+playedCard.getSuit()+","+""+playedCard.getNumValue());
-                game.sendAction(new RookCardAction(this, playIndex));
+                    game.sendAction(new RookCardAction(this, playIndex));
             }
         }
     }
