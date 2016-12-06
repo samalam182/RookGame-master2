@@ -503,6 +503,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     public void updateGUI(RookState s) {
         if (s.getSubStage() == BID) {
+            correctHandImage();
             nest1.setVisibility(View.INVISIBLE);
             nest2.setVisibility(View.INVISIBLE);
             nest3.setVisibility(View.INVISIBLE);
@@ -786,27 +787,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
     }
 
-
-
-//    public void changeroo(int otherPlayerIdx) {
-//        if (this.playerNum == 0) {
-//            //do nothing
-//        }
-//        else if ()
-//
-//    }
-
-
-
-    public void checkCurrentSizeOfOpponentHand(int opponentIdx) {
-        if(opponentIdx == 1) {
-            if(state.playerOneHand.size() < 9) {
-                // PUT STUFF IN HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-                // FOR CHECKING SIZE OF ARRAY - let display of opponent hands reflect size of array
-            }
-        }
-    }
-
     public void correctHandImage() {
         // gets an array of all card objects
         ImageButton[] card = {card0, card1, card2, card3, card4, card5, card6, card7, card8};
@@ -855,6 +835,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             int numInvis = numPlayed(state.playerHands[ops[k]]);
             for(int l = 0; l < numInvis; l++){
                 opponents[k][l].setImageBitmap(cardImages[4][2]);
+            }
+            for(int n = numInvis ; n < state.playerHands[ops[k]].size(); n++){
+                opponents[k][n].setImageBitmap(cardImages[4][1]);
             }
         }
 
