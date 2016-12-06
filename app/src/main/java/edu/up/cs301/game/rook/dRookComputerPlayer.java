@@ -211,8 +211,8 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                 int randIndex = (int) (Math.random() * 9);
 
                 int indexOfCard;
-                ArrayList<Integer> numberToAdd = new ArrayList<Integer>(9);
-                ArrayList<Integer> numbersPicked = new ArrayList<Integer>(9);
+                //ArrayList<Integer> numberToAdd = new ArrayList<Integer>(9);
+                //ArrayList<Integer> numbersPicked = new ArrayList<Integer>(9);
 
                 ArrayList<Card> cardInHand = savedState.playerHands[this.playerNum];
 
@@ -261,12 +261,11 @@ public class dRookComputerPlayer extends RookComputerPlayer {
 //                            cardInHand.get(nextIndexOfCard).setPlayed();
 //                            game.sendAction(new RookCardAction(this, nextIndexOfCard));
 //                        }
-//                    }
-
-
+//
                     Card tempCard = copyHand.get(pickedCard);
+                    //new Card(copyHand.get(pickedCard).getSuit(), copyHand.get(pickedCard).getNumValue());
                     game.sendAction(new RookCardAction(this, cardInHand.indexOf(tempCard)));
-                        //new Card(copyHand.get(pickedCard).getSuit(), copyHand.get(pickedCard).getNumValue());
+
 
             }
         }
