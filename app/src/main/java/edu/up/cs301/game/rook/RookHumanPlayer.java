@@ -61,6 +61,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     private final int BLANK = 5;
     Card blankCard = new Card(20, BLANK);
 
+    private boolean nullNest = false;
+
     // buttons
 
 
@@ -660,7 +662,23 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             passButton.setVisibility(View.INVISIBLE);
 
             setOrangeStarIndicator();
-        } else
+        }
+        else if (nullNest)
+        {
+            trick1.setImageResource(R.drawable.rookcard_back);
+            trick2.setImageResource(R.drawable.rookcard_back);
+            trick3.setImageResource(R.drawable.rookcard_back);
+            trick4.setImageResource(R.drawable.rookcard_back);
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            nullNest = false;
+        }
+        else
         {
 
             if (state.getTrump() == 0)
@@ -715,6 +733,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             if (state.currTrick.size() == 4)
             {
                 correctTrickImage();
+                nullNest = true;
 
 //                trick1.setImageResource(R.drawable.rookcard_back);
 //                trick2.setImageResource(R.drawable.rookcard_back);

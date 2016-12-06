@@ -262,9 +262,11 @@ public class dRookComputerPlayer extends RookComputerPlayer {
 //                            game.sendAction(new RookCardAction(this, nextIndexOfCard));
 //                        }
 //                    }
-                Card tempCard = copyHand.get(pickedCard);
+
+
+                    Card tempCard = copyHand.get(pickedCard);
+                    game.sendAction(new RookCardAction(this, cardInHand.indexOf(tempCard)));
                         //new Card(copyHand.get(pickedCard).getSuit(), copyHand.get(pickedCard).getNumValue());
-                game.sendAction(new RookCardAction(this, cardInHand.indexOf(tempCard)));
 
             }
         }

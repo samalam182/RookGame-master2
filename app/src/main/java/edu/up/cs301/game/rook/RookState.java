@@ -153,7 +153,8 @@ public class RookState extends GameState {
      * @param info
      *
      */
-    public RookState(RookState info) {
+    public RookState(RookState info)
+    {
         // set the current RookState as the given, updated info as
         // manipulated by the RookHumanPlayer and LocalGame classes
         RookState temp = info;
