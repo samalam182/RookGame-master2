@@ -538,6 +538,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             passThree.setVisibility(View.INVISIBLE);
             passFour.setVisibility(View.INVISIBLE);
 
+            trick1.setVisibility(View.INVISIBLE);
+            trick2.setVisibility(View.INVISIBLE);
+            trick3.setVisibility(View.INVISIBLE);
+            trick4.setVisibility(View.INVISIBLE);
+
             Log.i("UpdateGUI", "Trying to update lastBidder");
             if (state.lastBidder == 0) {
                 lastBidder.setText("Player 1");
@@ -626,7 +631,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             passThree.setVisibility(View.INVISIBLE);
             passFour.setVisibility(View.INVISIBLE);
 
-            //makes sure tahat cards in HumanPlayer's hand doesn't disappear during
+            //makes sure that cards in HumanPlayer's hand doesn't disappear during
             //Nest-phase of game
             card0.setVisibility(View.VISIBLE);
             card1.setVisibility(View.VISIBLE);

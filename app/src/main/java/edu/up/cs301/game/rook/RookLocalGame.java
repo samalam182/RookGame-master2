@@ -400,6 +400,7 @@ public class RookLocalGame extends LocalGame
                 }
                 if(gameCounter >=36){
                     state = new RookState(true, state);
+                    gameCounter = 0;
                 }
             }
         }

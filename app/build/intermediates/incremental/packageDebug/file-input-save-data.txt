@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Dec 06 11:55:59 PST 2016
+#Tue Dec 06 12:20:05 PST 2016
 122.file=C\:\\Users\\E6420i5\\Desktop\\Android Projects\\RookGame-master2\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\card_as.png
 60.set=ANDROID_RESOURCE
 52.set=ANDROID_RESOURCE
