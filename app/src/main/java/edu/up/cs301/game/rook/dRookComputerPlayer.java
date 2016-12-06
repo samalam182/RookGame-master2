@@ -11,7 +11,16 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 import static java.lang.reflect.Array.getInt;
 
 /**
- * Created by hoser18 on 11/8/2016.
+ * Contains the algorithms and functions that are included in the "Dumb Computer Player"
+ * for the game of Rook.
+ *
+ * At any stage of the game including the phases for bidding, interacting with the nest,
+ * choosing the trump suit, and placing down cards from their hand into the trick pile,
+ * the Dumb Computer Player will make random decisions on their interactions of the cards
+ * that are available to them.
+ *
+ * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
+ * @version December 2016
  */
 public class dRookComputerPlayer extends RookComputerPlayer {
 

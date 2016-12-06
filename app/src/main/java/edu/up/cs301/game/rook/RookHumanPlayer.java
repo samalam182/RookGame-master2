@@ -30,44 +30,65 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 import static edu.up.cs301.card.Card.cardImages;
 import static edu.up.cs301.card.Card.initImages;
 
-
 /**
- * Created by hoser18 on 11/8/2016.
+ * Represents the Human Player who will interact with the GUI on
+ * the Android Tablet's screen in order to play the game of Rook
+ *
+ * Moves are made by clicking on ImageButton's that represent the cards in
+ * the Human Player's hand, as well as various other Button-objects to receive
+ * information from the Human Player
+ *
+ * Presently, it is laid out for landscape orientation and is locked in this orientation
+ * for the whole game.
+ *
+ * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
+ * @version December 2016
+ *
  */
 public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.OnClickListener {
-    //game state object
+    // game-state object
     protected RookState state;
 
     // activity object
     protected Activity activity;
 
-    // animation surface object
+    // animation-surface object, which will be used to notify the user
+    // that they have made an illegal move by "flashing" red
     private AnimationSurface surface;
 
-    // background color
+    // background color of the screen
     private int backgroundColor;
 
+    // represents the different sub-stages of the game
     public final int WAIT = 0;
     public final int BID = 1;
     public final int TRUMP = 2;
     public final int NEST = 3;
     public final int PLAY = 4;
     public final int OVER = 5;
+
+    // represents the different suits of a card
     private final int BLACK = 0;
     private final int YELLOW = 1;
     private final int GREEN = 2;
     private final int RED = 3;
 
+    private boolean startingNew = true;
+    private int currTrickWinner;
+
+    // represents when a certain card is not being used, has already
+    // been used, or is not usable during a certain stage of the game
     private final int BLANK = 5;
     Card blankCard = new Card(20, BLANK);
 
-    private boolean nullNest = false;
-
-    // buttons
-
-
+    // buttons for starting the game after the configuration screen's
+    // initial setup of the game, quitting the game, and starting another
+    // round after 9 tricks have been played out
     public Button start;
     public Button quit;
+    public Button nextRound;
+
+    // image-buttons for all 9 cards in the Human Player's hand
     public ImageButton card0;
     public ImageButton card1;
     public ImageButton card2;
@@ -77,53 +98,88 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public ImageButton card6;
     public ImageButton card7;
     public ImageButton card8;
+
+    // image-buttons for all 5 cards in the nest, which will only be visible
+    // to the Human Player if they are the winning bidder of the current round
     public ImageButton nest1;
     public ImageButton nest2;
     public ImageButton nest3;
     public ImageButton nest4;
     public ImageButton nest5;
+
+    // image-buttons for the 4 different suits in order to choose a trump suit,
+    // which will only be visible to the Human Player if they are the winning bidder of the round
     public ImageButton trumpYellow;
     public ImageButton trumpBlack;
     public ImageButton trumpGreen;
     public ImageButton trumpRed;
+
+    // image-buttons for incrementing or decrementing to one's own bid
+    // during the bidding phase of the game
     public Button minusFive;
     public Button addFive;
-    public Button confirmNest;
-    public Button confirmTrump;
+
+    // image-buttons for the Human Player to either bid a certain amount or make a pass
     public Button bidButton;
     public Button passButton;
+
+    // image-button to confirm the proper trading of cards from the nest to
+    // Human Player's hand (and vice-versa) during the time when the winning bidder
+    // can interact with the nest
+    public Button confirmNest;
+
+    // image-button to confirm the desired suit that the Human Player would like to
+    // set as the trump suit for the rest of the round
+    public Button confirmTrump;
+
+    // text-views that represent information about the current bid,
+    // the winning bidder, and the winning bid amount
     public TextView bidAmount;
     public TextView previousBid;
     public TextView winningBidder;
     public TextView winningBid;
-
-    public TextView trumpTitle;
-    public TextView nestTitle;
-    public ImageView trick1;
-    public ImageView trick2;
-    public ImageView trick3;
-    public ImageView trick4;
-    public TextView lastBidder;
-    public TextView trumpAccounce;
     public TextView bidTitle;
     public TextView amountTitle;
     public TextView bidShow;
     public TextView bidMainTitle;
     public TextView yourBid;
+    public TextView lastBidder;
+
+    // text-view that simply says "Nest", which is shown above the
+    // 5 ImageButtons for that represent the cards of the nest
+    public TextView nestTitle;
+
+    //////////////////////////////////////////////////////////////////////oioioioioioi
+    private boolean nullNest = false;
+
+    // ArrayList's that represent which cards have been chosen from the nest and
+    // the Human Player's hand to trade with each other
     public ArrayList<Card> fromH = new ArrayList<Card>(5);
     public ArrayList<Card> fromN = new ArrayList<Card>(5);
-
-    public TextView passOne;
-    public TextView passTwo;
-    public TextView passThree;
-    public TextView passFour;
-    public TextView passTitle;
-
-
     public int[] handSwitch = new int[5];
     public int trackH = 0;
     public int[] nestSwitch = new int[5];
     public int trackS = 0;
+
+
+    // text-views that displays information about the chosen trump suit of the current round
+    public TextView trumpTitle;
+    public TextView trumpAccounce;
+
+    // image-views that display which cards have been placed down by each
+    // of the four players into the trick
+    public ImageView trick1;
+    public ImageView trick2;
+    public ImageView trick3;
+    public ImageView trick4;
+
+    // text-views that displays the names of the players who have decided to
+    // make a pass during the bidding phase of the game
+    public TextView passTitle;
+    public TextView passOne;
+    public TextView passTwo;
+    public TextView passThree;
+    public TextView passFour;
 
 
     public int delay = 0;
@@ -175,7 +231,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     public TextView playerWonTitle;
     public TextView playerWon;
-    public Button nextRound;
 
 
     /**
@@ -503,6 +558,18 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     public void updateGUI(RookState s) {
         if (s.getSubStage() == BID) {
+
+            correctHandImage();
+            card0.setVisibility(View.VISIBLE);
+            card1.setVisibility(View.VISIBLE);
+            card2.setVisibility(View.VISIBLE);
+            card2.setVisibility(View.VISIBLE);
+            card3.setVisibility(View.VISIBLE);
+            card4.setVisibility(View.VISIBLE);
+            card5.setVisibility(View.VISIBLE);
+            card6.setVisibility(View.VISIBLE);
+            card7.setVisibility(View.VISIBLE);
+            card8.setVisibility(View.VISIBLE);
             nest1.setVisibility(View.INVISIBLE);
             nest2.setVisibility(View.INVISIBLE);
             nest3.setVisibility(View.INVISIBLE);
@@ -537,6 +604,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             passTwo.setVisibility(View.INVISIBLE);
             passThree.setVisibility(View.INVISIBLE);
             passFour.setVisibility(View.INVISIBLE);
+
+            trick1.setVisibility(View.INVISIBLE);
+            trick2.setVisibility(View.INVISIBLE);
+            trick3.setVisibility(View.INVISIBLE);
+            trick4.setVisibility(View.INVISIBLE);
 
             Log.i("UpdateGUI", "Trying to update lastBidder");
             if (state.lastBidder == 0) {
@@ -626,7 +698,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             passThree.setVisibility(View.INVISIBLE);
             passFour.setVisibility(View.INVISIBLE);
 
-            //makes sure tahat cards in HumanPlayer's hand doesn't disappear during
+            //makes sure that cards in HumanPlayer's hand doesn't disappear during
             //Nest-phase of game
             card0.setVisibility(View.VISIBLE);
             card1.setVisibility(View.VISIBLE);
@@ -732,13 +804,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
             if (state.currTrick.size() == 4)
             {
-                correctTrickImage();
+                state.currTrick.clear();
                 nullNest = true;
-
-//                trick1.setImageResource(R.drawable.rookcard_back);
-//                trick2.setImageResource(R.drawable.rookcard_back);
-//                trick3.setImageResource(R.drawable.rookcard_back);
-//                trick4.setImageResource(R.drawable.rookcard_back);
             }
             correctHandImage();
             setOrangeStarIndicator();
@@ -778,27 +845,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             opponentOneOrangeStar.setVisibility(View.INVISIBLE);
             opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
             opponentThreeOrangeStar.setVisibility(View.VISIBLE);
-        }
-    }
-
-
-
-//    public void changeroo(int otherPlayerIdx) {
-//        if (this.playerNum == 0) {
-//            //do nothing
-//        }
-//        else if ()
-//
-//    }
-
-
-
-    public void checkCurrentSizeOfOpponentHand(int opponentIdx) {
-        if(opponentIdx == 1) {
-            if(state.playerOneHand.size() < 9) {
-                // PUT STUFF IN HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-                // FOR CHECKING SIZE OF ARRAY - let display of opponent hands reflect size of array
-            }
         }
     }
 
@@ -851,6 +897,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             for(int l = 0; l < numInvis; l++){
                 opponents[k][l].setImageBitmap(cardImages[4][2]);
             }
+            for(int n = numInvis ; n < state.playerHands[ops[k]].size(); n++){
+                opponents[k][n].setImageBitmap(cardImages[4][1]);
+            }
         }
 
     }
@@ -890,7 +939,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         return opp;
     }
 
-    public void correctTrickImage() {
+    public void correctTrickImage()
+    {
         // gets an array of all card objects
         ImageView[] trick = {trick1, trick2, trick3, trick4};
 
@@ -898,27 +948,73 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         Card getting;
         int currSuit = 5;
         int currVal = 10;
-        if(state.currTrick.size() != 0){
-        for (int i = 0; i < state.currTrick.size(); i++) {
-            // gets the card we're looking for. [0] = only player one.
-            // for future human players, needs to be another look per player
-            if (state.currTrick.get(i) != null) {
-                getting = state.currTrick.get(i);
-                currSuit = getting.getSuit();
-                currVal = getting.getNumValue();
-                Bitmap tempBitmap;
+        int[] testing = {0,1,2,3};
 
-                if (currVal == 15) {
-                    tempBitmap = cardImages[4][0];
-                } else {
-                    tempBitmap = cardImages[currSuit][currVal - 5];
-                }
-                trick[i].setImageBitmap(tempBitmap);
-                trick[i].invalidate();
-            }
-
+        if (startingNew)
+        {
+            currTrickWinner = state.currTrickWinner;
+            startingNew = false;
         }
-    }
+
+        if (currTrickWinner == 0)
+        {
+            testing[0] = 0;
+            testing[1] = 1;
+            testing[2] = 2;
+            testing[3] = 3;
+        }
+        else if (currTrickWinner == 1)
+        {
+            testing[0] = 1;
+            testing[1] = 2;
+            testing[2] = 3;
+            testing[3] = 0;
+        }
+        else if (currTrickWinner == 2)
+        {
+            testing[0] = 2;
+            testing[1] = 3;
+            testing[2] = 0;
+            testing[3] = 1;
+        }
+        else if (currTrickWinner == 3)
+        {
+            testing[0] = 3;
+            testing[1] = 0;
+            testing[2] = 1;
+            testing[3] = 2;
+        }
+
+        if(state.currTrick.size() != 0)
+        {
+            for (int i = 0; i < state.currTrick.size(); i++) {
+                // gets the card we're looking for. [0] = only player one.
+                // for future human players, needs to be another look per player
+                if (state.currTrick.get(i) != null) {
+                    getting = state.currTrick.get(i);
+                    currSuit = getting.getSuit();
+                    currVal = getting.getNumValue();
+                    Bitmap tempBitmap;
+
+                    if (currVal == 15)
+                    {
+                        tempBitmap = cardImages[4][0];
+                    }
+                    else {
+                        tempBitmap = cardImages[currSuit][currVal - 5];
+                    }
+
+                    trick[testing[i]].setImageBitmap(tempBitmap);
+                    trick[testing[i]].invalidate();
+
+                    if (state.currTrick.size() == 4)
+                    {
+                        startingNew = true;
+                    }
+                }
+
+            }
+        }
     }
 
     public void correctNestImage()

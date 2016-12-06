@@ -15,7 +15,16 @@ import edu.up.cs301.game.infoMsg.GameState;
 import static android.telephony.PhoneNumberUtils.WAIT;
 
 /**
- * Created by dewhitt17 on 11/9/2016.
+ * A GameState class for the game of Rook, which keeps track of all 4 player's
+ * choices to place a card, interact with the nest, choose the trump suit, current bid,
+ * and total points throughout the course of the game.
+ *
+ * Also incorporates a special ArrayList called "deck", which is used at the start
+ * of the first round of the game to initialize a randomized combination of all 41 cards
+ * that will be dealt out accordingly to each player's hand and the nest
+ *
+ * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
+ * @version December 2016
  */
 public class RookState extends GameState {
 
@@ -145,6 +154,66 @@ public class RookState extends GameState {
 
         // set the first player as the default winner at the beginning of the game
         winningPlayer = 0;
+    }
+
+    public RookState(boolean newRound, RookState roundState) {
+        // at the beginning of the game, all player's are waiting
+        // until the game has been initialized
+        subStage = BID;
+
+        // set the first player to bid as the player who was first
+        // at the top of the list on the configuration screen
+        currPlayer = roundState.getActivePlayer();
+
+        // set the maximum value of cards that can be placed into
+        // all player hands, nest, and trick
+        playerZeroHand = new ArrayList<Card>(9);
+        playerOneHand = new ArrayList<Card>(9);
+        playerTwoHand = new ArrayList<Card>(9);
+        playerThreeHand = new ArrayList<Card>(9);
+        playerHands[0] = playerZeroHand;
+        playerHands[1] = playerOneHand;
+        playerHands[2] = playerTwoHand;
+        playerHands[3] = playerThreeHand;
+        nest = new ArrayList<Card>(5);
+        currTrick = new ArrayList<Card>(4);
+
+        // all players at the beginning of the game have not passed the bidding phase
+        pass = new boolean[numPlayers];
+        pass[0] = false;
+        pass[1] = false;
+        pass[2] = false;
+        pass[3] = false;
+
+        // set the deck to a randomly ordered, shuffled combination of all the playable cards,
+        // and then deal out all the 41 cards to the 4 players' hands and the nest
+        deck = initDeck();
+        deal();
+
+        // set trick winner, trump suit, and winning bid to default values
+        // at the beginning of the game when nothing has been played out yet
+        currTrickWinner = currPlayer;
+        trumpSuit = 0;
+        winningBid = 0;
+
+        // set the first player's bid of the first round as the minimum value of the bid
+        playerBids[0] = 0;
+        playerBids[1] = 0;
+        playerBids[2] = 0;
+        playerBids[3] = 0;
+
+        playerBids[currPlayer] = 50;
+
+        // initialize all the players' current total scores and names from the configuration screen
+        playerScores = new int[numPlayers];
+        playerScores[0] = roundState.playerScores[0];
+        playerScores[1] = roundState.playerScores[1];
+        playerScores[2] = roundState.playerScores[2];
+        playerScores[3] = roundState.playerScores[3];
+        playerNames = new String[numPlayers];
+
+        // set the first player as the default winner at the beginning of the game
+        winningPlayer = currPlayer;
     }
 
     /**
