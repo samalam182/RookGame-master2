@@ -217,7 +217,7 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                 ArrayList<Card> cardInHand = savedState.playerHands[this.playerNum];
 
 
-                ArrayList<Card> copyHand = cardInHand;
+                ArrayList<Card> copyHand = (ArrayList<Card>) cardInHand.clone();
                 for(Card c : cardInHand)
                 {
                     if(c.getPlayed() == true)
