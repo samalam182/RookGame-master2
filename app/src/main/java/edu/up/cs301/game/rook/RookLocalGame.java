@@ -405,6 +405,8 @@ public class RookLocalGame extends LocalGame
                     state.setScore(points, trickWinner);
                     state.setPlayer(trickWinner);
                     state.currTrickWinner = trickWinner;
+
+                    state.pointsThisRound[trickWinner] += points;
                 }
                 else
                 {
@@ -414,8 +416,15 @@ public class RookLocalGame extends LocalGame
                 if(gameCounter >=36)
                 {
                     state.setScore(state.countNest(), trickWinner);
+                    state.pointsThisRound[trickWinner] += state.countNest();
                     state.setPlayer(trickWinner);
                     state.currTrickWinner = trickWinner;
+
+                    if (state.pointsThisRound[state.lastBidder] < state.getHighestBid())
+                    {
+                        state.pointsThisRound[state.lastBidder] -= state.getHighestBid();
+                        state.setScore(state.pointsThisRound[state.lastBidder], state.lastBidder);
+                    }
 
                     state = new RookState(true, state);
                     gameCounter = 0;

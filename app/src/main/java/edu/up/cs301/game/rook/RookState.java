@@ -99,6 +99,8 @@ public class RookState extends GameState {
 
     public boolean startingNew;
 
+    public int[] pointsThisRound = new int[numPlayers];
+
     /**
      *
      * Main constructor-method for RookState
@@ -149,6 +151,11 @@ public class RookState extends GameState {
         playerBids[1] = 0;
         playerBids[2] = 0;
         playerBids[3] = 0;
+
+        pointsThisRound[0] = 0;
+        pointsThisRound[1] = 0;
+        pointsThisRound[2] = 0;
+        pointsThisRound[3] = 0;
 
         // initialize all the players' current total scores and names from the configuration screen
         playerScores = new int[numPlayers];
@@ -205,6 +212,11 @@ public class RookState extends GameState {
         playerBids[1] = 0;
         playerBids[2] = 0;
         playerBids[3] = 0;
+
+        pointsThisRound[0] = 0;
+        pointsThisRound[1] = 0;
+        pointsThisRound[2] = 0;
+        pointsThisRound[3] = 0;
 
         playerBids[currPlayer] = 50;
 
