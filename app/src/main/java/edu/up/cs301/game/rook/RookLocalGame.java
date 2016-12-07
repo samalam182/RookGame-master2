@@ -149,6 +149,7 @@ public class RookLocalGame extends LocalGame
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
             gameCounter++;
             int startingPlayer;
             int trickWinner = 0;
@@ -168,7 +169,8 @@ public class RookLocalGame extends LocalGame
                 RookCardAction act = (RookCardAction) action;
                 int handIdx = act.retButtonNum();
 
-                if(state.currTrick.size()<4) {
+                if(state.currTrick.size()<4)
+                {
                     state.currTrick.add(state.playerHands[state.getActivePlayer()].get(handIdx));
                     //state.playerHands[state.getActivePlayer()].set(handIdx, nullCard);
                     state.playerHands[state.getActivePlayer()].get(handIdx).setPlayed();
@@ -179,231 +181,252 @@ public class RookLocalGame extends LocalGame
                 {
                     points = state.countTrick();
                     Card first = state.currTrick.get(0);
-                    int firstCardVal = first.getNumValue();
                     int firstCardSuit = first.getSuit();
                     int currTrump = state.getTrump();
-                    Card domCard;
 
                     int ranking = 1000;
                     int counter = 0;
 
-                    for (Card cards : state.currTrick )
+                    int[] testing = {0,1,2,3};
+
+                    if (state.currTrickWinner == 0)
                     {
-                        if (cards.getNumValue() == 15)
+                        testing[0] = 0;
+                        testing[1] = 1;
+                        testing[2] = 2;
+                        testing[3] = 3;
+                    }
+                    else if (state.currTrickWinner == 1)
+                    {
+                        testing[0] = 1;
+                        testing[1] = 2;
+                        testing[2] = 3;
+                        testing[3] = 0;
+                    }
+                    else if (state.currTrickWinner == 2)
+                    {
+                        testing[0] = 2;
+                        testing[1] = 3;
+                        testing[2] = 0;
+                        testing[3] = 1;
+                    }
+                    else if (state.currTrickWinner == 3)
+                    {
+                        testing[0] = 3;
+                        testing[1] = 0;
+                        testing[2] = 1;
+                        testing[3] = 2;
+                    }
+
+                    for (int f = 0; f < state.currTrick.size(); f++)
+                    {
+                        if (state.currTrick.get(f).getNumValue() == 15)
                         {
-                            trickWinner = counter;
+                            trickWinner = testing[f];
                             ranking = 1;
                         }
-                        else if (cards.getSuit() == currTrump && cards.getNumValue() == 14)
+                        else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 14)
                         {
                             if (ranking > 1)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 2;
                             }
                         }
-                        else if (cards.getSuit() == currTrump && cards.getNumValue() == 13)
+                        else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 13)
                         {
                             if (ranking > 2)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 3;
                             }
                         }
-                        else if (cards.getSuit() == currTrump && cards.getNumValue() == 12)
+                        else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 12)
                         {
                             if (ranking > 3)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 4;
                             }
                         }
-                        else if (cards.getSuit() == currTrump && cards.getNumValue() == 11)
+                        else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 11)
                         {
                             if (ranking > 4)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 5;
                             }
                         }
-                        else if (cards.getSuit() == currTrump && cards.getNumValue() == 10)
+                        else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 10)
                         {
                             if (ranking > 5)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 6;
                             }
                         }
-                        else if (cards.getSuit() == currTrump && cards.getNumValue() == 9)
+                        else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 9)
                         {
                             if (ranking > 6)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 7;
                             }
                         }
-                        else if (cards.getSuit() == currTrump && cards.getNumValue() == 8)
+                        else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 8)
                         {
                             if (ranking > 7)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 8;
                             }
                         }
-                        else if (cards.getSuit() == currTrump && cards.getNumValue() == 7)
+                        else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 7)
                         {
                             if (ranking > 8)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 9;
                             }
                         }
-                        else if (cards.getSuit() == currTrump && cards.getNumValue() == 6)
+                        else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 6)
                         {
                             if (ranking > 9)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 10;
                             }
                         }
-                        else if (cards.getSuit() == currTrump && cards.getNumValue() == 5)
+                        else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 5)
                         {
                             if (ranking > 10)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 11;
                             }
                         }
-                        else if (cards.getSuit() == currTrump && cards.getNumValue() == 4)
+                        else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 4)
                         {
                             if (ranking > 11)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 12;
                             }
                         }
-                        else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 14)
+                        else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 14)
                         {
                             if (ranking > 12)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 13;
                             }
                         }
-                        else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 13)
+                        else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 13)
                         {
                             if (ranking > 13)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 14;
                             }
                         }
-                        else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 12)
+                        else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 12)
                         {
                             if (ranking > 14)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 15;
                             }
                         }
-                        else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 11)
+                        else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 11)
                         {
                             if (ranking > 15)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 16;
                             }
                         }
-                        else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 10)
+                        else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 10)
                         {
                             if (ranking > 16)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 17;
                             }
                         }
-                        else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 9)
+                        else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 9)
                         {
                             if (ranking > 17)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 18;
                             }
                         }
-                        else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 8)
+                        else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 8)
                         {
                             if (ranking > 18)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 19;
                             }
                         }
-                        else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 7)
+                        else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 7)
                         {
                             if (ranking > 19)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 20;
                             }
                         }
-                        else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 6)
+                        else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 6)
                         {
                             if (ranking > 20)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 21;
                             }
                         }
-                        else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 5)
+                        else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 5)
                         {
                             if (ranking > 21)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 22;
                             }
                         }
-                        else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 4)
+                        else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 4)
                         {
                             if (ranking > 22)
                             {
-                                trickWinner = counter;
-                                counter++;
+                                trickWinner = testing[f];
                                 ranking = 23;
                             }
                         }
+
                     }
 
                     state.setScore(points, trickWinner);
                     state.setPlayer(trickWinner);
                     state.currTrickWinner = trickWinner;
-
+                    state.pointsThisRound[trickWinner] += points;
                 }
                 else
                 {
                     state.setPlayer();
                 }
-                if(gameCounter >=36){
+
+                if(gameCounter >=36)
+                {
+                    state.setScore(state.countNest(), trickWinner);
+                    state.pointsThisRound[trickWinner] += state.countNest();
+                    state.setPlayer(trickWinner);
+                    state.currTrickWinner = trickWinner;
+
+                    if (state.pointsThisRound[state.lastBidder] < state.getHighestBid())
+                    {
+                        state.pointsThisRound[state.lastBidder] -= state.getHighestBid();
+                        state.setScore(state.pointsThisRound[state.lastBidder], state.lastBidder);
+                    }
+
                     state = new RookState(true, state);
                     gameCounter = 0;
                 }
@@ -443,7 +466,8 @@ public class RookLocalGame extends LocalGame
 
             // checks to see if that player won the bid
         }
-        else if (action instanceof RookTrumpAction) {
+        else if (action instanceof RookTrumpAction)
+        {
             if (state.getSubStage() == TRUMP && playerIdxx == state.winningPlayer) {
                 RookTrumpAction act = (RookTrumpAction) action;
                 state.setTrump(act.getTrumpColor());

@@ -35,11 +35,11 @@ public class RookMainActivity extends GameMainActivity {
 			public GamePlayer createPlayer(String name) {
 				return new RookHumanPlayer(name, Color.GREEN);
 			}});
-		playerTypes.add(new GamePlayerType("computer player (dumb1)") {
+		playerTypes.add(new GamePlayerType("computer player (dumb)") {
 			public GamePlayer createPlayer(String name) {
 				return new dRookComputerPlayer(name);
 			}});
-		playerTypes.add(new GamePlayerType("computer player (dumb2)") {
+		playerTypes.add(new GamePlayerType("computer player (dumb)") {
 			public GamePlayer createPlayer(String name) {
 				return new dRookComputerPlayer(name);
 			}});
@@ -57,8 +57,8 @@ public class RookMainActivity extends GameMainActivity {
 		defaultConfig.addPlayer("Computer2", 2);
 		defaultConfig.addPlayer("Computer3", 3);
 		
-		// Set the initial information for the remote player
-		//defaultConfig.setRemoteData("Guest", "", 1);
+		 //Set the initial information for the remote player
+		defaultConfig.setRemoteData("Guest", "", 1);
 		
 		//done!
 		return defaultConfig;

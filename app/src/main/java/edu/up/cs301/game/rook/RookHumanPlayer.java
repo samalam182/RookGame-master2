@@ -247,11 +247,14 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     /**
      * @param info the message we have received from the game
      */
-    public void receiveInfo(GameInfo info) {
-        if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo) {
+    public void receiveInfo(GameInfo info)
+    {
+        if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo)
+        {
             // if the user attempts to play an illegal move, or not on their turn, flash the screen
             surface.flash(Color.RED, 50);
-        } else if (!(info instanceof RookState)) {
+        }
+        else if (!(info instanceof RookState)) {
             // there is no game state, so ignore it
             return;
         }
@@ -272,7 +275,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * @return the top view GUI
      */
     @Override
-    public View getTopView() {
+    public View getTopView()
+    {
+
         return activity.findViewById(R.id.top_gui_layout);
 
     }
@@ -288,9 +293,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * @param newActivity the current activity
      */
     public void setAsGui(GameMainActivity newActivity) {
-        if (state != null) {
-            receiveInfo(state);
-        }
 
         //  animate the UI
         activity = newActivity;
@@ -560,6 +562,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         if (s.getSubStage() == BID) {
 
             correctHandImage();
+            trumpAccounce.setText("N/A");
+            winningBid.setText("N/A");
+            winningBidder.setText("N/A");
             card0.setVisibility(View.VISIBLE);
             card1.setVisibility(View.VISIBLE);
             card2.setVisibility(View.VISIBLE);
@@ -586,6 +591,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidAmount.setText("" + possBid);
             trumpAccounce.setVisibility(View.VISIBLE);
 
+            oneScore.setText("" + state.getScore(0));
+            twoScore.setText("" + state.getScore(1));
+            threeScore.setText("" + state.getScore(2));
+            fourScore.setText("" + state.getScore(3));
+
             addFive.setVisibility(View.VISIBLE);
             minusFive.setVisibility(View.VISIBLE);
             bidButton.setVisibility(View.VISIBLE);
@@ -609,6 +619,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             trick2.setVisibility(View.INVISIBLE);
             trick3.setVisibility(View.INVISIBLE);
             trick4.setVisibility(View.INVISIBLE);
+
+            nest1.setAlpha(255);
+            nest2.setAlpha(255);
+            nest3.setAlpha(255);
+            nest4.setAlpha(255);
+            nest5.setAlpha(255);
 
             Log.i("UpdateGUI", "Trying to update lastBidder");
             if (state.lastBidder == 0 && !state.pass[0])
@@ -787,12 +803,21 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
 
-            winningBidder.setText("Player: " + state.winningPlayer);
+            winningBidder.setText("Player: " + (state.winningPlayer + 1));
             winningBid.setText("" + state.winningBid);
-            if(state.currTrick.size() > 0)
+
+            if (state.currTrick.size() == 0)
             {
+                trick1.setImageResource(R.drawable.rookcard_back);
+                trick2.setImageResource(R.drawable.rookcard_back);
+                trick3.setImageResource(R.drawable.rookcard_back);
+                trick4.setImageResource(R.drawable.rookcard_back);
+            }
+            else {
                 correctTrickImage();
             }
+
+
             trick1.setVisibility(View.VISIBLE);
             trick2.setVisibility(View.VISIBLE);
             trick3.setVisibility(View.VISIBLE);
@@ -819,10 +844,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * trump-phase, or trick-phase to place an orange star next to the current
      * active player's name to indicate to the human player whose turn it is
      */
-    public void setOrangeStarIndicator() {
+    public void setOrangeStarIndicator()
+    {
 //        int playerNumInConfig;
 //        if (state.)
         int[] others = oppIdx(this.playerNum);
+
 
         if (state.getActivePlayer() == this.playerNum && state.getSubStage() == BID && !state.pass[0])
         {
@@ -877,7 +904,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             opponentThreeOrangeStar.setVisibility(View.VISIBLE);
         }
     }
-
+    //sets the human palyer's hands to the correct images based on the cards that they have
+    //looks through their hand and gets the card, then puts the bitmap of that card
+    //into the proper spot. Additionally, this will set the other player's hands
+    //so that you can see how many cards they have left in their hands.
     public void correctHandImage() {
         // gets an array of all card objects
         ImageButton[] card = {card0, card1, card2, card3, card4, card5, card6, card7, card8};
@@ -897,7 +927,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         // the card that we're looking for is being stored
         Card getting;
         if(card.length != 0) {
-            for (int i = 0; i < state.playerHands[state.getActivePlayer()].size(); i++) {
+            for (int i = 0; i < state.playerHands[state.getActivePlayer()].size() && i < 9; i++) {
                 // gets the card we're looking for. [0] = only player one.
                 // for future human players, needs to be another look per player
                 if (state.playerHands[this.playerNum].get(i) != null) {
@@ -934,9 +964,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     }
 
+    //helper method for the correct hand image to check how many cards have been played
     public int numPlayed(ArrayList<Card> opHand){
         int totalPlayed = 0;
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < 9; i++)
         {
             if(opHand.get(i).getPlayed()){
                 totalPlayed++;
@@ -944,6 +975,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
         return totalPlayed;
     }
+
+    //helper method that tells the human player where each opponent is relative to them so that
+    //they can see the appropriate player's hands get smaller each turn.
     public int[] oppIdx(int playerIdx){
         int[] opp = new int[3];
         if(playerIdx == 0){
@@ -969,6 +1003,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         return opp;
     }
 
+    //does the same thing as correct hand image but for the trick instead.
     public void correctTrickImage()
     {
         // gets an array of all card objects
@@ -1035,7 +1070,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                     }
 
                     trick[testing[i]].setImageBitmap(tempBitmap);
-                    trick[testing[i]].invalidate();
 
                     if (state.currTrick.size() == 4)
                     {
@@ -1476,156 +1510,156 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     }
 
 
-    public void score() {
-        int points = state.countTrick();
-        Card first = state.currTrick.get(0);
-        int firstCardVal = first.getNumValue();
-        int firstCardSuit = first.getSuit();
-        int currTrump = state.getTrump();
-        Card domCard;
-
-        int trickWinner = 0;
-        int ranking = 1000;
-        int counter = 0;
-        for (Card cards : state.currTrick) {
-            if (cards.getNumValue() == 15) {
-                trickWinner = counter;
-                ranking = 1;
-            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 14) {
-                if (ranking > 1) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 2;
-                }
-            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 13) {
-                if (ranking > 2) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 3;
-                }
-            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 12) {
-                if (ranking > 3) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 4;
-                }
-            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 11) {
-                if (ranking > 4) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 5;
-                }
-            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 10) {
-                if (ranking > 5) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 6;
-                }
-            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 9) {
-                if (ranking > 6) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 7;
-                }
-            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 8) {
-                if (ranking > 7) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 8;
-                }
-            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 7) {
-                if (ranking > 8) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 9;
-                }
-            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 6) {
-                if (ranking > 9) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 10;
-                }
-            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 5) {
-                if (ranking > 10) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 11;
-                }
-            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 4) {
-                if (ranking > 11) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 12;
-                }
-            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 14) {
-                if (ranking > 12) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 13;
-                }
-            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 13) {
-                if (ranking > 13) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 14;
-                }
-            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 12) {
-                if (ranking > 14) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 15;
-                }
-            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 11) {
-                if (ranking > 15) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 16;
-                }
-            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 10) {
-                if (ranking > 16) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 17;
-                }
-            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 9) {
-                if (ranking > 17) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 18;
-                }
-            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 8) {
-                if (ranking > 18) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 19;
-                }
-            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 7) {
-                if (ranking > 19) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 20;
-                }
-            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 6) {
-                if (ranking > 20) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 21;
-                }
-            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 5) {
-                if (ranking > 21) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 22;
-                }
-            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 4) {
-                if (ranking > 22) {
-                    trickWinner = counter;
-                    counter++;
-                    ranking = 23;
-                }
-            }
-        }
-
-        humanPoints.setText(points);
-    }
+//    public void score() {
+//        int points = state.countTrick();
+//        Card first = state.currTrick.get(0);
+//        int firstCardVal = first.getNumValue();
+//        int firstCardSuit = first.getSuit();
+//        int currTrump = state.getTrump();
+//        Card domCard;
+//
+//        int trickWinner = 0;
+//        int ranking = 1000;
+//        int counter = 0;
+//        for (Card cards : state.currTrick) {
+//            if (cards.getNumValue() == 15) {
+//                trickWinner = counter;
+//                ranking = 1;
+//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 14) {
+//                if (ranking > 1) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 2;
+//                }
+//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 13) {
+//                if (ranking > 2) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 3;
+//                }
+//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 12) {
+//                if (ranking > 3) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 4;
+//                }
+//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 11) {
+//                if (ranking > 4) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 5;
+//                }
+//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 10) {
+//                if (ranking > 5) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 6;
+//                }
+//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 9) {
+//                if (ranking > 6) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 7;
+//                }
+//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 8) {
+//                if (ranking > 7) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 8;
+//                }
+//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 7) {
+//                if (ranking > 8) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 9;
+//                }
+//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 6) {
+//                if (ranking > 9) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 10;
+//                }
+//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 5) {
+//                if (ranking > 10) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 11;
+//                }
+//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 4) {
+//                if (ranking > 11) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 12;
+//                }
+//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 14) {
+//                if (ranking > 12) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 13;
+//                }
+//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 13) {
+//                if (ranking > 13) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 14;
+//                }
+//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 12) {
+//                if (ranking > 14) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 15;
+//                }
+//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 11) {
+//                if (ranking > 15) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 16;
+//                }
+//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 10) {
+//                if (ranking > 16) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 17;
+//                }
+//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 9) {
+//                if (ranking > 17) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 18;
+//                }
+//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 8) {
+//                if (ranking > 18) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 19;
+//                }
+//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 7) {
+//                if (ranking > 19) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 20;
+//                }
+//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 6) {
+//                if (ranking > 20) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 21;
+//                }
+//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 5) {
+//                if (ranking > 21) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 22;
+//                }
+//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 4) {
+//                if (ranking > 22) {
+//                    trickWinner = counter;
+//                    counter++;
+//                    ranking = 23;
+//                }
+//            }
+//        }
+//
+//        humanPoints.setText(points);
+//    }
 }

@@ -70,9 +70,9 @@ public class RookState extends GameState {
 
     // defines the different suits of each card
     private final int BLACK = 0;
-    private final int YELLOW = 1;
-    private final int GREEN = 2;
-    private final int RED = 3;
+    private final int RED = 1;
+    private final int YELLOW = 2;
+    private final int GREEN = 3;
     private final int ROOK = 4;
 
     // defines the winning bid amount and the player who won the bid
@@ -96,6 +96,9 @@ public class RookState extends GameState {
     // defines the inputted names for each player according
     // to the configuration screen
     private String[] playerNames;
+
+
+    public int[] pointsThisRound = new int[numPlayers];
 
     /**
      *
@@ -148,17 +151,22 @@ public class RookState extends GameState {
         playerBids[2] = 0;
         playerBids[3] = 0;
 
+        pointsThisRound[0] = 0;
+        pointsThisRound[1] = 0;
+        pointsThisRound[2] = 0;
+        pointsThisRound[3] = 0;
+
         // initialize all the players' current total scores and names from the configuration screen
         playerScores = new int[numPlayers];
         playerNames = new String[numPlayers];
 
         // set the first player as the default winner at the beginning of the game
         winningPlayer = 0;
+
     }
 
     public RookState(boolean newRound, RookState roundState) {
-        // at the beginning of the game, all player's are waiting
-        // until the game has been initialized
+        // at the beginning of the new round all players rebid
         subStage = BID;
 
         // set the first player to bid as the player who was first
@@ -177,6 +185,7 @@ public class RookState extends GameState {
         playerHands[3] = playerThreeHand;
         nest = new ArrayList<Card>(5);
         currTrick = new ArrayList<Card>(4);
+
 
         // all players at the beginning of the game have not passed the bidding phase
         pass = new boolean[numPlayers];
@@ -201,6 +210,11 @@ public class RookState extends GameState {
         playerBids[1] = 0;
         playerBids[2] = 0;
         playerBids[3] = 0;
+
+        pointsThisRound[0] = 0;
+        pointsThisRound[1] = 0;
+        pointsThisRound[2] = 0;
+        pointsThisRound[3] = 0;
 
         playerBids[currPlayer] = 50;
 
@@ -477,6 +491,16 @@ public class RookState extends GameState {
             trickVal += currTrick.get(i).counterValue;
         }
         return trickVal;
+    }
+
+    public int countNest() {
+
+        int nestVal = 0;
+        for (int i = 0; i < nest.size(); i++) {
+            // add the counter-values of all 5 cards of the trick together
+            nestVal += nest.get(i).counterValue;
+        }
+        return nestVal;
     }
 
     /**
