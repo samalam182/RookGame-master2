@@ -955,13 +955,22 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
         }
         int[] ops = oppIdx(this.playerNum);
-        for (int k = 0; k < 3; k++){
+        for (int k = 0; k < 3; k++)
+        {
             int numInvis = numPlayed(state.playerHands[ops[k]]);
-            for(int l = 0; l < numInvis; l++){
+            for(int l = 0; l < numInvis; l++)
+            {
                 opponents[k][l].setImageBitmap(cardImages[4][2]);
             }
-            for(int n = numInvis ; n < state.playerHands[ops[k]].size(); n++){
-                opponents[k][n].setImageBitmap(cardImages[4][1]);
+            for(int n = numInvis ; n < state.playerHands[ops[k]].size(); n++)
+            {
+                if (n == 9)
+                {
+
+                }
+                else {
+                    opponents[k][n].setImageBitmap(cardImages[4][1]);
+                }
             }
         }
 
