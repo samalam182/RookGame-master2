@@ -166,8 +166,7 @@ public class RookState extends GameState {
     }
 
     public RookState(boolean newRound, RookState roundState) {
-        // at the beginning of the game, all player's are waiting
-        // until the game has been initialized
+        // at the beginning of the new round all players rebid
         subStage = BID;
 
         // set the first player to bid as the player who was first

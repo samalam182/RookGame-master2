@@ -1070,7 +1070,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                     }
 
                     trick[testing[i]].setImageBitmap(tempBitmap);
-                    //trick[testing[i]].invalidate();
 
                     if (state.currTrick.size() == 4)
                     {
