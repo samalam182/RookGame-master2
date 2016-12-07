@@ -587,8 +587,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
         // during the bidding phase...
         if (s.getSubStage() == BID) {
-            // use the correctHandImage method to properly display all cards in Human Player's
-            // current hand as well as the correct number of cards in the opponents' hands
+            // properly display all cards in Human Player's current hand
+            // as well as the correct number of cards in the opponents' hands
             correctHandImage();
 
             // there have not been any choices to which trump suit has been chosen or who
@@ -681,29 +681,32 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 lastBidder.setText("Player 4");
             }
 
+            // display the particular player's name in the list of "Players Who've Passed"
             if(state.pass[0])
             {
                 passOne.setVisibility(View.VISIBLE);
             }
-
             if(state.pass[1])
             {
                 passTwo.setVisibility(View.VISIBLE);
             }
-
             if(state.pass[2])
             {
                 passThree.setVisibility(View.VISIBLE);
             }
-
             if(state.pass[3])
             {
                 passFour.setVisibility(View.VISIBLE);
             }
 
+            // make sure to inform which player's turn it is with the orange-star indicator
             setOrangeStarIndicator();
 
-        } else if (s.getSubStage() == WAIT) {
+        }
+
+        // during the time when the Human Player has made a pass during the bidding phase...
+        else if (s.getSubStage() == WAIT) {
+            // make all buttons and text-views related to the bidding phase to invisible
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
             minusFive.setVisibility(View.INVISIBLE);
@@ -720,11 +723,17 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             passThree.setVisibility(View.INVISIBLE);
             passFour.setVisibility(View.INVISIBLE);
 
+            // make sure to inform which player's turn it is with the orange-star indicator
             setOrangeStarIndicator();
 
-        } else if (s.getSubStage() == NEST) {
+        }
+
+        // during the time when the Human Player can interact with the nest...
+        else if (s.getSubStage() == NEST) {
+            // checks to see if the Human Player is the winner of the bid
             if(state.getActivePlayer() == this.playerNum)
             {
+                // display all ImageButtons related to the nest
                 nest1.setVisibility(View.VISIBLE);
                 nest2.setVisibility(View.VISIBLE);
                 nest3.setVisibility(View.VISIBLE);
@@ -732,6 +741,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 nest5.setVisibility(View.VISIBLE);
                 confirmNest.setVisibility(View.VISIBLE);
             }
+
+            // make sure that all buttons and text-views related to the trump suit and the
+            // bidding phase are not visible when the Human Player is interacting with the nest
             trumpBlack.setVisibility(View.INVISIBLE);
             trumpGreen.setVisibility(View.INVISIBLE);
             trumpRed.setVisibility(View.INVISIBLE);
@@ -752,7 +764,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidShow.setVisibility(View.INVISIBLE);
             bidMainTitle.setVisibility(View.INVISIBLE);
             yourBid.setVisibility(View.INVISIBLE);
-
             passTitle.setVisibility(View.INVISIBLE);
             passOne.setVisibility(View.INVISIBLE);
             passTwo.setVisibility(View.INVISIBLE);
@@ -772,6 +783,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             card7.setVisibility(View.VISIBLE);
             card8.setVisibility(View.VISIBLE);
 
+            // properly display
             correctNestImage();
             setOrangeStarIndicator();
 

@@ -53,7 +53,7 @@ public class RookLocalGame extends LocalGame
     // if its the active player's turn, they can move
     protected boolean canMove(int playerIdx)
     {
-        // only playerIndx of 0-3 are value numbers
+        // only playerIdx of 0-3 are value numbers
         if (playerIdx < 0 || playerIdx > 3)
         {
             return false;
