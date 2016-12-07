@@ -63,7 +63,7 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                 //int randSelection = (int)(Math.random()*10);
                 int randSelection = (int) (Math.random() * 10);
 
-                if (randSelection < 5) {
+                if (randSelection < 4) {
                     // when randSelection is less than 0.5, the dumb computer player will pass
                     game.sendAction(new RookHoldAction(this));
                     Log.i("Sent hold action", "" + this.playerNum);
@@ -207,21 +207,35 @@ public class dRookComputerPlayer extends RookComputerPlayer {
 
                 game.sendAction(new RookNestAction(this, cardsFromNest, cardsFromHand));
                 Log.i("Send Nest Action", "" + this.playerNum + "," + cardsFromNest + "," + cardsFromHand);
-            } else if (savedState.getSubStage() == savedState.TRUMP) {
+            } else if (savedState.getSubStage() == savedState.TRUMP)
+            {
                 // the dumb computer player will randomly choose a trump suit
 
                 double randSuitPick = Math.random() * 4;
                 int trumpSuit;
 
-                if (randSuitPick < 1) {
+                if (randSuitPick < 1)
+                {
                     trumpSuit = 0;
-                } else if (randSuitPick >= 1 && randSuitPick < 2) {
-                    trumpSuit = 1;
-                } else if (randSuitPick >= 2 && randSuitPick < 3) {
-                    trumpSuit = 2;
-                } else {
-                    trumpSuit = 3;
+                    Log.i("Trump", "Picking BLACK");
                 }
+                else if (randSuitPick >= 1 && randSuitPick < 2)
+                {
+                    trumpSuit = 1;
+                    Log.i("Trump", "Picking YELLOW");
+                }
+                else if (randSuitPick >= 2 && randSuitPick < 3)
+                {
+                    trumpSuit = 2;
+                    Log.i("Trump", "Picking GREEN");
+                }
+                else
+                {
+                    trumpSuit = 3;
+                    Log.i("Trump", "Picking RED");
+                }
+
+                savedState.setTrump(trumpSuit);
                 game.sendAction(new RookTrumpAction(this, trumpSuit));
 
             } else if (savedState.getSubStage() == savedState.PLAY) {
@@ -244,7 +258,6 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                         copyHand.remove(c);
                     }
                 }
-
                     if (randIndex == 0) {
                         indexOfCard = 0;
                     } else if (randIndex == 1) {

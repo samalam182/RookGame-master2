@@ -70,9 +70,9 @@ public class RookState extends GameState {
 
     // defines the different suits of each card
     private final int BLACK = 0;
-    private final int YELLOW = 1;
-    private final int GREEN = 2;
-    private final int RED = 3;
+    private final int RED = 1;
+    private final int YELLOW = 2;
+    private final int GREEN = 3;
     private final int ROOK = 4;
 
     // defines the winning bid amount and the player who won the bid
@@ -96,6 +96,8 @@ public class RookState extends GameState {
     // defines the inputted names for each player according
     // to the configuration screen
     private String[] playerNames;
+
+    public boolean startingNew;
 
     /**
      *
@@ -185,6 +187,8 @@ public class RookState extends GameState {
         pass[2] = false;
         pass[3] = false;
 
+        startingNew = true;
+
         // set the deck to a randomly ordered, shuffled combination of all the playable cards,
         // and then deal out all the 41 cards to the 4 players' hands and the nest
         deck = initDeck();
@@ -255,6 +259,8 @@ public class RookState extends GameState {
 
         pass = temp.pass;
         deck = temp.deck;
+
+        startingNew = temp.startingNew;
 
         trumpSuit = temp.trumpSuit;
         winningBid = temp.winningBid;
@@ -477,6 +483,16 @@ public class RookState extends GameState {
             trickVal += currTrick.get(i).counterValue;
         }
         return trickVal;
+    }
+
+    public int countNest() {
+
+        int nestVal = 0;
+        for (int i = 0; i < nest.size(); i++) {
+            // add the counter-values of all 5 cards of the trick together
+            nestVal += nest.get(i).counterValue;
+        }
+        return nestVal;
     }
 
     /**

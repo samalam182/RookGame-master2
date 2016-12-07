@@ -560,6 +560,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         if (s.getSubStage() == BID) {
 
             correctHandImage();
+            trumpAccounce.setText("N/A");
+            winningBid.setText("N/A");
+            winningBidder.setText("N/A");
             card0.setVisibility(View.VISIBLE);
             card1.setVisibility(View.VISIBLE);
             card2.setVisibility(View.VISIBLE);
@@ -585,6 +588,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             int possBid = state.getHighestBid() + 5;
             bidAmount.setText("" + possBid);
             trumpAccounce.setVisibility(View.VISIBLE);
+
+            oneScore.setText("" + state.getScore(0));
+            twoScore.setText("" + state.getScore(1));
+            threeScore.setText("" + state.getScore(2));
+            fourScore.setText("" + state.getScore(3));
 
             addFive.setVisibility(View.VISIBLE);
             minusFive.setVisibility(View.VISIBLE);
@@ -787,12 +795,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
 
-            winningBidder.setText("Player: " + state.winningPlayer);
+            winningBidder.setText("Player: " + (state.winningPlayer + 1));
             winningBid.setText("" + state.winningBid);
-            if(state.currTrick.size() > 0)
-            {
-                correctTrickImage();
-            }
+
+            correctTrickImage();
+
             trick1.setVisibility(View.VISIBLE);
             trick2.setVisibility(View.VISIBLE);
             trick3.setVisibility(View.VISIBLE);
@@ -897,7 +904,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         // the card that we're looking for is being stored
         Card getting;
         if(card.length != 0) {
-            for (int i = 0; i < state.playerHands[state.getActivePlayer()].size(); i++) {
+            for (int i = 0; i < state.playerHands[state.getActivePlayer()].size() && i < 9; i++) {
                 // gets the card we're looking for. [0] = only player one.
                 // for future human players, needs to be another look per player
                 if (state.playerHands[this.playerNum].get(i) != null) {
@@ -980,10 +987,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         int currVal = 10;
         int[] testing = {0,1,2,3};
 
-        if (startingNew)
+        if (startingNew || state.startingNew)
         {
             currTrickWinner = state.currTrickWinner;
             startingNew = false;
+            state.startingNew = false;
         }
 
         if (currTrickWinner == 0)
