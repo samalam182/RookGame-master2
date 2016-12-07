@@ -680,7 +680,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             setOrangeStarIndicator();
 
         } else if (s.getSubStage() == NEST) {
-            if(state.getActivePlayer() == this.playerNum) {
+            if(state.getActivePlayer() == this.playerNum)
+            {
                 nest1.setVisibility(View.VISIBLE);
                 nest2.setVisibility(View.VISIBLE);
                 nest3.setVisibility(View.VISIBLE);
@@ -908,7 +909,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     //looks through their hand and gets the card, then puts the bitmap of that card
     //into the proper spot. Additionally, this will set the other player's hands
     //so that you can see how many cards they have left in their hands.
-    public void correctHandImage() {
+    public void correctHandImage()
+    {
         // gets an array of all card objects
         ImageButton[] card = {card0, card1, card2, card3, card4, card5, card6, card7, card8};
         ImageView[][] opponents = {
@@ -926,7 +928,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
         // the card that we're looking for is being stored
         Card getting;
-        if(card.length != 0) {
+        if(card.length != 0)
+        {
             for (int i = 0; i < state.playerHands[state.getActivePlayer()].size() && i < 9; i++) {
                 // gets the card we're looking for. [0] = only player one.
                 // for future human players, needs to be another look per player
@@ -1083,7 +1086,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     public void correctNestImage()
     {
-        if (state.currTrickWinner != 0)
+        if (state.winningPlayer != 0)
         {
             return;
         }
@@ -1093,11 +1096,14 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
         // the card that we're looking for is being stored
         Card getting;
-        if(nesty.length != 0) {
-            for (int i = 0; i < nesty.length; i++) {
+        if(nesty.length != 0)
+        {
+            for (int i = 0; i < nesty.length; i++)
+            {
                 // gets the card we're looking for. [0] = only player one.
                 // for future human players, needs to be another look per player
-                if (state.nest.get(i) != null) {
+                if (state.nest.get(i) != null)
+                {
                     getting = state.nest.get(i);
                     int currSuit = getting.getSuit();
                     int currVal = getting.getNumValue();
