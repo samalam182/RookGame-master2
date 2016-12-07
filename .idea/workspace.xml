@@ -15,16 +15,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookHumanPlayer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookHumanPlayer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookLocalGame.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookLocalGame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookMainActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookMainActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookMainActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookMainActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookMainActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookMainActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookMainActivity$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookMainActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookState.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/edu/up/cs301/game/rook/RookState.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookHumanPlayer.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookHumanPlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookLocalGame.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookLocalGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookState.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookState.java" />
     </list>
     <ignored path="RookGame_Master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,17 +53,17 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookLocalGame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="191">
-              <caret line="406" column="27" selection-start-line="406" selection-start-column="20" selection-end-line="406" selection-end-column="27" />
+              <caret line="406" column="0" selection-start-line="406" selection-start-column="0" selection-end-line="406" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RookHumanPlayer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RookHumanPlayer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookHumanPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="1003" column="23" selection-start-line="1003" selection-start-column="23" selection-end-line="1003" selection-end-column="23" />
+            <state relative-caret-position="191">
+              <caret line="1422" column="30" selection-start-line="1422" selection-start-column="22" selection-end-line="1422" selection-end-column="30" />
               <folding>
                 <element signature="method#setAsGui#0;class#RookHumanPlayer#0" expanded="false" />
                 <element signature="method#setOrangeStarIndicator#0;class#RookHumanPlayer#0" expanded="false" />
@@ -79,18 +71,17 @@
                 <element signature="method#numPlayed#0;class#RookHumanPlayer#0" expanded="false" />
                 <element signature="method#oppIdx#0;class#RookHumanPlayer#0" expanded="false" />
                 <element signature="method#correctNestImage#0;class#RookHumanPlayer#0" expanded="false" />
-                <element signature="method#onClick#0;class#RookHumanPlayer#0" expanded="false" />
                 <element signature="method#score#0;class#RookHumanPlayer#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RookState.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RookState.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="195" column="24" selection-start-line="195" selection-start-column="24" selection-end-line="195" selection-end-column="24" />
+            <state relative-caret-position="38">
+              <caret line="365" column="14" selection-start-line="365" selection-start-column="10" selection-end-line="365" selection-end-column="14" />
               <folding>
                 <element signature="e#10312#10313#0" expanded="true" />
                 <element signature="e#10350#10351#0" expanded="true" />
@@ -2286,7 +2277,21 @@
       <option name="project" value="LOCAL" />
       <updated>1481078603616</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Advanding the game no longer messes up the trick">
+      <created>1481082389330</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1481082389330</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Everything other than 3 into 1 works">
+      <created>1481082775888</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1481082775888</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2316,7 +2321,7 @@
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3152174" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3152174" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2343,7 +2348,9 @@
     <MESSAGE value="dRookPlayer fixed so it communicates correct bidding information." />
     <MESSAGE value="Scoring now fully functional" />
     <MESSAGE value="Deduction of points from bid working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deduction of points from bid working" />
+    <MESSAGE value="Advanding the game no longer messes up the trick" />
+    <MESSAGE value="Everything other than 3 into 1 works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Everything other than 3 into 1 works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2356,18 +2363,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookLocalGame.java</url>
-          <line>475</line>
+          <line>406</line>
           <properties />
-          <option name="timeStamp" value="35" />
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookHumanPlayer.java</url>
-          <line>995</line>
+          <line>561</line>
           <properties />
-          <option name="timeStamp" value="37" />
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="38" />
+      <option name="time" value="40" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
@@ -2396,7 +2403,6 @@
             <element signature="method#numPlayed#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#oppIdx#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#correctNestImage#0;class#RookHumanPlayer#0" expanded="false" />
-            <element signature="method#onClick#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#score#0;class#RookHumanPlayer#0" expanded="false" />
           </folding>
         </state>
@@ -2472,7 +2478,6 @@
             <element signature="method#numPlayed#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#oppIdx#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#correctNestImage#0;class#RookHumanPlayer#0" expanded="false" />
-            <element signature="method#onClick#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#score#0;class#RookHumanPlayer#0" expanded="false" />
           </folding>
         </state>
@@ -2548,7 +2553,6 @@
             <element signature="method#numPlayed#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#oppIdx#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#correctNestImage#0;class#RookHumanPlayer#0" expanded="false" />
-            <element signature="method#onClick#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#score#0;class#RookHumanPlayer#0" expanded="false" />
           </folding>
         </state>
@@ -2621,29 +2625,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookLocalGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="406" column="27" selection-start-line="406" selection-start-column="20" selection-end-line="406" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="195" column="24" selection-start-line="195" selection-start-column="24" selection-end-line="195" selection-end-column="24" />
-          <folding>
-            <element signature="e#10312#10313#0" expanded="true" />
-            <element signature="e#10350#10351#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookHumanPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="1003" column="23" selection-start-line="1003" selection-start-column="23" selection-end-line="1003" selection-end-column="23" />
+        <state relative-caret-position="191">
+          <caret line="1422" column="30" selection-start-line="1422" selection-start-column="22" selection-end-line="1422" selection-end-column="30" />
           <folding>
             <element signature="method#setAsGui#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#setOrangeStarIndicator#0;class#RookHumanPlayer#0" expanded="false" />
@@ -2651,8 +2636,26 @@
             <element signature="method#numPlayed#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#oppIdx#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#correctNestImage#0;class#RookHumanPlayer#0" expanded="false" />
-            <element signature="method#onClick#0;class#RookHumanPlayer#0" expanded="false" />
             <element signature="method#score#0;class#RookHumanPlayer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookLocalGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="406" column="0" selection-start-line="406" selection-start-column="0" selection-end-line="406" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/up/cs301/game/rook/RookState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="365" column="14" selection-start-line="365" selection-start-column="10" selection-end-line="365" selection-end-column="14" />
+          <folding>
+            <element signature="e#10312#10313#0" expanded="true" />
+            <element signature="e#10350#10351#0" expanded="true" />
           </folding>
         </state>
       </provider>

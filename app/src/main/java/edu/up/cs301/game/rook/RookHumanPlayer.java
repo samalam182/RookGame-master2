@@ -620,6 +620,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             trick3.setVisibility(View.INVISIBLE);
             trick4.setVisibility(View.INVISIBLE);
 
+            nest1.setAlpha(255);
+            nest2.setAlpha(255);
+            nest3.setAlpha(255);
+            nest4.setAlpha(255);
+            nest5.setAlpha(255);
+
             Log.i("UpdateGUI", "Trying to update lastBidder");
             if (state.lastBidder == 0 && !state.pass[0])
             {
