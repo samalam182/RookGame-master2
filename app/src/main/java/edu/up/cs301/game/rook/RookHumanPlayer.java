@@ -73,6 +73,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     private final int GREEN = 2;
     private final int RED = 3;
 
+    // will be set to either BLACK, YELLOW, GREEN, or RED
+    public int trumpColor = -1;
+
     private boolean startingNew = true;
     private int currTrickWinner;
 
@@ -182,18 +185,24 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public TextView passFour;
 
 
-    public int delay = 0;
-    public int trumpColor = -1;
-
-    public ImageView[] work = new ImageView[9];
-
+    // represents the current Human Player's score
     public TextView humanPoints;
 
+    // represent the scores of all 4 players of the game
+    public TextView oneScore;
+    public TextView twoScore;
+    public TextView threeScore;
+    public TextView fourScore;
+
+    // orange-stars placed next to each player's name that will appear when it
+    // is a certain player's turn during any stage of the game
     public ImageView humanOrangeStar;
     public ImageView opponentOneOrangeStar;
     public ImageView opponentTwoOrangeStar;
     public ImageView opponentThreeOrangeStar;
 
+    // will show the "backs" of the card of the opponent to the left of the Human Player,
+    // which will show how many cards that the first opponent currently has in their hand
     public ImageView opponentONECard0;
     public ImageView opponentONECard1;
     public ImageView opponentONECard2;
@@ -204,6 +213,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public ImageView opponentONECard7;
     public ImageView opponentONECard8;
 
+    // will show the "backs" of the card of the opponent across from the Human Player,
+    // which will show how many cards that the second opponent currently has in their hand
     public ImageView opponentTWOCard0;
     public ImageView opponentTWOCard1;
     public ImageView opponentTWOCard2;
@@ -214,6 +225,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public ImageView opponentTWOCard7;
     public ImageView opponentTWOCard8;
 
+    // will show the "backs" of the card of the opponent to the right of the Human Player,
+    // which will show how many cards that the third opponent currently has in their hand
     public ImageView opponentTHREECard0;
     public ImageView opponentTHREECard1;
     public ImageView opponentTHREECard2;
@@ -224,20 +237,21 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public ImageView opponentTHREECard7;
     public ImageView opponentTHREECard8;
 
-    public TextView oneScore;
-    public TextView twoScore;
-    public TextView threeScore;
-    public TextView fourScore;
-
+    // will appear in the middle of the screen as an indicator to the Human Player
+    // of which player has won the whole game
     public TextView playerWonTitle;
     public TextView playerWon;
 
+//    public ImageView[] work = new ImageView[9];   // are never used
+//    public int delay = 0;
+
 
     /**
-     * constructor
      *
+     * constructor
      * @param name    the player's name
      * @param bkColor the background color
+     *
      */
     public RookHumanPlayer(String name, int bkColor) {
         super(name);
@@ -245,7 +259,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     }
 
     /**
+     *
      * @param info the message we have received from the game
+     *
      */
     public void receiveInfo(GameInfo info)
     {
@@ -264,7 +280,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             this.state = (RookState) info;
             updateGUI(state);
 
-            if (state.pass[0] && state.getSubStage() == BID)
+            // if the current Human Player has passed during the bidding phase,
+            // then "HoldAction" prevents HumanPlayer to make any further bids
+            if (state.pass[this.playerNum] && state.getSubStage() == BID)
             {
                 game.sendAction(new RookHoldAction(this));
             }
@@ -277,24 +295,26 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     @Override
     public View getTopView()
     {
-
         return activity.findViewById(R.id.top_gui_layout);
-
     }
 
     /**
-     * @return the backgroud color
+     * @return the background color
      */
     public int backgroundColor() {
         return backgroundColor;
     }
 
     /**
+     *
+     * sets the Android Tablet's screen of the HumanPlayer according to which stage
+     * of the game it currently is
      * @param newActivity the current activity
+     *
      */
     public void setAsGui(GameMainActivity newActivity) {
 
-        //  animate the UI
+        // animate the UI
         activity = newActivity;
         newActivity.setContentView(R.layout.rook_human_player);
 
@@ -303,41 +323,33 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         surface = (AnimationSurface) activity.findViewById(R.id.animation_surface);
         surface.setAnimator(this);
 
-        // makes buttons
-
+        // makes buttons for starting and quitting the game
         start = (Button) activity.findViewById(R.id.buttonStartGame);
         start.setOnClickListener(this);
-
         quit = (Button) activity.findViewById(R.id.buttonQuitGame);
         quit.setOnClickListener(this);
 
+        // image-buttons for the visible cards of the Human Player's hand
         card0 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_0));
         card0.setOnClickListener(this);
-
         card1 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_1));
         card1.setOnClickListener(this);
-
         card2 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_2));
         card2.setOnClickListener(this);
-
         card3 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_3));
         card3.setOnClickListener(this);
-
         card4 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_4));
         card4.setOnClickListener(this);
-
         card5 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_5));
         card5.setOnClickListener(this);
-
         card6 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_6));
         card6.setOnClickListener(this);
-
         card7 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_7));
         card7.setOnClickListener(this);
-
         card8 = (ImageButton) activity.findViewById((R.id.imageButton_HumanHand_8));
         card8.setOnClickListener(this);
 
+        // text-view and buttons related to when the Human Player is able to interact with the nest
         nestTitle = (TextView) activity.findViewById(R.id.textView_NestLabel);
         nestTitle.setOnClickListener(this);
 
@@ -356,6 +368,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         nest5 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_4));
         nest5.setOnClickListener(this);
 
+        // text-view and buttons related to when the Human Player is able to choose the trump suit
         trumpTitle = (TextView) activity.findViewById(R.id.textView_TrumpSuitLabel);
         trumpTitle.setOnClickListener(this);
 
@@ -371,6 +384,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         trumpRed = (ImageButton) activity.findViewById((R.id.imageButton_ChooseTrump_RedHeart));
         trumpRed.setOnClickListener(this);
 
+        trumpAccounce = (TextView) activity.findViewById(R.id.textView_ROUNDTrumpSuit);
+
+        // text-views and buttons related to when the Human Player is either bidding or passing
         addFive = (Button) activity.findViewById(R.id.button_Increment5ToBid);
         addFive.setOnClickListener(this);
 
@@ -397,6 +413,21 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
         previousBid = (TextView) activity.findViewById(R.id.textView_AmountBid);
 
+        passOne = (TextView) activity.findViewById(R.id.textView_PassedPlayersZERO);
+        passTwo = (TextView) activity.findViewById(R.id.textView_PassedPlayersONE);
+        passThree = (TextView) activity.findViewById(R.id.textView_PassedPlayersTWO);
+        passFour = (TextView) activity.findViewById(R.id.textView_PassedPlayersTHREE);
+        passTitle = (TextView) activity.findViewById(R.id.textView_PassedPlayersLabel);
+
+        lastBidder = (TextView) activity.findViewById(R.id.textView_LastBidder);
+        bidTitle = (TextView) activity.findViewById(R.id.textView_LastBidderLabel);
+        amountTitle = (TextView) activity.findViewById(R.id.textView_AmountBidLabel);
+        bidShow = (TextView) activity.findViewById(R.id.textView_AmountBid);
+        bidMainTitle = (TextView) activity.findViewById(R.id.textView_BidOrPassLabel);
+        yourBid = (TextView) activity.findViewById(R.id.textView_YourBidLabel);
+
+        // represents the cards placed into the trick (which are all initially in an unused state
+        // that is represented with the "backs" of the cards)
         trick1 = (ImageView) activity.findViewById(R.id.imageView_Trick_0);
         trick2 = (ImageView) activity.findViewById(R.id.imageView_Trick_1);
         trick3 = (ImageView) activity.findViewById(R.id.imageView_Trick_2);
@@ -406,22 +437,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         trick3.setImageResource(R.drawable.rookcard_back);
         trick4.setImageResource(R.drawable.rookcard_back);
 
-        passOne = (TextView) activity.findViewById(R.id.textView_PassedPlayersZERO);
-        passTwo = (TextView) activity.findViewById(R.id.textView_PassedPlayersONE);
-        passThree = (TextView) activity.findViewById(R.id.textView_PassedPlayersTWO);
-        passFour = (TextView) activity.findViewById(R.id.textView_PassedPlayersTHREE);
-        passTitle = (TextView) activity.findViewById(R.id.textView_PassedPlayersLabel);
-
-        lastBidder = (TextView) activity.findViewById(R.id.textView_LastBidder);
-
-        trumpAccounce = (TextView) activity.findViewById(R.id.textView_ROUNDTrumpSuit);
-
-        bidTitle = (TextView) activity.findViewById(R.id.textView_LastBidderLabel);
-        amountTitle = (TextView) activity.findViewById(R.id.textView_AmountBidLabel);
-        bidShow = (TextView) activity.findViewById(R.id.textView_AmountBid);
-        bidMainTitle = (TextView) activity.findViewById(R.id.textView_BidOrPassLabel);
-        yourBid = (TextView) activity.findViewById(R.id.textView_YourBidLabel);
-
+        // initially set all the cards in the Human Player's hand to the "backs" of the card
+        // before the user presses the "Start Game" button
         card0.setImageResource(R.drawable.rookcard_back);
         card1.setImageResource(R.drawable.rookcard_back);
         card2.setImageResource(R.drawable.rookcard_back);
@@ -455,7 +472,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         trick3.setVisibility(View.INVISIBLE);
         trick4.setVisibility(View.INVISIBLE);
 
-        //bid views
+        // bid views
         bidButton.setVisibility(View.INVISIBLE);
         passButton.setVisibility(View.INVISIBLE);
         minusFive.setVisibility(View.INVISIBLE);
@@ -472,11 +489,21 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         passThree.setVisibility(View.INVISIBLE);
         passFour.setVisibility(View.INVISIBLE);
         passTitle.setVisibility(View.INVISIBLE);
-        //updateGUI(state);
+//        updateGUI(state);
 
+        // all 4 players' scores
         humanPoints = (TextView) activity.findViewById(R.id.textView_HumanTotalPoints);
+        oneScore = (TextView) activity.findViewById(R.id.textView_HumanTotalPoints);
+        twoScore = (TextView) activity.findViewById(R.id.textView_OpponentONETotalPoints);
+        threeScore = (TextView) activity.findViewById(R.id.textView_OpponentTWOTotalPoints);
+        fourScore = (TextView) activity.findViewById(R.id.textView_OpponentTHREETotalPoints);
 
-        //orange-star views
+        playerWonTitle = (TextView) activity.findViewById(R.id.textView_PlayerWonLabel);
+        playerWonTitle.setVisibility(View.INVISIBLE);
+        playerWon = (TextView) activity.findViewById(R.id.textView_PlayerWon);
+        playerWon.setVisibility(View.INVISIBLE);
+
+        // orange-star views
         humanOrangeStar = (ImageView) activity.findViewById(R.id.imageView_HumanOrangeStar);
         humanOrangeStar.setVisibility(View.INVISIBLE);
         opponentOneOrangeStar = (ImageView) activity.findViewById(R.id.imageView_OpponentONEOrangeStar);
@@ -544,27 +571,34 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         opponentTHREECard8 = (ImageView) activity.findViewById(R.id.imageView_OpponentTHREEHand_8);
         opponentTHREECard8.setImageResource(R.drawable.rookcard_back);
 
-        oneScore = (TextView) activity.findViewById(R.id.textView_HumanTotalPoints);
-        twoScore = (TextView) activity.findViewById(R.id.textView_OpponentONETotalPoints);
-        threeScore = (TextView) activity.findViewById(R.id.textView_OpponentTWOTotalPoints);
-        fourScore = (TextView) activity.findViewById(R.id.textView_OpponentTHREETotalPoints);
-
-        playerWonTitle = (TextView) activity.findViewById(R.id.textView_PlayerWonLabel);
-        playerWonTitle.setVisibility(View.INVISIBLE);
-        playerWon = (TextView) activity.findViewById(R.id.textView_PlayerWon);
-        playerWon.setVisibility(View.INVISIBLE);
-
+        // next round button that is shown after 9 tricks have been completed
         nextRound = (Button) activity.findViewById(R.id.button_NextRound);
         nextRound.setVisibility(View.INVISIBLE);
     }
 
+    /**
+     *
+     * The GUI for the Human Player is constantly updated according to which buttons and text-views
+     * it displays based on the current stage of the game
+     * @param s the current RookState that is constantly updated throughout the gameplay
+     *
+     */
     public void updateGUI(RookState s) {
-        if (s.getSubStage() == BID) {
 
+        // during the bidding phase...
+        if (s.getSubStage() == BID) {
+            // use the correctHandImage method to properly display all cards in Human Player's
+            // current hand as well as the correct number of cards in the opponents' hands
             correctHandImage();
+
+            // there have not been any choices to which trump suit has been chosen or who
+            // is the winning bidder at the very beginning of the game
             trumpAccounce.setText("N/A");
             winningBid.setText("N/A");
             winningBidder.setText("N/A");
+            trumpAccounce.setVisibility(View.VISIBLE);
+
+            // display all cards in Human Player's hand
             card0.setVisibility(View.VISIBLE);
             card1.setVisibility(View.VISIBLE);
             card2.setVisibility(View.VISIBLE);
@@ -575,6 +609,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             card6.setVisibility(View.VISIBLE);
             card7.setVisibility(View.VISIBLE);
             card8.setVisibility(View.VISIBLE);
+
+            // do not display any components that are part of the nest, trump suit, or trick
+            // during the bidding phase
             nest1.setVisibility(View.INVISIBLE);
             nest2.setVisibility(View.INVISIBLE);
             nest3.setVisibility(View.INVISIBLE);
@@ -586,16 +623,23 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             trumpRed.setVisibility(View.INVISIBLE);
             trumpYellow.setVisibility(View.INVISIBLE);
             confirmTrump.setVisibility(View.INVISIBLE);
+            trick1.setVisibility(View.INVISIBLE);
+            trick2.setVisibility(View.INVISIBLE);
+            trick3.setVisibility(View.INVISIBLE);
+            trick4.setVisibility(View.INVISIBLE);
+
+            // display the latest bid that a player has made
             previousBid.setText("" + state.getHighestBid());
             int possBid = state.getHighestBid() + 5;
             bidAmount.setText("" + possBid);
-            trumpAccounce.setVisibility(View.VISIBLE);
 
+            // display all current total scores throughout the course of the game
             oneScore.setText("" + state.getScore(0));
             twoScore.setText("" + state.getScore(1));
             threeScore.setText("" + state.getScore(2));
             fourScore.setText("" + state.getScore(3));
 
+            // display all buttons that will allow the Human Player to either bid or pass
             addFive.setVisibility(View.VISIBLE);
             minusFive.setVisibility(View.VISIBLE);
             bidButton.setVisibility(View.VISIBLE);
@@ -610,22 +654,21 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             yourBid.setVisibility(View.VISIBLE);
             passTitle.setVisibility(View.VISIBLE);
 
+            // at the very beginning of the game, nobody has made a pass
             passOne.setVisibility(View.INVISIBLE);
             passTwo.setVisibility(View.INVISIBLE);
             passThree.setVisibility(View.INVISIBLE);
             passFour.setVisibility(View.INVISIBLE);
 
-            trick1.setVisibility(View.INVISIBLE);
-            trick2.setVisibility(View.INVISIBLE);
-            trick3.setVisibility(View.INVISIBLE);
-            trick4.setVisibility(View.INVISIBLE);
-
+            // makes sure that the nest cards are set to regular opacity
+            // so that it is visible to the user during the appropriate time
             nest1.setAlpha(255);
             nest2.setAlpha(255);
             nest3.setAlpha(255);
             nest4.setAlpha(255);
             nest5.setAlpha(255);
 
+            // update the text-view to inform who the previous bidder was
             Log.i("UpdateGUI", "Trying to update lastBidder");
             if (state.lastBidder == 0 && !state.pass[0])
             {
@@ -905,10 +948,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             opponentThreeOrangeStar.setVisibility(View.VISIBLE);
         }
     }
-    //sets the human palyer's hands to the correct images based on the cards that they have
-    //looks through their hand and gets the card, then puts the bitmap of that card
-    //into the proper spot. Additionally, this will set the other player's hands
-    //so that you can see how many cards they have left in their hands.
+    /**
+     * Sets the Human Player's hand to the correct images based on the cards that they have.
+     *
+     * Looks through their hand and gets the card, then puts the Bitmap of that card
+     * into the proper spot. Additionally, this will set the other players' hands
+     * so that you can see how many cards they have left in their hands.
+     */
     public void correctHandImage()
     {
         // gets an array of all card objects
