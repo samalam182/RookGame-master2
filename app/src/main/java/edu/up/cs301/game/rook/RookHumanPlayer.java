@@ -815,6 +815,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             trick3.setImageResource(R.drawable.rookcard_back);
             trick4.setImageResource(R.drawable.rookcard_back);
 
+            correctTrickImage();
+            setOrangeStarIndicator();
+
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
