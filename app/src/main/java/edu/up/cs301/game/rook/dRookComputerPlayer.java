@@ -258,25 +258,25 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                         copyHand.remove(c);
                     }
                 }
-                    if (randIndex == 0) {
-                        indexOfCard = 0;
-                    } else if (randIndex == 1) {
-                        indexOfCard = 1;
-                    } else if (randIndex == 2) {
-                        indexOfCard = 2;
-                    } else if (randIndex == 3) {
-                        indexOfCard = 3;
-                    } else if (randIndex == 4) {
-                        indexOfCard = 4;
-                    } else if (randIndex == 5) {
-                        indexOfCard = 5;
-                    } else if (randIndex == 6) {
-                        indexOfCard = 6;
-                    } else if (randIndex == 7) {
-                        indexOfCard = 7;
-                    } else {
-                        indexOfCard = 8;
-                    }
+//                    if (randIndex == 0) {
+//                        indexOfCard = 0;
+//                    } else if (randIndex == 1) {
+//                        indexOfCard = 1;
+//                    } else if (randIndex == 2) {
+//                        indexOfCard = 2;
+//                    } else if (randIndex == 3) {
+//                        indexOfCard = 3;
+//                    } else if (randIndex == 4) {
+//                        indexOfCard = 4;
+//                    } else if (randIndex == 5) {
+//                        indexOfCard = 5;
+//                    } else if (randIndex == 6) {
+//                        indexOfCard = 6;
+//                    } else if (randIndex == 7) {
+//                        indexOfCard = 7;
+//                    } else {
+//                        indexOfCard = 8;
+//                    }
 
 
                 int pickedCard = (int)(Math.random()*copyHand.size());

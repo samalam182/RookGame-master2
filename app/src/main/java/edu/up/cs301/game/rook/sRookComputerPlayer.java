@@ -313,9 +313,10 @@ public class sRookComputerPlayer extends RookComputerPlayer {
                         System.out.println("Error. There is no card to play.");
                     }
                 }
+
                 Card playedCard = savedState.playerHands[this.playerNum].get(playIndex);
                 System.out.println(""+playedCard.getSuit()+","+""+playedCard.getNumValue());
-                    game.sendAction(new RookCardAction(this, playIndex));
+                game.sendAction(new RookCardAction(this, playIndex));
             }
             else
             {
