@@ -3,6 +3,7 @@ package edu.up.cs301.game.rook;
 import android.graphics.Color;
 import android.widget.ImageButton;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.up.cs301.card.Card;
@@ -26,8 +27,9 @@ import static android.telephony.PhoneNumberUtils.WAIT;
  * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
  * @version December 2016
  */
-public class RookState extends GameState {
+public class RookState extends GameState implements Serializable{
 
+    private static final long serialVersionUID = -8269749892027578792L;
     // tracks the current stage throughout the game
     private int subStage;
 
