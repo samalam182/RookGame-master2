@@ -247,11 +247,14 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     /**
      * @param info the message we have received from the game
      */
-    public void receiveInfo(GameInfo info) {
-        if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo) {
+    public void receiveInfo(GameInfo info)
+    {
+        if (info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo)
+        {
             // if the user attempts to play an illegal move, or not on their turn, flash the screen
             surface.flash(Color.RED, 50);
-        } else if (!(info instanceof RookState)) {
+        }
+        else if (!(info instanceof RookState)) {
             // there is no game state, so ignore it
             return;
         }
@@ -272,7 +275,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * @return the top view GUI
      */
     @Override
-    public View getTopView() {
+    public View getTopView()
+    {
+
         return activity.findViewById(R.id.top_gui_layout);
 
     }
@@ -288,9 +293,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * @param newActivity the current activity
      */
     public void setAsGui(GameMainActivity newActivity) {
-        if (state != null) {
-            receiveInfo(state);
-        }
 
         //  animate the UI
         activity = newActivity;
@@ -798,7 +800,17 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             winningBidder.setText("Player: " + (state.winningPlayer + 1));
             winningBid.setText("" + state.winningBid);
 
-            correctTrickImage();
+            if (state.currTrick.size() == 0)
+            {
+                trick1.setImageResource(R.drawable.rookcard_back);
+                trick2.setImageResource(R.drawable.rookcard_back);
+                trick3.setImageResource(R.drawable.rookcard_back);
+                trick4.setImageResource(R.drawable.rookcard_back);
+            }
+            else {
+                correctTrickImage();
+            }
+
 
             trick1.setVisibility(View.VISIBLE);
             trick2.setVisibility(View.VISIBLE);
@@ -826,10 +838,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * trump-phase, or trick-phase to place an orange star next to the current
      * active player's name to indicate to the human player whose turn it is
      */
-    public void setOrangeStarIndicator() {
+    public void setOrangeStarIndicator()
+    {
 //        int playerNumInConfig;
 //        if (state.)
         int[] others = oppIdx(this.playerNum);
+
 
         if (state.getActivePlayer() == this.playerNum && state.getSubStage() == BID && !state.pass[0])
         {
@@ -987,35 +1001,34 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         int currVal = 10;
         int[] testing = {0,1,2,3};
 
-        if (startingNew || state.startingNew)
+        if (startingNew)
         {
             currTrickWinner = state.currTrickWinner;
             startingNew = false;
-            state.startingNew = false;
         }
 
-        if (currTrickWinner == 0)
+        if (currTrickWinner == 0 && !startingNew)
         {
             testing[0] = 0;
             testing[1] = 1;
             testing[2] = 2;
             testing[3] = 3;
         }
-        else if (currTrickWinner == 1)
+        else if (currTrickWinner == 1 && !startingNew)
         {
             testing[0] = 1;
             testing[1] = 2;
             testing[2] = 3;
             testing[3] = 0;
         }
-        else if (currTrickWinner == 2)
+        else if (currTrickWinner == 2 && !startingNew)
         {
             testing[0] = 2;
             testing[1] = 3;
             testing[2] = 0;
             testing[3] = 1;
         }
-        else if (currTrickWinner == 3)
+        else if (currTrickWinner == 3 && !startingNew)
         {
             testing[0] = 3;
             testing[1] = 0;

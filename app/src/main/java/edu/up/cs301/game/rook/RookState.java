@@ -97,7 +97,6 @@ public class RookState extends GameState {
     // to the configuration screen
     private String[] playerNames;
 
-    public boolean startingNew;
 
     public int[] pointsThisRound = new int[numPlayers];
 
@@ -163,6 +162,7 @@ public class RookState extends GameState {
 
         // set the first player as the default winner at the beginning of the game
         winningPlayer = 0;
+
     }
 
     public RookState(boolean newRound, RookState roundState) {
@@ -187,14 +187,13 @@ public class RookState extends GameState {
         nest = new ArrayList<Card>(5);
         currTrick = new ArrayList<Card>(4);
 
+
         // all players at the beginning of the game have not passed the bidding phase
         pass = new boolean[numPlayers];
         pass[0] = false;
         pass[1] = false;
         pass[2] = false;
         pass[3] = false;
-
-        startingNew = true;
 
         // set the deck to a randomly ordered, shuffled combination of all the playable cards,
         // and then deal out all the 41 cards to the 4 players' hands and the nest
@@ -271,8 +270,6 @@ public class RookState extends GameState {
 
         pass = temp.pass;
         deck = temp.deck;
-
-        startingNew = temp.startingNew;
 
         trumpSuit = temp.trumpSuit;
         winningBid = temp.winningBid;

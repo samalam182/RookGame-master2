@@ -149,6 +149,7 @@ public class RookLocalGame extends LocalGame
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
             gameCounter++;
             int startingPlayer;
             int trickWinner = 0;
@@ -168,7 +169,8 @@ public class RookLocalGame extends LocalGame
                 RookCardAction act = (RookCardAction) action;
                 int handIdx = act.retButtonNum();
 
-                if(state.currTrick.size()<4) {
+                if(state.currTrick.size()<4)
+                {
                     state.currTrick.add(state.playerHands[state.getActivePlayer()].get(handIdx));
                     //state.playerHands[state.getActivePlayer()].set(handIdx, nullCard);
                     state.playerHands[state.getActivePlayer()].get(handIdx).setPlayed();
@@ -405,7 +407,6 @@ public class RookLocalGame extends LocalGame
                     state.setScore(points, trickWinner);
                     state.setPlayer(trickWinner);
                     state.currTrickWinner = trickWinner;
-
                     state.pointsThisRound[trickWinner] += points;
                 }
                 else
@@ -465,7 +466,8 @@ public class RookLocalGame extends LocalGame
 
             // checks to see if that player won the bid
         }
-        else if (action instanceof RookTrumpAction) {
+        else if (action instanceof RookTrumpAction)
+        {
             if (state.getSubStage() == TRUMP && playerIdxx == state.winningPlayer) {
                 RookTrumpAction act = (RookTrumpAction) action;
                 state.setTrump(act.getTrumpColor());
