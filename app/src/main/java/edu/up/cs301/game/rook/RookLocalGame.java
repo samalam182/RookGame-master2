@@ -129,6 +129,7 @@ public class RookLocalGame extends LocalGame
 
                 if (state.finalizeBids())
                 {
+                    state.currTrickWinner = state.winningPlayer;
                     state.setSubStage(NEST);
                     return true;
                 }
@@ -469,7 +470,8 @@ public class RookLocalGame extends LocalGame
         }
         else if (action instanceof RookTrumpAction)
         {
-            if (state.getSubStage() == TRUMP && playerIdxx == state.winningPlayer) {
+            if (state.getSubStage() == TRUMP && playerIdxx == state.winningPlayer)
+            {
                 RookTrumpAction act = (RookTrumpAction) action;
                 state.setTrump(act.getTrumpColor());
 
