@@ -424,8 +424,8 @@ public class RookLocalGame extends LocalGame
 
                     if (state.pointsThisRound[state.lastBidder] < state.getHighestBid())
                     {
-                        state.pointsThisRound[state.lastBidder] -= state.getHighestBid();
-                        state.setScore(state.pointsThisRound[state.lastBidder], state.lastBidder);
+                        //state.pointsThisRound[state.lastBidder] -= state.getHighestBid();
+                        state.setScore((-1 * state.getHighestBid()), state.lastBidder);
                     }
 
                     state = new RookState(true, state);
