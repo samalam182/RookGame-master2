@@ -64,6 +64,8 @@ public class sRookComputerPlayer extends RookComputerPlayer {
         if (savedState.getSubStage() == savedState.BID) {
 
             if (firstBid) {
+
+                Log.i("Calculating first bid", ""+firstBid);
                 int redSuitNum = 0;
                 int yellSuitNum = 0;
                 int greenSuitNum = 0;
@@ -178,45 +180,65 @@ public class sRookComputerPlayer extends RookComputerPlayer {
             ArrayList<Card> cardsFromNest = new ArrayList<Card>();
             ArrayList<Card> cardsFromHand = new ArrayList<Card>();
 
+            ArrayList<Card>nestCardList = savedState.nest;
+            ArrayList<Card> copyNest = (ArrayList<Card>) nestCardList.clone();
+
+            for(Card c: nestCardList)
+            {
+                if (c.getPlayed())
+                {
+                    copyNest.remove(c);
+                }
+            }
+
             Card myNestCard;
 
             Log.i("Nest action: player", ""+this.playerNum);
             logCardArray("Starting Hand", myList);
             logCardArray("Staring Nest", nestList);
 
-            for (int i = 0; i < nestList.size(); i++) {
+            for (int i = 0; i < copyNest.size(); i++) {
                 // need to access the suits in the nest to see if we should add them to the hand
-                Card thisNestCard = nestList.get(i);
+                Card thisNestCard = copyNest.get(i);
 
-                myNestCard = new Card(thisNestCard.getSuit(), thisNestCard.getNumValue());
+                //myNestCard = new Card(thisNestCard.getSuit(), thisNestCard.getNumValue());
 
                 // search the nest for any trump cards, add them to the cardsFromNest
-                if (myNestCard.getSuit() == trumpSuit) {
-                    cardsFromNest.add(myNestCard);
+                if (thisNestCard.getSuit() == trumpSuit) {
+                    cardsFromNest.add(thisNestCard);
                 }
 
                 // add rook
 
-                if (myNestCard.getSuit() == 4)
+                if (thisNestCard.getSuit() == 4)
                 {
-                    cardsFromNest.add(myNestCard);
+                    cardsFromNest.add(thisNestCard);
                 }
             }
 
-            Card myHandCard;
+            ArrayList<Card> myHandCard = savedState.playerHands[this.playerNum];
+            ArrayList<Card> copyHand = (ArrayList<Card>)myHandCard.clone();
+
+            for (Card c: myHandCard)
+            {
+                if (c.getPlayed() == true)
+                {
+                    copyHand.remove(c);
+                }
+            }
 
             // we only want to return to the nest the number of cards that we took from it
             int cardsToReturnToNest = cardsFromNest.size();
 
-            for (int j = 0; cardsToReturnToNest > 0 && j < myList.size(); j++)
+            for (int j = 0; cardsToReturnToNest > 0 && j < copyHand.size(); j++)
             {
-                Card thisCard = myList.get(j);
+                Card thisCard = copyHand.get(j);
 
-                myHandCard = new Card(thisCard.getSuit(), thisCard.getNumValue());
+                //myHandCard = new Card(thisCard.getSuit(), thisCard.getNumValue());
 
-                if (myHandCard.getSuit() != trumpSuit) {
+                if (thisCard.getSuit() != trumpSuit) {
                     // card is not a trump card
-                    cardsFromHand.add(myHandCard);
+                    cardsFromHand.add(thisCard);
 
                     cardsToReturnToNest--;
                 }
@@ -236,6 +258,7 @@ public class sRookComputerPlayer extends RookComputerPlayer {
         else if (savedState.getSubStage() == savedState.PLAY) {
             // smart computer player will play a card, and will try to win each trick
             //needs to not be hard coded in. Placed for convenience
+
 
             int suitLed = -1;
             int valueTaking = 0;
@@ -275,7 +298,7 @@ public class sRookComputerPlayer extends RookComputerPlayer {
             for (int i = 0; i < savedState.playerHands[this.playerNum].size(); i++)
             {
                 Card playerCard = savedState.playerHands[this.playerNum].get(i);
-                System.out.println(""+playerCard.getSuit()+","+""+playerCard.getNumValue());
+                System.out.println("Alex_hand, "+""+this.playerNum+", "+""+playerCard.getSuit()+", "+""+playerCard.getNumValue()+", "+""+playerCard.getPlayed());
 
             }
 
@@ -310,12 +333,15 @@ public class sRookComputerPlayer extends RookComputerPlayer {
                     }
 
                     if (playIndex == -1) {
-                        System.out.println("Error. There is no card to play.");
+                        System.out.println("Error. There is no card to play low.");
+                        // at least return a valid card
+                        playIndex=0;
                     }
                 }
                 Card playedCard = savedState.playerHands[this.playerNum].get(playIndex);
-                System.out.println(""+playedCard.getSuit()+","+""+playedCard.getNumValue());
-                    game.sendAction(new RookCardAction(this, playIndex));
+                playedCard.setPlayed();
+                System.out.println("Alex_playedCard1, "+""+playedCard.getSuit()+","+""+playedCard.getNumValue());
+                game.sendAction(new RookCardAction(this, playIndex));
             }
             else
             {
@@ -334,10 +360,13 @@ public class sRookComputerPlayer extends RookComputerPlayer {
                 if (playIndex == -1)
                 {
                     System.out.println("Error. There is no card to play.");
+                    // at least return a valid card
+                    playIndex = 0;
                 }
                 Card playedCard = savedState.playerHands[this.playerNum].get(playIndex);
-                System.out.println(""+playedCard.getSuit()+","+""+playedCard.getNumValue());
-                    game.sendAction(new RookCardAction(this, playIndex));
+                playedCard.setPlayed();
+                System.out.println("Alex_playedCard2, "+""+playedCard.getSuit()+","+""+playedCard.getNumValue());
+                game.sendAction(new RookCardAction(this, playIndex));
             }
         }
     }
@@ -349,6 +378,11 @@ public class sRookComputerPlayer extends RookComputerPlayer {
         for (int j = 0; j < savedState.playerHands[this.playerNum].size(); j++)
         {
             Card cardToCheck = savedState.playerHands[this.playerNum].get(j);
+
+            if (cardToCheck.getPlayed())
+            {
+                continue;
+            }
 
             if (cardToCheck.getSuit() == suit && cardToCheck.getNumValue() > value)
             {
@@ -392,6 +426,11 @@ public class sRookComputerPlayer extends RookComputerPlayer {
         {
             Card rookCheckCard = savedState.playerHands[this.playerNum].get(k);
 
+            if (rookCheckCard.getPlayed())
+            {
+                continue;
+            }
+
             if (rookCheckCard.getSuit() == 4)
             {
                 return k;
@@ -409,13 +448,17 @@ public class sRookComputerPlayer extends RookComputerPlayer {
         {
             Card cardToCheck = savedState.playerHands[this.playerNum].get(j);
 
+            if (cardToCheck.getPlayed())
+            {
+                continue;
+            }
 
             if (cardToCheck.getSuit() == suit)
             {
-                        if (cardToCheck.getNumValue() < minimumValue) {
-                            minimumValue = cardToCheck.getNumValue();
-                            minimumValueIndex = j;
-                        }
+                if (cardToCheck.getNumValue() < minimumValue) {
+                    minimumValue = cardToCheck.getNumValue();
+                    minimumValueIndex = j;
+                }
             }
         }
 
@@ -477,3 +520,4 @@ public class sRookComputerPlayer extends RookComputerPlayer {
         }
     }
 }
+
