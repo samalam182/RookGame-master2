@@ -1007,28 +1007,28 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             startingNew = false;
         }
 
-        if (currTrickWinner == 0 && !startingNew)
+        if (currTrickWinner == 0)
         {
             testing[0] = 0;
             testing[1] = 1;
             testing[2] = 2;
             testing[3] = 3;
         }
-        else if (currTrickWinner == 1 && !startingNew)
+        else if (currTrickWinner == 1)
         {
             testing[0] = 1;
             testing[1] = 2;
             testing[2] = 3;
             testing[3] = 0;
         }
-        else if (currTrickWinner == 2 && !startingNew)
+        else if (currTrickWinner == 2)
         {
             testing[0] = 2;
             testing[1] = 3;
             testing[2] = 0;
             testing[3] = 1;
         }
-        else if (currTrickWinner == 3 && !startingNew)
+        else if (currTrickWinner == 3)
         {
             testing[0] = 3;
             testing[1] = 0;
