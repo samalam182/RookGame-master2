@@ -3,6 +3,7 @@ package edu.up.cs301.game.rook;
 import android.graphics.Color;
 import android.widget.ImageButton;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.up.cs301.card.Card;
@@ -26,8 +27,9 @@ import static android.telephony.PhoneNumberUtils.WAIT;
  * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
  * @version December 2016
  */
-public class RookState extends GameState {
+public class RookState extends GameState implements Serializable{
 
+    private static final long serialVersionUID = -8269749892027578792L;
     // tracks the current stage throughout the game
     private int subStage;
 
@@ -97,6 +99,8 @@ public class RookState extends GameState {
     // to the configuration screen
     private String[] playerNames;
 
+    public boolean newState;
+
 
     public int[] pointsThisRound = new int[numPlayers];
 
@@ -133,6 +137,8 @@ public class RookState extends GameState {
         pass[1] = false;
         pass[2] = false;
         pass[3] = false;
+
+        newState = false;
 
         // set the deck to a randomly ordered, shuffled combination of all the playable cards,
         // and then deal out all the 41 cards to the 4 players' hands and the nest
@@ -228,6 +234,9 @@ public class RookState extends GameState {
 
         // set the first player as the default winner at the beginning of the game
         winningPlayer = currPlayer;
+
+        // allows human player to know the state is new
+        newState = true;
     }
 
     /**
@@ -279,6 +288,8 @@ public class RookState extends GameState {
 
         playerScores = temp.playerScores;
         playerNames = temp.playerNames;
+
+        newState = temp.newState;
     }
 
     /**
@@ -327,6 +338,11 @@ public class RookState extends GameState {
     public void setBid(int bid, int player)
     {
         playerBids[player] = bid;
+    }
+
+    public void setFalse()
+    {
+        newState = false;
     }
 
 //    public int[] getBids() {     // this method isn't used at all anywhere else...

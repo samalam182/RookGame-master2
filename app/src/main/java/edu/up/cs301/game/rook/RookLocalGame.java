@@ -53,7 +53,7 @@ public class RookLocalGame extends LocalGame
     // if its the active player's turn, they can move
     protected boolean canMove(int playerIdx)
     {
-        // only playerIndx of 0-3 are value numbers
+        // only playerIdx of 0-3 are value numbers
         if (playerIdx < 0 || playerIdx > 3)
         {
             return false;
@@ -129,6 +129,7 @@ public class RookLocalGame extends LocalGame
 
                 if (state.finalizeBids())
                 {
+                    state.currTrickWinner = state.winningPlayer;
                     state.setSubStage(NEST);
                     return true;
                 }
@@ -423,8 +424,8 @@ public class RookLocalGame extends LocalGame
 
                     if (state.pointsThisRound[state.lastBidder] < state.getHighestBid())
                     {
-                        state.pointsThisRound[state.lastBidder] -= state.getHighestBid();
-                        state.setScore(state.pointsThisRound[state.lastBidder], state.lastBidder);
+                        //state.pointsThisRound[state.lastBidder] -= state.getHighestBid();
+                        state.setScore((-1 * state.getHighestBid()), state.lastBidder);
                     }
 
                     state = new RookState(true, state);
@@ -451,6 +452,7 @@ public class RookLocalGame extends LocalGame
                 {
                     state.setSubStage(NEST);
                     state.setPlayer(state.winningPlayer);
+                    state.currTrickWinner = state.winningPlayer;
                     return true;
                 }
                 state.setPlayer();
@@ -468,12 +470,15 @@ public class RookLocalGame extends LocalGame
         }
         else if (action instanceof RookTrumpAction)
         {
-            if (state.getSubStage() == TRUMP && playerIdxx == state.winningPlayer) {
+            if (state.getSubStage() == TRUMP && playerIdxx == state.winningPlayer)
+            {
                 RookTrumpAction act = (RookTrumpAction) action;
                 state.setTrump(act.getTrumpColor());
+
+                state.currTrickWinner = state.winningPlayer;
+
                 state.setSubStage(PLAY);
 
-                state.currTrickWinner = playerIdxx;
             }
 
         }
