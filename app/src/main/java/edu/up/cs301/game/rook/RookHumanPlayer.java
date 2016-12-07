@@ -611,13 +611,14 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             trick4.setVisibility(View.INVISIBLE);
 
             Log.i("UpdateGUI", "Trying to update lastBidder");
-            if (state.lastBidder == 0) {
+            if (state.lastBidder == 0 && !state.pass[0])
+            {
                 lastBidder.setText("Player 1");
-            } else if (state.lastBidder == 1) {
+            } else if (state.lastBidder == 1 && !state.pass[1]) {
                 lastBidder.setText("Player 2");
-            } else if (state.lastBidder == 2) {
+            } else if (state.lastBidder == 2 && !state.pass[2]) {
                 lastBidder.setText("Player 3");
-            } else if (state.lastBidder == 3) {
+            } else if (state.lastBidder == 3 && !state.pass[3]) {
                 lastBidder.setText("Player 4");
             }
 
@@ -822,7 +823,36 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 //        int playerNumInConfig;
 //        if (state.)
         int[] others = oppIdx(this.playerNum);
-        if (state.getActivePlayer() == this.playerNum) {
+
+        if (state.getActivePlayer() == this.playerNum && state.getSubStage() == BID && !state.pass[0])
+        {
+            humanOrangeStar.setVisibility(View.VISIBLE);
+            opponentOneOrangeStar.setVisibility(View.INVISIBLE);
+            opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
+            opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
+        }
+        else if (state.getActivePlayer() == others[0] && state.getSubStage() == BID && !state.pass[1])
+        {
+            humanOrangeStar.setVisibility(View.INVISIBLE);
+            opponentOneOrangeStar.setVisibility(View.VISIBLE);
+            opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
+            opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
+        }
+        else if (state.getActivePlayer() == others[1] && state.getSubStage() == BID && !state.pass[2])
+        {
+            humanOrangeStar.setVisibility(View.INVISIBLE);
+            opponentOneOrangeStar.setVisibility(View.INVISIBLE);
+            opponentTwoOrangeStar.setVisibility(View.VISIBLE);
+            opponentThreeOrangeStar.setVisibility(View.INVISIBLE);
+        }
+        else if (state.getActivePlayer() == others[2] && state.getSubStage() == BID && !state.pass[3])
+        {
+            humanOrangeStar.setVisibility(View.INVISIBLE);
+            opponentOneOrangeStar.setVisibility(View.INVISIBLE);
+            opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
+            opponentThreeOrangeStar.setVisibility(View.VISIBLE);
+        }
+        else if (state.getActivePlayer() == this.playerNum) {
             humanOrangeStar.setVisibility(View.VISIBLE);
             opponentOneOrangeStar.setVisibility(View.INVISIBLE);
             opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
@@ -1313,17 +1343,24 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             fromN.add(state.nest.get(4));}
             //game.sendAction(new RookCardAction(this, 3));
         }
-        else if (v == trumpBlack) {
+        else if (v == trumpBlack)
+        {
             trumpColor = BLACK;
+            state.setTrump(BLACK);
             trumpAccounce.setText("Black");
         } else if (v == trumpYellow) {
             trumpColor = YELLOW;
+            state.setTrump(YELLOW);
             trumpAccounce.setText("Yellow");
-        } else if (v == trumpGreen) {
+        } else if (v == trumpGreen)
+        {
             trumpColor = GREEN;
+            state.setTrump(GREEN);
             trumpAccounce.setText("Green");
-        } else if (v == trumpRed) {
+        } else if (v == trumpRed)
+        {
             trumpColor = RED;
+            state.setTrump(RED);
             trumpAccounce.setText("Red");
         } else if (v == addFive) {
             try {

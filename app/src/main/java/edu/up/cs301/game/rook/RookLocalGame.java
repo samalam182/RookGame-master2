@@ -113,7 +113,11 @@ public class RookLocalGame extends LocalGame
         // makes action not a specific rook action
         if (action instanceof RookBidAction)
         {
-
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             if(state.getSubStage() == BID)
             {
                 RookBidAction act = (RookBidAction) action;
