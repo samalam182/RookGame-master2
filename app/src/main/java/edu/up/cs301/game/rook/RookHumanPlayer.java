@@ -1085,10 +1085,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         int currVal = 10;
         int[] testing = {0,1,2,3};
 
-        if (startingNew)
+        if (startingNew || (state.newState && state.currTrick.size() != 4))
         {
             currTrickWinner = state.currTrickWinner;
             startingNew = false;
+            state.setFalse();
         }
 
         if (currTrickWinner == 0)

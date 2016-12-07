@@ -99,6 +99,8 @@ public class RookState extends GameState implements Serializable{
     // to the configuration screen
     private String[] playerNames;
 
+    public boolean newState;
+
 
     public int[] pointsThisRound = new int[numPlayers];
 
@@ -135,6 +137,8 @@ public class RookState extends GameState implements Serializable{
         pass[1] = false;
         pass[2] = false;
         pass[3] = false;
+
+        newState = false;
 
         // set the deck to a randomly ordered, shuffled combination of all the playable cards,
         // and then deal out all the 41 cards to the 4 players' hands and the nest
@@ -230,6 +234,9 @@ public class RookState extends GameState implements Serializable{
 
         // set the first player as the default winner at the beginning of the game
         winningPlayer = currPlayer;
+
+        // allows human player to know the state is new
+        newState = true;
     }
 
     /**
@@ -281,6 +288,8 @@ public class RookState extends GameState implements Serializable{
 
         playerScores = temp.playerScores;
         playerNames = temp.playerNames;
+
+        newState = temp.newState;
     }
 
     /**
@@ -329,6 +338,11 @@ public class RookState extends GameState implements Serializable{
     public void setBid(int bid, int player)
     {
         playerBids[player] = bid;
+    }
+
+    public void setFalse()
+    {
+        newState = false;
     }
 
 //    public int[] getBids() {     // this method isn't used at all anywhere else...
