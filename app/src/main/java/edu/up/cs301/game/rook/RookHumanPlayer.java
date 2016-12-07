@@ -1246,10 +1246,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromH.remove(state.playerHands[state.getActivePlayer()].get(0));
                 card0.setAlpha(255);
             }
-            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else if(state.getSubStage() == PLAY){
+            else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP)
+            {
+            }
+            else if(state.getSubStage() == PLAY){
                 game.sendAction(new RookCardAction(this, 0));
-                card0.setVisibility(View.INVISIBLE);
 
             }
         } else if (v == card1)
@@ -1264,10 +1265,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 card1.setAlpha(255);
             }
             else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
-            } else if(state.getSubStage() == PLAY){
+            }
+            else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 1));
-                //card1.setVisibility(View.INVISIBLE);
 
             }
         } else if (v == card2) {
@@ -1284,7 +1285,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 2));
-                //card2.setVisibility(View.INVISIBLE);
 
             }
         } else if (v == card3) {

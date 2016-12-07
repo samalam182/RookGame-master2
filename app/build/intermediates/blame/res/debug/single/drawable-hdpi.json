@@ -196,12 +196,12 @@
         "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\card_5c.png"
     },
     {
-        "merged": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_7h.png",
-        "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\card_7h.png"
-    },
-    {
         "merged": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_ad.png",
         "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\card_ad.png"
+    },
+    {
+        "merged": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_7h.png",
+        "source": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\src\\main\\res\\drawable-hdpi\\card_7h.png"
     },
     {
         "merged": "C:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\suit_s.png",

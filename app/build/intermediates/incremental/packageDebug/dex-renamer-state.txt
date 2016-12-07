@@ -1,4 +1,4 @@
-#Wed Dec 07 10:08:14 PST 2016
+#Wed Dec 07 10:53:47 PST 2016
 base.0=C\:\\Users\\Eric ASUS G750\\AndroidStudioProjects\\New3\\RookGame-master2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_dfa21e4c597910a74878ea830f823e6c32e8ee54
 renamed.1=classes.dex
 renamed.0=classes2.dex
