@@ -1071,7 +1071,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Yellow Sun"
+                            android:text="N/A"
                             android:id="@+id/textView_FirstSuitOfTrick" />
 
                     </LinearLayout>

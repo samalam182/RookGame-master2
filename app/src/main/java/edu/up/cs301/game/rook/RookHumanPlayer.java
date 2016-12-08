@@ -176,6 +176,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public ImageView trick3;
     public ImageView trick4;
 
+    // text-view that displays what the secondary trump is
+    public TextView secondTrump;
+
     // text-views that displays the names of the players who have decided to
     // make a pass during the bidding phase of the game
     public TextView passTitle;
@@ -241,10 +244,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     // of which player has won the whole game
     public TextView playerWonTitle;
     public TextView playerWon;
-
-//    public ImageView[] work = new ImageView[9];   // are never used
-//    public int delay = 0;
-
 
     /**
      *
@@ -386,6 +385,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
         trumpAccounce = (TextView) activity.findViewById(R.id.textView_ROUNDTrumpSuit);
 
+        secondTrump = (TextView) activity.findViewById(R.id.textView_FirstSuitOfTrick);
+
         // text-views and buttons related to when the Human Player is either bidding or passing
         addFive = (Button) activity.findViewById(R.id.button_Increment5ToBid);
         addFive.setOnClickListener(this);
@@ -489,7 +490,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         passThree.setVisibility(View.INVISIBLE);
         passFour.setVisibility(View.INVISIBLE);
         passTitle.setVisibility(View.INVISIBLE);
-//        updateGUI(state);
 
         // all 4 players' scores
         humanPoints = (TextView) activity.findViewById(R.id.textView_HumanTotalPoints);
@@ -586,16 +586,23 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public void updateGUI(RookState s) {
 
         // during the bidding phase...
-        if (s.getSubStage() == BID) {
+        if (s.getSubStage() == BID)
+        {
             // properly display all cards in Human Player's current hand
             // as well as the correct number of cards in the opponents' hands
             correctHandImage();
+
+            // clears fromHand and fromNest to be empty so human player can
+            // properly pick up to five cards from the nest and hand to be swapped
+            fromH.clear();
+            fromN.clear();
 
             // there have not been any choices to which trump suit has been chosen or who
             // is the winning bidder at the very beginning of the game
             trumpAccounce.setText("N/A");
             winningBid.setText("N/A");
             winningBidder.setText("N/A");
+            secondTrump.setText("N/A");
             trumpAccounce.setVisibility(View.VISIBLE);
 
             // display all cards in Human Player's hand
@@ -645,7 +652,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidButton.setVisibility(View.VISIBLE);
             passButton.setVisibility(View.VISIBLE);
             previousBid.setVisibility(View.VISIBLE);
-            bidAmount.setVisibility(View.VISIBLE);
             lastBidder.setVisibility(View.VISIBLE);
             bidTitle.setVisibility(View.VISIBLE);
             amountTitle.setVisibility(View.VISIBLE);
@@ -653,6 +659,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidMainTitle.setVisibility(View.VISIBLE);
             yourBid.setVisibility(View.VISIBLE);
             passTitle.setVisibility(View.VISIBLE);
+
+            // only makes bidAmount visuable if human player has not passed
+            if (!state.pass[this.playerNum])
+            {
+                bidAmount.setVisibility(View.VISIBLE);
+            }
 
             // at the very beginning of the game, nobody has made a pass
             passOne.setVisibility(View.INVISIBLE);
@@ -1084,10 +1096,40 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
         // the card that we're looking for is being stored
         Card getting;
-        int currSuit = 5;
-        int currVal = 10;
+        int currSuit;
+        int currVal;
+
+        // the order cards will be placed into the trick
         int[] testing = {0,1,2,3};
 
+        // checks what suit if the first card played so user knows what the secondary trump is
+        if (state.currTrick.size() == 1)
+        {
+            if (state.currTrick.get(0).getCounterValue() == 20)
+            {
+                secondTrump.setText("Trump Card");
+            }
+            if (state.currTrick.get(0).getSuit() == BLACK)
+            {
+                secondTrump.setText("Black");
+            }
+            else if (state.currTrick.get(0).getSuit() == RED)
+            {
+                secondTrump.setText("Red");
+            }
+            else if (state.currTrick.get(0).getSuit() == GREEN)
+            {
+                secondTrump.setText("Green");
+            }
+            else if (state.currTrick.get(0).getSuit() == YELLOW)
+            {
+                secondTrump.setText("Yellow");
+            }
+
+        }
+
+        // checks to see what player is starting the trick such that cards are placed into
+        // the nest correctly
         if (startingNew || (state.newState && state.currTrick.size() != 4))
         {
             currTrickWinner = state.currTrickWinner;
@@ -1095,6 +1137,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             state.setFalse();
         }
 
+        // sets the trick order
         if (currTrickWinner == 0)
         {
             testing[0] = 0;
@@ -1124,6 +1167,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             testing[3] = 2;
         }
 
+        // if the trick size has cards in it, update the trick images to represent the cards
         if(state.currTrick.size() != 0)
         {
             for (int i = 0; i < state.currTrick.size(); i++) {
@@ -1135,6 +1179,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                     currVal = getting.getNumValue();
                     Bitmap tempBitmap;
 
+                    // if the value is 15, its the rook card
                     if (currVal == 15)
                     {
                         tempBitmap = cardImages[4][0];
@@ -1145,6 +1190,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
                     trick[testing[i]].setImageBitmap(tempBitmap);
 
+                    // if there are 4 cards in the trick, next time itterated through is going to be a new trick
                     if (state.currTrick.size() == 4)
                     {
                         startingNew = true;
@@ -1162,36 +1208,36 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             return;
         }
         else {
-        // gets an array of all card objects
-        ImageButton[] nesty = {nest1, nest2, nest3, nest4, nest5};
+            // gets an array of all card objects
+            ImageButton[] nesty = {nest1, nest2, nest3, nest4, nest5};
 
-        // the card that we're looking for is being stored
-        Card getting;
-        if(nesty.length != 0)
-        {
-            for (int i = 0; i < nesty.length; i++)
+            // the card that we're looking for is being stored
+            Card getting;
+            if(nesty.length != 0)
             {
-                // gets the card we're looking for. [0] = only player one.
-                // for future human players, needs to be another look per player
-                if (state.nest.get(i) != null)
+                for (int i = 0; i < nesty.length; i++)
                 {
-                    getting = state.nest.get(i);
-                    int currSuit = getting.getSuit();
-                    int currVal = getting.getNumValue();
+                    // gets the card we're looking for. [0] = only player one.
+                    // for future human players, needs to be another look per player
+                    if (state.nest.get(i) != null)
+                    {
+                        getting = state.nest.get(i);
+                        int currSuit = getting.getSuit();
+                        int currVal = getting.getNumValue();
 
-                    Bitmap tempBitmap;
+                        Bitmap tempBitmap;
 
-                    if (currVal == 15) {
-                        tempBitmap = cardImages[4][0];
-                    } else {
-                        tempBitmap = cardImages[currSuit][currVal - 5];
+                        if (currVal == 15) {
+                            tempBitmap = cardImages[4][0];
+                        } else {
+                            tempBitmap = cardImages[currSuit][currVal - 5];
+                        }
+                        nesty[i].setImageBitmap(tempBitmap);
                     }
-                    nesty[i].setImageBitmap(tempBitmap);
                 }
             }
-        }
 
-    }}
+        }}
 
     public void onClick(View v) {
         int myNum = 0;
@@ -1414,8 +1460,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromN.remove(state.nest.get(1));
             }
             else {
-            nest2.setAlpha(100);
-            fromN.add(state.nest.get(1));}
+                nest2.setAlpha(100);
+                fromN.add(state.nest.get(1));}
             //game.sendAction(new RookCardAction(this, 1));
         }
         else if (v == nest3)
@@ -1426,8 +1472,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromN.remove(state.nest.get(2));
             }
             else{
-            nest3.setAlpha(100);
-            fromN.add(state.nest.get(2));}
+                nest3.setAlpha(100);
+                fromN.add(state.nest.get(2));}
             //game.sendAction(new RookCardAction(this, 2));
         }
         else if (v == nest4)
@@ -1438,8 +1484,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromN.remove(state.nest.get(3));
             }
             else {
-            nest4.setAlpha(100);
-            fromN.add(state.nest.get(3));}
+                nest4.setAlpha(100);
+                fromN.add(state.nest.get(3));}
             //game.sendAction(new RookCardAction(this, 3));
         }
         else if (v == nest5)
@@ -1450,8 +1496,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 fromN.remove(state.nest.get(4));
             }
             else {
-            nest5.setAlpha(100);
-            fromN.add(state.nest.get(4));}
+                nest5.setAlpha(100);
+                fromN.add(state.nest.get(4));}
             //game.sendAction(new RookCardAction(this, 3));
         }
         else if (v == trumpBlack)
@@ -1533,7 +1579,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             game.sendAction(new RookBidAction(this, myNum));
             previousBid.setText("" + myNum);
 
-        } else if (v == passButton) {
+        } else if (v == passButton)
+        {
+            bidAmount.setVisibility(View.INVISIBLE);
             game.sendAction(new RookHoldAction(this));
         }
     }
