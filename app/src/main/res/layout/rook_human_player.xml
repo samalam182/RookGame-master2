@@ -164,15 +164,15 @@
                     android:src="@drawable/rook_orangestaricon" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30px"
+                    android:layout_height="500px"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="CPU1"
+                    android:text="Opponent 1"
                     android:id="@+id/textView_OpponentONEName" />
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="120px" />
+                    android:layout_height="100px" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -364,7 +364,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Computer Player 2"
+                        android:text="Opponent 2"
                         android:id="@+id/textView_OpponentTWOName" />
 
                     <Space
@@ -1045,7 +1045,36 @@
 
                     <Space
                         android:layout_width="20px"
-                        android:layout_height="65px" />
+                        android:layout_height="10px" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="55px">
+
+                        <Space
+                            android:layout_width="100px"
+                            android:layout_height="20px" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="First Suit of Trick:"
+                            android:id="@+id/textView_FirstSuitOfTrickLabel" />
+
+                        <Space
+                            android:layout_width="20px"
+                            android:layout_height="20px" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Yellow Sun"
+                            android:id="@+id/textView_FirstSuitOfTrick" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
                 <Space
@@ -1123,15 +1152,15 @@
                     android:src="@drawable/rook_orangestaricon" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30px"
+                    android:layout_height="500px"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="CPU3"
+                    android:text="Opponent 3"
                     android:id="@+id/textView_OpponentTHREEName" />
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="120px" />
+                    android:layout_height="100px" />
 
                 <TextView
                     android:layout_width="wrap_content"
