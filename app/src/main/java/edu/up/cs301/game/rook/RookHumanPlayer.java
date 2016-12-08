@@ -168,7 +168,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     // text-views that displays information about the chosen trump suit of the current round
     public TextView trumpTitle;
-    public TextView trumpAccounce;
+    public TextView trumpAnnouncer;
 
     // image-views that display which cards have been placed down by each
     // of the four players into the trick
@@ -382,7 +382,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         trumpRed = (ImageButton) activity.findViewById((R.id.imageButton_ChooseTrump_RedHeart));
         trumpRed.setOnClickListener(this);
 
-        trumpAccounce = (TextView) activity.findViewById(R.id.textView_ROUNDTrumpSuit);
+        trumpAnnouncer = (TextView) activity.findViewById(R.id.textView_ROUNDTrumpSuit);
         secondTrump = (TextView) activity.findViewById(R.id.textView_FirstSuitOfTrick);
 
         // text-views and buttons related to when the Human Player is either bidding or passing
@@ -597,11 +597,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
             // there have not been any choices to which trump suit has been chosen or who
             // is the winning bidder at the very beginning of the game
-            trumpAccounce.setText("N/A");
+            trumpAnnouncer.setText("N/A");
             winningBid.setText("N/A");
             winningBidder.setText("N/A");
             secondTrump.setText("N/A");
-            trumpAccounce.setVisibility(View.VISIBLE);
+            trumpAnnouncer.setVisibility(View.VISIBLE);
 
             // display all cards in Human Player's hand
             card0.setVisibility(View.VISIBLE);
@@ -808,65 +808,84 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             correctNestImage();
             setOrangeStarIndicator();
 
-        } else if (s.getSubStage() == TRUMP) {
+        }
+        else if (s.getSubStage() == TRUMP)
+        {
+            // hides everything in the nest
             nest1.setVisibility(View.INVISIBLE);
             nest2.setVisibility(View.INVISIBLE);
             nest3.setVisibility(View.INVISIBLE);
             nest4.setVisibility(View.INVISIBLE);
             nest5.setVisibility(View.INVISIBLE);
             confirmNest.setVisibility(View.INVISIBLE);
-            if(state.getActivePlayer() == this.playerNum) {
+
+            // if the human player won the bid, show them the trick buttons
+            if(state.getActivePlayer() == this.playerNum)
+            {
                 trumpBlack.setVisibility(View.VISIBLE);
                 trumpGreen.setVisibility(View.VISIBLE);
                 trumpRed.setVisibility(View.VISIBLE);
                 trumpYellow.setVisibility(View.VISIBLE);
                 confirmTrump.setVisibility(View.VISIBLE);
             }
+
+            // hide everything about the bid that hasn't been already hidden
             addFive.setVisibility(View.INVISIBLE);
             minusFive.setVisibility(View.INVISIBLE);
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
 
+            // update who's turn it is indicator
             setOrangeStarIndicator();
         }
         else if (nullNest)
         {
+            // if the trick is empty, show card backs
             trick1.setImageResource(R.drawable.rookcard_back);
             trick2.setImageResource(R.drawable.rookcard_back);
             trick3.setImageResource(R.drawable.rookcard_back);
             trick4.setImageResource(R.drawable.rookcard_back);
 
+            // sometimes the trick has a card in it when nullNest is called because upgateGUI is called when the player to
+            // he right of the human player wins the bid (wanting to reset the nest), plays a new card (nest has a card in it)
+            // and only sends this update state to the human player. At this time without calling correctTrickImage the trick would
+            // show having no cards in the trick but the human player is second to go
             correctTrickImage();
+
+            // update who's turn it is indicator
             setOrangeStarIndicator();
 
+            // pauses the game to show implmentation of nullNest
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
+            // prevent this statement from being done until the trick is full again
             nullNest = false;
         }
-        else
+        else // if the substate is PLAY
         {
-
+            // sets the right Trump color to the human's GUI trump announcer
             if (state.getTrump() == 0)
             {
-                trumpAccounce.setText("Black");
+                trumpAnnouncer.setText("Black");
             }
             else if (state.getTrump() == 1)
             {
-                trumpAccounce.setText("Yellow");
+                trumpAnnouncer.setText("Yellow");
             }
             else if (state.getTrump() == 2)
             {
-                trumpAccounce.setText("Green");
+                trumpAnnouncer.setText("Green");
             }
             else if (state.getTrump() == 3)
             {
-                trumpAccounce.setText("Red");
+                trumpAnnouncer.setText("Red");
             }
 
+            // makes the nest and bid buttons invisible if they weren't already
             nest1.setVisibility(View.INVISIBLE);
             nest2.setVisibility(View.INVISIBLE);
             nest3.setVisibility(View.INVISIBLE);
@@ -883,9 +902,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
 
+            // displays who won the bid and for how much
             winningBidder.setText("Player: " + (state.winningPlayer + 1));
             winningBid.setText("" + state.winningBid);
 
+            // if the trick has no cards show the trick as empty
+            // if the trick is not empty then show the cards in the trick
             if (state.currTrick.size() == 0)
             {
                 trick1.setImageResource(R.drawable.rookcard_back);
@@ -893,27 +915,34 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 trick3.setImageResource(R.drawable.rookcard_back);
                 trick4.setImageResource(R.drawable.rookcard_back);
             }
-            else {
+            else
+            {
                 correctTrickImage();
             }
 
-
+            // make sure the trick is visible
             trick1.setVisibility(View.VISIBLE);
             trick2.setVisibility(View.VISIBLE);
             trick3.setVisibility(View.VISIBLE);
             trick4.setVisibility(View.VISIBLE);
 
+            // updates the score of each player
             oneScore.setText("" + state.getScore(0));
             twoScore.setText("" + state.getScore(1));
             threeScore.setText("" + state.getScore(2));
             fourScore.setText("" + state.getScore(3));
 
+            // if the trick has four cards in it, clear it and the next time updateGUI is called it refreshes the trick
             if (state.currTrick.size() == 4)
             {
                 state.currTrick.clear();
                 nullNest = true;
             }
+
+            // displays the updated hand image for the player
             correctHandImage();
+
+            // updates who's turn it is indicator
             setOrangeStarIndicator();
 
         }
@@ -926,10 +955,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      */
     public void setOrangeStarIndicator()
     {
-
+        // creates an array of other player's playerIddx ints
         int[] others = oppIdx(this.playerNum);
 
-
+        // if its this player's turn, and its the bid, and they haven't passed it's their turn show the star
         if (state.getActivePlayer() == this.playerNum && state.getSubStage() == BID && !state.pass[0])
         {
             humanOrangeStar.setVisibility(View.VISIBLE);
@@ -958,6 +987,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             opponentTwoOrangeStar.setVisibility(View.INVISIBLE);
             opponentThreeOrangeStar.setVisibility(View.VISIBLE);
         }
+        // if it's this players turn then show the star
         else if (state.getActivePlayer() == this.playerNum) {
             humanOrangeStar.setVisibility(View.VISIBLE);
             opponentOneOrangeStar.setVisibility(View.INVISIBLE);
@@ -1021,21 +1051,31 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
                     Bitmap tempBitmap;
 
+                    // if the currVal is 15 then it's the Trump card, if not get the actual card
                     if (currVal == 15) {
                         tempBitmap = cardImages[4][0];
-                    } else {
+                    }
+                    else
+                    {
                         tempBitmap = cardImages[currSuit][currVal - 5];
                     }
+
+                    // update the image view
                     card[i].setImageBitmap(tempBitmap);
 
-                    if(getting.getPlayed()){
+                    // when the card is played, make the button invisble to represent the card leaving the hand
+                    if(getting.getPlayed())
+                    {
                         card[i].setVisibility(View.INVISIBLE);
                     }
 
                 }
             }
         }
+        // gets an array of the opponents' indexes
         int[] ops = oppIdx(this.playerNum);
+
+        // displays blank card images for teh opponent's hands to represent their unknown cards
         for (int k = 0; k < 3; k++)
         {
             int numInvis = numPlayed(state.playerHands[ops[k]]);
@@ -1071,7 +1111,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     //helper method that tells the human player where each opponent is relative to them so that
     //they can see the appropriate player's hands get smaller each turn.
-    public int[] oppIdx(int playerIdx){
+    public int[] oppIdx(int playerIdx)
+    {
         int[] opp = new int[3];
         if(playerIdx == 0){
             opp[0] = 1;
@@ -1209,55 +1250,71 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
     }
 
-    public void correctNestImage()
-    {
-        if (state.winningPlayer != 0)
-        {
+    // displays the correct Nest Image
+    public void correctNestImage() {
+        // if the winningPlayer is the player that is updating the GUI then the GUI is waiting for their action
+        // and there the trick being blank is accurate
+        if (state.winningPlayer != 0) {
             return;
-        }
-        else {
+        } else {
             // gets an array of all card objects
             ImageButton[] nesty = {nest1, nest2, nest3, nest4, nest5};
 
             // the card that we're looking for is being stored
             Card getting;
-            if(nesty.length != 0)
-            {
-                for (int i = 0; i < nesty.length; i++)
-                {
+            if (nesty.length != 0) {
+                for (int i = 0; i < nesty.length; i++) {
                     // gets the card we're looking for. [0] = only player one.
                     // for future human players, needs to be another look per player
-                    if (state.nest.get(i) != null)
-                    {
+                    if (state.nest.get(i) != null) {
                         getting = state.nest.get(i);
                         int currSuit = getting.getSuit();
                         int currVal = getting.getNumValue();
 
                         Bitmap tempBitmap;
 
+                        // if currVal is 15 then its the rook card
                         if (currVal == 15) {
                             tempBitmap = cardImages[4][0];
                         } else {
                             tempBitmap = cardImages[currSuit][currVal - 5];
                         }
+
+                        //update the nest button
                         nesty[i].setImageBitmap(tempBitmap);
                     }
                 }
             }
+        }
+    }
 
-        }}
-
-    public void onClick(View v) {
+    // when the human player mclicks a button do something
+    public void onClick(View v)
+    {
+        // variables to help the bid process
         int myNum = 0;
         int myNum2 = 0;
-        if (v == quit) {
+
+        // if the player clicks quit then quit the game
+        if (v == quit)
+        {
             activity.finish();
             System.exit(0);
-        } else if (v == start) {
+        }
+        // if the player clicks start then start the game
+        else if (v == start)
+        {
+            // a systemclock.sleep is required here so the state has time to initalize. Sometimes the game would crash
+            // becuase state was a null reference. Giving the game time to initaize the state prevented this issue.
             SystemClock.sleep(2000);
+
+            // show the player's hand
             correctHandImage();
+
+            // hide the start button
             start.setVisibility(View.INVISIBLE);
 
+            // set the game mode to bid, hide non-bid related buttons
             nest1.setVisibility(View.INVISIBLE);
             nest2.setVisibility(View.INVISIBLE);
             nest3.setVisibility(View.INVISIBLE);
@@ -1272,8 +1329,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             previousBid.setText("" + state.getHighestBid());
             int possBid = state.getHighestBid() + 5;
             bidAmount.setText("" + possBid);
-            trumpAccounce.setVisibility(View.VISIBLE);
-
+            trumpAnnouncer.setVisibility(View.VISIBLE);
             addFive.setVisibility(View.VISIBLE);
             minusFive.setVisibility(View.VISIBLE);
             bidButton.setVisibility(View.VISIBLE);
@@ -1288,7 +1344,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             yourBid.setVisibility(View.VISIBLE);
             passTitle.setVisibility(View.VISIBLE);
 
-        } else if (v == card0)
+        }
+        // if a card button is clicked, then the correct action for the substage of the game is made
+        else if (v == card0)
         {
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(0))) && fromH.size() < 5)
             {
@@ -1305,9 +1363,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             else if(state.getSubStage() == PLAY){
                 game.sendAction(new RookCardAction(this, 0));
-
             }
-        } else if (v == card1)
+        }
+        else if (v == card1)
         {
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(1))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(1));
@@ -1323,9 +1381,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 1));
-
             }
-        } else if (v == card2) {
+        }
+        else if (v == card2) {
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(2))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(2));
                 card2.setAlpha(100);
@@ -1339,9 +1397,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 2));
-
             }
-        } else if (v == card3) {
+        }
+        else if (v == card3) {
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(3))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(3));
                 card3.setAlpha(100);
@@ -1355,10 +1413,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 3));
-                //card3.setVisibility(View.INVISIBLE);
 
             }
-        } else if (v == card4) {
+        }
+        else if (v == card4) {
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(4))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(4));
                 card4.setAlpha(100);
@@ -1372,10 +1430,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             } else if(state.getSubStage() == PLAY){
 
                 game.sendAction(new RookCardAction(this, 4));
-                //card4.setVisibility(View.INVISIBLE);
-
             }
-        } else if (v == card5) {
+        }
+        else if (v == card5)
+        {
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(5))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(5));
                 card5.setAlpha(100);
@@ -1387,12 +1445,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             } else if(state.getSubStage() == PLAY){
-
                 game.sendAction(new RookCardAction(this, 5));
-                //card5.setVisibility(View.INVISIBLE);
-
             }
-        } else if (v == card6) {
+        }
+        else if (v == card6)
+        {
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(6))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(6));
                 card6.setAlpha(100);
@@ -1404,12 +1461,11 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             } else if(state.getSubStage() == PLAY){
-
                 game.sendAction(new RookCardAction(this, 6));
-                //card6.setVisibility(View.INVISIBLE);
-
             }
-        } else if (v == card7) {
+        }
+        else if (v == card7)
+        {
             if (state.getSubStage() == NEST && !(fromH.contains(state.playerHands[state.getActivePlayer()].get(7))) && fromH.size() < 5) {
                 fromH.add(state.playerHands[state.getActivePlayer()].get(7));
                 card7.setAlpha(100);
@@ -1421,10 +1477,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             } else if(state.getSubStage() == PLAY){
-
                 game.sendAction(new RookCardAction(this, 7));
-                //card7.setVisibility(View.INVISIBLE);
-
             }
         }
         else if (v == card8)
@@ -1441,12 +1494,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             else if (state.getSubStage() == WAIT || state.getSubStage() == BID || state.getSubStage() == TRUMP) {
             }
             else if(state.getSubStage() == PLAY){
-
                 game.sendAction(new RookCardAction(this, 8));
-                //card8.setVisibility(View.INVISIBLE);
-
             }
         }
+        // if a nest button is clicked, allow the player to interchange the cards they want to swamp from their hand
         else if (v == nest1)
         {
             if (fromN.contains(state.nest.get(0)))
@@ -1458,7 +1509,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 nest1.setAlpha(100);
                 fromN.add(state.nest.get(0));
             }
-            //game.sendAction(new RookCardAction(this, 0));
         }
         else if (v == nest2)
         {
@@ -1470,7 +1520,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             else {
                 nest2.setAlpha(100);
                 fromN.add(state.nest.get(1));}
-            //game.sendAction(new RookCardAction(this, 1));
         }
         else if (v == nest3)
         {
@@ -1482,7 +1531,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             else{
                 nest3.setAlpha(100);
                 fromN.add(state.nest.get(2));}
-            //game.sendAction(new RookCardAction(this, 2));
         }
         else if (v == nest4)
         {
@@ -1494,7 +1542,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             else {
                 nest4.setAlpha(100);
                 fromN.add(state.nest.get(3));}
-            //game.sendAction(new RookCardAction(this, 3));
         }
         else if (v == nest5)
         {
@@ -1506,28 +1553,30 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             else {
                 nest5.setAlpha(100);
                 fromN.add(state.nest.get(4));}
-            //game.sendAction(new RookCardAction(this, 3));
         }
+        // if a trump suit button is clicked, represent the correct actions for picking a trump color
         else if (v == trumpBlack)
         {
             trumpColor = BLACK;
             state.setTrump(BLACK);
-            trumpAccounce.setText("Black");
+            trumpAnnouncer.setText("Black");
         } else if (v == trumpYellow) {
             trumpColor = YELLOW;
             state.setTrump(YELLOW);
-            trumpAccounce.setText("Yellow");
+            trumpAnnouncer.setText("Yellow");
         } else if (v == trumpGreen)
         {
             trumpColor = GREEN;
             state.setTrump(GREEN);
-            trumpAccounce.setText("Green");
+            trumpAnnouncer.setText("Green");
         } else if (v == trumpRed)
         {
             trumpColor = RED;
             state.setTrump(RED);
-            trumpAccounce.setText("Red");
-        } else if (v == addFive) {
+            trumpAnnouncer.setText("Red");
+        }
+        // allows the player to incrament their bid by 5
+        else if (v == addFive) {
             try {
                 myNum = Integer.parseInt(bidAmount.getText().toString());
             } catch (NumberFormatException nfe) {
@@ -1538,7 +1587,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 myNum += 5;
             }
             bidAmount.setText("" + myNum);
-        } else if (v == minusFive) {
+        }
+        // allows the player to decrament their bid by 5
+        else if (v == minusFive) {
 
             try {
                 myNum = Integer.parseInt(bidAmount.getText().toString());
@@ -1552,7 +1603,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
 
             bidAmount.setText("" + myNum);
-        } else if (v == confirmNest) {
+        }
+        // allows the player to confirm the nest
+        else if (v == confirmNest) {
             if (fromH.size() == fromN.size()) {
                 game.sendAction(new RookNestAction(this, fromN, fromH));
                 correctHandImage();
@@ -1568,17 +1621,15 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                 card8.setAlpha(255);
             }
 
-        } else if (v == confirmTrump && trumpColor > -1) {
+        }
+        // allows the player to confirm their turmp color
+        else if (v == confirmTrump && trumpColor > -1)
+        {
             game.sendAction(new RookTrumpAction(this, trumpColor));
 
-//            trumpBlack.setVisibility(View.INVISIBLE);
-//            trumpGreen.setVisibility(View.INVISIBLE);
-//            trumpYellow.setVisibility(View.INVISIBLE);
-//            trumpRed.setVisibility(View.INVISIBLE);
-//            trumpTitle.setVisibility(View.INVISIBLE);
-//            confirmTrump.setVisibility(View.INVISIBLE);
-
-        } else if (v == bidButton) {
+        }
+        // allows the player to cast their bid
+        else if (v == bidButton) {
             try {
                 myNum = Integer.parseInt(bidAmount.getText().toString());
             } catch (NumberFormatException nfe) {
@@ -1587,7 +1638,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             game.sendAction(new RookBidAction(this, myNum));
             previousBid.setText("" + myNum);
 
-        } else if (v == passButton)
+        }
+        // allows the player to pass
+        else if (v == passButton)
         {
             bidAmount.setVisibility(View.INVISIBLE);
             game.sendAction(new RookHoldAction(this));
@@ -1641,158 +1694,4 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         // 1/20 of a second
         return 50;
     }
-
-
-//    public void score() {
-//        int points = state.countTrick();
-//        Card first = state.currTrick.get(0);
-//        int firstCardVal = first.getNumValue();
-//        int firstCardSuit = first.getSuit();
-//        int currTrump = state.getTrump();
-//        Card domCard;
-//
-//        int trickWinner = 0;
-//        int ranking = 1000;
-//        int counter = 0;
-//        for (Card cards : state.currTrick) {
-//            if (cards.getNumValue() == 15) {
-//                trickWinner = counter;
-//                ranking = 1;
-//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 14) {
-//                if (ranking > 1) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 2;
-//                }
-//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 13) {
-//                if (ranking > 2) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 3;
-//                }
-//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 12) {
-//                if (ranking > 3) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 4;
-//                }
-//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 11) {
-//                if (ranking > 4) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 5;
-//                }
-//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 10) {
-//                if (ranking > 5) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 6;
-//                }
-//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 9) {
-//                if (ranking > 6) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 7;
-//                }
-//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 8) {
-//                if (ranking > 7) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 8;
-//                }
-//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 7) {
-//                if (ranking > 8) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 9;
-//                }
-//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 6) {
-//                if (ranking > 9) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 10;
-//                }
-//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 5) {
-//                if (ranking > 10) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 11;
-//                }
-//            } else if (cards.getSuit() == currTrump && cards.getNumValue() == 4) {
-//                if (ranking > 11) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 12;
-//                }
-//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 14) {
-//                if (ranking > 12) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 13;
-//                }
-//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 13) {
-//                if (ranking > 13) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 14;
-//                }
-//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 12) {
-//                if (ranking > 14) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 15;
-//                }
-//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 11) {
-//                if (ranking > 15) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 16;
-//                }
-//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 10) {
-//                if (ranking > 16) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 17;
-//                }
-//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 9) {
-//                if (ranking > 17) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 18;
-//                }
-//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 8) {
-//                if (ranking > 18) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 19;
-//                }
-//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 7) {
-//                if (ranking > 19) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 20;
-//                }
-//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 6) {
-//                if (ranking > 20) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 21;
-//                }
-//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 5) {
-//                if (ranking > 21) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 22;
-//                }
-//            } else if (cards.getSuit() == firstCardSuit && cards.getNumValue() == 4) {
-//                if (ranking > 22) {
-//                    trickWinner = counter;
-//                    counter++;
-//                    ranking = 23;
-//                }
-//            }
-//        }
-//
-//        humanPoints.setText(points);
-//    }
 }
