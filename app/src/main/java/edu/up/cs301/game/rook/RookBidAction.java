@@ -15,12 +15,18 @@ public class RookBidAction extends GameAction{
      *
      * @param player the player who created the action
      */
+
+    // stores the value of the bid
     public int bid = 0;
+
+    // consructs a bid action
     public RookBidAction(GamePlayer player, int playerBid)
     {
         super(player);
         bid = playerBid;
     }
+
+    // returns the bid amount
     public int getBid(){
         return bid;
     }
