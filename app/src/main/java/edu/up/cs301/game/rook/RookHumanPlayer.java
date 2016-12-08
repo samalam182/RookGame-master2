@@ -836,6 +836,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
             // update who's turn it is indicator
             setOrangeStarIndicator();
+            correctHandImage();
         }
         else if (nullNest)
         {
@@ -1264,7 +1265,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     public void correctNestImage() {
         // if the winningPlayer is the player that is updating the GUI then the GUI is waiting for their action
         // and there the trick being blank is accurate
-        if (state.winningPlayer != 0) {
+        if (state.winningPlayer != this.playerNum) {
             return;
         } else {
             // gets an array of all card objects

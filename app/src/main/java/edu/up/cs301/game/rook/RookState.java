@@ -30,7 +30,7 @@ import static android.telephony.PhoneNumberUtils.WAIT;
 public class RookState extends GameState implements Serializable{
 
     private static final long serialVersionUID = -8269749892027578792L;
-
+    private static final boolean SHALLOW_COPY = false;
     // tracks the current stage throughout the game
     private int subStage;
 

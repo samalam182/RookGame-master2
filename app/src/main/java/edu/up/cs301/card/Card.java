@@ -45,27 +45,36 @@ public class Card implements Serializable {
 		this.suit = newSuit;
 		this.numValue = newNumValue;
 		beenPlayed = false;
+		this.counterValue = setCounterValue();
+	}
 
-		// for all cards that have a number value of 5,
-		// set their Counter-point value to 5
+	public Card(Card nC) {
+		this.suit = nC.getSuit();
+		this.numValue = nC.getNumValue();
+		beenPlayed = nC.getPlayed();
+		this.counterValue = setCounterValue();
+	}
+
+	private int setCounterValue(){
+		int cV;
 		if(numValue == 5) {
-			this.counterValue = 5;
+			cV = 5;
 		}
 		// for all cards that either have a number value
 		// of 10 or 14, set their Counter-point value to 10
 		else if(numValue == 10 || numValue == 14){
-			this.counterValue = 10;
+			cV = 10;
 		}
 		// for the Rook Card (which has a number value of 15),
 		// set its Counter-point value to 20
 		else if(numValue == 15){
-			this.counterValue = 20;
+			cV = 20;
 		}
 		else {
-			this.counterValue = 0;
+			cV = 0;
 		}
+		return cV;
 	}
-
 	public int getSuit() {
 		return suit;
 	}
@@ -89,6 +98,16 @@ public class Card implements Serializable {
 	}
 
 	public void setPlayed(){ beenPlayed = true; }
+
+	@Override
+	public boolean equals(Object other){
+		if(!(other instanceof Card)){
+			return false;
+		}
+		Card oc = (Card) other;
+
+		return suit == oc.getSuit() && numValue == oc.getNumValue();
+	}
 
 	private static int[][] resIdx = {
     	{
