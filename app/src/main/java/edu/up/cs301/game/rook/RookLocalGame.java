@@ -360,12 +360,17 @@ public class RookLocalGame extends LocalGame
                     int firstCardSuit = first.getSuit();
                     int currTrump = state.getTrump();
 
-                    //
+                    // variable that represents how one card has priority over another card
+                    // that would cause the player who placed down that card from their hand
+                    // to ultimately win that trick
                     int ranking = 1000;
 
-                    //
+                    // keeps track of which cards were placed down in which order according
+                    // to the index of the player who placed down that card into the trick
                     int[] trickOrder = {0,1,2,3};
 
+                    // reorder the order of players who placed down cards based on
+                    // which player was the one who first placed down a card into the trick
                     if (state.currTrickWinner == 0)
                     {
                         trickOrder[0] = 0;
@@ -397,11 +402,15 @@ public class RookLocalGame extends LocalGame
 
                     for (int f = 0; f < state.currTrick.size(); f++)
                     {
+                        // the player who placed down the Rook card automatically wins that trick
                         if (state.currTrick.get(f).getNumValue() == 15)
                         {
                             trickWinner = trickOrder[f];
                             ranking = 1;
                         }
+
+                        // the player who placed down a card of the trump suit with a number value
+                        // of 14 will be deemed as the next highest "ranking" after the Rook card
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 14)
                         {
                             if (ranking > 1)
@@ -410,6 +419,10 @@ public class RookLocalGame extends LocalGame
                                 ranking = 2;
                             }
                         }
+
+                        // the player who placed down a card of the trump suit with a number value
+                        // of 13 will be deemed as the next highest "ranking" after the card of the
+                        // trump suit with a number value of 14
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 13)
                         {
                             if (ranking > 2)
@@ -418,6 +431,10 @@ public class RookLocalGame extends LocalGame
                                 ranking = 3;
                             }
                         }
+
+                        // the player who placed down a card of the trump suit with a number value
+                        // of 12 will be deemed as the next highest "ranking" after the card of the
+                        // trump suit with a number value of 13
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 12)
                         {
                             if (ranking > 3)
@@ -426,6 +443,10 @@ public class RookLocalGame extends LocalGame
                                 ranking = 4;
                             }
                         }
+
+                        // the player who placed down a card of the trump suit with a number value
+                        // of 11 will be deemed as the next highest "ranking" after the card of the
+                        // trump suit with a number value of 12
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 11)
                         {
                             if (ranking > 4)
@@ -434,6 +455,10 @@ public class RookLocalGame extends LocalGame
                                 ranking = 5;
                             }
                         }
+
+                        // the player who placed down a card of the trump suit with a number value
+                        // of 10 will be deemed as the next highest "ranking" after the card of the
+                        // trump suit with a number value of 11
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 10)
                         {
                             if (ranking > 5)
@@ -442,6 +467,10 @@ public class RookLocalGame extends LocalGame
                                 ranking = 6;
                             }
                         }
+
+                        // the player who placed down a card of the trump suit with a number value
+                        // of 9 will be deemed as the next highest "ranking" after the card of the
+                        // trump suit with a number value of 10
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 9)
                         {
                             if (ranking > 6)
@@ -450,6 +479,10 @@ public class RookLocalGame extends LocalGame
                                 ranking = 7;
                             }
                         }
+
+                        // the player who placed down a card of the trump suit with a number value
+                        // of 8 will be deemed as the next highest "ranking" after the card of the
+                        // trump suit with a number value of 9
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 8)
                         {
                             if (ranking > 7)
@@ -458,6 +491,10 @@ public class RookLocalGame extends LocalGame
                                 ranking = 8;
                             }
                         }
+
+                        // the player who placed down a card of the trump suit with a number value
+                        // of 7 will be deemed as the next highest "ranking" after the card of the
+                        // trump suit with a number value of 8
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 7)
                         {
                             if (ranking > 8)
@@ -466,6 +503,10 @@ public class RookLocalGame extends LocalGame
                                 ranking = 9;
                             }
                         }
+
+                        // the player who placed down a card of the trump suit with a number value
+                        // of 6 will be deemed as the next highest "ranking" after the card of the
+                        // trump suit with a number value of 7
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 6)
                         {
                             if (ranking > 9)
@@ -474,6 +515,10 @@ public class RookLocalGame extends LocalGame
                                 ranking = 10;
                             }
                         }
+
+                        // the player who placed down a card of the trump suit with a number value
+                        // of 5 will be deemed as the next highest "ranking" after the card of the
+                        // trump suit with a number value of 6
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 5)
                         {
                             if (ranking > 10)
@@ -482,6 +527,10 @@ public class RookLocalGame extends LocalGame
                                 ranking = 11;
                             }
                         }
+
+                        // the player who placed down a card of the trump suit with a number value
+                        // of 4 will be deemed as the next highest "ranking" after the card of the
+                        // trump suit with a number value of 5
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 4)
                         {
                             if (ranking > 11)
@@ -490,6 +539,10 @@ public class RookLocalGame extends LocalGame
                                 ranking = 12;
                             }
                         }
+
+                        // the player who placed down a card of the suit of the firstly placed card
+                        // of the trick with a number value of 14 will be deemed as the next highest
+                        // "ranking" after the card of the trump suit with a number value of 4
                         else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 14)
                         {
                             if (ranking > 12)
@@ -498,6 +551,11 @@ public class RookLocalGame extends LocalGame
                                 ranking = 13;
                             }
                         }
+
+                        // the player who placed down a card of the suit of the firstly placed card
+                        // of the trick with a number value of 13 will be deemed as the next highest
+                        // "ranking" after the card of the suit of the first card of the trick with
+                        // a number value of 14
                         else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 13)
                         {
                             if (ranking > 13)
@@ -506,6 +564,11 @@ public class RookLocalGame extends LocalGame
                                 ranking = 14;
                             }
                         }
+
+                        // the player who placed down a card of the suit of the firstly placed card
+                        // of the trick with a number value of 12 will be deemed as the next highest
+                        // "ranking" after the card of the suit of the first card of the trick with
+                        // a number value of 13
                         else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 12)
                         {
                             if (ranking > 14)
@@ -514,6 +577,11 @@ public class RookLocalGame extends LocalGame
                                 ranking = 15;
                             }
                         }
+
+                        // the player who placed down a card of the suit of the firstly placed card
+                        // of the trick with a number value of 11 will be deemed as the next highest
+                        // "ranking" after the card of the suit of the first card of the trick with
+                        // a number value of 12
                         else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 11)
                         {
                             if (ranking > 15)
@@ -522,6 +590,11 @@ public class RookLocalGame extends LocalGame
                                 ranking = 16;
                             }
                         }
+
+                        // the player who placed down a card of the suit of the firstly placed card
+                        // of the trick with a number value of 10 will be deemed as the next highest
+                        // "ranking" after the card of the suit of the first card of the trick with
+                        // a number value of 11
                         else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 10)
                         {
                             if (ranking > 16)
@@ -530,6 +603,11 @@ public class RookLocalGame extends LocalGame
                                 ranking = 17;
                             }
                         }
+
+                        // the player who placed down a card of the suit of the firstly placed card
+                        // of the trick with a number value of 9 will be deemed as the next highest
+                        // "ranking" after the card of the suit of the first card of the trick with
+                        // a number value of 10
                         else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 9)
                         {
                             if (ranking > 17)
@@ -538,6 +616,11 @@ public class RookLocalGame extends LocalGame
                                 ranking = 18;
                             }
                         }
+
+                        // the player who placed down a card of the suit of the firstly placed card
+                        // of the trick with a number value of 8 will be deemed as the next highest
+                        // "ranking" after the card of the suit of the first card of the trick with
+                        // a number value of 9
                         else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 8)
                         {
                             if (ranking > 18)
@@ -546,6 +629,11 @@ public class RookLocalGame extends LocalGame
                                 ranking = 19;
                             }
                         }
+
+                        // the player who placed down a card of the suit of the firstly placed card
+                        // of the trick with a number value of 7 will be deemed as the next highest
+                        // "ranking" after the card of the suit of the first card of the trick with
+                        // a number value of 8
                         else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 7)
                         {
                             if (ranking > 19)
@@ -554,6 +642,11 @@ public class RookLocalGame extends LocalGame
                                 ranking = 20;
                             }
                         }
+
+                        // the player who placed down a card of the suit of the firstly placed card
+                        // of the trick with a number value of 6 will be deemed as the next highest
+                        // "ranking" after the card of the suit of the first card of the trick with
+                        // a number value of 7
                         else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 6)
                         {
                             if (ranking > 20)
@@ -562,6 +655,11 @@ public class RookLocalGame extends LocalGame
                                 ranking = 21;
                             }
                         }
+
+                        // the player who placed down a card of the suit of the firstly placed card
+                        // of the trick with a number value of 5 will be deemed as the next highest
+                        // "ranking" after the card of the suit of the first card of the trick with
+                        // a number value of 6
                         else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 5)
                         {
                             if (ranking > 21)
@@ -570,6 +668,11 @@ public class RookLocalGame extends LocalGame
                                 ranking = 22;
                             }
                         }
+
+                        // the player who placed down a card of the suit of the firstly placed card
+                        // of the trick with a number value of 4 will be deemed as the next highest
+                        // "ranking" after the card of the suit of the first card of the trick with
+                        // a number value of 5
                         else if (state.currTrick.get(f).getSuit() == firstCardSuit && state.currTrick.get(f).getNumValue() == 4)
                         {
                             if (ranking > 22)
@@ -581,30 +684,52 @@ public class RookLocalGame extends LocalGame
 
                     }
 
+                    // after figuring out which player is the winner of the trick,
+                    // add the counter-points included in that trick to the total points
+                    // of the trick-winner
                     state.setScore(points, trickWinner);
                     state.setPlayer(trickWinner);
-                    state.currTrickWinner = trickWinner;
                     state.pointsThisRound[trickWinner] += points;
+
+                    // the player who is the winner of the trick is the player who
+                    // places down the first card of the next trick
+                    state.currTrickWinner = trickWinner;
                 }
                 else
                 {
+                    // if the trick hasn't reach 4 cards yet, then continue to rotate
+                    // player's turns in the clockwise direction
                     state.setPlayer();
                 }
 
-                if(gameCounter >=36)
+                // once 9 tricks have gone through where 36 cards have been placed down by each
+                // player, then go through the process that checks through the players' scores at
+                // the end of the round
+                if(gameCounter >= 36)
                 {
+                    // give counter-points that are included in the nest to the final trick-winner
                     state.setScore(state.countNest(), trickWinner);
                     state.pointsThisRound[trickWinner] += state.countNest();
+
+                    // set the player who won the last trick as the player who first places
+                    // down a card during the next trick (during the next round)
                     state.setPlayer(trickWinner);
                     state.currTrickWinner = trickWinner;
 
+                    // check to see if the number of points that the winning bidder has gathered
+                    // after 9 tricks is greater than the winning bid amount that they made
+                    // at the beginning of the round
                     if (state.pointsThisRound[state.lastBidder] < state.getHighestBid())
                     {
-                        //state.pointsThisRound[state.lastBidder] -= state.getHighestBid();
+                        // if they've gathered a lower amount of points than their winning bid,
+                        // then subtract their winning bid amount from their total poitns
                         state.setScore((-1 * state.getHighestBid()), state.lastBidder);
                     }
 
+                    // initiate the start of a new state after 9 tricks have been played out
                     state = new RookState(true, state);
+
+                    // restart the counter that keeps track of how many cards have been placed down
                     gameCounter = 0;
                 }
             }
@@ -613,5 +738,4 @@ public class RookLocalGame extends LocalGame
         // if it makes it down here, an action was made
         return true;
     }
-
 }
