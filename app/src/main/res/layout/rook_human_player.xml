@@ -164,10 +164,10 @@
                     android:src="@drawable/rook_orangestaricon" />
 
                 <TextView
-                    android:layout_width="30px"
+                    android:layout_width="27px"
                     android:layout_height="500px"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Opponent 1"
+                    android:text="Opp onent 1"
                     android:id="@+id/textView_OpponentONEName" />
 
                 <Space
@@ -970,7 +970,7 @@
 
                     <Space
                         android:layout_width="20px"
-                        android:layout_height="65px" />
+                        android:layout_height="35px" />
 
                     <LinearLayout
                         android:orientation="horizontal"
@@ -1045,7 +1045,7 @@
 
                     <Space
                         android:layout_width="20px"
-                        android:layout_height="10px" />
+                        android:layout_height="20px" />
 
                     <LinearLayout
                         android:orientation="horizontal"
@@ -1152,10 +1152,10 @@
                     android:src="@drawable/rook_orangestaricon" />
 
                 <TextView
-                    android:layout_width="30px"
+                    android:layout_width="27px"
                     android:layout_height="500px"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Opponent 3"
+                    android:text="Opp  onent 3"
                     android:id="@+id/textView_OpponentTHREEName" />
 
                 <Space

@@ -782,8 +782,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             passThree.setVisibility(View.INVISIBLE);
             passFour.setVisibility(View.INVISIBLE);
 
-            //makes sure that cards in HumanPlayer's hand doesn't disappear during
-            //Nest-phase of game
+            // makes sure that cards in HumanPlayer's hand doesn't disappear during
+            // nest-phase of game
             card0.setVisibility(View.VISIBLE);
             card1.setVisibility(View.VISIBLE);
             card2.setVisibility(View.VISIBLE);
@@ -917,8 +917,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      */
     public void setOrangeStarIndicator()
     {
-//        int playerNumInConfig;
-//        if (state.)
+
         int[] others = oppIdx(this.playerNum);
 
 

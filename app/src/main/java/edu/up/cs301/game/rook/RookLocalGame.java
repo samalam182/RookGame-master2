@@ -9,21 +9,43 @@ import edu.up.cs301.game.rook.*;
 
 
 /**
- * Created by hoser18 on 11/8/2016.
+ * A class that knows how to play the game of Rook. The data in this class represents the
+ * state of the current game, which keeps track of which player's turn it is during
+ * any stage of the game as well as defining what a legal move is.
+ *
+ * The state represented by an instance of this class can be a
+ * complete state (as might be used by the main game activity) or a partial
+ * state as it would be seen from the perspective of a Human or Computer Player.
+ *
+ * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
+ * @version December 2016
  */
 public class RookLocalGame extends LocalGame
 {
     // the game's state
     public RookState state;
+
+    // the different stages of the game
     public final int WAIT = 0;
     public final int BID = 1;
     public final int TRUMP = 2;
     public final int NEST = 3;
     public final int PLAY = 4;
-    public final int OVER = 5;
-    Card nullCard = new Card(16, 1);
+
+//    public final int OVER = 5;   //not used
+//    Card nullCard = new Card(16, 1);   //not used
+
+    // will keep track of how many cards have placed down from any player
+    // during the trick-phase.
+    // once this value reaches 36 (after 9 full tricks), a new round is started automatically
     public int gameCounter = 0;
 
+    /**
+     *
+     * Constructor
+     * Initially sets the stage to "WAIT" so that the game can be properly initialized.
+     *
+     */
     public RookLocalGame()
     {
         Log.i("RookLocalGame", "Local Game being created");
@@ -32,43 +54,59 @@ public class RookLocalGame extends LocalGame
         state.setSubStage(WAIT);
     }
 
-    // sends the updated state to the given player.
-    // nulls out any hidden information that the player shouldn't know
     @Override
+    /**
+     *
+     * Sends the updated state to the given player.
+     * Nulls out any hidden information that the player shouldn't know.
+     *
+     */
     protected void sendUpdatedStateTo(GamePlayer p)
     {
-        // if there is no state, then then doesnt update
+        // if there is no state, then the game doesn't update
         if (state == null)
         {
             return;
         }
 
-        // creates a rook state that will contain only the player's
-        // imformation that s/he should know
+        // creates a Rook-state that will contain only the player's
+        // information that they should know
         RookState editedState = new RookState(state);
-        //editedState.nullHiddenInformation(state.getActivePlayer());
         p.sendInfo(editedState);
     }
 
-    // if its the active player's turn, they can move
+    /**
+     *
+     * If it's the active player's turn, then that player can make a move.
+     * This method is used during all stages of the game of Rook, including
+     * the bidding, nest, trump, and trick phases.
+     *
+     */
     protected boolean canMove(int playerIdx)
     {
-        // only playerIdx of 0-3 are value numbers
+        // only playerIdx of 0-3 are value numbers that represent the 4 players of the game
         if (playerIdx < 0 || playerIdx > 3)
         {
             return false;
         }
         else
         {
+            // return true if the currently active player
+            // matches with the checked, given playerIdx
             return state.getActivePlayer() == playerIdx;
         }
     }
 
-    // checks if anyone has 200 or more points
-    // if not then end of round
+    /**
+     *
+     * Checks to see if the game is over by checking if any player has 200 or more points.
+     * If no player has reached at least 200 total points, then the game initiates the
+     * start of a new round (as opposed to ending the game).
+     *
+     */
     protected String checkIfGameOver()
     {
-        // check if any player has won
+        // check if any player has won if they have reached at least 200 points
         if (state.getScore(0) >= 200)
         {
             return "Player 1 is the winner!";
@@ -89,20 +127,32 @@ public class RookLocalGame extends LocalGame
             return "Player 4 is the winner!";
         }
 
+        // if no player has reached 200 total points, do not display any String
         return null;
     }
 
-
+    /**
+     *
+     * Checks to make sure that every action made by any player is a legal move.
+     * This method is called during any stage of the game, including the bidding,
+     * nest, trump, and trick phases.
+     * @param action  The move that the player has sent to the game
+     *
+     */
     protected boolean makeMove(GameAction action)
     {
+        // makes sure that the first stage of the game that the user can interact with
+        // is during the bidding phase
         if(state.getSubStage() == WAIT)
         {
             state.setSubStage(BID);
         }
 
-        int playerIdxx = state.getActivePlayer();
-        // checks if its a type of RookAction
-        // if not it isnt an action we want
+        // variable that represents the active player's index
+        int playerIdx = state.getActivePlayer();
+
+        // checks if the given game-action is one of the types of RookAction;
+        // if not, then the given action isn't an action that we want
         if (!(action instanceof RookBidAction || action instanceof RookCardAction ||
                 action instanceof RookHoldAction || action instanceof RookNestAction ||
                 action instanceof RookTrumpAction))
@@ -110,67 +160,178 @@ public class RookLocalGame extends LocalGame
             return false;
         }
 
-        // makes action not a specific rook action
+        // checks if the given action is a bid-action
         if (action instanceof RookBidAction)
         {
             try {
+                // makes sure that Android system / networking has time
+                // to process the action before moving onto the next step
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            // make sure that the bid-action happens during the bidding phase
             if(state.getSubStage() == BID)
             {
+                // gather information about the amount of points the current player has bid,
+                // and set the given bid amount to the player's current bid amount
                 RookBidAction act = (RookBidAction) action;
                 int playBid = act.getBid();
-                state.setBid(playBid, playerIdxx);
+                state.setBid(playBid, playerIdx);
 
-                state.lastBidder = playerIdxx;
+                // sets the latest bidder as the player who sent the bid-action,
+                // which will be displayed on the GUI
+                state.lastBidder = playerIdx;
 
-
+                // once the winning bidder has been decided (after 3 players have passed or
+                // the last bidder has made a maximum bid amount of 120 points), set the
+                // next stage of the game after the bid-phase as the nest-phase
                 if (state.finalizeBids())
                 {
+                    // sets the winning bidder as the player to firstly place down a card
+                    // during the first trick of that round
                     state.currTrickWinner = state.winningPlayer;
+
+                    // set the stage to the nest-phase after the bid-phase
                     state.setSubStage(NEST);
                     return true;
                 }
                 else
                 {
+                    // if there is no winning bidder that has been decided, then
+                    // continue rotating in a clockwise-direction to allow players
+                    // to either bid or pass
                     state.setPlayer();
                     return true;
                 }
-
             }
-
-            // can the player still bid
         }
+
+        // checks if the given action is a hold-action
+        // (when the player has a pass during the bidding-phase
+        else if (action instanceof RookHoldAction)
+        {
+            // make sure that the action was sent during the bidding stage
+            if(state.getSubStage() == BID)
+            {
+                try {
+                    // makes sure that Android system / networking has time
+                    // to process the action before moving onto the next step
+                    Thread.sleep(700);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                // set the player's status during the bidding phase as "Hold", where they
+                // have to wait until the bidding phase is over
+                state.setHold(playerIdx);
+
+                // make sure that the player's status is set to "pass" when they decide
+                // to make a pass during the bidding phase
+                state.pass[playerIdx] = true;
+
+                // once the winning bidder has been decided (after 3 players have passed or
+                // the last bidder has made a maximum bid amount of 120 points), set the
+                // next stage of the game after the bid-phase as the nest-phase
+                if (state.finalizeBids())
+                {
+                    // sets the winning bidder as the player to firstly place down a card
+                    // during the first trick of that round
+                    state.setPlayer(state.winningPlayer);
+                    state.currTrickWinner = state.winningPlayer;
+
+                    // set the next stage to the nest-phase after the bid-phase
+                    state.setSubStage(NEST);
+                    return true;
+                }
+
+                // if there is no winning bidder that has been decided, then
+                // continue rotating in a clockwise-direction to allow players
+                // to either bid or pass
+                state.setPlayer();
+            }
+        }
+
+        // checks to see if the given action is a nest-action
+        else if (action instanceof RookNestAction)
+        {
+            // checks if the given action occurs during the time when the winning bidder
+            // gets to interact with the nest
+            if(state.getSubStage() == NEST && playerIdx == state.winningPlayer)
+            {
+                // make a proper trade between the player's hand and nest if the
+                // same number of cards that are chosen from the nest equals the number
+                // of cards chosen to donate from the player's hand
+                RookNestAction act = (RookNestAction) action;
+                state.useNest(act.getNest(), act.getHand(), state.playerHands[playerIdx]);
+
+                // set the next stage to the trump-phase after the nest-phase
+                state.setSubStage(TRUMP);
+            }
+        }
+
+        // checks to see if the given action is a trump-action
+        else if (action instanceof RookTrumpAction)
+        {
+            // makes sure if the trump-action happens during the time when the winning bidder
+            // gets to choose the trump suit for that round
+            if (state.getSubStage() == TRUMP && playerIdx == state.winningPlayer) {
+                // sets the trump suit of the current round as the suit chosen by the
+                // winner through their trump-action
+                RookTrumpAction act = (RookTrumpAction) action;
+                state.setTrump(act.getTrumpColor());
+
+                // make sure that the winning bidder is the first player to place down
+                // a card during the first trick of the round
+                state.currTrickWinner = state.winningPlayer;
+
+                // set the next stage to the play-phase after the trump-phase
+                state.setSubStage(PLAY);
+            }
+        }
+
+        // checks if the given action is a card-action (when the player can place
+        // down cards in the trick)
         else if (action instanceof RookCardAction)
         {
             try {
+                // makes sure that Android system / networking has time
+                // to process the action before moving onto the next step
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
+            // increase the gameCounter  each time any player places down
+            // a card from their hand into the trick
             gameCounter++;
-            int startingPlayer;
+
+            // variable keeps track of the index of the player who wins a certain trick
             int trickWinner = 0;
+
+            // variable that gathers the amount of points that are included in a trick
+            // based on the counter-values of the Counter-cards placed into the trick
             int points = 0;
+
+            // checks if the given card-action happens during the play-stage when players
+            // can place down cards from their hand into the trick
             if(state.getSubStage() == PLAY)
             {
-                if(state.currTrick.size() == 0)
-                {
-                    startingPlayer = playerIdxx;
-                }
-
+                // once the trick reaches its max value of 4 cards from each player's hands,
+                // clear out all the cards included in the trick to start a new trick
                 if(state.currTrick.size() == 4)
                 {
                     state.currTrick.clear();
                 }
 
+                // gather information about which specific card (including data about that card's
+                // suit and number value) that the player has sent to the local-game
                 RookCardAction act = (RookCardAction) action;
                 int handIdx = act.retButtonNum();
 
-                if(state.currTrick.size()<4)
+                // check to see if the
+                if(state.currTrick.size() < 4)
                 {
                     state.currTrick.add(state.playerHands[state.getActivePlayer()].get(handIdx));
                     //state.playerHands[state.getActivePlayer()].set(handIdx, nullCard);
@@ -433,57 +594,9 @@ public class RookLocalGame extends LocalGame
                 }
             }
         }
-        else if (action instanceof RookHoldAction)
-        {
-            if(state.getSubStage() == BID)
-            {
-                try {
-                    Thread.sleep(700);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                RookHoldAction act = (RookHoldAction) action;
-                state.setHold(playerIdxx);
-
-                state.pass[playerIdxx] = true;
-
-                if (state.finalizeBids())
-                {
-                    state.setSubStage(NEST);
-                    state.setPlayer(state.winningPlayer);
-                    state.currTrickWinner = state.winningPlayer;
-                    return true;
-                }
-                state.setPlayer();
-            }
-        }
-        else if (action instanceof RookNestAction)
-        {
-            if(state.getSubStage() == NEST && playerIdxx == state.winningPlayer) {
-                RookNestAction act = (RookNestAction) action;
-                state.useNest(act.getNest(), act.getHand(), state.playerHands[playerIdxx]);
-                state.setSubStage(TRUMP);
-            }
-
-            // checks to see if that player won the bid
-        }
-        else if (action instanceof RookTrumpAction)
-        {
-            if (state.getSubStage() == TRUMP && playerIdxx == state.winningPlayer)
-            {
-                RookTrumpAction act = (RookTrumpAction) action;
-                state.setTrump(act.getTrumpColor());
-
-                state.currTrickWinner = state.winningPlayer;
-
-                state.setSubStage(PLAY);
-
-            }
-
-        }
 
         // if it makes it down here, an action was made
         return true;
     }
+
 }
