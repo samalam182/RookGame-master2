@@ -364,49 +364,49 @@ public class RookLocalGame extends LocalGame
                     int ranking = 1000;
 
                     //
-                    int[] testing = {0,1,2,3};
+                    int[] trickOrder = {0,1,2,3};
 
                     if (state.currTrickWinner == 0)
                     {
-                        testing[0] = 0;
-                        testing[1] = 1;
-                        testing[2] = 2;
-                        testing[3] = 3;
+                        trickOrder[0] = 0;
+                        trickOrder[1] = 1;
+                        trickOrder[2] = 2;
+                        trickOrder[3] = 3;
                     }
                     else if (state.currTrickWinner == 1)
                     {
-                        testing[0] = 1;
-                        testing[1] = 2;
-                        testing[2] = 3;
-                        testing[3] = 0;
+                        trickOrder[0] = 1;
+                        trickOrder[1] = 2;
+                        trickOrder[2] = 3;
+                        trickOrder[3] = 0;
                     }
                     else if (state.currTrickWinner == 2)
                     {
-                        testing[0] = 2;
-                        testing[1] = 3;
-                        testing[2] = 0;
-                        testing[3] = 1;
+                        trickOrder[0] = 2;
+                        trickOrder[1] = 3;
+                        trickOrder[2] = 0;
+                        trickOrder[3] = 1;
                     }
                     else if (state.currTrickWinner == 3)
                     {
-                        testing[0] = 3;
-                        testing[1] = 0;
-                        testing[2] = 1;
-                        testing[3] = 2;
+                        trickOrder[0] = 3;
+                        trickOrder[1] = 0;
+                        trickOrder[2] = 1;
+                        trickOrder[3] = 2;
                     }
 
                     for (int f = 0; f < state.currTrick.size(); f++)
                     {
                         if (state.currTrick.get(f).getNumValue() == 15)
                         {
-                            trickWinner = testing[f];
+                            trickWinner = trickOrder[f];
                             ranking = 1;
                         }
                         else if (state.currTrick.get(f).getSuit() == currTrump && state.currTrick.get(f).getNumValue() == 14)
                         {
                             if (ranking > 1)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 2;
                             }
                         }
@@ -414,7 +414,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 2)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 3;
                             }
                         }
@@ -422,7 +422,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 3)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 4;
                             }
                         }
@@ -430,7 +430,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 4)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 5;
                             }
                         }
@@ -438,7 +438,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 5)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 6;
                             }
                         }
@@ -446,7 +446,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 6)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 7;
                             }
                         }
@@ -454,7 +454,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 7)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 8;
                             }
                         }
@@ -462,7 +462,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 8)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 9;
                             }
                         }
@@ -470,7 +470,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 9)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 10;
                             }
                         }
@@ -478,7 +478,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 10)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 11;
                             }
                         }
@@ -486,7 +486,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 11)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 12;
                             }
                         }
@@ -494,7 +494,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 12)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 13;
                             }
                         }
@@ -502,7 +502,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 13)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 14;
                             }
                         }
@@ -510,7 +510,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 14)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 15;
                             }
                         }
@@ -518,7 +518,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 15)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 16;
                             }
                         }
@@ -526,7 +526,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 16)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 17;
                             }
                         }
@@ -534,7 +534,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 17)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 18;
                             }
                         }
@@ -542,7 +542,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 18)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 19;
                             }
                         }
@@ -550,7 +550,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 19)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 20;
                             }
                         }
@@ -558,7 +558,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 20)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 21;
                             }
                         }
@@ -566,7 +566,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 21)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 22;
                             }
                         }
@@ -574,7 +574,7 @@ public class RookLocalGame extends LocalGame
                         {
                             if (ranking > 22)
                             {
-                                trickWinner = testing[f];
+                                trickWinner = trickOrder[f];
                                 ranking = 23;
                             }
                         }

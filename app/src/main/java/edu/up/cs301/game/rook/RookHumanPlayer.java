@@ -45,7 +45,8 @@ import static edu.up.cs301.card.Card.initImages;
  * @version December 2016
  *
  */
-public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.OnClickListener {
+public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.OnClickListener
+{
     // game-state object
     protected RookState state;
 
@@ -76,8 +77,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     // will be set to either BLACK, YELLOW, GREEN, or RED
     public int trumpColor = -1;
 
+    // allows correctTrickImage to be able to know when a new Trick is starting and who starts it
     private boolean startingNew = true;
     private int currTrickWinner;
+    private boolean nullNest = false;
 
     // represents when a certain card is not being used, has already
     // been used, or is not usable during a certain stage of the game
@@ -152,8 +155,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     // 5 ImageButtons for that represent the cards of the nest
     public TextView nestTitle;
 
-    //////////////////////////////////////////////////////////////////////oioioioioioi
-    private boolean nullNest = false;
 
     // ArrayList's that represent which cards have been chosen from the nest and
     // the Human Player's hand to trade with each other
@@ -252,7 +253,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * @param bkColor the background color
      *
      */
-    public RookHumanPlayer(String name, int bkColor) {
+    public RookHumanPlayer(String name, int bkColor)
+    {
         super(name);
         backgroundColor = bkColor;
     }
@@ -269,7 +271,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             // if the user attempts to play an illegal move, or not on their turn, flash the screen
             surface.flash(Color.RED, 50);
         }
-        else if (!(info instanceof RookState)) {
+        else if (!(info instanceof RookState))
+        {
             // there is no game state, so ignore it
             return;
         }
@@ -311,7 +314,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * @param newActivity the current activity
      *
      */
-    public void setAsGui(GameMainActivity newActivity) {
+    public void setAsGui(GameMainActivity newActivity)
+    {
 
         // animate the UI
         activity = newActivity;
@@ -319,6 +323,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
         initImages(activity);
 
+        // initalizes animation suface
         surface = (AnimationSurface) activity.findViewById(R.id.animation_surface);
         surface.setAnimator(this);
 
@@ -352,18 +357,15 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         nestTitle = (TextView) activity.findViewById(R.id.textView_NestLabel);
         nestTitle.setOnClickListener(this);
 
+        // initalizes all the nest buttons
         nest1 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_0));
         nest1.setOnClickListener(this);
-
         nest2 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_1));
         nest2.setOnClickListener(this);
-
         nest3 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_2));
         nest3.setOnClickListener(this);
-
         nest4 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_3));
         nest4.setOnClickListener(this);
-
         nest5 = (ImageButton) activity.findViewById((R.id.imageButton_Nest_4));
         nest5.setOnClickListener(this);
 
@@ -373,24 +375,19 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
         trumpBlack = (ImageButton) activity.findViewById((R.id.imageButton_ChooseTrump_BlackMoon));
         trumpBlack.setOnClickListener(this);
-
         trumpYellow = (ImageButton) activity.findViewById((R.id.imageButton_ChooseTrump_YellowSun));
         trumpYellow.setOnClickListener(this);
-
         trumpGreen = (ImageButton) activity.findViewById((R.id.imageButton_ChooseTrump_GreenLeaf));
         trumpGreen.setOnClickListener(this);
-
         trumpRed = (ImageButton) activity.findViewById((R.id.imageButton_ChooseTrump_RedHeart));
         trumpRed.setOnClickListener(this);
 
         trumpAccounce = (TextView) activity.findViewById(R.id.textView_ROUNDTrumpSuit);
-
         secondTrump = (TextView) activity.findViewById(R.id.textView_FirstSuitOfTrick);
 
         // text-views and buttons related to when the Human Player is either bidding or passing
         addFive = (Button) activity.findViewById(R.id.button_Increment5ToBid);
         addFive.setOnClickListener(this);
-
         minusFive = (Button) activity.findViewById(R.id.button_Decrement5ToBid);
         minusFive.setOnClickListener(this);
 
@@ -583,7 +580,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * @param s the current RookState that is constantly updated throughout the gameplay
      *
      */
-    public void updateGUI(RookState s) {
+    public void updateGUI(RookState s)
+    {
 
         // during the bidding phase...
         if (s.getSubStage() == BID)
@@ -685,11 +683,17 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             if (state.lastBidder == 0 && !state.pass[0])
             {
                 lastBidder.setText("Player 1");
-            } else if (state.lastBidder == 1 && !state.pass[1]) {
+            }
+            else if (state.lastBidder == 1 && !state.pass[1])
+            {
                 lastBidder.setText("Player 2");
-            } else if (state.lastBidder == 2 && !state.pass[2]) {
+            }
+            else if (state.lastBidder == 2 && !state.pass[2])
+            {
                 lastBidder.setText("Player 3");
-            } else if (state.lastBidder == 3 && !state.pass[3]) {
+            }
+            else if (state.lastBidder == 3 && !state.pass[3])
+            {
                 lastBidder.setText("Player 4");
             }
 
@@ -698,14 +702,17 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             {
                 passOne.setVisibility(View.VISIBLE);
             }
+
             if(state.pass[1])
             {
                 passTwo.setVisibility(View.VISIBLE);
             }
+
             if(state.pass[2])
             {
                 passThree.setVisibility(View.VISIBLE);
             }
+
             if(state.pass[3])
             {
                 passFour.setVisibility(View.VISIBLE);
@@ -717,7 +724,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
 
         // during the time when the Human Player has made a pass during the bidding phase...
-        else if (s.getSubStage() == WAIT) {
+        else if (s.getSubStage() == WAIT)
+        {
             // make all buttons and text-views related to the bidding phase to invisible
             bidButton.setVisibility(View.INVISIBLE);
             passButton.setVisibility(View.INVISIBLE);
@@ -741,7 +749,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
 
         // during the time when the Human Player can interact with the nest...
-        else if (s.getSubStage() == NEST) {
+        else if (s.getSubStage() == NEST)
+        {
             // checks to see if the Human Player is the winner of the bid
             if(state.getActivePlayer() == this.playerNum)
             {
