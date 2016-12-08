@@ -43,7 +43,6 @@ import static edu.up.cs301.card.Card.initImages;
  *
  * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
  * @version December 2016
- *
  */
 public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.OnClickListener
 {
@@ -1087,17 +1086,19 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             {
                 if (n == 9)
                 {
-
+                    // do nothing
                 }
                 else {
                     opponents[k][n].setImageBitmap(cardImages[4][1]);
                 }
             }
         }
-
     }
 
-    //helper method for the correct hand image to check how many cards have been played
+    /**
+     * helper method for the correct hand image to check how many cards have been played
+     * @param opHand  The particular opponent's hand
+     */
     public int numPlayed(ArrayList<Card> opHand){
         int totalPlayed = 0;
         for(int i = 0; i < 9; i++)
@@ -1109,8 +1110,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         return totalPlayed;
     }
 
-    //helper method that tells the human player where each opponent is relative to them so that
-    //they can see the appropriate player's hands get smaller each turn.
+    /**
+    * helper method that tells the human player where each opponent is relative to them so that
+    * they can see the appropriate player's hands get smaller each turn.
+    */
     public int[] oppIdx(int playerIdx)
     {
         int[] opp = new int[3];
@@ -1137,7 +1140,12 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         return opp;
     }
 
-    //does the same thing as correct hand image but for the trick instead.
+    /**
+     * Sets the cards in the trick to the correct images based on the cards that they have.
+     *
+     * Looks through the trick and gets the card, then puts the Bitmap of that card
+     * into the proper spot.
+     */
     public void correctTrickImage()
     {
         // gets an array of all card objects
@@ -1160,19 +1168,19 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             if (state.currTrick.get(0).getSuit() == BLACK)
             {
-                secondTrump.setText("Black");
+                secondTrump.setText("Black Moon");
             }
             else if (state.currTrick.get(0).getSuit() == RED)
             {
-                secondTrump.setText("Red");
+                secondTrump.setText("Red Heart");
             }
             else if (state.currTrick.get(0).getSuit() == GREEN)
             {
-                secondTrump.setText("Green");
+                secondTrump.setText("Green Leaf");
             }
             else if (state.currTrick.get(0).getSuit() == YELLOW)
             {
-                secondTrump.setText("Yellow");
+                secondTrump.setText("Yellow Sun");
             }
 
         }
@@ -1250,7 +1258,9 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
     }
 
-    // displays the correct Nest Image
+    /**
+     * displays the correct images of cards that are in the nest
+     */
     public void correctNestImage() {
         // if the winningPlayer is the player that is updating the GUI then the GUI is waiting for their action
         // and there the trick being blank is accurate
@@ -1288,7 +1298,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
     }
 
-    // when the human player mclicks a button do something
+    /**
+     * when the Human Player clicks a Button on the Android Tablet's screen,
+     * perform a specific action
+     */
     public void onClick(View v)
     {
         // variables to help the bid process
@@ -1559,23 +1572,23 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         {
             trumpColor = BLACK;
             state.setTrump(BLACK);
-            trumpAnnouncer.setText("Black");
+            trumpAnnouncer.setText("Black Moon");
         } else if (v == trumpYellow) {
             trumpColor = YELLOW;
             state.setTrump(YELLOW);
-            trumpAnnouncer.setText("Yellow");
+            trumpAnnouncer.setText("Yellow Sun");
         } else if (v == trumpGreen)
         {
             trumpColor = GREEN;
             state.setTrump(GREEN);
-            trumpAnnouncer.setText("Green");
+            trumpAnnouncer.setText("Green Leaf");
         } else if (v == trumpRed)
         {
             trumpColor = RED;
             state.setTrump(RED);
-            trumpAnnouncer.setText("Red");
+            trumpAnnouncer.setText("Red Heart");
         }
-        // allows the player to incrament their bid by 5
+        // allows the player to increment their bid by 5
         else if (v == addFive) {
             try {
                 myNum = Integer.parseInt(bidAmount.getText().toString());
@@ -1588,7 +1601,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             bidAmount.setText("" + myNum);
         }
-        // allows the player to decrament their bid by 5
+        // allows the player to decrement their bid by 5
         else if (v == minusFive) {
 
             try {
@@ -1622,7 +1635,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
 
         }
-        // allows the player to confirm their turmp color
+        // allows the player to confirm their trump suit
         else if (v == confirmTrump && trumpColor > -1)
         {
             game.sendAction(new RookTrumpAction(this, trumpColor));
@@ -1670,7 +1683,6 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      *
      * @param g the canvas being drawn on
      */
-
     public void tick(Canvas g) {
         // ignore if there is no game state
         if (state == null) {

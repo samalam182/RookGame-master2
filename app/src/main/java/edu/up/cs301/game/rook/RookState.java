@@ -30,6 +30,7 @@ import static android.telephony.PhoneNumberUtils.WAIT;
 public class RookState extends GameState implements Serializable{
 
     private static final long serialVersionUID = -8269749892027578792L;
+
     // tracks the current stage throughout the game
     private int subStage;
 
@@ -86,7 +87,6 @@ public class RookState extends GameState implements Serializable{
 
     // defines which players either still have the opportunity to bid
     // or have already passed during each round
-//    public boolean[] bidPass;
     public boolean[] pass;
 
     // defines all the players' bid amounts
@@ -99,9 +99,10 @@ public class RookState extends GameState implements Serializable{
     // to the configuration screen
     private String[] playerNames;
 
+    // informs all players that a new round has started by creating a "new-game-state"
     public boolean newState;
 
-
+    // used to set all points that were earned back to zero when a new round starts
     public int[] pointsThisRound = new int[numPlayers];
 
     /**
@@ -157,6 +158,7 @@ public class RookState extends GameState implements Serializable{
         playerBids[2] = 0;
         playerBids[3] = 0;
 
+        // set all points that were earned at the beginning of a round to zero
         pointsThisRound[0] = 0;
         pointsThisRound[1] = 0;
         pointsThisRound[2] = 0;
@@ -217,6 +219,7 @@ public class RookState extends GameState implements Serializable{
         playerBids[2] = 0;
         playerBids[3] = 0;
 
+        // set all points that were earned at the beginning of a new round to zero
         pointsThisRound[0] = 0;
         pointsThisRound[1] = 0;
         pointsThisRound[2] = 0;
@@ -235,7 +238,7 @@ public class RookState extends GameState implements Serializable{
         // set the first player as the default winner at the beginning of the game
         winningPlayer = currPlayer;
 
-        // allows human player to know the state is new
+        // allows Human Player to know the state is new
         newState = true;
     }
 
