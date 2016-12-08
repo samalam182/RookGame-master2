@@ -580,6 +580,9 @@ public class RookState extends GameState implements Serializable{
     public void setPlayer() {
         if (currPlayer == 3)
         {
+            // if the current player reaches its maximum value, then
+            // rotate back to the first player of the game (to continue
+            // the clockwise rotation of players' turns)
             currPlayer = 0;
         }
         else

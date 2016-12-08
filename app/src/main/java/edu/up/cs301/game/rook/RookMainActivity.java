@@ -15,10 +15,12 @@ import edu.up.cs301.game.config.GamePlayerType;
 import android.graphics.Color;
 
 /**
- * this is the primary activity for Slapjack game
+ * The primary activity for the Rook game
+ * Consists of the options included in the Configuration Screen
  * 
  * @author Steven R. Vegdahl
- * @version July 2013
+ * @author Sam DeWhitt, Eric Hoser, Mitchell Nguyen, Alexander Nowlin
+ * @version December 2016
  */
 public class RookMainActivity extends GameMainActivity {
 	

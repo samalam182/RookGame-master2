@@ -24,17 +24,18 @@ import static java.lang.reflect.Array.getInt;
  */
 public class dRookComputerPlayer extends RookComputerPlayer {
 
-    public int handSize = 9;
     /**
+     *
      * constructor for the dRookComputerPlayer class
+     *
      */
     public dRookComputerPlayer(String name) {
-        // creates a computer player whose average reaction time is one second
+        // creates a Dumb Computer Player whose average reaction time is one second
         super(name, 2.0);
     }
 
     /**
-     * called when we receive a message, typically from the game
+     * called when we receive a message, typically from the local game
      */
     protected void receiveInfo(GameInfo info) {
         // if there is no game state, ignore it
@@ -45,75 +46,92 @@ public class dRookComputerPlayer extends RookComputerPlayer {
         // update the game state
         savedState = (RookState) info;
 
-        // the dumb computer player makes a move based on what subStage the game is in
-
-        //savedState.setSubStage(1);
-
+        // if it's the Dumb Computer Player's turn...
         if (this.playerNum == savedState.getActivePlayer()) {
+
+            // the Dumb Computer Player does not perform any actions during the "WAIT"-stage
             if (savedState.getSubStage() == savedState.WAIT) {
                 return;
-            } else if (savedState.getSubStage() == savedState.BID)
+            }
+
+            // the Dumb Computer Player will make a random decision during the bidding phase
+            else if (savedState.getSubStage() == savedState.BID)
             {
+                // the Dumb Computer Player continues to "Hold" from bidding after making a pass
                 if (savedState.pass[this.playerNum])
                 {
                     game.sendAction(new RookHoldAction(this));
                 }
+
                 Log.i("Reached bidding stage", "" + this.playerNum);
-                // the dumb computer player will randomly decide to bid or pass
-                //int randSelection = (int)(Math.random()*10);
+
+                // the Dumb Computer Player will randomly decide to bid or pass
                 int randSelection = (int) (Math.random() * 10);
 
+                // when randSelection is less than 0.5, the dumb computer player will pass
                 if (randSelection < 4) {
-                    // when randSelection is less than 0.5, the dumb computer player will pass
                     game.sendAction(new RookHoldAction(this));
                     Log.i("Sent hold action", "" + this.playerNum);
                 } else {
                     // when randSelection is more than 0.5, the dumb computer player will bid
-
+                    // a random amount that is either 5 or 10 points above the previous bid
                     int randBidVal = (int) (Math.random() * 10);
 
+                    // variable that keeps track of how much higher
+                    // the Dumb Computer Player will bid
                     int addBid = 0;
 
                     if (randBidVal <= 7 && savedState.getHighestBid() + 5 <= 120) {
+                        // there's a 70% chance that the Dumb Computer Player will
+                        // make a bid 5 points higher than the previous bid (while also
+                        // checking to see that their bid doesn't exceed the max value of 120 points)
                         addBid = 5;
                     }
                     else if (randBidVal >= 8 && savedState.getHighestBid() + 10 <= 120) {
+                        // there's a 20% chance that the Dumb Computer Player will
+                        // make a bid 10 points higher than the previous bid (while also
+                        // checking to see that their bid doesn't exceed the max value of 120 points)
                         addBid = 10;
-
                     }
                     else
                     {
+                        // makes sure that Dumb Computer Player ultimately either bids or passes
                         game.sendAction(new RookHoldAction(this));
                     }
 
-
+                    // gather information about the previous bid that was made by
+                    // the latest highest bidder of the round
                     int prevBid = savedState.getHighestBid();
                     Log.i("Previous bid", "" + prevBid);
 
+                    // make sure that the previous bid hasn't reached the max value of 120 points
                     if (prevBid < 120) {
-                        //int myBid = prevBid + addBid;
-                        //int myBid = savedState.getHighestBid() + addBid;
+                        // add the randomly chosen bid-amount to the previous bid's value
                         int myBid = prevBid + addBid;
+
+                        // send a bid-action to the local-game
                         game.sendAction(new RookBidAction(this, myBid));
                         Log.i("Sent Bid Action", "" + this.playerNum + "," + myBid);
                     }
                 }
+            }
 
-            } else if (savedState.getSubStage() == savedState.NEST) {
-                // the dumb computer player will randomly select 5 cards from their hand to place
-                // into the nest
-
+            // the Dumb Computer Player will make a random decision on what cards to trade
+            // from their own hand with the nest
+            else if (savedState.getSubStage() == savedState.NEST) {
+                // the Dumb Computer Player randomly selects 5 cards from
+                // their hand to place into the nest (and vice versa)
                 ArrayList<Card> handCards = savedState.playerHands[this.playerNum];
                 Log.i("Hand cards", "" + this.playerNum);
                 ArrayList<Card> nestCards = savedState.nest;
                 Log.i("Nest cards", "" + nestCards);
 
-
-                //Log.i("RandHandCardIndex", "");
-
+                // gathers information about which cards will be traded between
+                // the Dumb Computer Player's hand and the nest
                 ArrayList<Card> cardsFromNest = new ArrayList<Card>();
                 ArrayList<Card> cardsFromHand = new ArrayList<Card>();
-                //int cardIndex = 0;
+
+                //
                 for (int y = 0; y < 5; y++) {
                     double randPilePicker = Math.random();
 

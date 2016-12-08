@@ -320,6 +320,9 @@ public class RookLocalGame extends LocalGame
             {
                 // once the trick reaches its max value of 4 cards from each player's hands,
                 // clear out all the cards included in the trick to start a new trick
+                //
+                // PROBLEM OCCURS HERE: when human player whens trick as the final card placed
+                //                      from the previous trick, all 4 cards in trick remain visible
                 if(state.currTrick.size() == 4)
                 {
                     state.currTrick.clear();
@@ -330,25 +333,37 @@ public class RookLocalGame extends LocalGame
                 RookCardAction act = (RookCardAction) action;
                 int handIdx = act.retButtonNum();
 
-                // check to see if the
+                // check to see if the trick size is less than the max value of 4 cards
                 if(state.currTrick.size() < 4)
                 {
+                    // add the chosen card from the player's hand into the trick
                     state.currTrick.add(state.playerHands[state.getActivePlayer()].get(handIdx));
-                    //state.playerHands[state.getActivePlayer()].set(handIdx, nullCard);
-                    state.playerHands[state.getActivePlayer()].get(handIdx).setPlayed();
 
+                    // set the status of the card that was placed into the trick from the
+                    // player's hand as "already-played" such that the GUI will make the
+                    // ImageButton related to that particular card as invisible
+                    state.playerHands[state.getActivePlayer()].get(handIdx).setPlayed();
                 }
 
+                // once the trick reaches a max value of 4 cards (after the last player of the
+                // trick places down their card into the trick), account for all the counter-points
+                // that are included in the current trick
                 if(state.currTrick.size() == 4)
                 {
+                    // gather information about how many counter-points are
+                    // included in the current trick
                     points = state.countTrick();
+
+                    // gather information about the suit of the first card placed into
+                    // the trick as well as the trump-suit for the current round
                     Card first = state.currTrick.get(0);
                     int firstCardSuit = first.getSuit();
                     int currTrump = state.getTrump();
 
+                    //
                     int ranking = 1000;
-                    int counter = 0;
 
+                    //
                     int[] testing = {0,1,2,3};
 
                     if (state.currTrickWinner == 0)
