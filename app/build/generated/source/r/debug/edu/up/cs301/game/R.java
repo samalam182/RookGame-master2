@@ -141,8 +141,8 @@ public final class R {
     }
     public static final class id {
         public static final int addPlayerButton=0x7f090012;
-        public static final int animation_surface=0x7f09007e;
-        public static final int button=0x7f09007f;
+        public static final int animation_surface=0x7f09007d;
+        public static final int button=0x7f09007e;
         public static final int buttonQuitGame=0x7f090076;
         public static final int buttonStartGame=0x7f090075;
         public static final int button_ConfirmBid=0x7f09004e;
@@ -151,7 +151,6 @@ public final class R {
         public static final int button_ConfirmTrumpSuit=0x7f090044;
         public static final int button_Decrement5ToBid=0x7f09004a;
         public static final int button_Increment5ToBid=0x7f09004b;
-        public static final int button_NextRound=0x7f090077;
         public static final int configTableLayout=0x7f09000c;
         public static final int counterLabelTextView=0x7f090002;
         public static final int counterValueTextView=0x7f090004;
@@ -212,7 +211,7 @@ public final class R {
         public static final int ipCodeLabel=0x7f09000e;
         public static final int localGameTab=0x7f090008;
         public static final int localTabLayout=0x7f090009;
-        public static final int menu_settings=0x7f090080;
+        public static final int menu_settings=0x7f09007f;
         public static final int minusButton=0x7f090003;
         public static final int playGameButton=0x7f090007;
         public static final int playerNameEditText=0x7f090014;
@@ -259,12 +258,12 @@ public final class R {
         public static final int textView_PassedPlayersZERO=0x7f090051;
         public static final int textView_PlayerWon=0x7f090043;
         public static final int textView_PlayerWonLabel=0x7f090042;
-        public static final int textView_ROUNDTrumpSuit=0x7f090079;
-        public static final int textView_ROUNDTrumpSuitLabel=0x7f090078;
-        public static final int textView_ROUNDWinningBid=0x7f09007d;
-        public static final int textView_ROUNDWinningBidLabel=0x7f09007c;
-        public static final int textView_ROUNDWinningBidder=0x7f09007b;
-        public static final int textView_ROUNDWinningBidderLabel=0x7f09007a;
+        public static final int textView_ROUNDTrumpSuit=0x7f090078;
+        public static final int textView_ROUNDTrumpSuitLabel=0x7f090077;
+        public static final int textView_ROUNDWinningBid=0x7f09007c;
+        public static final int textView_ROUNDWinningBidLabel=0x7f09007b;
+        public static final int textView_ROUNDWinningBidder=0x7f09007a;
+        public static final int textView_ROUNDWinningBidderLabel=0x7f090079;
         public static final int textView_TrumpSuitLabel=0x7f09003c;
         public static final int textView_YourBid=0x7f09004d;
         public static final int textView_YourBidLabel=0x7f09004c;

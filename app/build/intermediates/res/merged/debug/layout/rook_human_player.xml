@@ -1470,17 +1470,7 @@
             android:id="@+id/buttonQuitGame" />
 
         <Space
-            android:layout_width="30px"
-            android:layout_height="match_parent" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next Round"
-            android:id="@+id/button_NextRound" />
-
-        <Space
-            android:layout_width="150px"
+            android:layout_width="200px"
             android:layout_height="20px" />
 
         <LinearLayout
@@ -1505,7 +1495,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="100px"
+            android:layout_width="200px"
             android:layout_height="20px" />
 
         <LinearLayout
@@ -1529,7 +1519,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="100px"
+            android:layout_width="200px"
             android:layout_height="20px" />
 
         <LinearLayout
