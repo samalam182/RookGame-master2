@@ -1,0 +1,29 @@
+Date: 19 November 2016
+Name: Eric Hoser
+Problem: Copying from github not working. Giving file too long error
+Link: http://stackoverflow.com/questions/22575662/filename-too-long-in-git-for-windows
+Resolution: Downloading special software to work around error was recommended. Just worked from school computer instead of laptop
+
+Date: 30 November 2016
+Name: Eric Hoser
+Problem: Need to allow computer to pause so it look humanPlayer can see moves happening
+Link:  http://stackoverflow.com/questions/14941643/sleep-in-java-android
+Resolution: It involves try catching a Thread.sleep(time).
+
+Date: 30 November 2016
+Name: Eric Hoser
+Problem: Getting NullPointerException runtime error
+Link: http://stackoverflow.com/questions/23371938/proper-way-to-handle-android-studios-nullpointerexception-lint-warning
+Resolution: Restart andriod studio
+
+Date: 5 December 2016
+Name: Eric Hoser
+Problem: Need to get rid of all indexes in an array list
+Link: http://stackoverflow.com/questions/1717570/clear-methods-in-java
+Resolution: The method is .clear()
+
+Date: 7 December 2016
+Name: Eric Hoser
+Problem: Need a way to change the color of a imagine view
+Link: http://stackoverflow.com/questions/4813995/set-alpha-opacity-of-layout
+Resolution: It's setAlpha(0-255)
