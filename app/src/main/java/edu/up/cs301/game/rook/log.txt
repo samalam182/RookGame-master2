@@ -1,3 +1,37 @@
+Date: 7 November 2016
+Name: Rook Team
+Source: Imported SlapJack-game example from CS 301 course website to model Rook game off of the SlapJack's game-structure
+
+Date: 9 November 2016
+Name: Mitchell Nguyen
+Problem: Picture needed for "Yellow Sun" suit to draw on Rook-cards
+Link/Resolution: http://clipartix.com/sunshine-clipart-image-6739/
+
+Date: 9 November 2016
+Name: Mitchell Nguyen
+Problem: Picture needed for "Black Moon" suit to draw on Rook-cards
+Link/Resolution: https://image.freepik.com/free-icon/moon-and-stars-ios-7-interface-symbol_318-34839.jpg
+
+Date: 9 November 2016
+Name: Mitchell Nguyen
+Problem: Picture needed for "Green Leaf" suit to draw on Rook-cards
+Link/Resolution: http://images.all-free-download.com/images/graphiclarge/leaf_clip_art_11088.jpg
+
+Date: 9 November 2016
+Name: Mitchell Nguyen
+Problem: Picture needed for "Red Heart" suit to draw on Rook-cards
+Link/Resolution: http://cdn-6.freeclipartnow.com/d/25655-1/bright-red-heart.jpg
+
+Date: 9 November 2016
+Name: Mitchell Nguyen
+Problem: Picture needed for "Rook" suit to draw on Rook-cards
+Link/Resolution: http://www.clipartbest.com/cliparts/9TR/gE4/9TRgE4gdc.svg
+
+Date: 16 November 2016
+Name: Mitchell Nguyen
+Problem: Picture needed for icon-picture for Rook on Android Tablet
+Link/Resolution: http://sweetclipart.com/multisite/sweetclipart/files/bird_blue_cute.png
+
 Date: 19 November 2016
 Name: Eric Hoser
 Problem: Copying from github not working. Giving file too long error

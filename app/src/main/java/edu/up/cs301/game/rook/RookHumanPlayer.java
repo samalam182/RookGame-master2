@@ -248,8 +248,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     /**
      *
      * constructor
-     * @param name    the player's name
-     * @param bkColor the background color
+     * @param name
+     *     the player's name
+     * @param bkColor
+     *     the background color
      *
      */
     public RookHumanPlayer(String name, int bkColor)
@@ -260,7 +262,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
     /**
      *
-     * @param info the message we have received from the game
+     * @param info
+     *     the message we have received from the game
      *
      */
     public void receiveInfo(GameInfo info)
@@ -315,8 +318,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      */
     public void setAsGui(GameMainActivity newActivity)
     {
-
-        // animate the UI
+        // animate the GUI
         activity = newActivity;
         newActivity.setContentView(R.layout.rook_human_player);
 
@@ -566,22 +568,19 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         opponentTHREECard7.setImageResource(R.drawable.rookcard_back);
         opponentTHREECard8 = (ImageView) activity.findViewById(R.id.imageView_OpponentTHREEHand_8);
         opponentTHREECard8.setImageResource(R.drawable.rookcard_back);
-
-        // next round button that is shown after 9 tricks have been completed
-        nextRound = (Button) activity.findViewById(R.id.button_NextRound);
-        nextRound.setVisibility(View.INVISIBLE);
     }
 
     /**
      *
      * The GUI for the Human Player is constantly updated according to which buttons and text-views
      * it displays based on the current stage of the game
-     * @param s the current RookState that is constantly updated throughout the gameplay
+     *
+     * @param s
+     *     the current RookState that is constantly updated throughout the gameplay
      *
      */
     public void updateGUI(RookState s)
     {
-
         // during the bidding phase...
         if (s.getSubStage() == BID)
         {
@@ -1237,7 +1236,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
                     currVal = getting.getNumValue();
                     Bitmap tempBitmap;
 
-                    // if the value is 15, its the rook card
+                    // if the value is 15, it's the Rook card
                     if (currVal == 15)
                     {
                         tempBitmap = cardImages[4][0];
@@ -1248,7 +1247,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
                     trick[testing[i]].setImageBitmap(tempBitmap);
 
-                    // if there are 4 cards in the trick, next time itterated through is going to be a new trick
+                    // if there are 4 cards in the trick, next time iterated through is going to be a new trick
                     if (state.currTrick.size() == 4)
                     {
                         startingNew = true;
@@ -1263,8 +1262,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * displays the correct images of cards that are in the nest
      */
     public void correctNestImage() {
-        // if the winningPlayer is the player that is updating the GUI then the GUI is waiting for their action
-        // and there the trick being blank is accurate
+        // if the winningPlayer is the player that is updating the GUI,
+        // then the GUI is waiting for their action - and there the trick being blank is accurate
         if (state.winningPlayer != this.playerNum) {
             return;
         } else {
@@ -1682,7 +1681,8 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * hands will be face down
      * - a token to indicate whose turn it is
      *
-     * @param g the canvas being drawn on
+     * @param g
+     *     the canvas being drawn on
      */
     public void tick(Canvas g) {
         // ignore if there is no game state
@@ -1693,6 +1693,13 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         }
     }
 
+    /**
+     * when user presses the "Quit Game" button on the bottom of the
+     * Android Tablet's screen, then exit the whole application
+     *
+     * @param event
+     *     a MotionEvent describing the touch
+     */
     public void onTouch(MotionEvent event) {
         if (event.equals(quit)) {
             activity.finish();

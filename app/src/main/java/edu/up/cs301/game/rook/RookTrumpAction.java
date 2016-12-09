@@ -15,7 +15,7 @@ public class RookTrumpAction extends GameAction
     private int trumpColor;
 
     /**
-     * constructor for a trump-action
+     * constructor for a RookTrumpAction
      *
      * @param player the player who created the action
      * @param suitColor the chosen suit that was chosen as the trump suit by the winning bidder

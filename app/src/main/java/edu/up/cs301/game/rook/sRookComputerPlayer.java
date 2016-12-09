@@ -617,16 +617,16 @@ public class sRookComputerPlayer extends RookComputerPlayer {
 
         switch (card.getSuit()) {
             case 0:
-                stringOut = "BLACK";
+                stringOut = "BLACK MOON";
                 break;
             case 1:
-                stringOut = "YELLOW";
+                stringOut = "YELLOW SUN";
                 break;
             case 2:
-                stringOut = "GREEN";
+                stringOut = "GREEN LEAF";
                 break;
             case 3:
-                stringOut = "RED";
+                stringOut = "RED HEART";
                 break;
             case 4:
                 stringOut = "ROOK";
@@ -643,13 +643,13 @@ public class sRookComputerPlayer extends RookComputerPlayer {
      *
      * A function that is used for log statements. The function will output the player's name, and
      * a cardArray, such as that player's hand.
-     * @param Name
+     * @param name
      *      the name of the player
      * @param cardArray
      *      the size of the ArrayList being accessed
      */
-    public void logCardArray(String Name, ArrayList<Card> cardArray) {
-        Log.i("", "" + Name);
+    public void logCardArray(String name, ArrayList<Card> cardArray) {
+        Log.i("", "" + name);
 
         for (int i = 0; i < cardArray.size(); i++) {
             logCard(cardArray.get(i));

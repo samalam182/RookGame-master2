@@ -22,11 +22,14 @@ public class RookNestAction extends GameAction{
     private ArrayList<Card> hand;
 
     /**
-     * constructor for nest-Action
+     * constructor for RookNestAction
      *
-     * @param player the player who created the action
-     * @param fromNest the cards that were selected from the nest to be placed in the player's hand
-     * @param fromHand the cards that were selected from the player's hand to be placed in the nest
+     * @param player
+     *     the player who created the action
+     * @param fromNest
+     *     the cards that were selected from the nest to be placed in the player's hand
+     * @param fromHand
+     *     the cards that were selected from the player's hand to be placed in the nest
      */
     public RookNestAction(GamePlayer player, ArrayList<Card> fromNest, ArrayList<Card> fromHand)
     {

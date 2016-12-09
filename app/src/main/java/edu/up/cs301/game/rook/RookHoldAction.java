@@ -12,10 +12,10 @@ import edu.up.cs301.game.GamePlayer;
  */
 public class RookHoldAction extends GameAction{
     /**
-     * constructor for GameAction
+     * constructor for RookHoldAction
      *
-     * @param player the player who created the action
-     *
+     * @param player
+     *     the player who created the action
      */
     public RookHoldAction(GamePlayer player)
 

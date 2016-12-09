@@ -183,25 +183,25 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                 {
                     // trumpSuit is set to black
                     trumpSuit = 0;
-                    Log.i("Trump", "Picking BLACK");
+                    Log.i("Trump", "Picking BLACK MOON");
                 }
                 else if (randSuitPick >= 1 && randSuitPick < 2)
                 {
                     // trumpSuit is set to yellow
                     trumpSuit = 1;
-                    Log.i("Trump", "Picking YELLOW");
+                    Log.i("Trump", "Picking YELLOW SUN");
                 }
                 else if (randSuitPick >= 2 && randSuitPick < 3)
                 {
                     // trumpSuit is set to green
                     trumpSuit = 2;
-                    Log.i("Trump", "Picking GREEN");
+                    Log.i("Trump", "Picking GREEN LEAF");
                 }
                 else
                 {
                     // trumpSuit is set to red
                     trumpSuit = 3;
-                    Log.i("Trump", "Picking RED");
+                    Log.i("Trump", "Picking RED HEART");
                 }
 
                 // set the trump suit for the round

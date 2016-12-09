@@ -10,16 +10,16 @@ import edu.up.cs301.game.GamePlayer;
  * @version December 2016
  */
 public class RookBidAction extends GameAction{
-    /**
-     * constructor for GameAction
-     *
-     * @param player the player who created the action
-     */
 
     // stores the value of the bid
     public int bid = 0;
 
-    // consructs a bid action
+    /**
+     * constructor for RookBidAction
+     *
+     * @param player
+     *     the player who created the action
+     */
     public RookBidAction(GamePlayer player, int playerBid)
     {
         super(player);

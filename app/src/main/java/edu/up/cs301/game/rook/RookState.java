@@ -29,8 +29,10 @@ import static android.telephony.PhoneNumberUtils.WAIT;
  */
 public class RookState extends GameState implements Serializable{
 
+    // used for network-play
     private static final long serialVersionUID = -8269749892027578792L;
     private static final boolean SHALLOW_COPY = false;
+
     // tracks the current stage throughout the game
     private int subStage;
 
@@ -348,10 +350,6 @@ public class RookState extends GameState implements Serializable{
         newState = false;
     }
 
-//    public int[] getBids() {     // this method isn't used at all anywhere else...
-//        return playerBids;
-//    }
-
     /**
      * Get the current highest bid made by the latest player who made a bid
      */
@@ -548,18 +546,6 @@ public class RookState extends GameState implements Serializable{
     public void setHold(int playerIndex) {
         pass[playerIndex] = true;
     }
-
-//    // makes all hidden information for a player null
-//    public void nullHiddenInformation(int playerIdx) {     //this method is never used...
-//        for (int i = 0; i < numPlayers; i++) {
-//            if (i != playerIdx) {
-//                //playerHands[i].clear();
-//                for (int j = 0; j < 9; j++) {
-//                    //playerHands[i].add(null);
-//                }
-//            }
-//        }
-//    }
 
     /**
      * Get the currently active player during any phase of the game

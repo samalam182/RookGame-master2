@@ -14,16 +14,23 @@ import edu.up.cs301.game.GamePlayer;
 public class RookCardAction extends GameAction
 {
 
-    /**
-     * constructor for GameAction
-     *
-     * @param player the player who created the action
-     */
+    // gathers information about which Button was pressed that represents a certain
+    // card in the Human Player's hand
     public int buttonNum;
+
+    /**
+     * constructor for RookCardAction
+     *
+     * @param player
+     *     the player who created the action
+     */
     public RookCardAction(GamePlayer player, int initButton) {
         super(player);
         buttonNum = initButton;
     }
+
+    // return the number of button, which is based on its position in the row
+    // of ImageButtons that represents the cards in the Human Player's hand
     public int retButtonNum(){return buttonNum;}
 }
 

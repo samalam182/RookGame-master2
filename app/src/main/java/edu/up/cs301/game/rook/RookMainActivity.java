@@ -23,10 +23,14 @@ import android.graphics.Color;
  * @version December 2016
  */
 public class RookMainActivity extends GameMainActivity {
-	
+
+	// used for network-play
 	public static final int PORT_NUMBER = 4752;
 
-	/** a rook game for four players. The default is human vs. computer */
+	/**
+	 * A Rook game for 4 players.
+	 * The default is human vs. computer
+	 */
 	@Override
 	public GameConfig createDefaultConfig() {
 
@@ -66,6 +70,9 @@ public class RookMainActivity extends GameMainActivity {
 		return defaultConfig;
 	}//createDefaultConfig
 
+	/**
+	 * Create a local-game for Rook
+     */
 	@Override
 	public LocalGame createLocalGame() {
 		return new RookLocalGame();

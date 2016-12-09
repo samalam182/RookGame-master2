@@ -32,9 +32,6 @@ public class RookLocalGame extends LocalGame
     public final int NEST = 3;
     public final int PLAY = 4;
 
-//    public final int OVER = 5;   //not used
-//    Card nullCard = new Card(16, 1);   //not used
-
     // will keep track of how many cards have placed down from any player
     // during the trick-phase.
     // once this value reaches 36 (after 9 full tricks), a new round is started automatically
@@ -320,9 +317,6 @@ public class RookLocalGame extends LocalGame
             {
                 // once the trick reaches its max value of 4 cards from each player's hands,
                 // clear out all the cards included in the trick to start a new trick
-                //
-                // PROBLEM OCCURS HERE: when human player whens trick as the final card placed
-                //                      from the previous trick, all 4 cards in trick remain visible
                 if(state.currTrick.size() == 4)
                 {
                     state.currTrick.clear();

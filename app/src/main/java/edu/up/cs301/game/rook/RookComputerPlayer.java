@@ -12,11 +12,13 @@ import edu.up.cs301.game.infoMsg.GameInfo;
  * @version December 2016
  */
 public abstract class RookComputerPlayer extends GameComputerPlayer {
+
+    // the minimum reaction time that it takes for a computer player
+    // to make a decision during any stage of the game
     public double minReactionTimeInMillis;
 
+    // a saved copy of the game-state
     public RookState savedState;
-
-    //public double reactionTime;
 
     /**
      * constructor for RookComputerPlayer class
@@ -30,15 +32,10 @@ public abstract class RookComputerPlayer extends GameComputerPlayer {
     public RookComputerPlayer(String name, double avgReactionTime) {
         super(name);
 
-        //set min reaction time, which is half the average reaction time,
+        // set min reaction time, which is half the average reaction time,
         // converted to milliseconds (0.5*1000 = 500)
         minReactionTimeInMillis = 500 * avgReactionTime;
     }
-
-
-
-    @Override
-//    protected abstract void timerTicked();
 
     /**
      * callback method, called when we receive a message, typically from
