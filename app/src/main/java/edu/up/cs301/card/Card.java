@@ -75,6 +75,7 @@ public class Card implements Serializable {
 		}
 		return cV;
 	}
+
 	public int getSuit() {
 		return suit;
 	}

@@ -220,6 +220,7 @@ public class RookState extends GameState implements Serializable{
         playerBids[1] = 0;
         playerBids[2] = 0;
         playerBids[3] = 0;
+        playerBids[currPlayer] = 50;
 
         // set all points that were earned at the beginning of a new round to zero
         pointsThisRound[0] = 0;
@@ -227,7 +228,7 @@ public class RookState extends GameState implements Serializable{
         pointsThisRound[2] = 0;
         pointsThisRound[3] = 0;
 
-        playerBids[currPlayer] = 50;
+
 
         // initialize all the players' current total scores and names from the configuration screen
         playerScores = new int[numPlayers];
@@ -260,10 +261,28 @@ public class RookState extends GameState implements Serializable{
         // info from the "temp"-RookState
         subStage = temp.subStage;
         currPlayer = temp.currPlayer;
-        playerZeroHand = temp.playerZeroHand;
-        playerOneHand = temp.playerOneHand;
-        playerTwoHand = temp.playerTwoHand;
-        playerThreeHand = temp.playerThreeHand;
+        playerZeroHand = new ArrayList<Card>(9);
+        playerOneHand = new ArrayList<Card>(9);
+        playerTwoHand = new ArrayList<Card>(9);
+        playerThreeHand = new ArrayList<Card>(9);
+
+        for(Card c : temp.playerZeroHand)
+        {
+            playerZeroHand.add(new Card(c));
+        }
+        for(Card c : temp.playerOneHand)
+        {
+            playerOneHand.add(new Card(c));
+        }
+        for(Card c : temp.playerTwoHand)
+        {
+            playerTwoHand.add(new Card(c));
+        }
+        for(Card c : temp.playerThreeHand)
+        {
+            playerThreeHand.add(new Card(c));
+        }
+
         playerHands[0] = playerZeroHand;
         playerHands[1] = playerOneHand;
         playerHands[2] = playerTwoHand;
@@ -286,14 +305,25 @@ public class RookState extends GameState implements Serializable{
 
         trumpSuit = temp.trumpSuit;
         winningBid = temp.winningBid;
-        playerBids = temp.playerBids;
+
+        playerBids[0] = temp.playerBids[0];
+        playerBids[1] = temp.playerBids[1];
+        playerBids[2] = temp.playerBids[2];
+        playerBids[3] = temp.playerBids[3];
         winningPlayer = temp.winningPlayer;
+
         lastBidder = temp.lastBidder;
         currTrickWinner = temp.currTrickWinner;
 
         playerScores = temp.playerScores;
-        playerNames = temp.playerNames;
+        playerNames = new String[4];
+        playerNames[0] = temp.playerNames[0];
+        playerNames[1] = temp.playerNames[1];
+        playerNames[2] = temp.playerNames[2];
+        playerNames[3] = temp.playerNames[3];
 
+        //allows the human player to verify that they have
+        //the newest state each turn. For debugging purposes
         newState = temp.newState;
     }
 
