@@ -61,3 +61,18 @@ Name: Eric Hoser
 Problem: Need a way to change the color of a imagine view
 Link: http://stackoverflow.com/questions/4813995/set-alpha-opacity-of-layout
 Resolution: It's setAlpha(0-255)
+
+Date: 22 November 2016
+Name: Samuel DeWhitt
+Problem: Had poor understanding of game framework and local game
+Resolution: Visited Dr. Vegdahl and got the answers to some questions
+
+Date: 30 November 2016
+Name: Samuel DeWhitt
+Problem: Several bugs in human player and local game
+Resolution: Nux was able to sit down and debug with me during lab time
+
+Date: 8 December 2016
+Name: Samuel DeWhitt
+Problem: Deep copy was causing issues
+Resolution: Debugged with Dr. Vegdahl. Changes the card contructor, etc.
