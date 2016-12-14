@@ -1,16 +1,11 @@
 package edu.up.cs301.game.rook;
 
-import android.graphics.Color;
 import android.util.Log;
 
-import java.text.Bidi;
 import java.util.ArrayList;
-import static java.lang.reflect.Array.getInt;
 
 import edu.up.cs301.card.Card;
-import edu.up.cs301.game.ProxyGame;
 import edu.up.cs301.game.infoMsg.GameInfo;
-
 
 /**
  * Contains the algorithms and functions that the smart computer player will use for the game

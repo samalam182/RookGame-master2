@@ -1,14 +1,11 @@
 package edu.up.cs301.game.rook;
 
-import android.graphics.Color;
 import android.util.Log;
 
 import java.util.ArrayList;
 
 import edu.up.cs301.card.Card;
 import edu.up.cs301.game.infoMsg.GameInfo;
-
-import static java.lang.reflect.Array.getInt;
 
 /**
  * Contains the algorithms and functions that are included in the dumb computer player
@@ -230,9 +227,16 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                     }
                 }
 
+                // variable for suit that led the trick
                 int suitLed = -1;
+
+                // card object used to access the index of the copyHand
                 Card tempCard;
+
+                // variable that checks if the player can follow the led suit
                 boolean canFollowSuit = false;
+
+                // variable that checks if the random card's suit matches the led suit
                 boolean randomCardFollowsSuit = false;
 
                 if (savedState.currTrick.size() > 0)
@@ -290,8 +294,10 @@ public class dRookComputerPlayer extends RookComputerPlayer {
         boolean hasCard = false;
         for (int i = 0; i < copyHand.size(); i++)
         {
+            // check through all the cards in copyHand
             ArrayList<Card> compHand = copyHand;
 
+            // if the card's suit matches the led suit, set hasCard to true, else it's false
             if (compHand.get(i).getSuit() == ledSuit)
             {
                 hasCard = true;
