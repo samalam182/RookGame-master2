@@ -24,6 +24,7 @@ import static java.lang.reflect.Array.getInt;
  */
 public class dRookComputerPlayer extends RookComputerPlayer {
 
+    private ArrayList<Card> copyHand;
     /**
      * constructor for the dRookComputerPlayer class
      * @param name
@@ -119,7 +120,8 @@ public class dRookComputerPlayer extends RookComputerPlayer {
 
             // the player will make a random decision on what cards to trade
             // from their own hand with the nest
-            else if (savedState.getSubStage() == savedState.NEST) {
+            else if (savedState.getSubStage() == savedState.NEST)
+            {
                 // the player randomly selects 5 cards from
                 // their hand to place into the nest (and vice versa)
                 ArrayList<Card> handCards = savedState.playerHands[this.playerNum];
@@ -210,12 +212,14 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                 // send the game the selected trump suit
                 game.sendAction(new RookTrumpAction(this, trumpSuit));
 
-            } else if (savedState.getSubStage() == savedState.PLAY) {
+            }
+            else if (savedState.getSubStage() == savedState.PLAY)
+            {
                 // the player will randomly choose a card to play
 
 
                 // create a copy of the player's hand
-                ArrayList<Card> copyHand = (ArrayList<Card>)savedState.playerHands[this.playerNum].clone();
+                copyHand = (ArrayList<Card>)savedState.playerHands[this.playerNum].clone();
                 for(Card c : savedState.playerHands[this.playerNum])
                 {
                     if(c.getPlayed())
@@ -225,14 +229,79 @@ public class dRookComputerPlayer extends RookComputerPlayer {
                         copyHand.remove(c);
                     }
                 }
-                int pickedCard = (int)(Math.random()*copyHand.size());
 
-                Card tempCard = copyHand.get(pickedCard);
+                int suitLed = -1;
+                Card tempCard;
+                boolean canFollowSuit = false;
+                boolean randomCardFollowsSuit = false;
+
+                if (savedState.currTrick.size() > 0)
+                {
+                    // if there is at least one card in the trick already, get the suit of the card,
+                    // and call the haveCardOfSuit to check if the player has a card that matches
+                    // the led suit
+                    suitLed = savedState.currTrick.get(0).getSuit();
+                    canFollowSuit = haveCardOfSuit(suitLed);
+                }
+
+                do
+                {
+                    // randomly select a card from the copyHand
+                    int pickedCard = (int) (Math.random() * copyHand.size());
+
+                    tempCard = copyHand.get(pickedCard);
+
+                    if (tempCard.getSuit() == suitLed) {
+                        // if the random card's suit matches the led suit, it is a valid card to
+                        // play
+                        randomCardFollowsSuit = true;
+                    }
+
+                    Log.i("canFollowSuit", ""+canFollowSuit);
+                    Log.i("randomCardFollowsSuit", ""+randomCardFollowsSuit);
+                    Log.i("Looping", "checkForCard");
+                    Log.i("Led Suit", ""+suitLed);
+                    Log.i("Random Index", ""+pickedCard);
+                    Log.i("Random Card Suit", ""+tempCard.getSuit());
+                    Log.i("Hand size", ""+copyHand.size());
+                }
+                // loops while the player is able to follow the led suit, and has not found a card
+                // in their hand that follows the suit
+                while (canFollowSuit && !randomCardFollowsSuit) ;
 
                 // send the game the index of the card the player wants to play
                 game.sendAction(new RookCardAction(this, savedState.playerHands[this.playerNum].indexOf(tempCard)));
             }
         }
+    }
+
+    /**
+     * A method that checks whether the player has a card in their hand that matches the led suit of
+     * the trick. Used to help the player determine a legal move to make.
+     *
+     * @param ledSuit
+     *      the suit of the card that led the trick
+     * @return
+     *      returns a boolean for whether the player has a card in their hand that matches the
+     *      led suit
+     */
+    public boolean haveCardOfSuit(int ledSuit)
+    {
+        boolean hasCard = false;
+        for (int i = 0; i < copyHand.size(); i++)
+        {
+            ArrayList<Card> compHand = copyHand;
+
+            if (compHand.get(i).getSuit() == ledSuit)
+            {
+                hasCard = true;
+            }
+            else
+            {
+                hasCard = false;
+            }
+        }
+        return hasCard;
     }
 }
 
