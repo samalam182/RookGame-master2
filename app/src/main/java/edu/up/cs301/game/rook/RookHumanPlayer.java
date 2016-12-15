@@ -1826,7 +1826,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             trumpAnnouncer.setText("Red Heart");
         }
         // allows the player to increment their bid by 5
-        else if (v == addFive) {
+        else if (v == addFive && this.playerNum == state.getActivePlayer()) {
             try {
                 myNum = Integer.parseInt(bidAmount.getText().toString());
             } catch (NumberFormatException nfe) {
@@ -1839,7 +1839,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidAmount.setText("" + myNum);
         }
         // allows the player to decrement their bid by 5
-        else if (v == minusFive) {
+        else if (v == minusFive  && this.playerNum == state.getActivePlayer()) {
 
             try {
                 myNum = Integer.parseInt(bidAmount.getText().toString());
@@ -1879,7 +1879,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
         }
         // allows the player to cast their bid
-        else if (v == bidButton) {
+        else if (v == bidButton && this.playerNum == state.getActivePlayer()) {
             try {
                 myNum = Integer.parseInt(bidAmount.getText().toString());
             } catch (NumberFormatException nfe) {
