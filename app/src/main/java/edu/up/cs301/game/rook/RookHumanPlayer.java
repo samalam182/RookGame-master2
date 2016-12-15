@@ -49,6 +49,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
     // game-state object
     protected RookState state;
 
+
     // activity object
     protected Activity activity;
 

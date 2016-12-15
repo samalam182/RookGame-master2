@@ -1,6 +1,6 @@
 package edu.up.cs301.game;
 
-import edu.up.cs301.game.actionMsg.GameAction;
+
 import edu.up.cs301.game.actionMsg.GameOverAckAction;
 import edu.up.cs301.game.actionMsg.MyNameIsAction;
 import edu.up.cs301.game.actionMsg.ReadyAction;
@@ -10,6 +10,7 @@ import edu.up.cs301.game.infoMsg.GameOverInfo;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 import edu.up.cs301.game.infoMsg.StartGameInfo;
+import edu.up.cs301.game.rook.GameAction;
 import edu.up.cs301.game.util.GameTimer;
 import edu.up.cs301.game.util.Tickable;
 
