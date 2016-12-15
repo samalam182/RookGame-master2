@@ -741,21 +741,25 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             // display the particular player's name in the list of "Players Who've Passed"
             if(state.pass[0])
             {
+                passOne.setText("" + allPlayerNames[0]);
                 passOne.setVisibility(View.VISIBLE);
             }
 
             if(state.pass[1])
             {
+                passTwo.setText("" + allPlayerNames[1]);
                 passTwo.setVisibility(View.VISIBLE);
             }
 
             if(state.pass[2])
             {
+                passThree.setText("" + allPlayerNames[2]);
                 passThree.setVisibility(View.VISIBLE);
             }
 
             if(state.pass[3])
             {
+                passFour.setText("" + allPlayerNames[3]);
                 passFour.setVisibility(View.VISIBLE);
             }
 
@@ -948,7 +952,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             passButton.setVisibility(View.INVISIBLE);
 
             // displays who won the bid and for how much
-            winningBidder.setText("Player: " + (state.winningPlayer + 1));
+            winningBidder.setText("Player: " + allPlayerNames[state.winningPlayer]);
             winningBid.setText("" + state.winningBid);
 
             // if the trick has no cards show the trick as empty

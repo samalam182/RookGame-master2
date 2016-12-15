@@ -330,10 +330,10 @@ public class RookState extends GameState implements Serializable{
         playerNames[3] = temp.playerNames[3];
 
         pass = new boolean[numPlayers];
-        pass[0] = false;
-        pass[1] = false;
-        pass[2] = false;
-        pass[3] = false;
+        pass[0] = temp.pass[0];
+        pass[1] = temp.pass[1];
+        pass[2] = temp.pass[2];
+        pass[3] = temp.pass[3];
 
         //allows the human player to verify that they have
         //the newest state each turn. For debugging purposes
