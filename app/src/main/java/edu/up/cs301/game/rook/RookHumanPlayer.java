@@ -1108,7 +1108,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
 
 
         // the card that we're looking for is being stored
-        Card getting;
+         Card getting;
         if(card.length != 0)
         {
             for (int i = 0; i < state.playerHands[state.getActivePlayer()].size() && i < 9; i++) {
