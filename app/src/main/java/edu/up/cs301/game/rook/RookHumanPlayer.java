@@ -982,10 +982,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             else if (this.playerNum == 1)
             {
-                oneScore.setText("" + state.getScore(3));
-                twoScore.setText("" + state.getScore(0));
-                threeScore.setText("" + state.getScore(1));
-                fourScore.setText("" + state.getScore(2));
+                oneScore.setText("" + state.getScore(1));
+                twoScore.setText("" + state.getScore(2));
+                threeScore.setText("" + state.getScore(3));
+                fourScore.setText("" + state.getScore(0));
             }
             else if (this.playerNum == 2)
             {
@@ -996,10 +996,10 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             else
             {
-                oneScore.setText("" + state.getScore(1));
-                twoScore.setText("" + state.getScore(2));
-                threeScore.setText("" + state.getScore(3));
-                fourScore.setText("" + state.getScore(0));
+                oneScore.setText("" + state.getScore(3));
+                twoScore.setText("" + state.getScore(0));
+                threeScore.setText("" + state.getScore(1));
+                fourScore.setText("" + state.getScore(2));
             }
 
             // if the trick has four cards in it, clear it and the next time updateGUI is called it refreshes the trick
