@@ -306,6 +306,7 @@ public class RookState extends GameState implements Serializable{
         trumpSuit = temp.trumpSuit;
         winningBid = temp.winningBid;
 
+        playerBids = new int[4];
         playerBids[0] = temp.playerBids[0];
         playerBids[1] = temp.playerBids[1];
         playerBids[2] = temp.playerBids[2];
@@ -327,6 +328,12 @@ public class RookState extends GameState implements Serializable{
         playerNames[1] = temp.playerNames[1];
         playerNames[2] = temp.playerNames[2];
         playerNames[3] = temp.playerNames[3];
+
+        pass = new boolean[numPlayers];
+        pass[0] = false;
+        pass[1] = false;
+        pass[2] = false;
+        pass[3] = false;
 
         //allows the human player to verify that they have
         //the newest state each turn. For debugging purposes
