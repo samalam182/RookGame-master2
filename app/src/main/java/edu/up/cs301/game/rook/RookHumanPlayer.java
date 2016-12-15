@@ -657,10 +657,33 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             bidAmount.setText("" + possBid);
 
             // display all current total scores throughout the course of the game
-            oneScore.setText("" + state.getScore(0));
-            twoScore.setText("" + state.getScore(1));
-            threeScore.setText("" + state.getScore(2));
-            fourScore.setText("" + state.getScore(3));
+            if (this.playerNum == 0) {
+                oneScore.setText("" + state.getScore(0));
+                twoScore.setText("" + state.getScore(1));
+                threeScore.setText("" + state.getScore(2));
+                fourScore.setText("" + state.getScore(3));
+            }
+            else if (this.playerNum == 1)
+            {
+                oneScore.setText("" + state.getScore(3));
+                twoScore.setText("" + state.getScore(0));
+                threeScore.setText("" + state.getScore(1));
+                fourScore.setText("" + state.getScore(2));
+            }
+            else if (this.playerNum == 2)
+            {
+                oneScore.setText("" + state.getScore(2));
+                twoScore.setText("" + state.getScore(3));
+                threeScore.setText("" + state.getScore(0));
+                fourScore.setText("" + state.getScore(1));
+            }
+            else
+            {
+                oneScore.setText("" + state.getScore(1));
+                twoScore.setText("" + state.getScore(2));
+                threeScore.setText("" + state.getScore(3));
+                fourScore.setText("" + state.getScore(0));
+            }
 
             // display all buttons that will allow the Human Player to either bid or pass
             addFive.setVisibility(View.VISIBLE);
@@ -951,10 +974,33 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             secondTrumpTitle.setVisibility(View.VISIBLE);
 
             // updates the score of each player
-            oneScore.setText("" + state.getScore(0));
-            twoScore.setText("" + state.getScore(1));
-            threeScore.setText("" + state.getScore(2));
-            fourScore.setText("" + state.getScore(3));
+            if (this.playerNum == 0) {
+                oneScore.setText("" + state.getScore(0));
+                twoScore.setText("" + state.getScore(1));
+                threeScore.setText("" + state.getScore(2));
+                fourScore.setText("" + state.getScore(3));
+            }
+            else if (this.playerNum == 1)
+            {
+                oneScore.setText("" + state.getScore(3));
+                twoScore.setText("" + state.getScore(0));
+                threeScore.setText("" + state.getScore(1));
+                fourScore.setText("" + state.getScore(2));
+            }
+            else if (this.playerNum == 2)
+            {
+                oneScore.setText("" + state.getScore(2));
+                twoScore.setText("" + state.getScore(3));
+                threeScore.setText("" + state.getScore(0));
+                fourScore.setText("" + state.getScore(1));
+            }
+            else
+            {
+                oneScore.setText("" + state.getScore(1));
+                twoScore.setText("" + state.getScore(2));
+                threeScore.setText("" + state.getScore(3));
+                fourScore.setText("" + state.getScore(0));
+            }
 
             // if the trick has four cards in it, clear it and the next time updateGUI is called it refreshes the trick
             if (state.currTrick.size() == 4)
