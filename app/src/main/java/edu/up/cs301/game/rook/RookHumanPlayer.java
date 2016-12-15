@@ -590,6 +590,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
         // during the bidding phase...
         if (s.getSubStage() == BID)
         {
+            state.setSubStage(BID);
             // properly display all cards in Human Player's current hand
             // as well as the correct number of cards in the opponents' hands
             correctHandImage();
@@ -870,7 +871,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             // show having no cards in the trick but the human player is second to go
             // correctHandImage also needs to be called at this time for the same reason. Without being called here the human player
             // could play any card from their hand
-            correctTrickImage();
+            correctTrickImage(this.playerNum);
             correctHandImage();
 
             // update who's turn it is indicator
@@ -938,7 +939,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             }
             else
             {
-                correctTrickImage();
+                correctTrickImage(this.playerNum);
             }
 
             // make sure the trick is visible
@@ -1241,7 +1242,7 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
      * Looks through the trick and gets the card, then puts the Bitmap of that card
      * into the proper spot.
      */
-    public void correctTrickImage()
+    public void correctTrickImage(int playerIndex)
     {
         // gets an array of all card objects
         ImageView[] trick = {trick1, trick2, trick3, trick4};
@@ -1289,34 +1290,128 @@ public class RookHumanPlayer extends GameHumanPlayer implements Animator, View.O
             state.setFalse();
         }
 
-        // sets the trick order
-        if (currTrickWinner == 0)
-        {
-            testing[0] = 0;
-            testing[1] = 1;
-            testing[2] = 2;
-            testing[3] = 3;
+        if (playerIndex == 0) {
+            // sets the trick order
+            if (currTrickWinner == 0) {
+                testing[0] = 0;
+                testing[1] = 1;
+                testing[2] = 2;
+                testing[3] = 3;
+            }
+            else if (currTrickWinner == 1)
+            {
+                testing[0] = 1;
+                testing[1] = 2;
+                testing[2] = 3;
+                testing[3] = 0;
+            }
+            else if (currTrickWinner == 2)
+            {
+                testing[0] = 2;
+                testing[1] = 3;
+                testing[2] = 0;
+                testing[3] = 1;
+            }
+            else if (currTrickWinner == 3)
+            {
+                testing[0] = 3;
+                testing[1] = 0;
+                testing[2] = 1;
+                testing[3] = 2;
+            }
         }
-        else if (currTrickWinner == 1)
+        else if(playerIndex == 1)
         {
-            testing[0] = 1;
-            testing[1] = 2;
-            testing[2] = 3;
-            testing[3] = 0;
-        }
-        else if (currTrickWinner == 2)
-        {
-            testing[0] = 2;
-            testing[1] = 3;
-            testing[2] = 0;
-            testing[3] = 1;
-        }
-        else if (currTrickWinner == 3)
-        {
+            if (currTrickWinner == 0)
+            {
             testing[0] = 3;
             testing[1] = 0;
             testing[2] = 1;
             testing[3] = 2;
+            }
+            else if (currTrickWinner == 1)
+            {
+                testing[0] = 0;
+                testing[1] = 1;
+                testing[2] = 2;
+                testing[3] = 3;
+            }
+            else if (currTrickWinner == 2)
+            {
+                testing[0] = 1;
+                testing[1] = 2;
+                testing[2] = 3;
+                testing[3] = 0;
+            }
+            else if (currTrickWinner == 3)
+            {
+                testing[0] = 2;
+                testing[1] = 3;
+                testing[2] = 0;
+                testing[3] = 1;
+            }
+        }
+        else if (playerIndex == 2)
+        {
+            if (currTrickWinner == 0)
+            {
+            testing[0] = 2;
+            testing[1] = 3;
+            testing[2] = 0;
+            testing[3] = 1;
+            }
+            else if (currTrickWinner == 1)
+            {
+                testing[0] = 3;
+                testing[1] = 0;
+                testing[2] = 1;
+                testing[3] = 2;
+            }
+            else if (currTrickWinner == 2)
+            {
+                testing[0] = 0;
+                testing[1] = 1;
+                testing[2] = 2;
+                testing[3] = 3;
+            }
+            else if (currTrickWinner == 3)
+            {
+                testing[0] = 1;
+                testing[1] = 2;
+                testing[2] = 3;
+                testing[3] = 0;
+            }
+        }
+        else
+        {
+            if (currTrickWinner == 0)
+            {
+            testing[0] = 1;
+            testing[1] = 2;
+            testing[2] = 3;
+            testing[3] = 0;
+            }
+            else if (currTrickWinner == 1)
+            {
+                testing[0] = 2;
+                testing[1] = 3;
+                testing[2] = 0;
+                testing[3] = 1;
+            }
+            else if (currTrickWinner == 2)
+            {
+                testing[0] = 3;
+                testing[1] = 0;
+                testing[2] = 1;
+                testing[3] = 2;
+            }
+            else if (currTrickWinner == 3)
+            {
+                testing[0] = 0;
+                testing[1] = 1;
+                testing[2] = 2;
+                testing[3] = 3;
+            }
         }
 
         // if the trick size has cards in it, update the trick images to represent the cards

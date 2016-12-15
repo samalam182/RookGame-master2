@@ -46,10 +46,12 @@ public class dRookComputerPlayer extends RookComputerPlayer {
         savedState = (RookState) info;
 
         // checks to see if it the player's turn
-        if (this.playerNum == savedState.getActivePlayer()) {
+        if (this.playerNum == savedState.getActivePlayer())
+        {
 
             // the dumb computer player does not perform any actions during the "WAIT"-stage
-            if (savedState.getSubStage() == savedState.WAIT) {
+            if (savedState.getSubStage() == savedState.WAIT)
+            {
                 return;
             }
 
