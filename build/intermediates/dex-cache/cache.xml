@@ -2,31 +2,13 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="C:\Users\Eric ASUS G750\AndroidStudioProjects\New3\RookGame-master2\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="0ef8d93f5ce8eea68e75c7634ec7e97f6a04ecdc">
-        <dex dex="C:\Users\Eric ASUS G750\AndroidStudioProjects\New3\RookGame-master2\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_4f1c85f76c51debed6f1e06191bcd9b49b13fc77\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Eric ASUS G750\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\E6420i5\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jumboMode="false"
         optimize="true"
         revision="22.0.1"
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="C:\Users\Eric ASUS G750\AndroidStudioProjects\New3\RookGame-master2\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-18.0.0_feb8c8aa34b8d778c43345cf9a5fa7e73c76df12\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Eric ASUS G750\AndroidStudioProjects\New3\RookGame-master2\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="2b533dbb07abcbbb24ceaa13e8f282994e3f1798">
-        <dex dex="C:\Users\Eric ASUS G750\AndroidStudioProjects\New3\RookGame-master2\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_dfa21e4c597910a74878ea830f823e6c32e8ee54\classes.dex" />
+        <dex dex="C:\Users\E6420i5\Desktop\Android Projects\RookGame-master2\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0_949364ed6b1c4755107246748992077d7e44985b.jar" />
     </item>
 
 </items>

@@ -315,7 +315,12 @@ public class RookState extends GameState implements Serializable{
         lastBidder = temp.lastBidder;
         currTrickWinner = temp.currTrickWinner;
 
-        playerScores = temp.playerScores;
+        playerScores[0] = temp.playerScores[0];
+        playerScores[1] = temp.playerScores[1];
+        playerScores[2] = temp.playerScores[2];
+        playerScores[3] = temp.playerScores[3];
+
+
         playerNames = new String[4];
         playerNames[0] = temp.playerNames[0];
         playerNames[1] = temp.playerNames[1];
